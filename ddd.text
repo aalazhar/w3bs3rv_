@@ -1,0 +1,277 @@
+server {
+    listen 0.0.0.0:8685; 
+
+	location /python {
+    	root .www/root/python;
+        autoindex off;
+        index index.py;
+        deny all;
+        redirect http://profile.intra.42.fr;}
+        allowed_methods GET,POST;
+        cgiExt py;
+        cgiPath /usr/local/bin/python3.9;
+    }
+
+
+location /python {
+        root .www/root/python;
+        autoindex off;
+        index index.py;
+        deny all;
+        redirect http://profile.intra.42.fr;}
+        allowed_methods GET,POST;
+        cgiExt py;
+        cgiPath /usr/local/bin/python3.9;
+    }
+        
+
+
+
+    index internet.html;
+    autoindex on;
+    upload .www/root/uploads;
+    error_page 404 .www/root/custom_404.html;
+    root .www/root99999;
+    allowed_methods GET,POST;
+    # client_max_body_size 6000000;
+
+    location /favicon.ico {
+        deny all;    
+    }
+
+    location /intra {
+        redirect http://5profile.intra.42.fr;
+    }
+
+
+
+    location /static {
+        root .www/root/static;
+        index index.html;
+    }
+
+    location /video {
+        root .www/root/video;
+        index index.html;
+    }
+
+    location /python {
+        root .www/root/python;
+        autoindex off;
+        index index.py;
+        
+        allowed_methods GET,POST;
+        redirect http://profile.intra.42.fr;
+        cgiExt py;
+        cgiPath /usr/local/bin/python3.9;
+    }
+
+    location /python {
+        root .www/root/python;
+        autoindex off;
+        index index.py;
+        deny all;
+        redirect http://profile.intra.42.fr;}
+        allowed_methods GET,POST;
+        cgiExt py;
+        cgiPath /usr/local/bin/python3.9;
+    }
+
+    location /python {
+        root .www/root/python;
+        autoindex off;
+        index index.py;
+        deny all;
+        redirect http://profile.intra.42.fr;}
+        allowed_methods GET,POST;
+        cgiExt py;
+        cgiPath /usr/local/bin/python3.9;
+    }
+
+    location /python {
+        root .www/root/python;
+        autoindex off;
+        index index.py;
+        deny all;
+        redirect http://profile.intra.42.fr;}
+        allowed_methods GET,POST;
+        cgiExt py;
+        cgiPath /usr/local/bin/python3.9;
+    }
+
+
+
+    location /python {
+        root .www/root/python;
+        autoindex off;
+        index index.py;
+        deny all;
+        redirect http://profile.intra.42.fr;}
+        allowed_methods GET,POST;
+        cgiExt py;
+        cgiPath /usr/local/bin/python3.9;
+    }
+
+    location /python {
+        root .www/root/python;
+        autoindex off;
+        index index.py;
+        deny all;
+        redirect http://profile.intra.42.fr;}
+        allowed_methods GET,POST;
+        cgiExt py;
+        cgiPath /usr/local/bin/python3.9;
+    }
+
+    location /python {
+        root .www/root/python;
+        autoindex off;
+        index index.py;
+        deny all;
+        redirect http://profile.intra.42.fr;}
+        allowed_methods GET,POST;
+        cgiExt py;
+        cgiPath /usr/local/bin/python3.9;
+    }
+
+
+
+    location /python {
+        root .www/root/python;
+        autoindex off;
+        index index.py;
+        deny all;
+        redirect http://profile.intra.42.fr;}
+        allowed_methods GET,POST;
+        cgiExt py;
+        cgiPath /usr/local/bin/python3.9;
+    }
+
+    location /python {
+        root .www/root/python;
+        autoindex off;
+        index index.py;
+        deny all;
+        redirect http://profile.intra.42.fr;}
+        allowed_methods GET,POST;
+        cgiExt py;
+        cgiPath /usr/local/bin/python3.9;
+    }
+
+    location /python {
+        root .www/root/python;
+        autoindex off;
+        index index.py;
+        deny all;
+        redirect http://profile.intra.42.fr;}
+        allowed_methods GET,POST;
+        cgiExt py;
+        cgiPath /usr/local/bin/python3.9;
+    }
+
+
+    location /python {
+        root .www/root/python;
+        autoindex off;
+        index index.py;
+        deny all;
+        redirect http://profile.intra.42.fr;}
+        allowed_methods GET,POST;
+        cgiExt py;
+        cgiPath /usr/local/bin/python3.9;
+    }
+
+    location /python {
+        root .www/root/python;
+        autoindex off;
+        index index.py;
+        deny all;
+        redirect http://profile.intra.42.fr;}
+        allowed_methods GET,POST;
+        cgiExt py;
+        cgiPath /usr/local/bin/python3.9;
+    }
+
+    location /python {
+        root .www/root/python;
+        autoindex off;
+        index index.py;
+        deny all;
+        redirect http://profile.intra.42.fr;}
+        allowed_methods GET,POST;
+        cgiExt py;
+        cgiPath /usr/local/bin/python3.9;
+    }
+
+
+
+
+
+    location /python {
+        root .www/root/python;
+        autoindex off;
+        index index.py;
+        deny all;
+        redirect http://profile.intra.42.fr;}
+        allowed_methods GET,POST;
+        cgiExt py;
+        cgiPath /usr/local/bin/python3.9;
+    }
+
+    location /python {
+        root .www/root/python;
+        autoindex off;
+        index index.py;
+        deny all;
+        redirect http://profile.intra.42.fr;}
+        allowed_methods GET,POST;
+        cgiExt py;
+        cgiPath /usr/local/bin/python3.9;
+    }
+
+    location /python {
+        root .www/root/python;
+        autoindex off;
+        index index.py;
+        deny all;
+        redirect http://profile.intra.42.fr;}
+        allowed_methods GET,POST;
+        cgiExt py;
+        cgiPath /usr/local/bin/python3.9;
+    }
+
+    location /perl {
+        root .www/root/perl;
+        allowed_methods GET,POST;
+        cgiExt pl;
+        cgiPath .cgi-bin/perl;
+    }
+
+    location /php {
+        allowed_methods GET,POST;
+        cgiPath .cgi-bin/php-cgi;
+        cgiExt php;
+    }
+
+    location /login {
+        cgiPath .cgi-bin/php-cgi;
+        cgiExt php;
+    }
+
+    location /python {
+        cgiPath /usr/local/bin/python3;
+        cgiExt py;
+    }
+
+
+    location /upload {
+        allowed_methods GET;
+        root .www/root/lllupload;
+        index index.html;
+    }
+
+    location /uploads {
+        autoindex on;
+        allowed_methods GET,DELETE;
+    }
+}
