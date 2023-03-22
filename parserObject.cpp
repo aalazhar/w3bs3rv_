@@ -6,7 +6,7 @@
 /*   By: aalazhar <aalazhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 18:59:54 by aalazhar          #+#    #+#             */
-/*   Updated: 2023/03/21 17:02:04 by aalazhar         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:13:52 by aalazhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,10 @@ int parserObject::open_config_file(){
     
     if (!lin.is_open()){
         std::cout << "Can't open this file !" << std::endl;
+        return (1);
+    }
+    if (lexical_analyser()){
+        std::cout << "Syntax Error" << std::endl;
         return (1);
     }
     while (getline(lin, line)){
