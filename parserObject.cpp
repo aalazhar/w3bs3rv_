@@ -6,7 +6,7 @@
 /*   By: aalazhar <aalazhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 18:59:54 by aalazhar          #+#    #+#             */
-/*   Updated: 2023/03/22 16:13:52 by aalazhar         ###   ########.fr       */
+/*   Updated: 2023/03/22 21:18:17 by aalazhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,13 +185,29 @@ void parserObject::split_lines(std::string line, char sep, struct config& conf){
         conf.allowed_m = &line[i + 1];
 }
 
+int parserObject::check_dup_char(std::string line, char c){
+    int i = 0;
+    int count = 0;
+
+    while (line[i]){
+        if (line[i] == c)
+            count++;
+        i++;
+    }
+    if (!count || count > 1)
+        return (1);
+    return (0);
+}
+
 int parserObject::lexical_analyser(){
     std::string line;
     std::ifstream lin(this->fileName);
     int i = 0;
     int j = 0;
     int y = 0;
+    int count = 0;
     int pos = 0;
+    int ps = 0;;
 
     if (!lin.is_open()){
         std::cout << "Can't open this file !" << std::endl;
@@ -202,7 +218,7 @@ int parserObject::lexical_analyser(){
         while (line[i] == ' ' || line[i] == '\t')
             i++;
         line.erase(0, i);
-        std::cout << line << std::endl;
+        // std::cout << line << std::endl;
         if (line.size() == 0)
             continue;
         if (!strncmp(line.c_str(), "server", 6) && i != 0){
@@ -210,7 +226,8 @@ int parserObject::lexical_analyser(){
             return (1);
         }
         pos = line.find("{", 0);
-        if (strncmp(line.c_str(), "server", 6) != 0 || pos != 7 || line.size() != 8){
+        if (strncmp(line.c_str(), "server", 6) != 0 || pos != 7 || \
+            line.size() != 8 || line[6] != ' '){
             std::cout << "Error 10\n";
             return (1);
         }
@@ -219,7 +236,7 @@ int parserObject::lexical_analyser(){
             while (line[j] == ' ' || line[j] == '\t')
                 j++;
             line.erase(0, j);
-            std::cout << line << std::endl;
+            // std::cout << "*** " << line << std::endl;
             if (line[0] == '}' && j == 0 && !line.size())
                 continue;
             if (j != 1 && line[0] != '}' && line.size() != 0){
@@ -228,11 +245,19 @@ int parserObject::lexical_analyser(){
             }
             if (!strncmp(line.c_str(), "location", 8) && line[line.size() - 1] == '{' && \
                 (j == 4 || j == 1)){
+                if (check_dup_char(line, '{') || line[8] != ' ')
+                    return (1);
                 while (getline(lin, line)){
                     y = 0;
+                    std::cout << line << std::endl;
                     while (line[y] == ' ' || line[y] == '\t')
                         y++;
                     line.erase(0, y);
+                    if (line.size() > 0){
+                        if ((line[line.size() - 1] != ';' || check_dup_char(line, ';')) && \
+                            line[0] != '}')
+                            return (1);
+                    }
                     if (y != 2 && line.size() != 0 && line[0] != '}'){
                         std::cout << "Syntax Error !7" << std::endl;
                         return (1);

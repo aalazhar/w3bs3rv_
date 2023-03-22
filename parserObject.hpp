@@ -6,7 +6,7 @@
 /*   By: aalazhar <aalazhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 18:59:23 by aalazhar          #+#    #+#             */
-/*   Updated: 2023/03/20 18:57:40 by aalazhar         ###   ########.fr       */
+/*   Updated: 2023/03/22 21:09:55 by aalazhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,9 @@ public:
     std::string get_listen();
     std::string get_error();
     struct config get_location_vect();
+    int check_loc_dirc(std::string line);
     int lexical_analyser();
+    int check_dup_char(std::string line, char c);
     std::string strtrim(std::string line, std::ifstream& lin);
     std::string strtrim_loca(std::string line, std::ifstream& lin);
     void print_directs_keys_val(std::vector<struct config> server);
