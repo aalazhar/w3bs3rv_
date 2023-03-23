@@ -6,7 +6,7 @@
 /*   By: aalazhar <aalazhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 18:59:23 by aalazhar          #+#    #+#             */
-/*   Updated: 2023/03/22 21:09:55 by aalazhar         ###   ########.fr       */
+/*   Updated: 2023/03/23 23:34:10 by aalazhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ public:
     parserObject(std::string f_name);
     std::string get_listen();
     std::string get_error();
+    int check_blocks_dirc(int *tab);
+    int check_blocks_dirc2(int *tab);
     struct config get_location_vect();
     int check_loc_dirc(std::string line);
     int lexical_analyser();
@@ -79,8 +81,8 @@ public:
     void collect_location_directs(std::ifstream& kin, std::string& line, struct loca& loca);
     int open_config_file();
     int check_server_direct();
-    void split_lines(std::string line, char sep, struct config& conf);
-    void locat_split_lines(std::string line, char sep, struct loca& loca);
+    void split_lines(std::string line, char sep, struct config& conf, int *tab);
+    void locat_split_lines(std::string line, char sep, struct loca& loca, int *tab);
     void print_text();
     ~parserObject();
 
