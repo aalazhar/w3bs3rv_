@@ -6,7 +6,7 @@
 /*   By: aalazhar <aalazhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 18:59:54 by aalazhar          #+#    #+#             */
-/*   Updated: 2023/03/30 22:41:38 by aalazhar         ###   ########.fr       */
+/*   Updated: 2023/03/30 23:04:38 by aalazhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,39 +50,6 @@ int parserObject::check_check_check(std::string line){
     }
     return (0);
 }
-
-// void parserObject::split_lines(std::string line, char sep){
-//     int i = 0;
-//     std::string res = "";
-
-//     if (!line.size())
-//         return;
-//     while (((line[i] == ' ' || line[i] == '\t')) && line[i] != '\n' && i < line.size())
-//         i++;
-//     std::cout << " --- " << i << std::endl;
-//     line.erase(0, i);
-//     std::cout<< line << std::endl;
-//     res = line;
-//     i = 0;
-//     while (line[i] != ' ' && line[i] != '\t' && line[i] != '\n' && i < line.size())
-//         i++;
-//     std::cout << " **** " << i << std::endl;
-//     res = res.substr(0, i);
-//     line = &res[i + 1];
-//     std::cout<< res << std::endl;
-//     std::cout << "" << line << std::endl;
-//     i = 0;
-//     while (check_whiteSpace(line[i])){
-//         std::cout << line[i] << "-- ";
-//         i++;
-//     }
-//     std::cout << " \n";
-//     line.erase(0, i);
-//     std::cout << "90900" << line << std::endl;
-//     if (check_check_check(line))
-//         split_lines(line, ' ');
-
-// }
 
 void parserObject::tabTurn_zero(int *tab){
     int x = -1;
@@ -168,9 +135,11 @@ int parserObject::open_config_file(){
         config_clean(cf);
     }
 
-    std::cout << server[0].vect[0].l_path << std::endl;
-    std::cout << server[0].err_p[0] << std::endl;
-    // std::cout << server[0].err_p[1] << std::endl;
+    std::cout << server[2].lsten[0] << std::endl;
+    std::cout << server[2].lsten[1] << std::endl;
+    std::cout << server[1].err_p[0] << std::endl;
+    std::cout << server[1].err_p[1] << std::endl;
+    std::cout << server[2].vect[2].l_path << std::endl;
 
     return (0);
 }
@@ -316,7 +285,7 @@ int parserObject::locat_split_lines(std::string line, char sep, struct loca& _lo
 void parserObject::split_lines(std::string line, struct config& conf){
     int i = 0;
     std::string res = "";
-    std::string rex = "";
+    std::string code = "";
     while ((line[i] == ' ' || line[i] == '\t'))
         i++;
     line.erase(0, i);
@@ -324,12 +293,16 @@ void parserObject::split_lines(std::string line, struct config& conf){
     while (line[i] && line[i] != ' ' && line[i] != '\t')
         i++;
     res = line;
-    line = line.substr(0, i);
+    code = line.substr(0, i);
     res = &res[i + 1];
     int j= 0;
     while (res[j] && (res[j] == ' ' || res[j] == '\t') )
         j++;
     res.erase(0, j);
+    conf.err_p.push_back(code);
+    conf.err_p.push_back(res);
+    // std::cout << code << std::endl;
+    // std::cout << res << std::endl;
 }
 
 void parserObject::rm_blanks(std::string& line){
