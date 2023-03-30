@@ -6,7 +6,7 @@
 /*   By: aalazhar <aalazhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 18:59:23 by aalazhar          #+#    #+#             */
-/*   Updated: 2023/03/23 23:34:10 by aalazhar         ###   ########.fr       */
+/*   Updated: 2023/03/30 22:39:10 by aalazhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ struct loca{
     std::string cgiExt;
     std::string cgiPath;
     std::string l_path;
+    std::vector <std::string> a_meth;
+    std::vector <std::string> cgi;
     int l_flag;
 
 };
@@ -49,7 +51,11 @@ struct config{
     std::string upload;
     std::string error_page;
     std::string allowed_m;
-    std::vector<loca> vect;
+    std::vector <loca> vect;
+    std::vector <std::string> err_p;
+    std::vector <std::string> a_meth;
+    std::vector <std::string> lsten;
+    std::vector <std::string> uploads;
 };
 
 struct sd{
@@ -82,7 +88,15 @@ public:
     int open_config_file();
     int check_server_direct();
     void split_lines(std::string line, char sep, struct config& conf, int *tab);
-    void locat_split_lines(std::string line, char sep, struct loca& loca, int *tab);
+    int locat_split_lines(std::string line, char sep, struct loca& loca, int *tab);
+    void split_lines(std::string line, char sep);
+    int check_whiteSpace(char c);
+    int check_check_check(std::string line);
+    void split_lines(std::string line, struct config& conf);
+    void split_method_lines(std::string line, struct config& conf, int rep, struct loca& loca);
+    void split_listen_line(std::string line, struct config& conf);
+    void rm_blanks(std::string& line);
+    void tabTurn_zero(int *tab);
     void print_text();
     ~parserObject();
 
