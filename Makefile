@@ -6,7 +6,7 @@ CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 
 HEADERS = creatSocket.hpp RequestClass.hpp
 
-SRC = main.cpp creatSocket.cpp RequestClass.cpp
+SRC = main2.cpp creatSocket.cpp RequestClass.cpp
 
 OBJS = $(SRC:%.cpp=%.o)
 
