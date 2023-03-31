@@ -11,14 +11,15 @@ creatSocket::creatSocket(int domain, int Socktype, int protocol, int port, unsig
     this->Addr.sin_len = sizeof(Addr);
     this->sockFd = socket(domain, Socktype, protocol);
     //check if sockFd < 0
-	testConnection(this->sockFd, "creat Socket");
+	testConnection(this->sockFd, "create Socket");
 	//binding and listning:
 	BindAndListenSocket();
 }
 
 void creatSocket::testConnection(const int& test, const std::string& msg){
     if (test < 0){
-        std::cerr << "Faild to connection ?! Err From : " << msg << std::endl;
+        std::cerr << "Faild to connection ?!: " << msg << std::endl;
+		std::cerr << "Error : " << strerror(errno) << std::endl;
 		exit(EXIT_FAILURE);
     }
 }
@@ -31,7 +32,7 @@ const int &creatSocket::getBinding(){ return this->binding; }
 void creatSocket::BindAndListenSocket(){
 	int yes = 1;
 	int setsock = setsockopt(this->sockFd, SOL_SOCKET,SO_REUSEPORT, &yes, sizeof(yes));
-	testConnection(setsock, "Error setting socket option");
+	testConnection(setsock, "Error setsockopt() option");
 	this->binding = bind(this->sockFd, (struct sockaddr *)&this->Addr, this->Addr.sin_len);
 	testConnection(this->binding, "binding the Socket");
 	this->listning = listen(this->sockFd, BACKLOG);
