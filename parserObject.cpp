@@ -6,7 +6,7 @@
 /*   By: aalazhar <aalazhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 18:59:54 by aalazhar          #+#    #+#             */
-/*   Updated: 2023/03/30 23:04:38 by aalazhar         ###   ########.fr       */
+/*   Updated: 2023/03/31 21:16:51 by aalazhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,11 +135,11 @@ int parserObject::open_config_file(){
         config_clean(cf);
     }
 
-    std::cout << server[2].lsten[0] << std::endl;
-    std::cout << server[2].lsten[1] << std::endl;
-    std::cout << server[1].err_p[0] << std::endl;
-    std::cout << server[1].err_p[1] << std::endl;
-    std::cout << server[2].vect[2].l_path << std::endl;
+    // std::cout << server[2].lsten[0] << std::endl;
+    // std::cout << server[2].lsten[1] << std::endl;
+    // std::cout << server[1].err_p[0] << std::endl;
+    // std::cout << server[1].err_p[1] << std::endl;
+    // std::cout << server[2].vect[2].l_path << std::endl;
 
     return (0);
 }
@@ -449,7 +449,9 @@ int parserObject::lexical_analyser(){
     int y = 0;
     int count = 0;
     int pos = 0;
-    int ps = 0;;
+    int ps = 0;
+    int flag = 0;
+    
 
     if (!lin.is_open()){
         std::cout << "Can't open this file !" << std::endl;
@@ -490,10 +492,12 @@ int parserObject::lexical_analyser(){
                 std::cout << "Error Nw\n";
                 return (1);
             }
+            flag = 0;
             if (!strncmp(line.c_str(), "location", 8) && line[line.size() - 1] == '{' && \
                 (j == 4 || j == 1)){
                 if (check_dup_char(line, '{') || line[8] != ' ')
                     return (1);
+                flag = 1;
                 while (getline(lin, line)){
                     y = 0;
                     while (line[y] == ' ' || line[y] == '\t')
@@ -517,7 +521,7 @@ int parserObject::lexical_analyser(){
                         std::cout << "Syntax Error 13\n";
                         return (1);
                     }
-                    else if (line[0] == '}' && y == 1 && line.size() == 1){
+                    else if (line[0] == '}' && y == 1 && line.size() == 1 && flag == 1){
                         break;
                     }
                 }
@@ -531,6 +535,8 @@ int parserObject::lexical_analyser(){
                 std::cout << "Syntax Error 15!\n";
                 return (1);
             }
+            if (line[0] == '}' && j == 1 && !flag)
+                return (1);
             if (line[0] == '}' && j == 0)
                 break;
         }
