@@ -6,10 +6,12 @@
 #include <sys/socket.h>
 #include <unistd.h>
 #include <fstream>
+#include <sys/event.h>
 #include "RequestClass.hpp"
 
 
 #define BACKLOG 10
+#define MAXEVENT 16
 
 class creatSocket{
     private:
@@ -17,7 +19,11 @@ class creatSocket{
         int binding;
         int listning;
         int nwSock;;
+        int kq;
+        struct kevent evSet;
         sockaddr_in Addr;
+
+        std::vector<int> clients;
         creatSocket();
     public:
         creatSocket(int domain, int type, int protocol, int port, unsigned int interface);

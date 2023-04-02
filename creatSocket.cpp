@@ -14,6 +14,7 @@ creatSocket::creatSocket(int domain, int Socktype, int protocol, int port, unsig
 	testConnection(this->sockFd, "create Socket");
 	//binding and listning:
 	BindAndListenSocket();
+
 }
 
 void creatSocket::testConnection(const int& test, const std::string& msg){
@@ -37,40 +38,106 @@ void creatSocket::BindAndListenSocket(){
 	testConnection(this->binding, "binding the Socket");
 	this->listning = listen(this->sockFd, BACKLOG);
 	testConnection(this->listning, "Listen the Socket");
+	//create a kqueue
+	this->kq = kqueue();
+	testConnection(this->kq, "create a kqueue");
+    EV_SET(&evSet, this->sockFd, EVFILT_READ, EV_ADD, 0, 0, NULL);
+    testConnection(kevent(kq, &evSet, 1, NULL, 0, NULL), "adding socket to kqueue");
 
 }
 
 void creatSocket::launch(){
+	int client_sock;
 	while(true){
 		std::cout << "=====WAITING=====\n";
-		this->nwSock = accept(this->sockFd, (struct sockaddr *)&Addr, (socklen_t *)&Addr.sin_len);
 		
-		
-		char r[1000];
-		int read = recv(nwSock,r,sizeof(r),0 );
-		if (read == 0)
-			std::cout << "client is disconnected" << std::endl;
-		if (read < 0)
-			std::cout << "error" << std::endl;
-		if (read > 0)
-		{
-			r[read] = 0;
-			std::string req(r); 
-			std::cout << req << std::endl;
-			// sleep(5);
-			// request.printRe();
+		struct kevent events[MAXEVENT];
+		int n_event = kevent(kq, NULL, 0, events, MAXEVENT, NULL);
+		testConnection(n_event, "waiting for events");
+		for (int i = 0; i < n_event; i++){
+			int fd = events[i].ident;
+			if (fd == this->sockFd){
+				//accept a new client
+				struct sockaddr_in client_addr;
+				socklen_t client_addr_len = sizeof(client_addr);
+                client_sock = accept(this->sockFd, (struct sockaddr*)&client_addr, &client_addr_len);
+				testConnection(client_sock, "accepte a new client");
+
+				//add the new client socket to the kqueue
+				struct kevent evSet;
+				EV_SET(&evSet, client_sock, EVFILT_READ, EV_ADD, 0, 0, NULL);
+				if (kevent(kq, &evSet, 1, NULL, 0, NULL) < 0){std::cerr << "adding client socket to kqueue\n";close(client_sock); continue;}
+				clients.push_back(client_sock);
+				std::cout << "Accepted new client connection on socket\n";
+			}else{
+				// Handle incoming data from a client
+				char buffer[1024];
+				int rd = recv(fd, buffer, sizeof(buffer), 0);
+				if (rd <= 0){
+					if (rd == 0)
+						std::cout <<"client is disconnected\n";
+					else
+						std::cout << "Error receving data from client\n";
+					close(fd);
+					for (std::vector<int>::iterator it = clients.begin(); it != clients.end(); ++it) {
+                        if (*it == fd) {
+                            clients.erase(it);
+                            break;
+                        }
+                    }
+				} else {
+					buffer[rd] = 0;
+					std::string req(buffer); 
+					std::cout << req << std::endl;
+					std::string hello = "<!DOCTYPE html><html><head><title>Page Title</title></head><body><h1>Hello</h1><p>m3a Mhooom</p></body></html>";
+					send(client_sock, hello.c_str(), hello.length(), 0);
+					close(client_sock);
+				}
+			}
 		}
-		// std::ifstream in(this->nwSock);
-		// std::string data;
-		// in >> data;
 
 
-		std::string hello = "<!DOCTYPE html><html><head><title>Page Title</title></head><body><h1>Hello</h1><p>m3a Mhooom</p></body></html>";
-		send(nwSock, hello.c_str(), hello.length(), 0);
-		close(nwSock);
 
 		std::cout << "=====DONE=====\n";
 		// sleep(5);
 	}
 }
+
+
+
+
+// void creatSocket::launch(){
+// 	while(true){
+// 		std::cout << "=====WAITING=====\n";
+
+// 		this->nwSock = accept(this->sockFd, (struct sockaddr *)&Addr, (socklen_t *)&Addr.sin_len);
+		
+		
+// 		char r[1000];
+// 		int read = recv(nwSock,r,sizeof(r),0 );
+// 		if (read == 0)
+// 			std::cout << "client is disconnected" << std::endl;
+// 		if (read < 0)
+// 			std::cout << "error" << std::endl;
+// 		if (read > 0)
+// 		{
+// 			r[read] = 0;
+// 			std::string req(r); 
+// 			std::cout << req << std::endl;
+// 			// sleep(5);
+// 			// request.printRe();
+// 		}
+// 		// std::ifstream in(this->nwSock);
+// 		// std::string data;
+// 		// in >> data;
+
+
+// 		std::string hello = "<!DOCTYPE html><html><head><title>Page Title</title></head><body><h1>Hello</h1><p>m3a Mhooom</p></body></html>";
+// 		send(nwSock, hello.c_str(), hello.length(), 0);
+// 		close(nwSock);
+
+// 		std::cout << "=====DONE=====\n";
+// 		// sleep(5);
+// 	}
+// }
 
