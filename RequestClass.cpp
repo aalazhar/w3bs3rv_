@@ -9,12 +9,26 @@ Req::Req(const std::string &req){
             i++;
             if (this->getMETHOD(s) < 0)
                 parseErr(1);
-        }else{
+        }else if (i == 1){
+            i++;
             if (parseHeaders(s) < 0)
                 parseErr(2);
-        }
+        }/*else{
+            if (parseBody(req) < 0)
+                parseErr(3);
+        }*/
     }
 }
+
+// int Req::parseBody(const std::string &req){
+//     size_t pos = req.find("\r\n\r\n", 0);
+//     if (pos == std::string::npos)
+//         return -1;
+//     if ()
+    
+    
+//     return 0;
+// }
 
 int Req::parseHeaders(std::string&hd){
     std::string key;
@@ -41,8 +55,8 @@ int Req::parseHeaders(std::string&hd){
     // this->req.insert({key, value});
     std::cout << "key :" << key <<std::endl;
     std::cout << "value :" << value <<std::endl;
-    req[key]  = value;
-    req.insert(std::pair<std::string, std::string>(key, value));
+    HEADERS[key]  = value;
+    HEADERS.insert(std::pair<std::string, std::string>(key, value));
     return 0;
 }
 
@@ -63,7 +77,6 @@ int Req::getMETHOD(std::string &meth){
     std::string::iterator i = meth.begin();
     std::string::iterator j = meth.begin();
     /*____-check-METHODE-_____*/
-    std::cout << "hello " << std::endl;
     while (i != meth.end() && *i != ' ')
         i++;
     while (j != i){
@@ -103,6 +116,6 @@ int Req::getMETHOD(std::string &meth){
     return 0;
 }
 
-std::map<std::string, std::string> Req::getRequest(){
-	return this->req;
+std::map<std::string, std::string> Req::getHEADERS(){
+	return this->HEADERS;
 }

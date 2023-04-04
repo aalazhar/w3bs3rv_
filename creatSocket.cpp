@@ -1,16 +1,16 @@
 #include "creatSocket.hpp"
 
 creatSocket::creatSocket(int domain, int Socktype, int protocol, int port, unsigned int interface){
-	/*domain is PF_INET or PF_INET6, ip4 || ip6
-      type is SOCK_STREAM or SOCK_DGRAM,
-      protocol can be set to 0 to choose the proper protocol for the given type*/
 	memset((char*)&this->Addr, 0, sizeof(this->Addr));
     this->Addr.sin_family = (sa_family_t)domain;
     this->Addr.sin_port = htons(port);
     this->Addr.sin_addr.s_addr = htonl(interface);
     this->Addr.sin_len = sizeof(Addr);
+	//create a new socket
+	/*domain is PF_INET or PF_INET6, ip4 || ip6
+      type is SOCK_STREAM or SOCK_DGRAM,
+      protocol can be set to 0 to choose the proper protocol for the given type*/
     this->sockFd = socket(domain, Socktype, protocol);
-    //check if sockFd < 0
 	testConnection(this->sockFd, "create Socket");
 	//binding and listning:
 	BindAndListenSocket();
@@ -41,8 +41,10 @@ void creatSocket::BindAndListenSocket(){
 	//create a kqueue
 	this->kq = kqueue();
 	testConnection(this->kq, "create a kqueue");
+	//initialize the kevent structure
     EV_SET(&evSet, this->sockFd, EVFILT_READ, EV_ADD, 0, 0, NULL);
-    testConnection(kevent(kq, &evSet, 1, NULL, 0, NULL), "adding socket to kqueue");
+	//monitory the socket_fd
+    testConnection(kevent(kq, &evSet, 1, NULL, 0, NULL), "monitory the socket_fd");
 
 }
 
@@ -88,8 +90,9 @@ void creatSocket::launch(){
 				} else {
 					buffer[rd] = 0;
 					std::string req(buffer); 
+					// Req request(req);
 					std::cout << req << std::endl;
-					std::string hello = "<!DOCTYPE html><html><head><title>Page Title</title></head><body><h1>Hello</h1><p>m3a Mhooom</p></body></html>";
+					std::string hello = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n<!DOCTYPE html><html><head><title>Page Title</title></head><body><h1>Hello</h1><p>m3a Mhooom</p></body></html>";
 					send(client_sock, hello.c_str(), hello.length(), 0);
 					close(client_sock);
 				}
