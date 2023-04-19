@@ -50,6 +50,8 @@ void creatSocket::BindAndListenSocket(){
 
 void creatSocket::launch(){
 	int client_sock;
+	std::map<int, Req> _map;
+	std::vector<Req> ArrReq;
 	while(true){
 		std::cout << "=====WAITING=====\n";
 		
@@ -57,6 +59,7 @@ void creatSocket::launch(){
 		int n_event = kevent(kq, NULL, 0, events, MAXEVENT, NULL);
 		testConnection(n_event, "waiting for events");
 		for (int i = 0; i < n_event; i++){
+			std::cout << "aaaaaa\n";
 			int fd = events[i].ident;
 			if (fd == this->sockFd){
 				//accept a new client
@@ -77,35 +80,101 @@ void creatSocket::launch(){
 				int rd = recv(fd, buffer, sizeof(buffer), 0);
 				if (rd <= 0){
 					if (rd == 0)
-						std::cout <<"client is disconnected\n";
+						std::cout <<"client "<< fd << " is disconnected\n";
 					else
 						std::cout << "Error receving data from client\n";
 					close(fd);
+					//erase client
 					for (std::vector<int>::iterator it = clients.begin(); it != clients.end(); ++it) {
                         if (*it == fd) {
                             clients.erase(it);
                             break;
                         }
                     }
+					//erase client  from _map
+					for (std::map<int, Req>::iterator it = _map.begin(); it != _map.end(); ++it) {
+                        if (it->first == fd) {
+                            _map.erase(it);
+                            break;
+                        }
+                    }
 				} else {
 					buffer[rd] = 0;
+					Req request;
 					std::string req(buffer); 
+					// if (_map.find(fd) == _map.end())
+					// 	_map[fd] = request.append(req);
+					// else{
+						_map[fd].append(req);
+					// }
 					// Req request(req);
-					std::cout << req << std::endl;
-					std::string hello = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n<!DOCTYPE html><html><head><title>Page Title</title></head><body><h1>Hello</h1><p>m3a Mhooom</p></body></html>";
-					send(client_sock, hello.c_str(), hello.length(), 0);
-					close(client_sock);
+					// std::cout << req << std::endl;
+					// std::string hello = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n<!DOCTYPE html><html><head><title>Page Title</title></head><body><h1>Hello</h1><p>m3a Mhooom</p></body></html>";
+					// send(client_sock, hello.c_str(), hello.length(), 0);
+					// close(client_sock);
 				}
 			}
 		}
+		//print element of mymap
+		for (std::map<int, Req>::iterator it = _map.begin(); it != _map.end(); ++it) {
+			 if (it->second.getStep() < 0 || it->second.getStep() == 3)
+			 	ArrReq.push_back(it->second);
+			std::cout << "+++++++++++++++++++\n" << it->second << "/\n+++++++++++++++++++" << std::endl; 	
+		}
+		//handle any request complete
+		//partie response:: 
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 		std::cout << "=====DONE=====\n";
+    }
+
+
 		// sleep(5);
-	}
 }
 
+
+
+std::ostream &operator<<(std::ostream &os, Req &request){
+	os  << request.getMETHOD()<< " " << request.getURL() << " " << request.getHTTPV()  << std::endl;
+	iter_map it = request.reqBegin();
+	for(; it != request.reqEnd(); it++)
+		os << it->first << ": " << it->second << std::endl;
+	os << request.getBody() << std::endl;
+	return os;
+}
+
+
+
+// int creatSocket::checkReq(const std::string &request){
+	
+// 	return 0;
+// }
+
+// std::vector<Req> creatSocket::checkComReq(std::map<int, std::string> _map){
+// 	std::vector<Req> _vec;
+// 	for (std::map<int, std::string>::iterator it = _map.begin(); it != _map.end(); ++it){
+// 		if (checkReq(it->second) == 0){
+// 			Req req(it->second);
+// 			_vec.push_back(req);
+// 	}}
+// }
 
 
 

@@ -1,24 +1,68 @@
 #include "RequestClass.hpp"
 
-Req::Req(const std::string &req){
-    int i = 0;
-    std::string s;
-    std::stringstream st(req);
-    while (getline(st, s, '\n')){
-        if (i == 0){
-            i++;
-            if (this->getMETHOD(s) < 0)
-                parseErr(1);
-        }else if (i == 1){
-            i++;
-            if (parseHeaders(s) < 0)
-                parseErr(2);
-        }/*else{
-            if (parseBody(req) < 0)
-                parseErr(3);
-        }*/
-    }
+Req::Req(){
+    this->step = 0;
 }
+
+
+void Req::append(const std::string &rq){
+    std::string s;
+    std::stringstream st(rq);
+    while (getline(st, s, '\n') && step >= 0){
+        if (step == 0)
+            getMETHOD(s);
+        else if (step == 1)
+            parseHeaders(s);
+        
+        else if (step == 2){
+            s += "\n";
+            parseBody(s);
+        }
+    }
+
+}
+
+int Req::parseBody(std::string &s){
+    if (METHOD != "POST")
+        return step = 3;
+    this->Body.append(s);
+    size_t BodySize = (size_t)std::atoi(HEADERS["Content-Length"].c_str());
+    if (Body.size() >= BodySize)
+        return step = 3;
+    return 0;
+}
+
+Req &Req::operator=(const Req &other){
+    this->URL = other.URL;
+    this->METHOD = other.METHOD;
+    this->HTTPV = other.HTTPV;
+    this->HEADERS = other.HEADERS;
+    this->mimetypes = other.mimetypes;
+    this->Body = other.Body;
+    this->step = other.step;
+    return *this;
+}
+
+
+// Req::Req(const std::string &req){
+//     // int i = 0;
+//     // std::string s;
+//     // std::stringstream st(req);
+//     // while (getline(st, s, '\n')){
+//     //     if (i == 0){
+//     //         i++;
+//     //         if (this->getMETHOD(s) < 0)
+//     //             parseErr(1);
+//     //     }else if (i == 1){
+//     //         i++;
+//     //         if (parseHeaders(s) < 0)
+//     //             parseErr(2);
+//     //     }/*else{
+//     //         if (parseBody(req) < 0)
+//     //             parseErr(3);
+//     //     }*/
+//     // }
+// }
 
 // int Req::parseBody(const std::string &req){
 //     size_t pos = req.find("\r\n\r\n", 0);
@@ -37,7 +81,7 @@ int Req::parseHeaders(std::string&hd){
     std::string::iterator j = hd.begin();
 
     if (hd == "\r")
-        return 0;
+        return this->step = 2;
     while (i != hd.end() && *i != ':')
         i++;
 
@@ -52,10 +96,6 @@ int Req::parseHeaders(std::string&hd){
         value.push_back(*i);
         i++;
     }
-    // this->req.insert({key, value});
-    std::cout << "key :" << key <<std::endl;
-    std::cout << "value :" << value <<std::endl;
-    HEADERS[key]  = value;
     HEADERS.insert(std::pair<std::string, std::string>(key, value));
     return 0;
 }
@@ -68,9 +108,22 @@ void Req::parseErr(const int&i){
 int Req::checkMETHOD(const std::string &method){
     if (method == "GET" || method == "POST" || method == "DELETE")
         return 0;
-    return -1;
+    return this->step = -1;
 }
 
+
+std::string &Req::getURL(){
+	return this->URL;
+}
+std::string &Req::getMETHOD(){
+	return this->METHOD;
+}
+std::string &Req::getHTTPV(){
+	return this->HTTPV;
+}
+std::string &Req::getBody(){
+	return this->Body;
+}
 
 int Req::getMETHOD(std::string &meth){
     std::string s;
@@ -96,6 +149,8 @@ int Req::getMETHOD(std::string &meth){
         j++;
     }
     j = ++i;
+    //if (checkURL(s) < 0)
+        // return -1;
     URL = s;
     /*____-check-HTTPV-_____*/
     s.erase(s.begin(), s.end());
@@ -107,12 +162,9 @@ int Req::getMETHOD(std::string &meth){
         s.push_back(*j);
         j++;
     }if (s != "HTTP/1.1")
-        return -1;
+        return this->step = -3;
     HTTPV = s;
-    std::cout << "getMETHods:: " << std::endl;
-    std::cout << "  METHODE = " <<  METHOD << std::endl;
-    std::cout << "  URL = " <<  URL << std::endl;
-    std::cout << "  HTTPV = " <<  HTTPV << std::endl;
+    this->step = 1;
     return 0;
 }
 

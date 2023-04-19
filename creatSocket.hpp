@@ -7,6 +7,8 @@
 #include <unistd.h>
 #include <fstream>
 #include <sys/event.h>
+#include <vector>
+#include <map>
 #include "RequestClass.hpp"
 
 
@@ -35,6 +37,9 @@ class creatSocket{
         const  int &getSockFd();
         const  int &getlistning();
         const int &getBinding();
-
+        std::vector<Req> checkComReq(std::map<int, Req>);
+        int checkReq(const std::string&);
         void launch();
 };
+
+std::ostream &operator<<(std::ostream &, Req &);
