@@ -1,11 +1,9 @@
  #pragma once
 
-#include <fstream>
-#include <map>
-#include <iostream>
-#include <string>
-#include <sstream> 
-#include <vector>
+#include "Headers.hpp"
+#include "creatSocket.hpp"
+#include "Server.hpp"
+#include "webServer.hpp"
 
 /*
     ERROR STEPS in Req class:

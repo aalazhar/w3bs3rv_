@@ -4,7 +4,7 @@ CC = c++
 
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 
-HEADERS = creatSocket.hpp RequestClass.hpp
+HEADERS = Headers.hpp  
 
 SRC = main2.cpp creatSocket.cpp RequestClass.cpp
 

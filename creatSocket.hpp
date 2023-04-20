@@ -1,19 +1,15 @@
 #pragma once
 
-#include <iostream>
-#include <string>
-#include <netinet/in.h>
-#include <sys/socket.h>
-#include <unistd.h>
-#include <fstream>
-#include <sys/event.h>
-#include <vector>
-#include <map>
+#include "Headers.hpp"
 #include "RequestClass.hpp"
+#include "Server.hpp"
+#include "webServer.hpp"
 
 
 #define BACKLOG 10
 #define MAXEVENT 16
+
+class Req;
 
 class creatSocket{
     private:
