@@ -11,7 +11,7 @@ class webServ{
         std::map<int, Server> _mySrvs;
 
     public:
-        webServ();
+        webServ(const std::string&);
         /*
         1 - initial the data from the config file
         2 - create sockets for any server and bindin it , liste....
