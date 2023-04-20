@@ -8,7 +8,7 @@
 #include <vector>
 
 /*
-    ERROR STEPS:
+    ERROR STEPS in Req class:
     3 : parse body done 100 complete 
     2 : parse headers done
     1 : parse methode and URL and HTTPV done
@@ -21,8 +21,8 @@
 
 
 #define CRLF "\r\n"
-        typedef std::map<std::string, std::string> _map;
-        typedef std::map<std::string, std::string>::iterator iter_map;
+typedef std::map<std::string, std::string> _map;
+typedef std::map<std::string, std::string>::iterator iter_map;
 
 class Req{
     private:
