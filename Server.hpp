@@ -37,7 +37,6 @@ struct config{
 class Server{
     private:
         int port;
-        int servFd; // socket fd
         struct config ServerConfig;
     public:
         

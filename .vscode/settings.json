@@ -102,5 +102,6 @@
     "utility": "cpp",
     "vector": "cpp",
     "filesystem": "cpp"
-  }
+  },
+  "C_Cpp_Runner.showCompilationTime": false
 }
