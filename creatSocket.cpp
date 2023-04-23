@@ -78,6 +78,7 @@ void creatSocket::launch(){
 				// Handle incoming data from a client
 				char buffer[1024];
 				int rd = recv(fd, buffer, sizeof(buffer), 0);
+				std::cout << buffer << std::endl;
 				if (rd <= 0){
 					if (rd == 0)
 						std::cout <<"client "<< fd << " is disconnected\n";
@@ -152,6 +153,7 @@ void creatSocket::launch(){
 
 
 std::ostream &operator<<(std::ostream &os, Req &request){
+	os << "====step=" << request.getStep() << std::endl;
 	os  << request.getMETHOD()<< " " << request.getURL() << " " << request.getHTTPV()  << std::endl;
 	iter_map it = request.reqBegin();
 	for(; it != request.reqEnd(); it++)

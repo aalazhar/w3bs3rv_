@@ -36,7 +36,7 @@ struct config{
 
 class Server{
     private:
-        int port;
+        // int port;
         struct config ServerConfig;
     public:
         

@@ -14,10 +14,13 @@ class webServ{
         webServ(const std::string&);
         /*
         1 - initial the data from the config file
+        1.5 - check the servers
         2 - create sockets for any server and bindin it , liste....
         3 - create the kqueue and add all servers in the kqueue
         4 - handle the while(true) {}
         
         */
+       
+       void lunche();
 };
 
