@@ -6,7 +6,7 @@
 /*   By: aalazhar <aalazhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 18:59:54 by aalazhar          #+#    #+#             */
-/*   Updated: 2023/03/31 21:16:51 by aalazhar         ###   ########.fr       */
+/*   Updated: 2023/04/23 22:47:42 by aalazhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ int parserObject::check_check_check(std::string line){
     return (0);
 }
 
-void parserObject::tabTurn_zero(int *tab){
+void parserObject::tabTurn_zero(int *tab, int size){
     int x = -1;
 
-    while (++x < 8)
+    while (++x < size)
         tab[x] = 0;
 }
 
@@ -69,9 +69,9 @@ int parserObject::open_config_file(){
     int x = -1;
     int z = 0;
     int tab2[8];
-    int tab[8];
-    tabTurn_zero(tab);
-    tabTurn_zero(tab2);
+    int tab[9];
+    tabTurn_zero(tab, 9);
+    tabTurn_zero(tab2, 8);
     
     if (!lin.is_open()){
         std::cout << "Can't open this file !" << std::endl;
@@ -87,14 +87,14 @@ int parserObject::open_config_file(){
     }
     while (getline(lin, line)){
         if (!strncmp(line.c_str(), "server", 6)){
-            tabTurn_zero(tab);
+            tabTurn_zero(tab, 9);
             while (getline(lin, line)){
 				j = 0;
 				while (line[j] == '\t')
 					j++;
 				line.erase(0, j);
                 split_lines(line, ' ', cf, tab);
-                tabTurn_zero(tab2);
+                tabTurn_zero(tab2, 8);
                 if (!strncmp(line.c_str(), "location", 8)){
 					if (locat_split_lines(line, ' ', loca, tab2)){
                         std::cout << "Invalid Directive !\n";
@@ -128,7 +128,7 @@ int parserObject::open_config_file(){
         if (line.size() == 0)
             continue;
         if (check_blocks_dirc2(tab)){
-            std::cout << "Syntax Error !!!" << std::endl;
+            std::cout << "Syntax Error ---!!!" << std::endl;
             return (1);
         }
         this->server.push_back(cf);
@@ -146,6 +146,7 @@ int parserObject::open_config_file(){
 
 void parserObject::config_clean(struct config& conf){
     conf.pRoot = "";
+    conf.s_name = "";
     conf.allowed_m = "";
     conf.autoIndex = "";
     conf.index = "";
@@ -156,6 +157,7 @@ void parserObject::config_clean(struct config& conf){
     conf.err_p.clear();
     conf.a_meth.clear();
     conf.lsten.clear();
+    conf.s_names.clear();
 }
 
 void parserObject::print_location_directs(std::vector<struct loca> vect){
@@ -211,7 +213,7 @@ int parserObject::check_blocks_dirc2(int *tab){
     int i = 0;
     int flag = 0;
 
-    while (i < 8){
+    while (i < 9){
         if (tab[i] > 1)
             return(1);
         if (tab[i] == 1)
@@ -276,7 +278,7 @@ int parserObject::locat_split_lines(std::string line, char sep, struct loca& _lo
         _location.l_path= &line[i + 1];
         _location.l_path.erase(_location.l_path.size() - 2, _location.l_path.size());
     }
-    else if (res != "root" && res != "index" && res != "autoindex" && res != "deny" && res != "redirect" && \
+    else if (res != "root" && res != "index" && res != "serever_name" && res != "autoindex" && res != "deny" && res != "redirect" && \
         res != "allowed_methods" && res != "cgiExt" && res != "cgiPath" && res != "}" && res.size() > 0)
         return (1);
     return (0);
@@ -389,6 +391,12 @@ void parserObject::split_lines(std::string line, char sep, struct config& conf, 
         split_listen_line(&line[i + 1], conf);
         tab[0] += 1;
     }
+    else if (res == "server_name"){
+        conf.s_name = &line[i + 1];
+        conf.s_name.erase(conf.s_name.size() - 1, conf.s_name.size());
+        serverNameSplit(conf.s_name, conf);
+        tab[8] += 1;
+    }
     else if (res == "root"){
         conf.pRoot = &line[i + 1];
         conf.pRoot.erase(conf.pRoot.size() - 1, conf.pRoot.size());
@@ -425,6 +433,21 @@ void parserObject::split_lines(std::string line, char sep, struct config& conf, 
     }
     else if (res == "location")
         tab[7] = 1;
+}
+
+void parserObject::serverNameSplit(std::string& line, struct config& conf){
+    int i = 0;
+    std::string res = line;
+    while (i < line.size()){
+        if (line[i] == ' ')
+            break;
+        i++;
+    }
+    res = res.substr(0, i);
+    line = line.erase(0, i + 1);
+    conf.s_names.push_back(res);
+    if (line.size())
+        serverNameSplit(line, conf);
 }
 
 int parserObject::check_dup_char(std::string line, char c){

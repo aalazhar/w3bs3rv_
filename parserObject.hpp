@@ -6,7 +6,7 @@
 /*   By: aalazhar <aalazhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 18:59:23 by aalazhar          #+#    #+#             */
-/*   Updated: 2023/03/30 22:39:10 by aalazhar         ###   ########.fr       */
+/*   Updated: 2023/04/23 22:33:07 by aalazhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,9 @@ struct config{
     std::string upload;
     std::string error_page;
     std::string allowed_m;
+    std::string s_name;
     std::vector <loca> vect;
+    std::vector <std::string> s_names;
     std::vector <std::string> err_p;
     std::vector <std::string> a_meth;
     std::vector <std::string> lsten;
@@ -96,7 +98,8 @@ public:
     void split_method_lines(std::string line, struct config& conf, int rep, struct loca& loca);
     void split_listen_line(std::string line, struct config& conf);
     void rm_blanks(std::string& line);
-    void tabTurn_zero(int *tab);
+    void tabTurn_zero(int *tab, int size);
+    void serverNameSplit(std::string& line, struct config& conf);
     void print_text();
     ~parserObject();
 
