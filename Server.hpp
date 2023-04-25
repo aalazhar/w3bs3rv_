@@ -2,43 +2,25 @@
 
 #include "Headers.hpp"
 
-struct loca{
-    std::string root;
-    std::string index;
-    std::string autoIndex;
-    std::string allowed_m;
-    std::string deny;
-    std::string redirect;
-    std::string cgiExt;
-    std::string cgiPath;
-    std::string l_path;
-    std::vector <std::string> a_meth;
-    std::vector <std::string> cgi;
-    int l_flag;
 
-};
-
-struct config{
-    int port;
-    std::string listen;
-    std::string pRoot;
-    std::string index;
-    std::string autoIndex;
-    std::string upload;
-    std::string error_page;
-    std::string allowed_m;
-    std::vector <loca> vect;
-    std::vector <std::string> err_p;
-    std::vector <std::string> a_meth;
-    std::vector <std::string> lsten;
-    std::vector <std::string> uploads;
-};
+class Req;
 
 class Server{
     private:
-        // int port;
-        struct config ServerConfig;
+        int port;
+        
+        int sockFd;
+        sockaddr_in Addr;
+
+        std::map<int, Req> ClientMap;
+        struct config &ServerConfig;
+        
     public:
+        Server(struct config &);
+        int creatSocket();
+        int getport(struct config &);
+        void testConnection(const int&, const std::string&);
+        std::map<int, Req> &getClientMap(){return this->ClientMap;}
         
 
 };

@@ -1,30 +1,7 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parserObject.hpp                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/08 18:59:23 by aalazhar          #+#    #+#             */
-/*   Updated: 2023/04/20 22:25:04 by hameur           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef PARSEROBJECT_HPP
 #define PARSEROBJECT_HPP
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string>
-#include <unistd.h>
-#include <sys/types.h> 
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <iterator>
-#include <fcntl.h>
+#include "Headers.hpp"
 
 struct loca{
     std::string root;
@@ -51,7 +28,9 @@ struct config{
     std::string upload;
     std::string error_page;
     std::string allowed_m;
+    std::string s_name;
     std::vector <loca> vect;
+    std::vector <std::string> s_names;
     std::vector <std::string> err_p;
     std::vector <std::string> a_meth;
     std::vector <std::string> lsten;
@@ -65,9 +44,11 @@ struct sd{
 class parserObject{
 private:
     std::string fileName;
-    // struct config conf;
+    struct config conf;
     std::vector<config> server;
 public:
+    std::vector<config>::iterator getItBegin(){return this->server.begin();}
+    std::vector<config>::iterator getItend(){return this->server.end();}
     parserObject(std::string f_name);
     std::string get_listen();
     std::string get_error();
@@ -96,7 +77,8 @@ public:
     void split_method_lines(std::string line, struct config& conf, int rep, struct loca& loca);
     void split_listen_line(std::string line, struct config& conf);
     void rm_blanks(std::string& line);
-    void tabTurn_zero(int *tab);
+    void tabTurn_zero(int *tab, int size);
+    void serverNameSplit(std::string& line, struct config& conf);
     void print_text();
     ~parserObject();
 

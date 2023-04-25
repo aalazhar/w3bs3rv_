@@ -6,6 +6,7 @@ Req::Req(){
 
 
 void Req::append(const std::string &rq){
+    std::cout << "hello\n";
     std::string s;
     std::stringstream st(rq);
     while (getline(st, s, '\n') && step >= 0){
@@ -170,4 +171,14 @@ int Req::getMETHOD(std::string &meth){
 
 std::map<std::string, std::string> Req::getHEADERS(){
 	return this->HEADERS;
+}
+
+std::ostream &operator<<(std::ostream &os, Req &request){
+	os << "====step=" << request.getStep() << std::endl;
+	os  << request.getMETHOD()<< " " << request.getURL() << " " << request.getHTTPV()  << std::endl;
+	iter_map it = request.reqBegin();
+	for(; it != request.reqEnd(); it++)
+		os << it->first << ": " << it->second << std::endl;
+	os << request.getBody() << std::endl;
+	return os;
 }

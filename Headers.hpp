@@ -17,4 +17,15 @@
 #include <string>
 #include <sstream> 
 #include <vector>
+#include <exception>
+
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+
+// #include "webServer.hpp"
+#include "Server.hpp"
+#include "RequestClass.hpp"
+#include "parserObjectU.hpp"
+
 

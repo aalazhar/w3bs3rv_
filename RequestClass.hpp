@@ -1,9 +1,6 @@
  #pragma once
 
 #include "Headers.hpp"
-#include "creatSocket.hpp"
-#include "Server.hpp"
-#include "webServer.hpp"
 
 /*
     ERROR STEPS in Req class:
@@ -58,3 +55,5 @@ class Req{
         iter_map   reqBegin(){ return (HEADERS.begin());}
         iter_map   reqEnd(){ return (HEADERS.end()); }
 };
+
+std::ostream &operator<<(std::ostream &, Req &);

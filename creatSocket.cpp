@@ -50,8 +50,8 @@ void creatSocket::BindAndListenSocket(){
 
 void creatSocket::launch(){
 	int client_sock;
-	std::map<int, Req> _map;
 	std::vector<Req> ArrReq;
+	std::map<int, Req> _map;
 	while(true){
 		std::cout << "=====WAITING=====\n";
 		
