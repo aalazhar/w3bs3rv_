@@ -1,4 +1,4 @@
-#include "Server.hpp"
+#include "../Headers/Server.hpp"
 
 #define BACKLOG 10
 
@@ -10,6 +10,8 @@ int Server::getport(struct config &c){
 
 Server::Server(struct config &c): ServerConfig(c){
     this->port = getport(c);
+    std::cout << "size : " << Cmap.size() << "\n";
+    this->Cmap.clear();
 }
 
 int Server::creatSocket(){

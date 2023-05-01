@@ -4,23 +4,32 @@ CC = c++
 
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 
-HEADERS = Headers.hpp  webServer.hpp
 
+OBJ_FILE = OBJ/
+FOBJ = OBJ
+
+HEADERS = $(addprefix Headers/, Headers.hpp  webServer.hpp Server.hpp RequestClass.hpp parserObjectU.hpp)
+
+SRC_FILE = SRC/
 SRC =  webServer.cpp Server.cpp RequestClass.cpp parserObjectU.cpp main2.cpp
 
-OBJS = $(SRC:%.cpp=%.o)
+OBJS = $(addprefix $(OBJ_FILE),  $(SRC:%.cpp=%.o))
 
-all:	$(NAME) $(HEADERS)
+all:	$(NAME)
 	@echo "Meking complete"
 
-$(NAME)	: $(OBJS)
-	$(CC) $(CPPFLAGS) $(OBJS) -o $(NAME)
+$(NAME)	: $(FOBJ) $(OBJS) $(HEADERS)
+	$(CC) $(CPPFLAGS) $(OBJS) -o $@
 
-%.o:%.cpp $(HEADERS)
-	$(CC) $(CPPFLAGS) -c $<
+$(OBJ_FILE)%.o: $(SRC_FILE)%.cpp $(HEADERS)
+	$(CC) $(CPPFLAGS) -o $@ -c $<
+
+$(FOBJ) :
+	@mkdir $@
 
 clean:
 	rm -rf $(OBJS)
+	rm -rf $(FOBJ)
 
 fclean: clean
 	rm -rf $(NAME)

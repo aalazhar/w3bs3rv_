@@ -1,4 +1,5 @@
-#include "parserObject.hpp"
+#include "../Headers/Headers.hpp"
+#include "../Headers/parserObjectU.hpp"
 
 parserObject::parserObject(std::string f_name){
     this->fileName = f_name;

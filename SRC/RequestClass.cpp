@@ -1,4 +1,4 @@
-#include "RequestClass.hpp"
+#include "../Headers/RequestClass.hpp"
 
 Req::Req(){
     this->step = 0;
@@ -6,7 +6,6 @@ Req::Req(){
 
 
 void Req::append(const std::string &rq){
-    std::cout << "hello\n";
     std::string s;
     std::stringstream st(rq);
     while (getline(st, s, '\n') && step >= 0){
@@ -25,7 +24,7 @@ void Req::append(const std::string &rq){
 
 int Req::parseBody(std::string &s){
     if (METHOD != "POST")
-        return step = 3;
+        return  step = 3, 3;
     this->Body.append(s);
     size_t BodySize = (size_t)std::atoi(HEADERS["Content-Length"].c_str());
     if (Body.size() >= BodySize)
@@ -44,36 +43,14 @@ Req &Req::operator=(const Req &other){
     return *this;
 }
 
+int Req::checkStep(){
+    if (METHOD == "POST")
+        return this->step = 2;
+    else
+        return this->step = 3;
+        
+}
 
-// Req::Req(const std::string &req){
-//     // int i = 0;
-//     // std::string s;
-//     // std::stringstream st(req);
-//     // while (getline(st, s, '\n')){
-//     //     if (i == 0){
-//     //         i++;
-//     //         if (this->getMETHOD(s) < 0)
-//     //             parseErr(1);
-//     //     }else if (i == 1){
-//     //         i++;
-//     //         if (parseHeaders(s) < 0)
-//     //             parseErr(2);
-//     //     }/*else{
-//     //         if (parseBody(req) < 0)
-//     //             parseErr(3);
-//     //     }*/
-//     // }
-// }
-
-// int Req::parseBody(const std::string &req){
-//     size_t pos = req.find("\r\n\r\n", 0);
-//     if (pos == std::string::npos)
-//         return -1;
-//     if ()
-    
-    
-//     return 0;
-// }
 
 int Req::parseHeaders(std::string&hd){
     std::string key;
@@ -82,7 +59,7 @@ int Req::parseHeaders(std::string&hd){
     std::string::iterator j = hd.begin();
 
     if (hd == "\r")
-        return this->step = 2;
+        return checkStep();
     while (i != hd.end() && *i != ':')
         i++;
 

@@ -1,4 +1,4 @@
-#include "webServer.hpp"
+#include "../Headers/webServer.hpp"
 #define MAXEVENT 16
 void ft_err(){
     exit(1);
@@ -40,50 +40,66 @@ void webServ::lunche(){
     int kq = kqueue();
     struct kevent evSet;
     // std::map<int, Server>::iterator it = getItbegin();
-    for (std::map<int, Server>::iterator it = getItbegin(); it != getItend(); it++){
+    for (ServerMap::iterator it = getItbegin(); it != getItend(); it++){
         EV_SET(&evSet, it->first, EVFILT_READ, EV_ADD, 0, 0, NULL);
         kevent(kq, &evSet, 1, NULL, 0, NULL);
     }
     int clientSock;
-	std::vector<Req> ArrReq;
+	std::vector<Req *> ArrReq;
     while (true){
         std::cout << "=====WAITING=====\n";
-		
+
 		struct kevent events[MAXEVENT];
 		int n_event = kevent(kq, NULL, 0, events, MAXEVENT, NULL);
         //if n < 0
-        for (int i = 0; i < n_event; i++){
+        for (int i = 0; i < n_event; i++)
+        {
             int fd = events[i].ident;
-            std::map<int, Server>::iterator itS = this->_mySrvs.find(fd);
-            if ( itS != this->getItend() ){
+            ServerMap::iterator itS = this->_mySrvs.find(fd);
+            if ( itS != this->getItend() )
+            {
                 //new connection
                 struct sockaddr_in client_addr;
 				socklen_t client_addr_len = sizeof(client_addr);
                 clientSock = accept(itS->first, (struct sockaddr*)&client_addr, &client_addr_len);
                 testConnection(clientSock, "accepte a new client");
-                Req req;
+                Req *req  = new Req();
+                // Req req;
 				//add the new client socket to the kqueue
 				struct kevent evSet;
 				EV_SET(&evSet, clientSock, EVFILT_READ, EV_ADD, 0, 0, NULL);
 				if (kevent(kq, &evSet, 1, NULL, 0, NULL) < 0){std::cerr << "adding client socket to kqueue\n";close(clientSock) ; continue;}
-                itS->second.getClientMap().insert(std::pair<int, Req>(clientSock, req));
+                itS->second.getClientMap().insert(std::pair<int, Req *>(clientSock, req));
+
                 std::cout << "Accepted new client connection on socket\n";
             }
-            else {
+            else
+            {
+                itS = getServClien(fd);
                 char buffer[events[i].data];
+                std::cout << "size : " << events[i].data << std::endl;
                 memset(buffer, 0, events[i].data);
                 int rd = recv(fd, buffer, events[i].data, 0);
-                itS = getServClien(fd);
-                if (rd <= 0){
+                if (rd <= 0)
+                {
                     if (rd == 0)
                         std::cout <<"client "<< fd << " is disconnected\n";
 					else
 						std::cout << "Error receving data from client\n";
 					close(fd);
 					//erase client  from _map
-                    std::map<int, Req>::iterator it2 = itS->second.getClientMap().begin(); 
-					for (; it2 != itS->second.getClientMap().end(); it2++) {
-                        if (it2->first == fd) {
+                    _ClientMap::iterator it2 = itS->second.getClientBegin(); 
+					for (; it2 != itS->second.getClientEnd(); it2++) {
+                        if (it2->first == fd)
+                        {
+                            std::cout << "HELLO\n";
+                            for (std::vector<Req*>::iterator i = ArrReq.begin(); i != ArrReq.end(); i++)
+                            {
+                                if (*i == it2->second)
+                                    ArrReq.erase(i);
+                                    break;
+                            }
+                            delete it2->second;
                             itS->second.getClientMap().erase(it2);
                             break;
                         }
@@ -93,21 +109,28 @@ void webServ::lunche(){
                     buffer[events[i].data] = 0;
                     std::string req(buffer); 
                     // std::cout << "*******\n" << req << "\n*******\n";
-                    // std::cout << "events[i].data = " << events[i].data << std::endl;
-                    std::map<int, Req> m = itS->second.getClientMap();
-                    m[fd].append(req);
-                    // std::cout << m[fd] << std::endl;
+                    _ClientMap &m = itS->second.getClientMap();
+                    m[fd]->append(req);
+                    std::cout << m[fd] << std::endl;
                 }
             }
 
         }
-        for (std::map<int, Server>::iterator it = getItbegin(); it != getItend(); it++){
-            for (std::map<int, Req>::iterator it2 = it->second.getClientMap().begin(); it2 != it->second.getClientMap().end(); ++it2) {
-                if (it2->second.getStep() < 0 || it2->second.getStep() == 3){
+        for (ServerMap::iterator it = getItbegin(); it != getItend(); it++){
+
+            for (_ClientMap::iterator it2 = it->second.getClientBegin(); it2 != it->second.getClientEnd(); ++it2) {
+                if (it2->second->getStep() < 0 || it2->second->getStep() == 3){
                     ArrReq.push_back(it2->second);
-                std::cout << "+++++++++++++++++++\n" << it2->second << "||\n+++++++++++++++++++" << std::endl;
                 }
             }
+        }
+
+        size_t j = 0;
+        std::vector<Req*>::iterator i = ArrReq.begin();
+        std::cout << "REQ SIZE = " << ArrReq.size() << std::endl;
+        for (;i != ArrReq.end() && j < ArrReq.size();i++, j++){
+            std::cout << "-----ADDR : " << *i <<" ------------\n" << **(i) << "||\n+++++++++++++++++++" << std::endl;
+            ArrReq.erase(i);
         }
 		std::cout << "=====DONE=====\n";
     }
