@@ -61,18 +61,20 @@ int parserObject::open_config_file(){
     int tab[9];
     tabTurn_zero(tab, 9);
     tabTurn_zero(tab2, 8);
-    
     if (!lin.is_open()){
-        std::cout << "Can't open this file !" << std::endl;
+        std::cout << "Can't open this file ! : "<< this->fileName << std::endl;
         return (1);
+        throw (std::invalid_argument("Can't open this file ! : " + this->fileName));
     }
     if (lin.peek() == EOF){
         std::cout << "This file is empty !!\n";
         return (1);
+        throw (std::invalid_argument("This file is empty !!"));
     }
     if (lexical_analyser()){
         std::cout << "Syntax Error --- !" << std::endl;
         return (1);
+        throw (std::invalid_argument("Syntax Error --- !"));
     }
     while (getline(lin, line)){
         if (!strncmp(line.c_str(), "server", 6)){
@@ -88,6 +90,7 @@ int parserObject::open_config_file(){
 					if (locat_split_lines(line, ' ', loca, tab2)){
                         std::cout << "Invalid Directive !\n";
                         return (1);
+                        throw (std::invalid_argument("Invalid Directive !"));
                     }
                     while (getline(lin, line)){
 						i = 0;
@@ -97,11 +100,13 @@ int parserObject::open_config_file(){
 						if (locat_split_lines(line, ' ', loca, tab2)){
                             std::cout << "Invalid Directive !\n";
                             return (1);
+                            throw (std::invalid_argument("Invalid Directive !"));
                         }
                         if (line[0] == '}' && i == 1){
                             if (check_blocks_dirc(tab2)){
                                 std::cout << "Syntax Error !!!" << std::endl;
                                 return (1);
+                                throw (std::invalid_argument("Syntax Error !!!"));
                             }
 							cf.vect.push_back(loca);
 							clean_location_directs(loca);
@@ -119,6 +124,7 @@ int parserObject::open_config_file(){
         if (check_blocks_dirc2(tab)){
             std::cout << "Syntax Error ---!!!" << std::endl;
             return (1);
+            throw (std::invalid_argument("Syntax Error !!!"));
         }
         this->server.push_back(cf);
         config_clean(cf);
