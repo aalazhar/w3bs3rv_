@@ -1,13 +1,10 @@
 #pragma once
 
 #include "Headers.hpp"
-// #include "parserObjectU.hpp"
-// #include "RequestClass.hpp"
-
 #include "Server.hpp"
 
-// class parserObject;
-// class Server;
+#define TIMEOUT 10
+
 
 typedef std::map<int, Server> ServerMap;
 
@@ -38,8 +35,11 @@ class webServ{
                     return  it;
             }
             return this->getItend();
-       }
-
+        }
+        int acceptNewCl(int, int&, ServerMap::iterator &);
+        int readData(int& ,int& , ServerMap::iterator &, struct kevent &);
+        int sendData();
         void testConnection(const int&, const std::string&);
-};
+        void keventUP(int kq, int fd, int filter, int flag);
 
+};

@@ -1,7 +1,13 @@
 #include "../Headers/webServer.hpp"
-#define MAXEVENT 16
+#define MAXEVENT 64
 void ft_err(){
     exit(1);
+}
+
+void webServ::keventUP(int kq, int fd, int filter, int flag){
+    struct kevent ev;
+    EV_SET(&ev, fd, filter, flag, 0, 0, NULL);
+    testConnection (kevent(kq, &ev, 1, NULL, 0, NULL), "FAILDE ADD THE FD TO KEVENT");
 }
 
 int checkConfig(config &c){
@@ -36,85 +42,48 @@ webServ::webServ(const std::string &filename){
     creatServers(obj);
 }
 
+
+
+
 void webServ::lunche(){
     int kq = kqueue();
-    struct kevent evSet;
-    // std::map<int, Server>::iterator it = getItbegin();
-    for (ServerMap::iterator it = getItbegin(); it != getItend(); it++){
-        EV_SET(&evSet, it->first, EVFILT_READ, EV_ADD, 0, 0, NULL);
-        kevent(kq, &evSet, 1, NULL, 0, NULL);
-    }
-    int clientSock;
+    for (ServerMap::iterator it = getItbegin(); it != getItend(); it++)
+        keventUP(kq, it->first, EVFILT_READ, EV_ADD);
+    
+    int clientSock = 0;
 	std::vector<Req *> ArrReq;
     while (true){
-        std::cout << "=====WAITING=====\n";
-
+        struct timespec timeout;
+        timeout.tv_sec = TIMEOUT;
+        timeout.tv_nsec = 0;
 		struct kevent events[MAXEVENT];
-		int n_event = kevent(kq, NULL, 0, events, MAXEVENT, NULL);
+		int n_event = kevent(kq, NULL, 0, events, MAXEVENT, &timeout);
         //if n < 0
         for (int i = 0; i < n_event; i++)
         {
             int fd = events[i].ident;
             ServerMap::iterator itS = this->_mySrvs.find(fd);
-            if ( itS != this->getItend() )
+            if (events[i].flags & EV_EOF)
             {
-                //new connection
-                struct sockaddr_in client_addr;
-				socklen_t client_addr_len = sizeof(client_addr);
-                clientSock = accept(itS->first, (struct sockaddr*)&client_addr, &client_addr_len);
-                testConnection(clientSock, "accepte a new client");
-                Req *req  = new Req();
-                // Req req;
-				//add the new client socket to the kqueue
-				struct kevent evSet;
-				EV_SET(&evSet, clientSock, EVFILT_READ, EV_ADD, 0, 0, NULL);
-				if (kevent(kq, &evSet, 1, NULL, 0, NULL) < 0){std::cerr << "adding client socket to kqueue\n";close(clientSock) ; continue;}
-                itS->second.getClientMap().insert(std::pair<int, Req *>(clientSock, req));
-
-                std::cout << "Accepted new client connection on socket\n";
+                keventUP(kq, fd,  EVFILT_READ , EV_CLEAR | EV_DELETE);
+                std::cout <<"client "<< fd << " is disconnected\n";
+                close(fd);
             }
-            else
+            else if ( itS != this->getItend() )
+            { //new client 
+                if (acceptNewCl(kq, clientSock, itS) < 0)
+                    continue;
+            }
+            else if (events[i].filter == EVFILT_READ) // else if (read data)
             {
-                itS = getServClien(fd);
-                char buffer[events[i].data];
-                std::cout << "size : " << events[i].data << std::endl;
-                memset(buffer, 0, events[i].data);
-                int rd = recv(fd, buffer, events[i].data, 0);
-                if (rd <= 0)
-                {
-                    if (rd == 0)
-                        std::cout <<"client "<< fd << " is disconnected\n";
-					else
-						std::cout << "Error receving data from client\n";
-					close(fd);
-					//erase client  from _map
-                    _ClientMap::iterator it2 = itS->second.getClientBegin(); 
-					for (; it2 != itS->second.getClientEnd(); it2++) {
-                        if (it2->first == fd)
-                        {
-                            std::cout << "HELLO\n";
-                            for (std::vector<Req*>::iterator i = ArrReq.begin(); i != ArrReq.end(); i++)
-                            {
-                                if (*i == it2->second)
-                                    ArrReq.erase(i);
-                                    break;
-                            }
-                            delete it2->second;
-                            itS->second.getClientMap().erase(it2);
-                            break;
-                        }
-                    }
-                }
-                else{
-                    buffer[events[i].data] = 0;
-                    std::string req(buffer); 
-                    // std::cout << "*******\n" << req << "\n*******\n";
-                    _ClientMap &m = itS->second.getClientMap();
-                    m[fd]->append(req);
-                    std::cout << m[fd] << std::endl;
-                }
-            }
-
+                if (readData(kq ,fd, itS, events[i]) < 0)
+                    continue;;
+            } 
+            // else if (events[i].filter == EVFILT_WRITE)
+            // {
+            //     if (sendData() < 0)
+            //         continue;
+            // }
         }
         for (ServerMap::iterator it = getItbegin(); it != getItend(); it++){
 
@@ -147,3 +116,63 @@ void webServ::testConnection(const int& test, const std::string& msg){
 }
 
 
+int webServ::acceptNewCl(int kq, int& clientSock, ServerMap::iterator &Server){
+    struct sockaddr_in client_addr;
+	socklen_t client_addr_len = sizeof(client_addr);
+    clientSock = accept(Server->first, (struct sockaddr*)&client_addr, &client_addr_len);
+    testConnection(clientSock, "accepte a new client");
+    Req *req  = new Req(); // delete mli ysaaali program
+
+	//add the new client socket to the kqueue
+	struct kevent evSet;
+	EV_SET(&evSet, clientSock, EVFILT_READ, EV_ADD, 0, 0, NULL);
+	if (kevent(kq, &evSet, 1, NULL, 0, NULL) < 0)
+        return std::cerr << "adding client socket to kqueue\n", close(clientSock), -1;
+    Server->second.getClientMap().insert(std::pair<int, Req *>(clientSock, req));
+
+    std::cout << "Accepted new client connection on socket\n";
+    return 0;
+}
+
+
+int webServ::readData(int &kq, int& fd, ServerMap::iterator &Server, struct kevent &event){
+    Server = getServClien(fd);
+    char buffer[event.data];
+    _ClientMap m;
+    std::cout << "size : " << event.data << std::endl;
+    memset(buffer, 0, event.data);
+    int rd = recv(fd, buffer, event.data, 0);
+    if (rd <= 0)
+    {
+        if (rd == 0)
+            std::cout <<"client "<< fd << " is disconnected\n";
+		else
+			std::cout << "Error receving data from client\n";
+		close(fd);
+		//erase client  from _map
+        _ClientMap::iterator it2 = Server->second.getClientBegin(); 
+		for (; it2 != Server->second.getClientEnd(); it2++) {
+            if (it2->first == fd)
+            {
+                delete it2->second;
+                Server->second.getClientMap().erase(it2);
+                break;
+            }
+        }
+    }
+    else
+    {
+        buffer[event.data] = 0;
+        std::string req(buffer); 
+        m = Server->second.getClientMap();
+        m[fd]->append(req);
+        std::cout << "*******\n" << m[fd] << "\n*******\n";
+        
+    }
+    if (m[fd]->getStep() == 3)
+    {
+        keventUP(kq, fd, EVFILT_WRITE, EV_CLEAR|EV_ENABLE | EV_ADD);
+		keventUP(kq, fd, EVFILT_READ, EV_DISABLE);
+    }
+    return 0;
+}
