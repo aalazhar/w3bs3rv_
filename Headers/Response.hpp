@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:37:50 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/11 17:09:54 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/12 13:56:52 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 class   Response  : public Req {
 private :
 	const	parserObject& 				_config;
-	std::map<std::string, std::string>	response_headers;
+	std::string							response_header;
 	std::map<std::string, std::string>	_env;
 	std::map<int, std::string>			errors;
 	std::map<int, std::string>			errorsFiles;
@@ -60,4 +60,8 @@ public:
 	int				readcontent();
 	std::string		readErrorsfiles(std::string);
 	std::string		executeCgi(std::string );
+	std::string		getResponseHeader();
+	std::string		getStatusMsg(int code);
+	std::string		getheaders();
+	std::string		getContentType();
 };

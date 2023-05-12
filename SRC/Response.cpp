@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 21:20:47 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/11 17:12:06 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/12 15:13:42 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@ Response::~Response() {
 
 Response    &Response::operator=(Req &obj) {
 
-	if (this != &obj)
-		this->response_headers = obj.getHEADERS();
-	return (*this);
+	// if (this != &obj)
+	// 	this->response_headers = obj.getHEADERS();
+	// return (*this);
 }
 
 std::string	Response::getCgiPath() {
 
 	std::string	path;
 
-	path = this->_config.;
+	// path = this->_config;
 }
 
 void	Response::initEnvirement() {
@@ -165,6 +165,54 @@ void	Response::initErrorMsgs() {
 	errors[500] = "Internal Server Error";
 }
 
+std::string	Response::getStatusMsg(int code) {
+
+	if (errors.find(code) != errors.end())
+		return errors[code];
+	else
+		return "INVALID CODE !";
+}
+
+std::string	Response::getContentType() {
+
+	std::string	type;
+	
+	type = URL.substr(URL.rfind(".") + 1, URL.size() - URL.rfind("."));
+	if (type == "html")
+		return "text/html";
+	else if (type == "css")
+		return "text/css";
+	else if (type == "js")
+		return "text/javascript";
+	else if (type == "jpeg" || type == "jpg")
+		return "image/jpeg";
+	else if (type == "png")
+		return "image/png";
+	else
+		return "text/plain";
+}
+
+std::string	Response::getResponseHeader() {
+
+	std::string	headers("");
+	std::stringstream	ss;
+
+	ss << response_body.size();
+	if (type != "")
+		headers += "Content-Type: " + getContentType() + "\r\n";
+	headers += "Content-length: " + ss.str() + "\r\n";
+	return (headers);
+}
+
+std::string	Response::getResponseHeader() {
+
+	std::stringstream	cd;
+
+	cd << code;
+	response_header = "HTTP/1.1 " + cd.str() + this->getStatusMsg(code) + "\r\n";
+	response_header;
+}
+
 void	Response::initErrorFiles() {
 
 	errorsFiles[400] = "/Users/megrisse/Desktop/Webserver_/ErrorFiles/400.html";
@@ -206,7 +254,7 @@ int	Response::GetMethod(Req obj) {
 		size_t	i = 0;
 		size_t	size = response.size() - 2;
 
-		response = executeCgi(obj.getURL());
+		response_body = executeCgi(obj.getURL());
 
 		while (response.find("\r\n\r\n", i) != std::string::npos || response.find("\r\n\r\n", i) == i) {
 
@@ -230,5 +278,6 @@ int	Response::GetMethod(Req obj) {
 		response = "";
 	}
 	if (code == 500)
-		response = readErrorsfiles(errorsFiles[code]);
+		response_body = readErrorsfiles(errorsFiles[code]);
+	response_header = getResponseHeader();
 }
