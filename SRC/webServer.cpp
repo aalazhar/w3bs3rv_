@@ -58,7 +58,6 @@ void webServ::lunche(){
         timeout.tv_nsec = 0;
 		struct kevent events[MAXEVENT];
 		int n_event = kevent(kq, NULL, 0, events, MAXEVENT, &timeout);
-        //if n < 0
         for (int i = 0; i < n_event; i++)
         {
             int fd = events[i].ident;
