@@ -6,14 +6,30 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 21:20:47 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/12 15:13:42 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/14 17:48:18 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Headers/Response.hpp"
 
+Response::Response(struct config &server) {
+
+	this->Locations = server;
+	code = 200;
+	AllowedM = server.allowed_m;
+}
+
 Response::~Response() {
 
+	
+}
+
+void	Response::initResponse() {
+
+	size_t pos = getMETHOD().find(AllowedM);
+
+	if (pos == std::string::npos)
+		code = 405;
 	
 }
 
@@ -24,11 +40,34 @@ Response    &Response::operator=(Req &obj) {
 	// return (*this);
 }
 
-std::string	Response::getCgiPath() {
+int	Response::getifQuerry(std::string &url) {
 
-	std::string	path;
+	size_t	pos = url.find("?");
 
-	// path = this->_config;
+	if (pos != std::string::npos) {
+
+		filePath = url.substr(0, pos);
+		Querry = url.substr(pos + 1, url.length());
+		return 0;
+	}
+	filePath = url;
+	return 1;
+}
+
+int	Response::checkpath(std::string &path) {
+
+	struct stat file_st;
+
+	if (stat(path.c_str(), &file_st) == 0) {
+		
+		if (S_ISREG(file_st.st_mode))
+			return 1;
+		if (S_ISDIR(file_st.st_mode))
+			return 0;
+		else
+			return 0;
+	}
+	return 0;
 }
 
 void	Response::initEnvirement() {
@@ -43,7 +82,7 @@ void	Response::initEnvirement() {
 	this->_env["QUERY_STRING"];
 	this->_env["SERVER_PROTOCOL"] = "HTTP/1.1";
 	this->_env["SERVER_SOFTWARE"];
-	this->_env["SCRIPT_FILENAME"] = this->URL;
+	this->_env["SCRIPT_FILENAME"] = this->filePath;
 	this->_env["REDIRECT_STATUS"] = "200";
 	this->_env["GATEWAY_INTERFACE"] = "CGI/1.1";
 }
@@ -72,20 +111,19 @@ int	Response::readcontent() {
 		return (response_body = readErrorsfiles(errorsFiles[404]), 404);
 }
 
-int	Response::checkpath(std::string &path) {
+typedef struct loca;
 
-	struct stat file_st;
+int	Response::checkCgipath(std::string &path) {
 
-	if (stat(path.c_str(), &file_st) == 0) {
-		
-		if (S_ISREG(file_st.st_mode))
-			return 1;
-		if (S_ISDIR(file_st.st_mode))
-			return 0;
-		else
-			return 0;
+	std::vector<loca>::iterator	it = Locations.vect.begin();
+
+	while (it != Locations.vect.end()) {
+
+		if (it->cgiPath == path)
+			return (_Cgipath = it->cgiPath, 0);
+		it++;
 	}
-	return 0;
+	return 1;
 }
 
 std::string	Response::executeCgi(std::string file_name) {
@@ -244,17 +282,15 @@ std::string	Response::readErrorsfiles(std::string path) {
 		return "<!DOCTYPE html><html><title> 4444 Error: Error File Not Found </title><body><div><h1> 4444 Error File Not Found </h1><p> We're sorry, the page you requested could not be found.</p></div></body></html>";
 }
 
-int	Response::GetMethod(Req obj) {
+int	Response::GetMethod(Req &obj) {
 	
-	std::string	IfCgi = obj.getURL().substr(obj.getURL().find(".", obj.getURL().length()));
-	code = 200;
-
-	if (IfCgi == ".cgi" || IfCgi == ".php" || IfCgi == ".pl") {
+	getifQuerry(obj.getURL());
+	if (!checkCgipath(filePath)) {
 
 		size_t	i = 0;
 		size_t	size = response.size() - 2;
 
-		response_body = executeCgi(obj.getURL());
+		response = executeCgi(_Cgipath);
 
 		while (response.find("\r\n\r\n", i) != std::string::npos || response.find("\r\n\r\n", i) == i) {
 
@@ -272,12 +308,13 @@ int	Response::GetMethod(Req obj) {
 	}
 	else if (code == 200)
 		code = readcontent();
-	else {
-
-		code = 204;
-		response = "";
-	}
 	if (code == 500)
 		response_body = readErrorsfiles(errorsFiles[code]);
 	response_header = getResponseHeader();
+	return code;
+}
+
+int	Response::DeletMethod(Req &obj) {
+	
+		
 }

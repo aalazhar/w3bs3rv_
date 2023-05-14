@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:37:50 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/12 13:56:52 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/14 17:44:29 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,32 +27,48 @@
 
 class   Response  : public Req {
 private :
-	const	parserObject& 				_config;
-	std::string							response_header;
 	std::map<std::string, std::string>	_env;
+	struct config						Locations;
+	std::string							_Cgipath;
+	std::string							AllowedM;
+	std::string							Querry;
+	std::string							filePath;
+	std::string							status_line;
+	std::string							response_header;
+	std::string							response_body;
 	std::map<int, std::string>			errors;
 	std::map<int, std::string>			errorsFiles;
-	std::string							status_line;
-	std::string							response_body;
 	std::string							response;
 	std::string							type;
 	int									code;
-	
+
 public:
+	Response(struct config &);
 	Response(const	parserObject &);
 	~Response();
 	Response	&operator=(Req &);
-	std::string	getResponse() {
+	//Getters
+	std::string	getStatusLine() {
 
-		return (response);
+		return (status_line);
+	}
+	std::string	getResHeaders() {
+
+		return (response_header);
+	}
+	std::string	getResponse_body() {
+
+		return (response_body);
 	}
 	//Methods 
-	
-	int	GetMethod(Req obj);
-	int	DeletMethod(const Req &);
-	int	PostMethod(const Req &);
+
+	int	GetMethod(Req &obj);
+	int	DeletMethod(Req &);
+	int	PostMethod(Req &);
 	//Memeber Function
-	std::string		getCgiPath();
+	void			initResponse();
+	int				getifQuerry(std::string &);
+	int				checkCgipath(std::string &);
 	int				checkpath(std::string &);
 	void			initEnvirement();
 	void			initErrorMsgs();
@@ -64,4 +80,5 @@ public:
 	std::string		getStatusMsg(int code);
 	std::string		getheaders();
 	std::string		getContentType();
+	void 			makeResponse();
 };

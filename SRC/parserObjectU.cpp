@@ -573,3 +573,8 @@ struct config parserObject::get_location_vect(){
 parserObject::~parserObject(){
     std::cout << "Destructer" << std::endl;
 }
+
+std::string parserObject::getCgiEx(int fd) {
+
+    return (this->server[fd].vect[fd].cgiExt);
+}
