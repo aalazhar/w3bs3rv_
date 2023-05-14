@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 21:20:47 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/14 17:48:18 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/14 19:53:36 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ Response::Response(struct config &server) {
 	this->Locations = server;
 	code = 200;
 	AllowedM = server.allowed_m;
+	if (server.autoIndex == "on")
+		autoInx = true;
+	else
+		autoInx = false;
 }
 
 Response::~Response() {
@@ -109,9 +113,8 @@ int	Response::readcontent() {
 	}
 	else 
 		return (response_body = readErrorsfiles(errorsFiles[404]), 404);
+	return 200;
 }
-
-typedef struct loca;
 
 int	Response::checkCgipath(std::string &path) {
 
@@ -234,11 +237,15 @@ std::string	Response::getResponseHeader() {
 
 	std::string	headers("");
 	std::stringstream	ss;
+	std::stringstream	sss;
 
-	ss << response_body.size();
+
+	ss << code;
+	status_line = "HTTP/1.1" + ss.str() + getStatusMsg(code);
+	sss << response_body.size();
 	if (type != "")
 		headers += "Content-Type: " + getContentType() + "\r\n";
-	headers += "Content-length: " + ss.str() + "\r\n";
+	headers += "Content-length: " + sss.str() + "\r\n";
 	return (headers);
 }
 
@@ -314,7 +321,7 @@ int	Response::GetMethod(Req &obj) {
 	return code;
 }
 
-int	Response::DeletMethod(Req &obj) {
+// int	Response::DeletMethod(Req &obj) {
 	
-		
-}
+	
+// }

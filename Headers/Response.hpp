@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:37:50 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/14 17:44:29 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/14 19:11:21 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ private :
 	struct config						Locations;
 	std::string							_Cgipath;
 	std::string							AllowedM;
+	bool								autoInx;
 	std::string							Querry;
 	std::string							filePath;
 	std::string							status_line;
