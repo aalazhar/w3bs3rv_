@@ -51,7 +51,7 @@ void webServ::lunche(){
         keventUP(kq, it->first, EVFILT_READ, EV_ADD);
     
     int clientSock = 0;
-	std::vector<Req *> ArrReq;
+	std::vector<Response *> ArrReq;
     while (true){
         struct timespec timeout;
         timeout.tv_sec = TIMEOUT;
@@ -84,23 +84,7 @@ void webServ::lunche(){
                     continue;
             }
         }
-        // for (ServerMap::iterator it = getItbegin(); it != getItend(); it++){
-
-        //     for (_ClientMap::iterator it2 = it->second.getClientBegin(); it2 != it->second.getClientEnd(); ++it2) {
-        //         if (it2->second->getStep() < 0 || it2->second->getStep() == 3){
-        //             ArrReq.push_back(it2->second);
-        //         }
-        //     }
-        // }
-
-        // size_t j = 0;
-        // std::vector<Req*>::iterator i = ArrReq.begin();
-        // std::cout << "REQ SIZE = " << ArrReq.size() << std::endl;
-        // for (;i != ArrReq.end() && j < ArrReq.size();i++, j++){
-        //     std::cout << "-----ADDR : " << *i <<" ------------\n" << **(i) << "||\n+++++++++++++++++++" << std::endl;
-        //     ArrReq.erase(i);
-        // }
-		// std::cout << "=====DONE=====\n";
+        this->Timeout();
     }
 
 }
@@ -122,25 +106,28 @@ int webServ::acceptNewCl(int kq, int& clientSock, ServerMap::iterator &Server){
 	socklen_t client_addr_len = sizeof(client_addr);
     clientSock = accept(Server->first, (struct sockaddr*)&client_addr, &client_addr_len);
     testConnection(clientSock, "accepte a new client");
-    Req *req  = new Req(); // delete mli ysaaali program
+    Response *res  = new Response(Server->second.getConfig()); // delete mli ysaaali program
 
 	//add the new client socket to the kqueue
 	struct kevent evSet;
 	EV_SET(&evSet, clientSock, EVFILT_READ, EV_ADD, 0, 0, NULL);
 	if (kevent(kq, &evSet, 1, NULL, 0, NULL) < 0)
         return std::cerr << "adding client socket to kqueue\n", close(clientSock), -1;
-    Server->second.getClientMap().insert(std::pair<int, Req *>(clientSock, req));
+    Server->second.getClientMap().insert(std::pair<int, Response *>(clientSock, res));
 
     std::cout << "Accepted new client connection on socket\n";
     return 0;
 }
 
-int webServ::sendData(int &kq,int& fd, ServerMap::iterator &Server, struct kevent &event){
-    
+int webServ::sendData(int &kq,int& fd, struct kevent &event){
+    ServerMap::iterator Server = getServClien(fd);
+    Server->second.getClientMap()[fd]->makeResponse();
+    //i need the size of the response , send a buffer
+
 }
 
-int webServ::readData(int &kq, int& fd, ServerMap::iterator &Server, struct kevent &event){
-    Server = getServClien(fd);
+int webServ::readData(int &kq, int& fd, struct kevent &event){
+    ServerMap::iterator Server = getServClien(fd);
     char buffer[event.data];
     // _ClientMap m;
     std::cout << "size : " << event.data << std::endl;

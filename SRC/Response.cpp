@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Response.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 21:20:47 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/14 19:53:36 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/15 17:18:25 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -259,7 +259,7 @@ std::string	Response::getResponseHeader() {
 }
 
 void	Response::initErrorFiles() {
-
+	//add the correct lien to the files
 	errorsFiles[400] = "/Users/megrisse/Desktop/Webserver_/ErrorFiles/400.html";
 	errorsFiles[403] = "/Users/megrisse/Desktop/Webserver_/ErrorFiles/403.html";
 	errorsFiles[404] = "/Users/megrisse/Desktop/Webserver_/ErrorFiles/404.html";

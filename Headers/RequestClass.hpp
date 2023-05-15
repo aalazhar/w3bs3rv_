@@ -22,7 +22,7 @@ typedef std::map<std::string, std::string> _map;
 typedef std::map<std::string, std::string>::iterator iter_map;
 
 class Req{
-    private:
+    protected:
         _map HEADERS;
         std::string METHOD;
         std::string URL;

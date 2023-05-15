@@ -2,6 +2,8 @@
 
 #include "Headers.hpp"
 #include "Server.hpp"
+#include "Response.hpp"
+#include "RequestClass.hpp"
 
 #define TIMEOUT 10
 
@@ -37,9 +39,10 @@ class webServ{
             return this->getItend();
         }
         int acceptNewCl(int, int&, ServerMap::iterator &);
-        int readData(int& ,int& , ServerMap::iterator &, struct kevent &);
-        int sendData(int& ,int& , ServerMap::iterator &, struct kevent &);
+        int readData(int& ,int& , struct kevent &);
+        int sendData(int& ,int& , struct kevent &);
         void testConnection(const int&, const std::string&);
         void keventUP(int kq, int fd, int filter, int flag);
+        void Timeout();
 
 };

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Response.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:37:50 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/14 19:11:21 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/15 15:34:26 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <map>
-#include "webServer.hpp"
+
+#include "RequestClass.hpp"
+#include "parserObjectU.hpp"
+
+// class Req;
 
 class   Response  : public Req {
 private :
