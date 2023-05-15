@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 21:20:47 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/15 19:57:23 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/15 20:36:52 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,6 +208,7 @@ void	Response::initErrorFiles() {
 	errorsFiles[410]  = "../ErrorFiles/410.html";
 	errorsFiles[413]  = "../ErrorFiles/413.html";
 	errorsFiles[500]  = "../ErrorFiles/500.html";
+	errorsFiles[505]  = "../ErrorFiles/505.html";
 }
 
 std::string	Response::readErrorsfiles(std::string path) {
@@ -243,11 +244,9 @@ int	Response::GetMethod(Req &obj) {
 	
 	getifQuerry(obj.getURL());
 	CGI	cgi(filePath, obj.getMETHOD(), type, filePath, obj.getBody(), Querry, obj.getBody().length());
-	if (obj.getStep() == -1) {
-
+	
+	if (obj.getStep() == -1)
 		code = 405;
-		response_body = readErrorsfiles(errorsFiles[code]);
-	}
 	else if (obj.getStep() == -3)
 		code = 505;
 	if (!checkCgipath(filePath)) {
@@ -273,7 +272,7 @@ int	Response::GetMethod(Req &obj) {
 	}
 	else if (code == 200)
 		code = readcontent();
-	if (code == 404)
+	else
 		response_body = readErrorsfiles(errorsFiles[code]);
 	if (code == 500)
 		response_body = readErrorsfiles(errorsFiles[code]);
