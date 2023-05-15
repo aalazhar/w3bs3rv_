@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Response.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 21:20:47 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/15 20:54:17 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/15 23:46:19 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ void	Response::initResponse() {
 	
 }
 
-Response    &Response::operator=(Req &obj) {
+// Response    &Response::operator=(Req &obj) {
 
-	// if (this != &obj)
-	// 	this->response_headers = obj.getHEADERS();
-	// return (*this);
-}
+// 	// if (this != &obj)
+// 	// 	this->response_headers = obj.getHEADERS();
+// 	return (*this);
+// }
 
 int	Response::getifQuerry(std::string &url) {
 
@@ -155,7 +155,7 @@ std::string	Response::getContentType() {
 		return "text/plain";
 }
 
-std::string	Response::getDate() {
+void	Response::getDate() {
 
 	std::time_t currentTime = std::time(NULL);
 
@@ -171,9 +171,10 @@ std::string	Response::getResponseHeader() {
 	std::stringstream	sss;
 
 
+	initErrorMsgs();
 	ss << code;
 	getDate();
-	status_line = "HTTP/1.1" + ss.str() + getStatusMsg(code) ;
+	status_line = "HTTP/1.1 " + ss.str() + " " + getStatusMsg(code) ;
 	sss << response_body.size();
 	if (type != "")
 		headers += "Content-Type: " + getContentType() + CRLF;
@@ -217,6 +218,7 @@ std::string	Response::readErrorsfiles(std::string path) {
 int 			Response::makeResponse() {
 	Req *req = dynamic_cast<Req *>(this);
 	int ret = 0;
+	this-> r = 0;
 
 	ret = GetMethod(*req);
 	return 1;
@@ -224,7 +226,7 @@ int 			Response::makeResponse() {
 
 std::string	vectostring(std::vector<std::string> vec) {
 
-	size_t size = vec.size();
+	// size_t size = vec.size();
 
 	std::string ret = "";
 	std::vector<std::string>::iterator it = vec.begin();

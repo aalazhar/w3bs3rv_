@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Response.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:37:50 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/15 20:49:58 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/15 23:45:58 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,11 @@ private :
 	std::string							type;
 	int									code;
 	std::string							Date;
+	size_t									r;
 
 public:
+	size_t getR(){return this->r;}
+	void setR(size_t R){this->r = R;}
 	Response(struct config &);
 	Response(const	parserObject &);
 	~Response();
@@ -87,8 +90,8 @@ public:
 	std::string		executeCgi(std::string );
 	std::string		getResponseHeader();
 	std::string		getStatusMsg(int code);
-	std::string		getheaders();
+	std::string		getheaders(){return this->response_header;};
 	std::string		getContentType();
 	int 			makeResponse();
-	std::string		getDate();
+	void			getDate();
 };

@@ -84,7 +84,7 @@ void webServ::lunche(){
                     continue;
             }
         }
-        this->Timeout();
+        // this->Timeout();
     }
 
 }
@@ -121,9 +121,29 @@ int webServ::acceptNewCl(int kq, int& clientSock, ServerMap::iterator &Server){
 
 int webServ::sendData(int &kq,int& fd, struct kevent &event){
     ServerMap::iterator Server = getServClien(fd);
-    Server->second.getClientMap()[fd]->makeResponse();
-    char *str[event.data];
+    _ClientMap _clientMap = Server->second.getClientMap();
+    Response *res = _clientMap[fd];
+    if (res->getR() == 0)
+        res->makeResponse();
+    // char *str[event.data];
+    std::string response = res->getStatusLine() + CRLF + res->getheaders() + CRLF + res->getResponse_body();
+    std::cout << "---RESPONS---\n" << response << std::endl;
     
+    int length = event.data;
+    const char *buff;
+    if (res->getR() < response.length())
+        buff = &response.c_str()[res->getR()];
+    if (send(fd, response.c_str(), length, 0) < 0)
+        std::cout << "---------------\n";
+    res->setR(res->getR() + length);
+    if (res->getR() > response.length())
+    {
+        delete res;
+        keventUP(kq, fd, EVFILT_WRITE, EV_DISABLE);
+        keventUP(kq, fd, EVFILT_READ, EV_CLEAR | EV_ENABLE | EV_ADD);
+        _clientMap.erase(fd);
+    }
+    return 0;
     //i need the size of the response , to send the buffer
 
 }
