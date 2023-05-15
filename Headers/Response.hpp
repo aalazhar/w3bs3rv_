@@ -6,7 +6,7 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:37:50 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/15 17:37:03 by hameur           ###   ########.fr       */
+/*   Updated: 2023/05/15 18:04:52 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 
 #include "RequestClass.hpp"
 #include "parserObjectU.hpp"
+#include "CGI.hpp"
+
 
 // class Req;
 
