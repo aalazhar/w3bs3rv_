@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 21:20:47 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/15 20:36:52 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/15 20:54:17 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,23 +73,6 @@ int	Response::checkpath(std::string &path) {
 			return 0;
 	}
 	return 0;
-}
-
-void	Response::initEnvirement() {
-
-	this->_env["REQUEST_METHOD"] = this->getMETHOD();
-	if (HEADERS.find("Content-type") != HEADERS.end())
-		this->_env["CONTENT_TYPE"] = this->HEADERS["Content-type"];
-	if (HEADERS.find("Content-length") != HEADERS.end())
-		this->_env["CONTENT_LENGTH"] = this->HEADERS["Content-length"];
-	if (HEADERS.find("Host") != HEADERS.end())
-		this->_env["SERVER_NAME"] = HEADERS["Host"];
-	this->_env["QUERY_STRING"];
-	this->_env["SERVER_PROTOCOL"] = "HTTP/1.1";
-	this->_env["SERVER_SOFTWARE"];
-	this->_env["SCRIPT_FILENAME"] = this->filePath;
-	this->_env["REDIRECT_STATUS"] = "200";
-	this->_env["GATEWAY_INTERFACE"] = "CGI/1.1";
 }
 
 int	Response::readcontent() {
@@ -190,12 +173,12 @@ std::string	Response::getResponseHeader() {
 
 	ss << code;
 	getDate();
-	status_line = "HTTP/1.1" + ss.str() + getStatusMsg(code);
+	status_line = "HTTP/1.1" + ss.str() + getStatusMsg(code) ;
 	sss << response_body.size();
 	if (type != "")
-		headers += "Content-Type: " + getContentType() + "\r\n";
-	headers += "Content-length: " + sss.str() + "\r\n";
-	headers += "Date: " + Date;
+		headers += "Content-Type: " + getContentType() + CRLF;
+	headers += "Content-length: " + sss.str() + CRLF;
+	headers += "Date: " + Date + CRLF;
 	return (headers);
 }
 
@@ -208,7 +191,6 @@ void	Response::initErrorFiles() {
 	errorsFiles[410]  = "../ErrorFiles/410.html";
 	errorsFiles[413]  = "../ErrorFiles/413.html";
 	errorsFiles[500]  = "../ErrorFiles/500.html";
-	errorsFiles[505]  = "../ErrorFiles/505.html";
 }
 
 std::string	Response::readErrorsfiles(std::string path) {
@@ -240,13 +222,29 @@ int 			Response::makeResponse() {
 	return 1;
 }
 
+std::string	vectostring(std::vector<std::string> vec) {
+
+	size_t size = vec.size();
+
+	std::string ret = "";
+	std::vector<std::string>::iterator it = vec.begin();
+	while (it != vec.end()) {
+
+		ret += *it;
+		it++;
+	}
+	return (ret);
+}
+
 int	Response::GetMethod(Req &obj) {
 	
 	getifQuerry(obj.getURL());
 	CGI	cgi(filePath, obj.getMETHOD(), type, filePath, obj.getBody(), Querry, obj.getBody().length());
-	
-	if (obj.getStep() == -1)
+	if (obj.getStep() == -1) {
+
 		code = 405;
+		response_body = readErrorsfiles(errorsFiles[code]);
+	}
 	else if (obj.getStep() == -3)
 		code = 505;
 	if (!checkCgipath(filePath)) {
@@ -254,8 +252,8 @@ int	Response::GetMethod(Req &obj) {
 		size_t	i = 0;
 		size_t	size = response.size() - 2;
 
-		response = executeCgi(_Cgipath);
-
+		_response = cgi.executeCGI();
+		response = vectostring(_response);
 		while (response.find("\r\n\r\n", i) != std::string::npos || response.find("\r\n\r\n", i) == i) {
 
 			std::string	resp = response.substr(i, response.find("\r\n", i) - i);
@@ -272,7 +270,7 @@ int	Response::GetMethod(Req &obj) {
 	}
 	else if (code == 200)
 		code = readcontent();
-	else
+	if (code == 404)
 		response_body = readErrorsfiles(errorsFiles[code]);
 	if (code == 500)
 		response_body = readErrorsfiles(errorsFiles[code]);

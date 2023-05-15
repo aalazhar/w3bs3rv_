@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:37:50 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/15 19:51:31 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/15 20:49:58 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ private :
 	std::map<int, std::string>			errors;
 	std::map<int, std::string>			errorsFiles;
 	std::string							response;
+	std::vector<std::string>			_response;
 	std::string							type;
 	int									code;
 	std::string							Date;
@@ -79,7 +80,6 @@ public:
 	int				getifQuerry(std::string &);
 	int				checkCgipath(std::string &);
 	int				checkpath(std::string &);
-	void			initEnvirement();
 	void			initErrorMsgs();
 	void			initErrorFiles();
 	int				readcontent();
