@@ -115,7 +115,7 @@ int Req::getMETHOD(std::string &meth){
     }
     j = ++i;
     if (checkMETHOD(s) < 0)
-        return (-1);
+        return (this->step = -1);
     METHOD = s;
     /*____-check-URL-______*/
     s.erase(s.begin(), s.end());
@@ -126,8 +126,8 @@ int Req::getMETHOD(std::string &meth){
         j++;
     }
     j = ++i;
-    //if (checkURL(s) < 0)
-        // return -1;
+    // if (checkURL(s) < 0)
+    //     return -1;
     URL = s;
     /*____-check-HTTPV-_____*/
     s.erase(s.begin(), s.end());

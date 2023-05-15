@@ -75,12 +75,12 @@ void webServ::lunche(){
             }
             else if (events[i].filter == EVFILT_READ) // else if (read data)
             {
-                if (readData(kq ,fd, itS, events[i]) < 0)
+                if (readData(kq ,fd, events[i]) < 0)
                     continue;;
             } 
             else if (events[i].filter == EVFILT_WRITE)
             {
-                if (sendData(kq, fd, itS, events[i]) < 0)
+                if (sendData(kq, fd, events[i]) < 0)
                     continue;
             }
         }
@@ -122,7 +122,9 @@ int webServ::acceptNewCl(int kq, int& clientSock, ServerMap::iterator &Server){
 int webServ::sendData(int &kq,int& fd, struct kevent &event){
     ServerMap::iterator Server = getServClien(fd);
     Server->second.getClientMap()[fd]->makeResponse();
-    //i need the size of the response , send a buffer
+    char *str[event.data];
+    
+    //i need the size of the response , to send the buffer
 
 }
 

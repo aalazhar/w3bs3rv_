@@ -6,7 +6,7 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:37:50 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/15 15:34:26 by hameur           ###   ########.fr       */
+/*   Updated: 2023/05/15 17:37:03 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,5 @@ public:
 	std::string		getStatusMsg(int code);
 	std::string		getheaders();
 	std::string		getContentType();
-	void 			makeResponse();
+	int 			makeResponse();
 };
