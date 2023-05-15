@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 21:20:47 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/14 19:53:36 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/15 19:57:23 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int	Response::getifQuerry(std::string &url) {
 		return 0;
 	}
 	filePath = url;
+	Querry = "";
 	return 1;
 }
 
@@ -126,70 +127,8 @@ int	Response::checkCgipath(std::string &path) {
 			return (_Cgipath = it->cgiPath, 0);
 		it++;
 	}
+	code = 404;
 	return 1;
-}
-
-std::string	Response::executeCgi(std::string file_name) {
-	
-	pid_t	pid;
-	int		In;
-	int		Out;
-	int		rd;
-	std::string	newbody;
-
-	In = dup(STDIN_FILENO);
-	Out = dup(STDOUT_FILENO);
-
-	FILE	*fdIn = tmpfile();
-	FILE	*fdOut = tmpfile();
-
-	long	fileIn = fileno(fdIn);
-	long	fileOut = fileno(fdOut);
-	
-	write(fileIn, this->Body.c_str(), this->Body.length());
-	lseek(fileIn, 0, SEEK_SET);
-	
-	pid = fork();
-
-	if (pid == -1) {
-
-		std::cerr << "Fork !! \n";
-		return ("Status: 500\r\n\r\n");
-	}
-	else if (!pid) {
-
-		dup2(fileIn, STDIN_FILENO);
-		dup2(fileOut, STDOUT_FILENO);
-		char **env;//_env vector to char **
-		execve(file_name.c_str(), NULL, env);
-		std::cerr << "Execve !!" << std::endl;
-		write(STDOUT_FILENO, "Status: 500\r\n\r\n", 15);
-	}
-	else {
-
-		char	buffer[1024] = {0};
-
-		waitpid(-1, NULL, 0);
-		lseek(fileOut, 0, SEEK_SET);
-		
-		rd = 1;
-		while (rd > 0) {
-
-			memset(buffer, 0, 1024);
-			rd = read(fileOut, buffer, 1024);
-			newbody += buffer;
-		}
-	}
-	dup2(In, STDIN_FILENO);
-	dup2(Out, STDOUT_FILENO);
-	fclose(fdIn);
-	fclose(fdOut);
-	close(fileIn);
-	close(fileOut);
-	close(In);
-	close(Out);
-	//
-	return newbody;
 }
 
 void	Response::initErrorMsgs() {
@@ -233,6 +172,15 @@ std::string	Response::getContentType() {
 		return "text/plain";
 }
 
+std::string	Response::getDate() {
+
+	std::time_t currentTime = std::time(NULL);
+
+    // Convert the current time to different date formats
+    std::string dateString1 = std::ctime(&currentTime); // Convert to a string format like "Thu Jan 01 12:00:00 1970"
+	Date = std::string(dateString1);
+}
+
 std::string	Response::getResponseHeader() {
 
 	std::string	headers("");
@@ -241,32 +189,25 @@ std::string	Response::getResponseHeader() {
 
 
 	ss << code;
+	getDate();
 	status_line = "HTTP/1.1" + ss.str() + getStatusMsg(code);
 	sss << response_body.size();
 	if (type != "")
 		headers += "Content-Type: " + getContentType() + "\r\n";
 	headers += "Content-length: " + sss.str() + "\r\n";
+	headers += "Date: " + Date;
 	return (headers);
 }
 
-std::string	Response::getResponseHeader() {
-
-	std::stringstream	cd;
-
-	cd << code;
-	response_header = "HTTP/1.1 " + cd.str() + this->getStatusMsg(code) + "\r\n";
-	response_header;
-}
-
 void	Response::initErrorFiles() {
-
-	errorsFiles[400] = "/Users/megrisse/Desktop/Webserver_/ErrorFiles/400.html";
-	errorsFiles[403] = "/Users/megrisse/Desktop/Webserver_/ErrorFiles/403.html";
-	errorsFiles[404] = "/Users/megrisse/Desktop/Webserver_/ErrorFiles/404.html";
-	errorsFiles[405] = "/Users/megrisse/Desktop/Webserver_/ErrorFiles/405.html";
-	errorsFiles[410]  = "/Users/megrisse/Desktop/Webserver_/ErrorFiles/410.html";
-	errorsFiles[413]  = "/Users/megrisse/Desktop/Webserver_/ErrorFiles/413.html";
-	errorsFiles[500]  = "/Users/megrisse/Desktop/Webserver_/ErrorFiles/500.html";
+	//add the correct lien to the files
+	errorsFiles[400] = "../ErrorFiles/400.html";
+	errorsFiles[403] = "../ErrorFiles/403.html";
+	errorsFiles[404] = "../ErrorFiles/404.html";
+	errorsFiles[405] = "../ErrorFiles/405.html";
+	errorsFiles[410]  = "../ErrorFiles/410.html";
+	errorsFiles[413]  = "../ErrorFiles/413.html";
+	errorsFiles[500]  = "../ErrorFiles/500.html";
 }
 
 std::string	Response::readErrorsfiles(std::string path) {
@@ -289,9 +230,26 @@ std::string	Response::readErrorsfiles(std::string path) {
 		return "<!DOCTYPE html><html><title> 4444 Error: Error File Not Found </title><body><div><h1> 4444 Error File Not Found </h1><p> We're sorry, the page you requested could not be found.</p></div></body></html>";
 }
 
+
+int 			Response::makeResponse() {
+	Req *req = dynamic_cast<Req *>(this);
+	int ret = 0;
+
+	ret = GetMethod(*req);
+	return 1;
+}
+
 int	Response::GetMethod(Req &obj) {
 	
 	getifQuerry(obj.getURL());
+	CGI	cgi(filePath, obj.getMETHOD(), type, filePath, obj.getBody(), Querry, obj.getBody().length());
+	if (obj.getStep() == -1) {
+
+		code = 405;
+		response_body = readErrorsfiles(errorsFiles[code]);
+	}
+	else if (obj.getStep() == -3)
+		code = 505;
 	if (!checkCgipath(filePath)) {
 
 		size_t	i = 0;
@@ -315,13 +273,10 @@ int	Response::GetMethod(Req &obj) {
 	}
 	else if (code == 200)
 		code = readcontent();
+	if (code == 404)
+		response_body = readErrorsfiles(errorsFiles[code]);
 	if (code == 500)
 		response_body = readErrorsfiles(errorsFiles[code]);
 	response_header = getResponseHeader();
 	return code;
 }
-
-// int	Response::DeletMethod(Req &obj) {
-	
-	
-// }

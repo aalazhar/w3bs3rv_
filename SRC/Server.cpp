@@ -10,7 +10,7 @@ int Server::getport(struct config &c){
 
 Server::Server(struct config &c): ServerConfig(c){
     this->port = getport(c);
-    std::cout << "size : " << Cmap.size() << "\n";
+    // std::cout << "size : " << Cmap.size() << "\n";
     this->Cmap.clear();
 }
 

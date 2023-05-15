@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:37:50 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/14 19:11:21 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/15 19:51:31 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,19 @@
 #include <sys/stat.h>
 #include <iostream>
 #include <stdio.h>
+#include <ctime>
 #include <unistd.h>
 #include <sstream>
 #include <stdlib.h>
 #include <string.h>
 #include <map>
-#include "webServer.hpp"
+
+#include "RequestClass.hpp"
+#include "parserObjectU.hpp"
+#include "CGI.hpp"
+
+
+// class Req;
 
 class   Response  : public Req {
 private :
@@ -42,6 +49,7 @@ private :
 	std::string							response;
 	std::string							type;
 	int									code;
+	std::string							Date;
 
 public:
 	Response(struct config &);
@@ -81,5 +89,6 @@ public:
 	std::string		getStatusMsg(int code);
 	std::string		getheaders();
 	std::string		getContentType();
-	void 			makeResponse();
+	int 			makeResponse();
+	std::string		getDate();
 };

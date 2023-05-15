@@ -23,9 +23,9 @@ void Req::append(const std::string &rq){
 }
 
 int Req::parseBody(std::string &s){
-    if (METHOD != "POST")
-        return  step = 3, 3;
     this->Body.append(s);
+    if (METHOD != "POST")
+        return  step = 3;
     size_t BodySize = (size_t)std::atoi(HEADERS["Content-Length"].c_str());
     if (Body.size() >= BodySize)
         return step = 3;
@@ -37,7 +37,6 @@ Req &Req::operator=(const Req &other){
     this->METHOD = other.METHOD;
     this->HTTPV = other.HTTPV;
     this->HEADERS = other.HEADERS;
-    this->mimetypes = other.mimetypes;
     this->Body = other.Body;
     this->step = other.step;
     return *this;
@@ -116,7 +115,7 @@ int Req::getMETHOD(std::string &meth){
     }
     j = ++i;
     if (checkMETHOD(s) < 0)
-        return (-1);
+        return (this->step = -1);
     METHOD = s;
     /*____-check-URL-______*/
     s.erase(s.begin(), s.end());
@@ -127,8 +126,8 @@ int Req::getMETHOD(std::string &meth){
         j++;
     }
     j = ++i;
-    //if (checkURL(s) < 0)
-        // return -1;
+    // if (checkURL(s) < 0)
+    //     return -1;
     URL = s;
     /*____-check-HTTPV-_____*/
     s.erase(s.begin(), s.end());

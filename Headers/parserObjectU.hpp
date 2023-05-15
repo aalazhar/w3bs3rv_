@@ -47,7 +47,6 @@ private:
     struct config conf;
     std::vector<config> server;
 public:
-    std::string getCgiEx(int fd);////newwww
     std::vector<config>::iterator getItBegin(){return this->server.begin();}
     std::vector<config>::iterator getItend(){return this->server.end();}
     parserObject(std::string f_name);
