@@ -2,6 +2,8 @@
 
 #include "Headers.hpp"
 
+#define DONE 3
+
 /*
     ERROR STEPS in Req class:
     3 : parse body done 100 complete 
@@ -22,7 +24,6 @@ typedef std::map<std::string, std::string>::iterator iter_map;
 class Req{
     private:
         _map HEADERS;
-        _map mimetypes;
         std::string METHOD;
         std::string URL;
         std::string HTTPV;
@@ -30,6 +31,14 @@ class Req{
         int step;
 
     public:
+        void clear(){
+            this->HEADERS.clear();
+            this->METHOD = "";
+            this->URL = "";
+            this->HTTPV = "";
+            this->Body = "";
+            this->step = 0;
+        };
         Req();
         // Req(const std::string&);
         Req &operator=(const Req &);

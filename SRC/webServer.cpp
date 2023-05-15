@@ -78,32 +78,34 @@ void webServ::lunche(){
                 if (readData(kq ,fd, itS, events[i]) < 0)
                     continue;;
             } 
-            // else if (events[i].filter == EVFILT_WRITE)
-            // {
-            //     if (sendData() < 0)
-            //         continue;
-            // }
-        }
-        for (ServerMap::iterator it = getItbegin(); it != getItend(); it++){
-
-            for (_ClientMap::iterator it2 = it->second.getClientBegin(); it2 != it->second.getClientEnd(); ++it2) {
-                if (it2->second->getStep() < 0 || it2->second->getStep() == 3){
-                    ArrReq.push_back(it2->second);
-                }
+            else if (events[i].filter == EVFILT_WRITE)
+            {
+                if (sendData(kq, fd, itS, events[i]) < 0)
+                    continue;
             }
         }
+        // for (ServerMap::iterator it = getItbegin(); it != getItend(); it++){
 
-        size_t j = 0;
-        std::vector<Req*>::iterator i = ArrReq.begin();
-        std::cout << "REQ SIZE = " << ArrReq.size() << std::endl;
-        for (;i != ArrReq.end() && j < ArrReq.size();i++, j++){
-            std::cout << "-----ADDR : " << *i <<" ------------\n" << **(i) << "||\n+++++++++++++++++++" << std::endl;
-            ArrReq.erase(i);
-        }
-		std::cout << "=====DONE=====\n";
+        //     for (_ClientMap::iterator it2 = it->second.getClientBegin(); it2 != it->second.getClientEnd(); ++it2) {
+        //         if (it2->second->getStep() < 0 || it2->second->getStep() == 3){
+        //             ArrReq.push_back(it2->second);
+        //         }
+        //     }
+        // }
+
+        // size_t j = 0;
+        // std::vector<Req*>::iterator i = ArrReq.begin();
+        // std::cout << "REQ SIZE = " << ArrReq.size() << std::endl;
+        // for (;i != ArrReq.end() && j < ArrReq.size();i++, j++){
+        //     std::cout << "-----ADDR : " << *i <<" ------------\n" << **(i) << "||\n+++++++++++++++++++" << std::endl;
+        //     ArrReq.erase(i);
+        // }
+		// std::cout << "=====DONE=====\n";
     }
 
 }
+
+
 
 
 void webServ::testConnection(const int& test, const std::string& msg){
@@ -133,11 +135,14 @@ int webServ::acceptNewCl(int kq, int& clientSock, ServerMap::iterator &Server){
     return 0;
 }
 
+int webServ::sendData(int &kq,int& fd, ServerMap::iterator &Server, struct kevent &event){
+    
+}
 
 int webServ::readData(int &kq, int& fd, ServerMap::iterator &Server, struct kevent &event){
     Server = getServClien(fd);
     char buffer[event.data];
-    _ClientMap m;
+    // _ClientMap m;
     std::cout << "size : " << event.data << std::endl;
     memset(buffer, 0, event.data);
     int rd = recv(fd, buffer, event.data, 0);
@@ -163,15 +168,15 @@ int webServ::readData(int &kq, int& fd, ServerMap::iterator &Server, struct keve
     {
         buffer[event.data] = 0;
         std::string req(buffer); 
-        m = Server->second.getClientMap();
-        m[fd]->append(req);
-        std::cout << "*******\n" << m[fd] << "\n*******\n";
+        //append the read string in the request class
+        Server->second.getClientMap()[fd]->append(req);
+        // std::cout << "*******\n" << Server->second.getClientMap()[fd] << "\n*******\n";
         
     }
-    if (m[fd]->getStep() == 3)
+    if (Server->second.getClientMap()[fd]->getStep() == DONE)
     {
-        keventUP(kq, fd, EVFILT_WRITE, EV_CLEAR|EV_ENABLE | EV_ADD);
 		keventUP(kq, fd, EVFILT_READ, EV_DISABLE);
+        keventUP(kq, fd, EVFILT_WRITE, EV_CLEAR|EV_ENABLE | EV_ADD);
     }
     return 0;
 }

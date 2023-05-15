@@ -38,7 +38,7 @@ class webServ{
         }
         int acceptNewCl(int, int&, ServerMap::iterator &);
         int readData(int& ,int& , ServerMap::iterator &, struct kevent &);
-        int sendData();
+        int sendData(int& ,int& , ServerMap::iterator &, struct kevent &);
         void testConnection(const int&, const std::string&);
         void keventUP(int kq, int fd, int filter, int flag);
 
