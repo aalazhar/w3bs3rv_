@@ -123,11 +123,12 @@ int webServ::sendData(int &kq,int& fd, struct kevent &event){
     ServerMap::iterator Server = getServClien(fd);
     _ClientMap _clientMap = Server->second.getClientMap();
     Response *res = _clientMap[fd];
+    // std::cout << "-----request : ------\n" << *dynamic_cast<Req *>(res) << "\n------------\n";
     if (res->getR() == 0)
         res->makeResponse();
     // char *str[event.data];
     std::string response = res->getStatusLine() + CRLF + res->getheaders() + CRLF + res->getResponse_body();
-    std::cout << "---RESPONS---\n" << response << std::endl;
+    std::cout << "---RESPONS---\n" << response << "\n------------\n";
     
     int length = event.data;
     const char *buff;
@@ -138,11 +139,14 @@ int webServ::sendData(int &kq,int& fd, struct kevent &event){
     res->setR(res->getR() + length);
     if (res->getR() > response.length())
     {
-        delete res;
+        res->clear();
         keventUP(kq, fd, EVFILT_WRITE, EV_DISABLE);
         keventUP(kq, fd, EVFILT_READ, EV_CLEAR | EV_ENABLE | EV_ADD);
         _clientMap.erase(fd);
     }
+    else
+        keventUP(kq, fd, EVFILT_WRITE, EV_ENABLE);
+        
     return 0;
     //i need the size of the response , to send the buffer
 
