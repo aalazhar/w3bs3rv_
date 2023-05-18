@@ -30,6 +30,7 @@ class webServ{
         */
        void creatServers(parserObject &);
        void lunche();
+       std::string storeClientIP(int clientSocket) ;
        ServerMap::iterator getServClien(int fd){
             for(ServerMap::iterator it = this->_mySrvs.begin();it != this->_mySrvs.end(); it++){
                 // it->second.printIt();

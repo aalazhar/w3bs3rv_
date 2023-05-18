@@ -6,7 +6,7 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 21:20:47 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/15 23:46:19 by hameur           ###   ########.fr       */
+/*   Updated: 2023/05/17 20:03:49 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int	Response::checkCgipath(std::string &path) {
 			return (_Cgipath = it->cgiPath, 0);
 		it++;
 	}
-	code = 404;
+	// code = 404;
 	return 1;
 }
 
@@ -185,13 +185,13 @@ std::string	Response::getResponseHeader() {
 
 void	Response::initErrorFiles() {
 	//add the correct lien to the files
-	errorsFiles[400] = "../ErrorFiles/400.html";
-	errorsFiles[403] = "../ErrorFiles/403.html";
-	errorsFiles[404] = "../ErrorFiles/404.html";
-	errorsFiles[405] = "../ErrorFiles/405.html";
-	errorsFiles[410]  = "../ErrorFiles/410.html";
-	errorsFiles[413]  = "../ErrorFiles/413.html";
-	errorsFiles[500]  = "../ErrorFiles/500.html";
+	errorsFiles[400] = "./ErrorFiles/400.html";
+	errorsFiles[403] = "./ErrorFiles/403.html";
+	errorsFiles[404] = "./ErrorFiles/404.html";
+	errorsFiles[405] = "./ErrorFiles/405.html";
+	errorsFiles[410]  = "./ErrorFiles/410.html";
+	errorsFiles[413]  = "./ErrorFiles/413.html";
+	errorsFiles[500]  = "./ErrorFiles/500.html";
 }
 
 std::string	Response::readErrorsfiles(std::string path) {
@@ -216,10 +216,10 @@ std::string	Response::readErrorsfiles(std::string path) {
 
 
 int 			Response::makeResponse() {
+	std::cout << "heeeeelllloo\n";
 	Req *req = dynamic_cast<Req *>(this);
 	int ret = 0;
 	this-> r = 0;
-
 	ret = GetMethod(*req);
 	return 1;
 }

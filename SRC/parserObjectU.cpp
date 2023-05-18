@@ -241,7 +241,7 @@ void parserObject::setDefaultsDirectives(struct config *cf, int *tab){
 
 
     int i = 0;
-    int y = 0;
+    // int y = 0;
     // int len = server.size();
     // while (y < len){
     i = 0;
@@ -318,7 +318,7 @@ int parserObject::check_blocks_dirc2(int *tab){
 
 int parserObject::locat_split_lines(std::string line, char sep, struct loca& _location, int *tab){
     int i = 0;
-    int flag = 0;
+    // int flag = 0;
     // static int c = 0;
     std::string res;
 

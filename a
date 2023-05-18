@@ -1,0 +1,143 @@
+Destructer
+
+-------accepteNewCl-------
+fd = 7  IP = 127.0.0.1----Accepted new client connection on socket----
+
+------read data---------
+fd = 7   size : 751
+====step=3
+GET /Users/hameur/Documents/webserv/www/index.html HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ar;q=0.8,fr;q=0.7
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+here
+--------finish read data---------
+
+-------accepteNewCl-------
+fd = 8  IP = 127.0.0.1----Accepted new client connection on socket----
+
+------send data---------
+fd = 7
+allowed byte to write : 146988
+-----request : ------
+====step=3
+GET /Users/hameur/Documents/webserv/www/index.html HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ar;q=0.8,fr;q=0.7
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+heeeeelllloo
+---RESPONS---
+HTTP/1.1 200 OK
+Content-length: 1741
+Date: Wed May 17 20:57:56 2023
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Blog</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+      <h1>My Blog</h1>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="/fileCGI.php">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <main>
+      <article>
+        <header>
+          <h2>My First Blog Post</h2>
+          <p>Posted on May 1, 2023</p>
+        </header>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel felis nec turpis commodo hendrerit. Integer sed enim non mauris tincidunt sagittis. Vestibulum hendrerit scelerisque ipsum vel aliquam. Sed a odio vel quam facilisis sodales. Etiam at lacus vel enim feugiat fringilla. Sed feugiat erat ac urna pharetra interdum.</p>
+        <p>Etiam sit amet leo ac massa commodo bibendum. Aliquam erat volutpat. Duis posuere urna sit amet nunc bibendum lobortis. Nulla fermentum nulla vel purus ullamcorper, eget venenatis arcu tristique. Maecenas at est non urna fermentum eleifend eu eu dolor. Fusce placerat libero quis blandit iaculis. Mauris feugiat velit at consequat rhoncus.</p>
+      </article>
+    </main>
+    <aside>
+      <h3>Categories</h3>
+      <ul>
+        <li><a href="#">Category 1</a></li>
+        <li><a href="#">Category 2</a></li>
+        <li><a href="#">Category 3</a></li>
+      </ul>
+    </aside>
+    <footer>
+      <p>&copy; 2023 My Blog</p>
+    </footer>
+    <form action="fileCGI.php" method="PUT">  
+    First Name: <input type="text" name="fname" size=30><p>
+    Last Name:  <input type="text" name="lname" size=30><p>
+    <input type="submit">
+    <form/>
+    <img src="test.png" alt="teeeest">
+  </body>
+</html>
+------------
+====step=0
+  
+
+-------f snd data--------
+----EOF-----
+client 7 is disconnected
+----END_EOF-----
+
+------read data---------
+fd = 8   size : 638
+====step=3
+GET /Users/hameur/Documents/webserv/www/style.css HTTP/1.1
+Accept: text/css,*/*;q=0.1
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ar;q=0.8,fr;q=0.7
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/Users/hameur/Documents/webserv/www/index.html
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+here
+--------finish read data---------
+
+-------accepteNewCl-------
+fd = 7  IP = 127.0.0.1
