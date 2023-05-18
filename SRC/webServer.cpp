@@ -126,6 +126,7 @@ int webServ::sendData(int &kq,int& fd, struct kevent &event){
     if (res->getR() == 0)
         res->makeResponse();
     // char *str[event.data];
+    std::cout << *dynamic_cast<Req*>(res) << "--------------\n";
     std::string response = res->getStatusLine() + CRLF + res->getheaders() + CRLF + res->getResponse_body();
     std::cout << "---RESPONS---\n" << response << std::endl;
     
@@ -138,7 +139,7 @@ int webServ::sendData(int &kq,int& fd, struct kevent &event){
     res->setR(res->getR() + length);
     if (res->getR() > response.length())
     {
-        delete res;
+        res->clear();
         keventUP(kq, fd, EVFILT_WRITE, EV_DISABLE);
         keventUP(kq, fd, EVFILT_READ, EV_CLEAR | EV_ENABLE | EV_ADD);
         _clientMap.erase(fd);
@@ -167,7 +168,7 @@ int webServ::readData(int &kq, int& fd, struct kevent &event){
 		for (; it2 != Server->second.getClientEnd(); it2++) {
             if (it2->first == fd)
             {
-                delete it2->second;
+                it2->second->clear();
                 Server->second.getClientMap().erase(it2);
                 break;
             }

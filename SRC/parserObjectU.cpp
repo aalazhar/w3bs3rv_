@@ -577,5 +577,5 @@ struct config parserObject::get_location_vect(){
 }
 
 parserObject::~parserObject(){
-    std::cout << "Destructer" << std::endl;
+    // std::cout << "Destructer" << std::endl;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Response.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
+/*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 21:20:47 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/15 23:46:19 by hameur           ###   ########.fr       */
+/*   Updated: 2023/05/18 16:47:18 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ Response::Response(struct config &server) {
 	this->Locations = server;
 	code = 200;
 	AllowedM = server.allowed_m;
+	if (Locations.pRoot != "")	
+		root = Locations.pRoot;
+	else
+		root = "/Users/megrisse/Desktop/webserv";
 	if (server.autoIndex == "on")
 		autoInx = true;
 	else
@@ -63,11 +67,11 @@ int	Response::checkpath(std::string &path) {
 
 	struct stat file_st;
 
-	if (stat(path.c_str(), &file_st) == 0) {
-		
+	if (!stat(path.c_str(), &file_st)) {
+
 		if (S_ISREG(file_st.st_mode))
 			return 1;
-		if (S_ISDIR(file_st.st_mode))
+		else if (S_ISDIR(file_st.st_mode))
 			return 0;
 		else
 			return 0;
@@ -78,19 +82,20 @@ int	Response::checkpath(std::string &path) {
 int	Response::readcontent() {
 
 	std::ifstream	file;
+	std::string		path;	
 	std::stringstream	resp;
 
 	response = "";
+	path = root + this->getURL();
+	std::cout << "test : " << path << std::endl;
+	if (checkpath(path)) {
 
-	if (checkpath(this->getURL())) {
-
-		file.open(this->getURL().c_str(), std::ifstream::in);
+		file.open(path.c_str(), std::ifstream::in);
 		if (!file.is_open()) {
 			
 			response_body = readErrorsfiles(errorsFiles[403]);
 			return 403;
 		}
-
 		resp << file.rdbuf();
 		response_body = resp.str();
 		file.close();
@@ -103,14 +108,12 @@ int	Response::readcontent() {
 int	Response::checkCgipath(std::string &path) {
 
 	std::vector<loca>::iterator	it = Locations.vect.begin();
-
 	while (it != Locations.vect.end()) {
 
 		if (it->cgiPath == path)
 			return (_Cgipath = it->cgiPath, 0);
 		it++;
 	}
-	code = 404;
 	return 1;
 }
 
@@ -158,9 +161,7 @@ std::string	Response::getContentType() {
 void	Response::getDate() {
 
 	std::time_t currentTime = std::time(NULL);
-
-    // Convert the current time to different date formats
-    std::string dateString1 = std::ctime(&currentTime); // Convert to a string format like "Thu Jan 01 12:00:00 1970"
+    std::string dateString1 = std::ctime(&currentTime);
 	Date = std::string(dateString1);
 }
 
@@ -185,13 +186,13 @@ std::string	Response::getResponseHeader() {
 
 void	Response::initErrorFiles() {
 	//add the correct lien to the files
-	errorsFiles[400] = "../ErrorFiles/400.html";
-	errorsFiles[403] = "../ErrorFiles/403.html";
-	errorsFiles[404] = "../ErrorFiles/404.html";
-	errorsFiles[405] = "../ErrorFiles/405.html";
-	errorsFiles[410]  = "../ErrorFiles/410.html";
-	errorsFiles[413]  = "../ErrorFiles/413.html";
-	errorsFiles[500]  = "../ErrorFiles/500.html";
+	errorsFiles[400] = "./ErrorFiles/400.html";
+	errorsFiles[403] = "./ErrorFiles/403.html";
+	errorsFiles[404] = "./ErrorFiles/404.html";
+	errorsFiles[405] = "./ErrorFiles/405.html";
+	errorsFiles[410]  = "./ErrorFiles/410.html";
+	errorsFiles[413]  = "./ErrorFiles/413.html";
+	errorsFiles[500]  = "./ErrorFiles/500.html";
 }
 
 std::string	Response::readErrorsfiles(std::string path) {
@@ -241,7 +242,7 @@ std::string	vectostring(std::vector<std::string> vec) {
 int	Response::GetMethod(Req &obj) {
 	
 	getifQuerry(obj.getURL());
-	CGI	cgi(filePath, obj.getMETHOD(), type, filePath, obj.getBody(), Querry, obj.getBody().length());
+	CGI	cgi("./CGI-bin/php-cgi", obj.getMETHOD(), type, filePath, obj.getBody(), Querry, obj.getBody().length());
 	if (obj.getStep() == -1) {
 
 		code = 405;
