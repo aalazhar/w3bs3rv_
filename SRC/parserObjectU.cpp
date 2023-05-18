@@ -17,6 +17,10 @@ void parserObject::print_directs_keys_val(std::vector<struct config> server){
         std::cout << "allw :" << server[i].allowed_m << std::endl;
         std::cout << "errp :" << server[i].error_page << std::endl;
         std::cout << "uplo :" << server[i].upload << std::endl;
+        std::cout << "Vectors ----------------------------\n";
+        std::cout << "allw :" << server[i].a_meth[0] << std::endl;
+        std::cout << "errp :" << server[i].err_p[0] << std::endl;
+        std::cout << "uplo :" << server[i].uploads[0] << std::endl;
         std::cout << "------ DRCT------" << std::endl;
         print_location_directs(this->server[i].vect);
         i++;
@@ -108,6 +112,7 @@ int parserObject::open_config_file(){
                                 return (1);
                                 throw (std::invalid_argument("Syntax Error !!!"));
                             }
+                            setDefaultsLocaDirectives(&loca, tab2);
 							cf.vect.push_back(loca);
 							clean_location_directs(loca);
                             break;
@@ -126,6 +131,7 @@ int parserObject::open_config_file(){
             return (1);
             throw (std::invalid_argument("Syntax Error !!!"));
         }
+        setDefaultsDirectives(&cf, tab);
         this->server.push_back(cf);
         config_clean(cf);
     }
@@ -187,6 +193,96 @@ void parserObject::clean_location_directs(struct loca& loca){
     loca.l_path = "";
     loca.a_meth.clear();
 }
+void parserObject::setDefaultsLocaDirectives(struct loca *loca, int *tab){
+    // int tab[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+    int i = 0;
+
+    while (i < 9){
+        if (tab[i] == 0){
+            switch (i){
+            	case 0:
+            	    loca->root = "Default/root/path";
+            	    break;
+            	case 1:
+            	    loca->index = "index.html";
+            	    break;
+            	case 2:
+            	    loca->autoIndex = "off";
+            	    break;
+            	case 3:
+            	    loca->deny = "all";
+            	    break;
+            	case 4:
+            	    loca->redirect = "http//:DefaultUrl";
+            	    break;
+            	case 5:
+					loca->a_meth.push_back("GET");
+					loca->a_meth.push_back("POST");
+					loca->a_meth.push_back("DELETE");
+            	    break;
+            	case 6:
+            	    loca->cgi.push_back("CGI Extension");
+            	    break;
+            	case 7:
+            	    loca->cgi.push_back("CGI Path");
+            	    break;
+            	case 8:
+            	    break;
+	
+            	default:
+            	    break;
+            }
+        }
+		i++;
+    }
+}
+
+void parserObject::setDefaultsDirectives(struct config *cf, int *tab){
+
+
+    int i = 0;
+    int y = 0;
+    // int len = server.size();
+    // while (y < len){
+    i = 0;
+    while (i < 7){
+        if (tab[i] == 0){
+            switch (i)
+            {
+                case 0 :
+                    cf->pRoot = "Default/path";
+                    break;
+                case 1 :
+                    cf->lsten.push_back("0.0.0.0");
+                    cf->lsten.push_back("7007");
+                    break;
+                case 2 :
+                    cf->index = "index.html";
+                    break;
+                case 3 :
+                    cf->autoIndex = "off";
+                    break;
+                case 4 :
+                    cf->uploads.push_back("Default/upl/path");
+                    break;
+                case 5 :
+                    cf->err_p.push_back("Default/err_page/path");
+                    break;
+                case 6 :
+                    cf->a_meth.push_back("GET");
+                    cf->a_meth.push_back("POST");
+                    cf->a_meth.push_back("DELETE");
+                    break;
+                default:
+                    break;
+            }
+        }
+    i++;
+    }
+    if (tab[7] == 1){
+
+    }
+}
 
 int parserObject::check_blocks_dirc(int *tab){
     int i = 0;
@@ -222,6 +318,7 @@ int parserObject::check_blocks_dirc2(int *tab){
 
 int parserObject::locat_split_lines(std::string line, char sep, struct loca& _location, int *tab){
     int i = 0;
+    int flag = 0;
     // static int c = 0;
     std::string res;
 
@@ -263,10 +360,11 @@ int parserObject::locat_split_lines(std::string line, char sep, struct loca& _lo
         _location.cgiExt = &line[i + 1];
         _location.cgiExt.erase(_location.cgiExt.size() - 1, _location.cgiExt.size());
         _location.cgi.push_back(_location.cgiExt);
-        tab[6] = 1;
+        tab[6] += 1;
     }
     else if (res == "cgiPath"){
         _location.cgiPath= &line[i + 1];
+        _location.cgi.push_back(_location.cgiPath);
         tab[7] += 1;
     }
     else if (res == "location"){
@@ -385,18 +483,12 @@ void parserObject::split_lines(std::string line, char sep, struct config& conf, 
     if (res == "listen"){
         conf.listen = &line[i + 1];
         split_listen_line(&line[i + 1], conf);
-        tab[0] += 1;
-    }
-    else if (res == "server_name"){
-        conf.s_name = &line[i + 1];
-        conf.s_name.erase(conf.s_name.size() - 1, conf.s_name.size());
-        serverNameSplit(conf.s_name, conf);
-        tab[8] += 1;
+        tab[1] += 1;
     }
     else if (res == "root"){
         conf.pRoot = &line[i + 1];
         conf.pRoot.erase(conf.pRoot.size() - 1, conf.pRoot.size());
-        tab[1] += 1;
+        tab[0] += 1;
     }
     else if (res == "index"){
         conf.index = &line[i + 1];
@@ -429,6 +521,12 @@ void parserObject::split_lines(std::string line, char sep, struct config& conf, 
     }
     else if (res == "location")
         tab[7] = 1;
+    else if (res == "server_name"){
+        conf.s_name = &line[i + 1];
+        conf.s_name.erase(conf.s_name.size() - 1, conf.s_name.size());
+        serverNameSplit(conf.s_name, conf);
+        tab[8] += 1;
+    }
 }
 
 void parserObject::serverNameSplit(std::string& line, struct config& conf){
@@ -577,5 +675,9 @@ struct config parserObject::get_location_vect(){
 }
 
 parserObject::~parserObject(){
-    // std::cout << "Destructer" << std::endl;
+    std::cout << "Destructer" << std::endl;
+}
+
+std::vector<config> parserObject::getServerConfig(){
+    return (this->server);
 }
