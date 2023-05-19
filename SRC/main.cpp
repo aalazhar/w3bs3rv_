@@ -13,6 +13,7 @@ int main(int ac, char **av){
         else
             arg = "UTILS/default.config";
         webServ webserver(arg);
+        std::cout << "hello \n";
         webserver.lunche();
     }catch(const std::exception &ex){
         std::cerr << ex.what() << std::endl;

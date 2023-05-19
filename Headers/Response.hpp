@@ -6,7 +6,7 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:37:50 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/17 17:11:03 by hameur           ###   ########.fr       */
+/*   Updated: 2023/05/18 20:13:27 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,14 @@ private :
 	int									code;
 	std::string							Date;
 	size_t									r;
+	bool								cgi;
+	std::string							root;
 
 public:
 	size_t getR(){return this->r;}
 	void setR(size_t R){this->r = R;}
 	Response(struct config &);
-	Response(const	parserObject &);
+	// Response(const	parserObject &);
 	~Response();
 	Response	&operator=(Req &);
 	//Getters

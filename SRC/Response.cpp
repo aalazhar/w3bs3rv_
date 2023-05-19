@@ -6,17 +6,19 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 21:20:47 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/17 20:03:49 by hameur           ###   ########.fr       */
+/*   Updated: 2023/05/18 20:58:01 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Headers/Response.hpp"
 
-Response::Response(struct config &server) {
+Response::Response(struct config &server){
 
 	this->Locations = server;
 	code = 200;
 	AllowedM = server.allowed_m;
+	if (Locations.pRoot != "")	
+		root = Locations.pRoot;
 	if (server.autoIndex == "on")
 		autoInx = true;
 	else
@@ -63,11 +65,11 @@ int	Response::checkpath(std::string &path) {
 
 	struct stat file_st;
 
-	if (stat(path.c_str(), &file_st) == 0) {
-		
+	if (!stat(path.c_str(), &file_st)) {
+
 		if (S_ISREG(file_st.st_mode))
 			return 1;
-		if (S_ISDIR(file_st.st_mode))
+		else if (S_ISDIR(file_st.st_mode))
 			return 0;
 		else
 			return 0;
@@ -78,19 +80,20 @@ int	Response::checkpath(std::string &path) {
 int	Response::readcontent() {
 
 	std::ifstream	file;
+	std::string		path;	
 	std::stringstream	resp;
 
 	response = "";
+	path = root + this->getURL();
+	std::cout << "test : " << path << std::endl;
+	if (checkpath(path)) {
 
-	if (checkpath(this->getURL())) {
-
-		file.open(this->getURL().c_str(), std::ifstream::in);
+		file.open(path.c_str(), std::ifstream::in);
 		if (!file.is_open()) {
 			
 			response_body = readErrorsfiles(errorsFiles[403]);
 			return 403;
 		}
-
 		resp << file.rdbuf();
 		response_body = resp.str();
 		file.close();
@@ -103,14 +106,12 @@ int	Response::readcontent() {
 int	Response::checkCgipath(std::string &path) {
 
 	std::vector<loca>::iterator	it = Locations.vect.begin();
-
 	while (it != Locations.vect.end()) {
 
 		if (it->cgiPath == path)
 			return (_Cgipath = it->cgiPath, 0);
 		it++;
 	}
-	// code = 404;
 	return 1;
 }
 
@@ -158,9 +159,7 @@ std::string	Response::getContentType() {
 void	Response::getDate() {
 
 	std::time_t currentTime = std::time(NULL);
-
-    // Convert the current time to different date formats
-    std::string dateString1 = std::ctime(&currentTime); // Convert to a string format like "Thu Jan 01 12:00:00 1970"
+    std::string dateString1 = std::ctime(&currentTime);
 	Date = std::string(dateString1);
 }
 
@@ -216,7 +215,7 @@ std::string	Response::readErrorsfiles(std::string path) {
 
 
 int 			Response::makeResponse() {
-	std::cout << "heeeeelllloo\n";
+	// std::cout << "heeeeelllloo\n";
 	Req *req = dynamic_cast<Req *>(this);
 	int ret = 0;
 	this-> r = 0;
@@ -241,7 +240,7 @@ std::string	vectostring(std::vector<std::string> vec) {
 int	Response::GetMethod(Req &obj) {
 	
 	getifQuerry(obj.getURL());
-	CGI	cgi(filePath, obj.getMETHOD(), type, filePath, obj.getBody(), Querry, obj.getBody().length());
+	CGI	cgi("./CGI-bin/php-cgi", obj.getMETHOD(), type, filePath, obj.getBody(), Querry, obj.getBody().length());
 	if (obj.getStep() == -1) {
 
 		code = 405;
