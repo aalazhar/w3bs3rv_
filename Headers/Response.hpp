@@ -6,7 +6,7 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:37:50 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/15 18:04:52 by hameur           ###   ########.fr       */
+/*   Updated: 2023/05/19 14:03:34 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <sys/stat.h>
 #include <iostream>
 #include <stdio.h>
+#include <ctime>
 #include <unistd.h>
 #include <sstream>
 #include <stdlib.h>
@@ -46,12 +47,19 @@ private :
 	std::map<int, std::string>			errors;
 	std::map<int, std::string>			errorsFiles;
 	std::string							response;
+	std::vector<std::string>			_response;
 	std::string							type;
 	int									code;
+	std::string							Date;
+	size_t									r;
+	bool								cgi;
+	std::string							root;
 
 public:
+	size_t getR(){return this->r;}
+	void setR(size_t R){this->r = R;}
 	Response(struct config &);
-	Response(const	parserObject &);
+	// Response(const	parserObject &);
 	~Response();
 	Response	&operator=(Req &);
 	//Getters
@@ -77,7 +85,6 @@ public:
 	int				getifQuerry(std::string &);
 	int				checkCgipath(std::string &);
 	int				checkpath(std::string &);
-	void			initEnvirement();
 	void			initErrorMsgs();
 	void			initErrorFiles();
 	int				readcontent();
@@ -85,7 +92,8 @@ public:
 	std::string		executeCgi(std::string );
 	std::string		getResponseHeader();
 	std::string		getStatusMsg(int code);
-	std::string		getheaders();
+	std::string		getheaders(){return this->response_header;};
 	std::string		getContentType();
 	int 			makeResponse();
+	void			getDate();
 };

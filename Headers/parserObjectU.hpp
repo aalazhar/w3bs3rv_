@@ -79,6 +79,9 @@ public:
     void rm_blanks(std::string& line);
     void tabTurn_zero(int *tab, int size);
     void serverNameSplit(std::string& line, struct config& conf);
+    void setDefaultsDirectives(struct config *cf, int *tab);
+    void setDefaultsLocaDirectives(struct loca *loca, int *tab);
+    std::vector<config> getServerConfig();
     void print_text();
     ~parserObject();
 

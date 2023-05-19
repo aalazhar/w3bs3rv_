@@ -6,17 +6,19 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 21:20:47 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/15 18:26:33 by hameur           ###   ########.fr       */
+/*   Updated: 2023/05/19 14:04:46 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Headers/Response.hpp"
 
-Response::Response(struct config &server) {
+Response::Response(struct config &server){
 
 	this->Locations = server;
 	code = 200;
 	AllowedM = server.allowed_m;
+	if (Locations.pRoot != "")	
+		root = Locations.pRoot;
 	if (server.autoIndex == "on")
 		autoInx = true;
 	else
@@ -37,12 +39,12 @@ void	Response::initResponse() {
 	
 }
 
-Response    &Response::operator=(Req &obj) {
+// Response    &Response::operator=(Req &obj) {
 
-	// if (this != &obj)
-	// 	this->response_headers = obj.getHEADERS();
-	// return (*this);
-}
+// 	// if (this != &obj)
+// 	// 	this->response_headers = obj.getHEADERS();
+// 	return (*this);
+// }
 
 int	Response::getifQuerry(std::string &url) {
 
@@ -63,11 +65,11 @@ int	Response::checkpath(std::string &path) {
 
 	struct stat file_st;
 
-	if (stat(path.c_str(), &file_st) == 0) {
-		
+	if (!stat(path.c_str(), &file_st)) {
+
 		if (S_ISREG(file_st.st_mode))
 			return 1;
-		if (S_ISDIR(file_st.st_mode))
+		else if (S_ISDIR(file_st.st_mode))
 			return 0;
 		else
 			return 0;
@@ -75,39 +77,23 @@ int	Response::checkpath(std::string &path) {
 	return 0;
 }
 
-void	Response::initEnvirement() {
-
-	this->_env["REQUEST_METHOD"] = this->getMETHOD();
-	if (HEADERS.find("Content-type") != HEADERS.end())
-		this->_env["CONTENT_TYPE"] = this->HEADERS["Content-type"];
-	if (HEADERS.find("Content-length") != HEADERS.end())
-		this->_env["CONTENT_LENGTH"] = this->HEADERS["Content-length"];
-	if (HEADERS.find("Host") != HEADERS.end())
-		this->_env["SERVER_NAME"] = HEADERS["Host"];
-	this->_env["QUERY_STRING"];
-	this->_env["SERVER_PROTOCOL"] = "HTTP/1.1";
-	this->_env["SERVER_SOFTWARE"];
-	this->_env["SCRIPT_FILENAME"] = this->filePath;
-	this->_env["REDIRECT_STATUS"] = "200";
-	this->_env["GATEWAY_INTERFACE"] = "CGI/1.1";
-}
-
 int	Response::readcontent() {
 
 	std::ifstream	file;
+	std::string		path;	
 	std::stringstream	resp;
 
 	response = "";
+	path = root + this->getURL();
+	std::cout << "test : " << path << std::endl;
+	if (checkpath(path)) {
 
-	if (checkpath(this->getURL())) {
-
-		file.open(this->getURL().c_str(), std::ifstream::in);
+		file.open(path.c_str(), std::ifstream::in);
 		if (!file.is_open()) {
 			
 			response_body = readErrorsfiles(errorsFiles[403]);
 			return 403;
 		}
-
 		resp << file.rdbuf();
 		response_body = resp.str();
 		file.close();
@@ -120,14 +106,12 @@ int	Response::readcontent() {
 int	Response::checkCgipath(std::string &path) {
 
 	std::vector<loca>::iterator	it = Locations.vect.begin();
-
 	while (it != Locations.vect.end()) {
 
 		if (it->cgiPath == path)
 			return (_Cgipath = it->cgiPath, 0);
 		it++;
 	}
-	code = 404;
 	return 1;
 }
 
@@ -172,6 +156,13 @@ std::string	Response::getContentType() {
 		return "text/plain";
 }
 
+void	Response::getDate() {
+
+	std::time_t currentTime = std::time(NULL);
+    std::string dateString1 = std::ctime(&currentTime);
+	Date = std::string(dateString1);
+}
+
 std::string	Response::getResponseHeader() {
 
 	std::string	headers("");
@@ -179,24 +170,27 @@ std::string	Response::getResponseHeader() {
 	std::stringstream	sss;
 
 
+	initErrorMsgs();
 	ss << code;
-	status_line = "HTTP/1.1" + ss.str() + getStatusMsg(code);
+	getDate();
+	status_line = "HTTP/1.1 " + ss.str() + " " + getStatusMsg(code) ;
 	sss << response_body.size();
 	if (type != "")
-		headers += "Content-Type: " + getContentType() + "\r\n";
-	headers += "Content-length: " + sss.str() + "\r\n";
+		headers += "Content-Type: " + getContentType() + CRLF;
+	headers += "Content-length: " + sss.str() + CRLF;
+	headers += "Date: " + Date + CRLF;
 	return (headers);
 }
 
 void	Response::initErrorFiles() {
 	//add the correct lien to the files
-	errorsFiles[400] = "../ErrorFiles/400.html";
-	errorsFiles[403] = "../ErrorFiles/403.html";
-	errorsFiles[404] = "../ErrorFiles/404.html";
-	errorsFiles[405] = "../ErrorFiles/405.html";
-	errorsFiles[410]  = "../ErrorFiles/410.html";
-	errorsFiles[413]  = "../ErrorFiles/413.html";
-	errorsFiles[500]  = "../ErrorFiles/500.html";
+	errorsFiles[400] = "./ErrorFiles/400.html";
+	errorsFiles[403] = "./ErrorFiles/403.html";
+	errorsFiles[404] = "./ErrorFiles/404.html";
+	errorsFiles[405] = "./ErrorFiles/405.html";
+	errorsFiles[410]  = "./ErrorFiles/410.html";
+	errorsFiles[413]  = "./ErrorFiles/413.html";
+	errorsFiles[500]  = "./ErrorFiles/500.html";
 }
 
 std::string	Response::readErrorsfiles(std::string path) {
@@ -221,20 +215,32 @@ std::string	Response::readErrorsfiles(std::string path) {
 
 
 int 			Response::makeResponse() {
+	// std::cout << "heeeeelllloo\n";
 	Req *req = dynamic_cast<Req *>(this);
 	int ret = 0;
-
+	this-> r = 0;
 	ret = GetMethod(*req);
 	return 1;
 }
 
+std::string	vectostring(std::vector<std::string> vec) {
 
+	// size_t size = vec.size();
 
+	std::string ret = "";
+	std::vector<std::string>::iterator it = vec.begin();
+	while (it != vec.end()) {
+
+		ret += *it;
+		it++;
+	}
+	return (ret);
+}
 
 int	Response::GetMethod(Req &obj) {
 	
 	getifQuerry(obj.getURL());
-	CGI	cgi(filePath, obj.getMETHOD(), type, filePath, obj.getBody(), Querry, obj.getBody().length());
+	CGI	cgi("./CGI-bin/php-cgi", obj.getMETHOD(), type, filePath, obj.getBody(), Querry, obj.getBody().length());
 	if (obj.getStep() == -1) {
 
 		code = 405;
@@ -247,8 +253,8 @@ int	Response::GetMethod(Req &obj) {
 		size_t	i = 0;
 		size_t	size = response.size() - 2;
 
-		response = executeCgi(_Cgipath);
-
+		_response = cgi.executeCGI();
+		response = vectostring(_response);
 		while (response.find("\r\n\r\n", i) != std::string::npos || response.find("\r\n\r\n", i) == i) {
 
 			std::string	resp = response.substr(i, response.find("\r\n", i) - i);
@@ -265,15 +271,10 @@ int	Response::GetMethod(Req &obj) {
 	}
 	else if (code == 200)
 		code = readcontent();
-	else if (code == 404)
+	if (code == 404)
 		response_body = readErrorsfiles(errorsFiles[code]);
 	if (code == 500)
 		response_body = readErrorsfiles(errorsFiles[code]);
 	response_header = getResponseHeader();
 	return code;
 }
-
-// int	Response::DeletMethod(Req &obj) {
-	
-	
-// }

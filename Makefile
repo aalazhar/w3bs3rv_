@@ -8,10 +8,10 @@ CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 OBJ_FILE = OBJ/
 FOBJ = OBJ
 
-HEADERS = $(addprefix Headers/, Headers.hpp  webServer.hpp Server.hpp RequestClass.hpp parserObjectU.hpp)
+HEADERS = $(addprefix Headers/, Headers.hpp  webServer.hpp Server.hpp RequestClass.hpp parserObjectU.hpp CGI.hpp Response.hpp)
 
 SRC_FILE = SRC/
-SRC =  webServer.cpp Server.cpp RequestClass.cpp parserObjectU.cpp main2.cpp
+SRC =  webServer.cpp Server.cpp RequestClass.cpp parserObjectU.cpp CGI.cpp Response.cpp main.cpp
 
 OBJS = $(addprefix $(OBJ_FILE),  $(SRC:%.cpp=%.o))
 

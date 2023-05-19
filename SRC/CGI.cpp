@@ -6,7 +6,7 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:56:14 by aalazhar          #+#    #+#             */
-/*   Updated: 2023/05/15 18:27:18 by hameur           ###   ########.fr       */
+/*   Updated: 2023/05/19 14:05:15 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ CGI::CGI(std::string fileName_, std::string method_, \
 		while (it != envMap.end()){
 			this->env[i] = putEnvValues(it->first, it->second);
 			test.push_back(std::string(this->env[i]));
-			std::cout << "----- --- " << this->env[i] <<std::endl;
+			// std::cout << "----- --- " << this->env[i] <<std::endl;
 			it ++;
 			i++;
 		}

@@ -41,3 +41,58 @@ void Server::testConnection(const int& test, const std::string& msg){
 		exit(EXIT_FAILURE);
     }
 }
+
+void Server::printIt(){
+    _ClientMap::iterator it = Cmap.begin();
+    for(; it != Cmap.end(); it++){
+        std::cout << "Server[" << sockFd << "] == client fd = " << it->first <<std::endl;
+    }
+}
+
+void Server::eraseClient(int fd){
+    std::cout <<  this->Cmap.size() << std::endl;
+    _ClientMap::iterator it = this->Cmap.begin();
+    std::cout << "hello there\n";
+    std::cout <<  it->first << " iikhan "<< std::endl;
+    std::cout << (it != this->Cmap.end()) << "    aaaaaa\n";
+            // std::cout << "kgvkhskghskjghbbse hb\n"<< *it->second;
+    if (it != this->Cmap.end()){
+                // Response *p = it->second;
+        Cmap.erase(it->first);
+    }
+    close(fd);
+        
+}
+
+void Server::addNewClient(int fd){
+    if (Cmap.find(fd) != Cmap.end())
+        std::cout << "tkhwiira\n";
+    Response res(this->ServerConfig);
+    std::cout << "size of cmap = " << Cmap.size() << std::endl;;
+    // try{
+        this->Cmap.insert(std::make_pair(fd, res));
+    // }
+    // catch(...){
+    //     std::cout << "ERRRRRRRRRROOOOOORRRR\n";
+    // }
+}
+
+struct config &Server::getConfig(){
+    return this->ServerConfig;
+}
+
+_ClientMap::iterator Server::getClientBegin() {
+    return this->Cmap.begin();
+}
+
+_ClientMap::iterator Server::getClientEnd() {
+    return this->Cmap.end();
+}
+
+_ClientMap &Server::getClientMap(){
+    return  this->Cmap;
+}
+
+int Server::getSock(){
+    return this->sockFd;
+}
