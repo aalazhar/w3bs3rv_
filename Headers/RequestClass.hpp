@@ -29,6 +29,8 @@ class Req{
         std::string HTTPV;
         std::string Body;
         int step;
+        int ServerFd;
+        int clientFd;
 
     public:
         void clear(){
@@ -39,7 +41,7 @@ class Req{
             this->Body = "";
             this->step = 0;
         };
-        Req();
+        Req(int, int);
         // Req(const std::string&);
         Req &operator=(const Req &);
         void append(const std::string&);
@@ -49,6 +51,7 @@ class Req{
         std::string &getHTTPV();
         std::string &getBody();
         int getStep(){return step;};
+        int getServerFd(){return this->ServerFd;}
         void parseErr(const int&);
         int parseHeaders(std::string&);
         int parseBody(std::string&);

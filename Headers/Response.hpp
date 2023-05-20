@@ -6,7 +6,7 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:37:50 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/19 14:03:34 by hameur           ###   ########.fr       */
+/*   Updated: 2023/05/20 23:05:56 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ private :
 public:
 	size_t getR(){return this->r;}
 	void setR(size_t R){this->r = R;}
-	Response(struct config &);
+	void setLocation(struct config &server);
+	Response(struct config &, int, int);
 	// Response(const	parserObject &);
 	~Response();
 	Response	&operator=(Req &);

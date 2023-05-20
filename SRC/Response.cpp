@@ -6,23 +6,69 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 21:20:47 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/19 14:04:46 by hameur           ###   ########.fr       */
+/*   Updated: 2023/05/20 23:15:01 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Headers/Response.hpp"
 
-Response::Response(struct config &server){
+void Response::setLocation(struct config &server){
 
-	this->Locations = server;
+	std::cout << "HAAAAAA \n";
+	this->Locations.a_meth = server.a_meth;
+	std::cout << "HAAAAAA1 \n";
+	this->Locations.allowed_m = server.allowed_m;
+	std::cout << "HAAAAAA2 \n";
+	this->Locations.autoIndex = server.autoIndex;
+	std::cout << "HAAAAAA3 \n";
+	for (std::vector<std::string>::iterator it = server.err_p.begin(); it != server.err_p.end();it++){
+		std::cout << "zeebi : " << *it << std::endl;
+	}
+	this->Locations.err_p = server.err_p;
+	std::cout << "HAAAAAA4 \n";
+	this->Locations.error_page = server.error_page;
+	std::cout << "HAAAAAA5 \n";
+	this->Locations.index = server.index;
+	std::cout << "HAAAAAA6 \n";
+	this->Locations.listen = server.listen;
+	std::cout << "HAAAAAA7 \n";
+	this->Locations.lsten = server.lsten;
+	std::cout << "HAAAAAA8 \n";
+	this->Locations.port = server.port;
+	std::cout << "HAAAAAA \n";
+	this->Locations.pRoot = server.pRoot;
+	std::cout << "HAAAAAA \n";
+	this->Locations.s_name = server.s_name;
+	std::cout << "HAAAAAA \n";
+	this->Locations.s_names = server.s_names;
+	std::cout << "HAAAAAA \n";
+	this->Locations.upload = server.upload;
+	std::cout << "HAAAAAA \n";
+	this->Locations.uploads = server.uploads;
+	std::cout << "HAAAAAA \n";
+	this->Locations.vect = server.vect;
+	std::cout << "HAAAAAA \n";
+}
+
+
+Response::Response(struct config &server, int serverfd, int clientfd) :Req(serverfd, clientfd){
+	std::cout << "heloo1\n";
+	// this->Locations = server;
+	this->setLocation(server);
+	std::cout << "heloo2\n";
 	code = 200;
+	std::cout << "heloo3\n";
 	AllowedM = server.allowed_m;
+	std::cout << "heloo4\n";
 	if (Locations.pRoot != "")	
 		root = Locations.pRoot;
+	std::cout << "heloo5\n";
 	if (server.autoIndex == "on")
 		autoInx = true;
 	else
 		autoInx = false;
+	std::cout << "heloo\n";
+	this->r = 0;
 }
 
 Response::~Response() {

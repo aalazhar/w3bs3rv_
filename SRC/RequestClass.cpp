@@ -1,7 +1,9 @@
 #include "../Headers/RequestClass.hpp"
 
-Req::Req(){
+Req::Req(int serverfd, int clientfd){
     this->step = 0;
+    this->ServerFd = serverfd;
+    this->clientFd = clientfd;
 }
 
 

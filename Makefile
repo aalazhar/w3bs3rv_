@@ -2,7 +2,7 @@ NAME = webServ
 
 CC = c++
 
-CPPFLAGS = -Wall -Werror -Wextra -std=c++98
+CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
 
 OBJ_FILE = OBJ/

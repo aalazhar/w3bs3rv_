@@ -1,5 +1,27 @@
 #include "../Headers/webServer.hpp"
 #define MAXEVENT 64
+
+webServ::webServ(const std::string &filename){
+    parserObject obj(filename);
+    try{
+        obj.open_config_file();
+
+    }catch(...){
+        exit(1);
+    }
+    this->Servers.clear();
+    creatServers(obj);
+}
+
+void webServ::creatServers(parserObject &obj){
+    std::vector<config>::iterator it = obj.getItBegin();
+    for (;it != obj.getItend(); it++){
+        Server s(*it);
+		s.creatSocket();
+        this->Servers.push_back(s);
+    }
+}
+
 void ft_err(){
     exit(1);
 }
@@ -10,22 +32,6 @@ void webServ::keventUP(int kq, int fd, int filter, int flag){
     EV_SET(&ev, fd, filter, flag, 0, 0, NULL);
     testConnection (kevent(kq, &ev, 1, NULL, 0, NULL), "FAILDE ADD THE FD TO KEVENT");
 }
-
-// int checkConfig(config &c){
-//     (void)c;
-//     return 0;
-// }
-
-// void checkObj(parserObject &obj){
-//     std::vector<config>::iterator it = obj.getItBegin();
-//     while (it != obj.getItend()){
-//         if (checkConfig(*it) < 0)
-//             ft_err();
-//         it++;
-//     }
-
-// }
-
 
 
 std::string webServ::storeClientIP(int clientSocket) {
@@ -55,38 +61,12 @@ std::string webServ::storeClientIP(int clientSocket) {
     }
 }
 
-void webServ::creatServers(parserObject &obj){
-    std::vector<config>::iterator it = obj.getItBegin();
-    for (;it != obj.getItend(); it++){
-        Server s(*it);
-        std::cout << "zbiiiiii " <<  s.creatSocket() << "\n";
-        this->Servers.push_back(s);
-        // this->_mySrvs.insert(std::make_pair(s.creatSocket(),s));
-    }
-}
-
-
-webServ::webServ(const std::string &filename){
-    parserObject obj(filename);
-    try{
-        obj.open_config_file();
-
-    }catch(...){
-        exit(1);
-    }
-    this->Servers.clear();
-    creatServers(obj);
-}
-
-
-
-
 void webServ::lunche(){
     int kq = kqueue();
-    for (ServerVec::iterator it = getItbegin(); it != getItend(); it++)
+    for (ServerVec::iterator it = this->Servers.begin(); it != this->Servers.end(); it++)
         keventUP(kq, it->getSock(), EVFILT_READ, EV_ADD);
     
-    int clientSock = 0;
+    // int clientSock = 0;
     while (true){
         struct timespec timeout;
         timeout.tv_sec = TIMEOUT;
@@ -96,7 +76,7 @@ void webServ::lunche(){
         for (int i = 0; i < n_event; i++)
         {
             int fd = events[i].ident;
-            ServerVec::iterator itS = this->getServClien(fd);
+            // ServerVec::iterator itS = this->getServClien(fd);
             if (events[i].flags & EV_EOF)
             {
                 std::cout << "----EOF-----\n";
@@ -104,12 +84,17 @@ void webServ::lunche(){
 
                 std::cout <<"client "<< fd << " is disconnected\n";
                 // itS->second.eraseClient(fd);
+                    Cmap.erase(fd);
+                    close(fd);
 
                 std::cout << "----END_EOF-----\n";
             }
-            else if ( itS != this->getItend() )
-            { //new client 
-                if (acceptNewCl(kq, clientSock, itS) < 0)
+            else if ( this->ifServer(fd) )
+            { //new client
+                // std::cout << "fd is serfer\n";
+				// itS = this->getServer(fd);
+                // int ServerFD = 
+                if (acceptNewCl(kq, fd) < 0)
                     continue;
             }
             else if (events[i].filter == EVFILT_READ) // else if (read data)
@@ -123,14 +108,24 @@ void webServ::lunche(){
                     continue;
             }
         }
-        this->Timeout();
+        // this->Timeout();
     }
-
 }
 
-void webServ::Timeout(){
+// int Server::getServerFd(int fd) {
+    
+//     _ClientMap pp;
 
-}
+//     std::map<int, Response> it;
+//     if (it = pp.find(fd) != pp.end())
+
+//     it->first;
+// }
+
+
+// void webServ::Timeout(){
+
+// }
 
 
 
@@ -143,51 +138,50 @@ void webServ::testConnection(const int& test, const std::string& msg){
 }
 
 
-int webServ::acceptNewCl(int kq, int& clientSock, ServerVec::iterator &Server){
+int webServ::acceptNewCl(int kq, int ServerSock){
     std::cout << "\n-------accepteNewCl-------\n";
+    int clientSock;
     struct sockaddr_in client_addr;
-    std::cout << "server n = " << Server->getSock() << "map size = " << Server->getClientMap().size() << "\n";
 	socklen_t client_addr_len = sizeof(client_addr);
-    clientSock = accept(Server->getSock(), (struct sockaddr*)&client_addr, &client_addr_len);
-    testConnection(clientSock, "accepte a new client");
-    std::cout << "fd = " << clientSock << "  IP = " << this->storeClientIP(clientSock)<< "\n";
-    try{
-        Server->addNewClient(clientSock);
-    }catch(...){
-        std::cout << "errrrrror\n";
+    clientSock = accept(ServerSock, (struct sockaddr*)&client_addr, &client_addr_len);
+    size_t i = 0;
+    while(i < Servers.size()){
+        if (Servers[i].getSock() == ServerSock)
+            break;
     }
-    std::cout << "server n = " << Server->getSock() << " map size = " << Server->getClientMap().size() << "\n";
+    std::cout << " CLientSock = " << clientSock << "\n";
+    Response rs(Servers[i].getConfig(), ServerSock, clientSock);
+    std::cout << "waa zzeeeb\n";
+    testConnection(clientSock, "accepte a new client");
+    // try{
+        this->Cmap.insert(std::make_pair(clientSock, rs));
+    // }catch(...){
+    //     std::cout << "errrrrror\n";
+    // }
     keventUP(kq, clientSock, EVFILT_READ, EV_ADD);
-
-	//add the new client socket to the kqueue
-	// struct kevent evSet;
-	// EV_SET(&evSet, clientSock, EVFILT_READ, EV_ADD, 0, 0, NULL);
-	// if (kevent(kq, &evSet, 1, NULL, 0, NULL) < 0)
-    //     return std::cerr << "adding client socket to kqueue\n", close(clientSock), -1;
-    // keventUP(kq, clientSock, EVFILT_READ, EV_ADD);
-    // Server->getClientMap().insert(std::pair<int, Response *>(clientSock, res));
-
     std::cout << "----Accepted new client connection on socket----\n";
     return 0;
 }
 
 int webServ::sendData(int &kq,int& fd, struct kevent &event){
     std::cout << "\n------send data---------\n";
-    std::cout << "fd = " << fd << std::endl;
-    std::cout << "allowed byte to write : " << event.data << std::endl;
 
-    ServerVec::iterator Server = getServClien(fd);
-    std::cout << "server n = " << Server->getSock() << "map size = " << Server->getClientMap().size() << "\n";
-    _ClientMap _clientMap = Server->getClientMap();
-    Response &res = _clientMap.find(fd)->second;
+    // ServerVec::iterator Server = getServClien(fd);
+    int ServerFd = Cmap.find(fd)->second.getServerFd();
+    size_t i = 0;
+    for(; i < Servers.size(); i++){
+        if (Servers[i].getSock() == ServerFd)
+            break;;
+    }
+    std::cout << "server n = " << Servers[i].getSock() << "map size = " << this->Cmap.size() << "\n";
+    Response &res = this->Cmap.find(fd)->second;
     std::cout << "-----request : ------\n" << *dynamic_cast<Req*>(&res) << "\n------------\n";
     if (res.getR() == 0)
         res.makeResponse();
-    // char *str[event.data];
-    std::cout << *dynamic_cast<Req*>(&res) << "--------------\n";
+    std::cout << "------------\n";
     std::string response = res.getStatusLine() + CRLF + res.getheaders() + CRLF + res.getResponse_body();
-    std::cout << "---RESPONS---\n" << response << "\n------------\n";
-    
+    std::cout << "---RESPONS---\n| " << response << "|\n------------\n";
+    std::cout << "r = " << res.getR() << std::endl;
     int length = event.data;
     const char *buff;
     if (res.getR() < response.length())
@@ -196,11 +190,11 @@ int webServ::sendData(int &kq,int& fd, struct kevent &event){
     if (send(fd, response.c_str(), length, 0) < 0)
         std::cout << "send() < 0\n";
     res.setR(res.getR() + length);
-    // std::cout << (res.getR() > response.length()) << "    lenght" << length << " R" << res.getR() << "\n";
     if (res.getR() > response.length())
     {
         keventUP(kq, fd, EVFILT_WRITE, EV_DISABLE);
         keventUP(kq, fd, EVFILT_READ, EV_CLEAR | EV_ENABLE | EV_ADD);
+        res.clear();
         // Server->eraseClient(fd);
     }
     else{
@@ -213,9 +207,15 @@ int webServ::sendData(int &kq,int& fd, struct kevent &event){
 
 int webServ::readData(int &kq, int& fd, struct kevent &event){
     std::cout << "\n------read data---------\n";
-    ServerVec::iterator Server = getServClien(fd);
-    Req r;
-    std::cout << "server n = " << Server->getSock() << "map size = " << Server->getClientMap().size() << "\n" ;
+    // ServerVec::iterator Server = getServClien(fd);
+    int ServerFd = Cmap.find(fd)->second.getServerFd();
+    size_t i = 0;
+    for(; i < Servers.size(); i++){
+        if (Servers[i].getSock() == ServerFd)
+            break;;
+    }
+    // Req *r;
+    std::cout << "server n = " << Servers[i].getSock() << "map size = " << this->Cmap.size() << "\n" ;
     char buffer[event.data];
     // _ClientMap m;
     std::cout << "fd = " << fd  << "   size : " << event.data << std::endl;
@@ -228,8 +228,8 @@ int webServ::readData(int &kq, int& fd, struct kevent &event){
 		else
 			std::cout << "Error receving data from client\n";
 		//erase client  from _map
-        std::cout << "aaaaaaa\n";
-        Server->eraseClient(fd);
+        Cmap.erase(fd);
+        // Server->eraseClient(fd);
         return (-1);
     }
     else
@@ -237,13 +237,12 @@ int webServ::readData(int &kq, int& fd, struct kevent &event){
         buffer[event.data] = 0;
         std::string req(buffer); 
         //append the read string in the request class
-        Req r = Server->getClientMap().find(fd)->second;
-        r.append(req);
-        std::cout << "bababababaababa\n";
-        std::cout << r;
-        
+        Cmap.find(fd)->second.append(req);
+        // r.append(req);
+        std::cout << *dynamic_cast<Req *>(&Cmap.find(fd)->second) << std::endl;;
     }
-    if (r.getStep() == DONE)
+        std::cout << "r = " << Cmap.find(fd)->second.getStep() << std::endl;;
+    if (Cmap.find(fd)->second.getStep() == DONE)
     {
 		keventUP(kq, fd, EVFILT_READ, EV_DISABLE);
         keventUP(kq, fd, EVFILT_WRITE, EV_CLEAR|EV_ENABLE | EV_ADD);
@@ -253,22 +252,30 @@ int webServ::readData(int &kq, int& fd, struct kevent &event){
 }
 
 
-std::vector<Server>::iterator webServ::getItbegin(){
-    return this->Servers.begin();
-}
+// ServerVec::iterator webServ::getItbegin(){
+//     return this->Servers.begin();
+// }
 
-std::vector<Server>::iterator webServ::getItend(){
-    return this->Servers.end();
-}
+// ServerVec::iterator webServ::getItend(){
+//     return this->Servers.end();
+// }
 
 std::vector<Server> &webServ::getServers(){
     return this->Servers;
 }
 
-std::vector<Server>::iterator webServ::getServClien(int fd){
-    for(std::vector<Server>::iterator it = this->Servers.begin();it != this->Servers.end(); it++){
-        if (it->getClientMap().find(fd) != it->getClientMap().end())
-            return  it;
-    }
-    return this->getItend();
-}
+// int webServ::getServClien(int fd){
+//     // for(ServerVec::iterator it = this->Servers.begin(); it != this->Servers.end(); it++){
+
+//     // }
+//     ServerVec::iterator it = this->Servers.begin();
+//     for(;it != this->Servers.end(); it++){
+//         std::cout << "server fd = " << it->getSock() << std::endl;
+//         std::cout << "fd = " << fd << "    server size -> " << this->Servers.size()  << std::endl;
+//         if (it->getClientMap().find(fd) != it->getClientMap().end())
+//             return  (std::cout << "gat client Succes\n",it);
+//     }
+//     std::cout << "get Client Faild\n";
+//     return it;
+// }
+

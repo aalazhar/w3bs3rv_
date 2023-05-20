@@ -20,6 +20,7 @@ struct loca{
 };
 
 struct config{
+
     int port;
     std::string listen;
     std::string pRoot;
