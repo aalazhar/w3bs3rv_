@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:37:50 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/18 16:18:28 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/18 19:55:33 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,5 @@ public:
 	std::string		getContentType();
 	int 			makeResponse();
 	void			getDate();
+	void			resetvalues();
 };

@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 21:20:47 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/18 16:47:18 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/20 00:11:42 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,32 @@
 
 Response::Response(struct config &server) {
 
+	initErrorFiles();
 	this->Locations = server;
 	code = 200;
 	AllowedM = server.allowed_m;
 	if (Locations.pRoot != "")	
 		root = Locations.pRoot;
-	else
-		root = "/Users/megrisse/Desktop/webserv";
 	if (server.autoIndex == "on")
 		autoInx = true;
 	else
 		autoInx = false;
 }
 
+void	Response::resetvalues() {
+
+	this->Querry = "";
+	this->filePath = "";
+	this->code = 0;
+	this->status_line = "";
+	this->response_header = "";
+	this->response_body = "";
+	this->type = "";
+}
+
 Response::~Response() {
 
-	
+	std::cout << "KHREEEEEEEEEEEEJ \n";
 }
 
 void	Response::initResponse() {
@@ -92,7 +102,7 @@ int	Response::readcontent() {
 
 		file.open(path.c_str(), std::ifstream::in);
 		if (!file.is_open()) {
-			
+
 			response_body = readErrorsfiles(errorsFiles[403]);
 			return 403;
 		}
@@ -199,20 +209,27 @@ std::string	Response::readErrorsfiles(std::string path) {
 
 	std::stringstream	respon;
 	std::ofstream		file;
-	Response::initErrorFiles();
 
+	std::cout << "3ALAM KHOR \n";
 	if (checkpath(path)) {
 		
 		file.open(path.c_str(), std::ifstream::in);
-		if (file.is_open() == false)
+		if (!file.is_open()) {
+			
+			std::cout << "LALALA HDSHI M3QOOOOOL1 \n";
 			return "<!DOCTYPE html><html><title> 4444 Error: Error File Not Found </title><body><div><h1> 4444 Error File Not Found </h1><p> We're sorry, the page you requested could not be found.</p></div></body></html>";
+		}
 		respon << file.rdbuf();
 		file.close();
 		type = "text/html";
+		// std::cout << "TTTTTTT : " << respon.str() << std::endl; 
 		return (respon.str());
 	}
-	else
+	else {
+		
+		std::cout << "LALALA HDSHI M3QOOOOOL2 \n";
 		return "<!DOCTYPE html><html><title> 4444 Error: Error File Not Found </title><body><div><h1> 4444 Error File Not Found </h1><p> We're sorry, the page you requested could not be found.</p></div></body></html>";
+	}
 }
 
 
@@ -222,6 +239,8 @@ int 			Response::makeResponse() {
 	this-> r = 0;
 
 	ret = GetMethod(*req);
+	std::cout << "HNA HNA :" << response_body << " ++++++++++-" << std::endl;
+	// resetvalues();
 	return 1;
 }
 
