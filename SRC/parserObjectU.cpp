@@ -250,7 +250,7 @@ void parserObject::setDefaultsDirectives(struct config *cf, int *tab){
             switch (i)
             {
                 case 0 :
-                    cf->pRoot = "Default/path";
+                    cf->pRoot = "www";
                     break;
                 case 1 :
                     cf->lsten.push_back("0.0.0.0");
@@ -675,7 +675,7 @@ struct config parserObject::get_location_vect(){
 }
 
 parserObject::~parserObject(){
-    
+    std::cout << "destr\n";
 }
 
 std::vector<config> parserObject::getServerConfig(){

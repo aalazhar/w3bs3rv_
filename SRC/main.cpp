@@ -4,7 +4,7 @@
 
 
 int main(int ac, char **av){
-    if (ac != 2 && ac != 1)
+    if (ac != 2 and ac != 1)
         return std::cerr << "ERROR PARAM\n", 1;
     try{
         std::string arg;
@@ -13,6 +13,7 @@ int main(int ac, char **av){
         else
             arg = "UTILS/default.config";
         webServ webserver(arg);
+        std::cout << "zzzzzzz\n";
         webserver.lunche();
     }catch(const std::exception &ex){
         std::cerr << ex.what() << std::endl;

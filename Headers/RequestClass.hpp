@@ -28,6 +28,7 @@ class Req{
         std::string URL;
         std::string HTTPV;
         std::string Body;
+        time_t time;
         int step;
         int ServerFd;
         int clientFd;
@@ -58,7 +59,8 @@ class Req{
         int checkStep();
         int checkMETHOD(const std::string&);
         _map getHEADERS();
-        
+        void updateTime();
+        time_t getTime();
         void    printRe(){
             iter_map iter = HEADERS.begin();
             for (; iter != HEADERS.end(); iter++)

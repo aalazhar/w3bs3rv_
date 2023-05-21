@@ -4,6 +4,7 @@ Req::Req(int serverfd, int clientfd){
     this->step = 0;
     this->ServerFd = serverfd;
     this->clientFd = clientfd;
+    this->updateTime();
 }
 
 
@@ -22,6 +23,12 @@ void Req::append(const std::string &rq){
         }
     }
 
+}
+
+time_t Req::getTime(){ return this->time; }
+
+void Req::updateTime(){
+    this->time = std::time(NULL);
 }
 
 int Req::parseBody(std::string &s){
