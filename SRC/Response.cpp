@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Response.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
+/*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 21:20:47 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/21 13:55:35 by hameur           ###   ########.fr       */
+/*   Updated: 2023/05/21 15:36:28 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ Response::Response(struct config &server, int serverfd, int clientfd) :Req(serve
 	else
 		autoInx = false;
 	this->r = 0;
+	initErrorFiles();
 }
 
 Response::~Response() {
@@ -108,12 +109,14 @@ int	Response::readcontent() {
 	response = "";
 	path = root + this->getURL();
 	std::cout << "test : " << path << std::endl;
+	std::cout << "ALA MA T7AMEQNISH :" << errorsFiles[403] << std::endl;
 	if (checkpath(path)) {
 
 		file.open(path.c_str(), std::ifstream::in);
 		if (!file.is_open()) {
 			
 			response_body = readErrorsfiles(errorsFiles[403]);
+			std::cout << "LALALA HADSHI MASHI M3QOOOOL \n";
 			return 403;
 		}
 		resp << file.rdbuf();
@@ -219,10 +222,11 @@ std::string	Response::readErrorsfiles(std::string path) {
 
 	std::stringstream	respon;
 	std::ofstream		file;
-	Response::initErrorFiles();
 
+	std::cout << "HA L PATH DYAL L ERROR FILE : " << path << std::endl;
 	if (checkpath(path)) {
 		
+		std::cout << "LQA L ERROR FILE W DKHAL \n";
 		file.open(path.c_str(), std::ifstream::in);
 		if (file.is_open() == false)
 			return "<!DOCTYPE html><html><title> 4444 Error: Error File Not Found </title><body><div><h1> 4444 Error File Not Found </h1><p> We're sorry, the page you requested could not be found.</p></div></body></html>";
@@ -231,8 +235,11 @@ std::string	Response::readErrorsfiles(std::string path) {
 		type = "text/html";
 		return (respon.str());
 	}
-	else
+	else {
+		
+		std::cout << "MALQASH L ERROR FILE W MADKHALSH \n";
 		return "<!DOCTYPE html><html><title> 4444 Error: Error File Not Found </title><body><div><h1> 4444 Error File Not Found </h1><p> We're sorry, the page you requested could not be found.</p></div></body></html>";
+	}
 }
 
 
