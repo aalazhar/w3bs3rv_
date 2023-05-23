@@ -72,17 +72,17 @@ std::string webServ::storeClientIP(int clientSocket) {
 
 void webServ::lunche(){
     int kq = kqueue();
+	struct kevent events[MAXEVENT];
+    int n_event;
+    int fd;
     for (ServerVec::iterator it = this->Servers.begin(); it != this->Servers.end(); it++)
         keventUP(kq, it->getSock(), EVFILT_READ, EV_ADD);
     
-    // int clientSock = 0;
     while (true){
-		struct kevent events[MAXEVENT];
-		int n_event = kevent(kq, NULL, 0, events, MAXEVENT, NULL);
+		n_event = kevent(kq, NULL, 0, events, MAXEVENT, NULL);
         for (int i = 0; i < n_event; i++)
         {
-            int fd = events[i].ident;
-            // ServerVec::iterator itS = this->getServClien(fd);
+            fd = events[i].ident;
             if (events[i].flags & EV_EOF)
             {
                 std::cout << "----EOF-----\n";
@@ -93,18 +93,13 @@ void webServ::lunche(){
 
                 std::cout << "----END_EOF-----\n";
             }
-            else if ( this->ifServer(fd) )
-            { //new client
+            else if ( this->ifServer(fd) ){
                 if (acceptNewCl(kq, fd) < 0)
                     continue;
-            }
-            else if (events[i].filter == EVFILT_READ) // else if (read data)
-            {
+            }else if (events[i].filter == EVFILT_READ){
                 if (readData(kq ,fd, events[i]) < 0)
                     continue;;
-            } 
-            else if (events[i].filter == EVFILT_WRITE)
-            {
+            }else if (events[i].filter == EVFILT_WRITE){
                 if (sendData(kq, fd, events[i]) < 0)
                     continue;
             }
@@ -177,24 +172,27 @@ int webServ::sendData(int &kq,int& fd, struct kevent &event){
     // ServerVec::iterator Server = getServClien(fd);
     int ServerFd = Cmap.find(fd)->second.getServerFd();
     size_t i = 0;
+    Response &res = this->Cmap.find(fd)->second;
+    int length = event.data;
+    std::string response;
+    const char *buff;
+    
     for(; i < Servers.size(); i++){
         if (Servers[i].getSock() == ServerFd)
             break;;
     }
     std::cout << "server n = " << Servers[i].getSock() << "map size = " << this->Cmap.size() << "\n";
-    Response &res = this->Cmap.find(fd)->second;
     std::cout << "-----request : ------\n" << *dynamic_cast<Req*>(&res) << "\n------------\n";
     if (res.getR() == 0)
         res.makeResponse();
     std::cout << "------------\n";
-    std::string response = res.getStatusLine() + CRLF + res.getheaders() + CRLF + res.getResponse_body();
+    response = res.getStatusLine() + CRLF + res.getheaders() + CRLF + res.getResponse_body();
     std::cout << "---RESPONS---\n| " << response << "|\n------------\n";
     std::cout << "r = " << res.getR() << std::endl;
-    int length = event.data;
-    const char *buff;
+    std::cout << "response size : " << response.size() << std::endl;
     if (res.getR() < response.length())
         buff = &response.c_str()[res.getR()];
-        std::cout << "BUFF : " << buff <<std::endl;
+    std::cout << "BUFF : " << buff <<std::endl;
     if (send(fd, response.c_str(), length, 0) < 0)
         std::cout << "send() < 0\n";
     res.setR(res.getR() + length);
@@ -203,7 +201,6 @@ int webServ::sendData(int &kq,int& fd, struct kevent &event){
         keventUP(kq, fd, EVFILT_WRITE, EV_DISABLE);
         keventUP(kq, fd, EVFILT_READ, EV_CLEAR | EV_ENABLE | EV_ADD);
         res.clear();
-        // Server->eraseClient(fd);
     }
     else{
         keventUP(kq, fd, EVFILT_WRITE, EV_ENABLE);

@@ -6,7 +6,7 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 21:20:47 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/21 13:55:35 by hameur           ###   ########.fr       */
+/*   Updated: 2023/05/22 16:35:38 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,11 @@ int	Response::checkpath(std::string &path) {
 	}
 	return 0;
 }
+
+void Response::SendResponse(int kq,int fd, struct kevent &event){
+	
+}
+
 
 int	Response::readcontent() {
 
