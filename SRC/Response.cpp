@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 21:20:47 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/23 02:55:53 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/23 17:06:14 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,29 +55,17 @@ void	Response::resetvalues() {
 	this->status_line = "";
 	this->response_header = "";
 	this->fileData.clear();
+	this->_headers.clear();
+	file_size = 0;
+	headers_size = 0;
 	this->type = "";
+	this->clear();
 }
 
 Response::~Response() {
 
-	std::cout << "KHREEEEEEEEEEEEJ \n";
+	// std::cout << "KHREEEEEEEEEEEEJ \n";
 }
-
-// void	Response::initResponse() {
-
-// 	size_t pos = getMETHOD().find(AllowedM);
-
-// 	if (pos == std::string::npos)
-// 		code = 405;
-	
-// }
-
-// Response    &Response::operator=(Req &obj) {
-
-// 	// if (this != &obj)
-// 	// 	this->response_headers = obj.getHEADERS();
-// 	return (*this);
-// }
 
 int	Response::getifQuerry(std::string &url) {
 
@@ -100,7 +88,6 @@ int	Response::checkpath(std::string &path) {
 
 	if (!stat(path.c_str(), &file_st)) {
 
-		file_size = file_st.st_size;
 		if (S_ISREG(file_st.st_mode))
 			return 1;
 		else if (S_ISDIR(file_st.st_mode))
@@ -113,7 +100,6 @@ int	Response::checkpath(std::string &path) {
 
 void	Response::Readimage(std::string path) {
 
-	std::cout << "DAZ MN IMAGE = " << path << std::endl;
 	std::ifstream file(path, std::ios::binary);
 	if (!file.is_open()) {
 
@@ -125,8 +111,6 @@ void	Response::Readimage(std::string path) {
 	file_size = fileSize;
     file.seekg(0, std::ios::beg);
 	std::vector<char>	Data(fileSize + 2);
-	Data.push_back('\r');
-	Data.push_back('\n');
 	file.read(Data.data(), fileSize);
 	fileData = Data;
 	file.close();
@@ -136,20 +120,18 @@ void	Response::printvector(std::vector<char> vec, int key) {
 
 
 	std::vector<char>::iterator it = vec.begin();
-	if (key == 0)
-		std::cout << "VEC0 = ";
-	else
-		std::cout << "VEC1 = ";
+	std::cout << "---------------------------------------------------------\n";
+	std::cout << "VECTOR " << key << " :\n";
 	for (; it != vec.end(); it++) {
 
 		std::cout << *it;
 	}
 	std::cout << std::endl;
+	std::cout << "---------------------------------------------------------\n";
 }
 
 void	Response::ReadFile(std::string path) {
 
-	std::cout << "DAZ MN FILE = " << path << std::endl;
 	std::ifstream		file;
 
 	file.open(path.c_str(), std::ios::in);
@@ -158,14 +140,11 @@ void	Response::ReadFile(std::string path) {
 		code = 403;
 		readErrorsfiles(errorsFiles[code]);
 	}
-	std::cout << "HNAAAAAAAAAA \n";
 	file.seekg(0, std::ios::end);
     std::streamsize fileSize = file.tellg();
 	file_size = fileSize;
     file.seekg(0, std::ios::beg);
 	std::vector<char>	Data(fileSize + 2);
-	Data.push_back('\r');
-	Data.push_back('\n');
 	file.read(Data.data(), fileSize);
 	fileData = Data;
 	file.close();
@@ -262,22 +241,14 @@ std::string	Response::getResponseHeader() {
 	initErrorMsgs();
 	ss << code;
 	getDate();
-	// std::map<std::string, std::string> mm = this->getHEADERS();
-	// std::map<std::string, std::string>::iterator it = mm.find("Connection");
-	// if (it != mm.end())
-	// 	std::string	conct = "Connection: " + it->second;
 	status_line = "HTTP/1.1 " + ss.str() + " " + getStatusMsg(code) + CRLF;
 	sss << getFileSize();
-	// headers += status_line;
 	headers = status_line + response_header;
-	if (type != "" or response_header.find("Content-Type: ") == std::string::npos)
+	if (type != "" and type.length() <= 4)
 		headers += "Content-Type: " + getContentType() + CRLF;
 	headers += "Content-length: " + sss.str() + CRLF;
 	headers += "Date: " + Date + CRLF;
-	std::cout << "FILE SIZE : " << file_size << std::endl;
-	std::cout << "HEADERS SIZE : " << headers.length() << std::endl;
 	headers_size = headers.length();
-	std::cout << "HEADERS B STATUS : " << headers << std::endl; 
 	return (headers);
 }
 
@@ -315,15 +286,6 @@ void	Response::readErrorsfiles(std::string path) {
 		// return "<!DOCTYPE html><html><title> 4444 Error: Error File Not Found </title><body><div><h1> 4444 Error File Not Found </h1><p> We're sorry, the page you requested could not be found.</p></div></body></html>";
 }
 
-// int	Response::checkmethod(std::string Method) {
-
-// 	for (std::vector<std::string>::iterator it = Locations.a_meth.begin(); it != Locations.a_meth.end(); it++) {
-
-// 		if (Method == *it)
-// 			return 0;
-// 	}
-// 	return 1;
-// }
 
 void	Response::buildResponse(Req &obj, int kq) {
 
@@ -343,28 +305,19 @@ void	Response::buildResponse(Req &obj, int kq) {
 }
 
 void 			Response::makeResponse(Req &req, int kq) {
-	// std::cout << "heeeeelllloo\n";
-	// Req *req = dynamic_cast<Req *>(this);
+
 	int ret = 0;
 	this->r = 0;
 
 	if (req.getMETHOD() == "GET")
 		ret = GetMethod(req);
-	// else if (req.getMETHOD() == "POST")
-	// 	ret = PostMethod(req);
-	// else if (req.getMETHOD() == "DELETE")
-	// 	ret = DeletMethod(req);
-	std::cout << "HEADS : " << getheaders() << std::endl;
-	printvector(getFileData(), 0);
 	sendResponse(req.getClientFd(), kq);
-	// std::cout << "HEADS : " << getFileData() << std::endl;
-	printvector(getFileData(), 1);
-	// resetvalues();
+	std:: cout << "SALA SEND \n";
 }
 
 void	Response::sendHeaders(int fd, std::string headers) {
 
-	std::cout << "HEADERS : " << headers <<std::endl;
+	std::cout << "HEADERS : " << headers << "------------------------" << " SIZEh = " << headers.length() << std::endl;;
 	if (send(fd, headers.c_str(), headers.length(), 0) < 0)
 		code = 500;
 	this->setR(getHeadersSize());
@@ -373,10 +326,11 @@ void	Response::sendHeaders(int fd, std::string headers) {
 
 void	Response::sendBody(int fd, char *data, size_t size) {
 
-	std::cout << "BODY : " << data << std::endl;
+	std::cout << "BODY : " << data << "----------------------" << " SIZEb = " << strlen(data) << std::endl;
 	std::cout << "Body R 0=== " << getR() << std::endl;
-	if (send(fd, data, size, 0) < 0)
+	if (send(fd, data, size - 1, 0) < 0)
 		code = 500;
+	std::cout << "FILE SIZE = " << file_size <<std::endl;
 	this->setR(this->getR() + getFileSize());
 	std::cout << "Body R 1=== " << getR() << std::endl;
 }
@@ -399,24 +353,25 @@ void Response::keventUP(int kq, int fd, int filter, int flag){
 
 void	Response::sendResponse(int Fd, int kq) {
 
-	sendHeaders(Fd, this->getheaders());
-	sendBody(Fd, this->getFileData().data(), getFileSize());
+	_headers.insert(_headers.end(), fileData.begin(), fileData.end());
+	std::cout << "SIZE = " << _headers.size() << std::endl;
+	std::cout << "KOLSHI = " << fileData.size() + response_header.length() << std::endl;
+	if (send(Fd, _headers.data(), _headers.size(), 0) < 0)
+		code = 500;
+	this->setR(_headers.size());
 	if (getR() >= getHeadersSize() + getFileSize()) {
 
 		keventUP(kq, Fd, EVFILT_WRITE, EV_DISABLE);
 		keventUP(kq, Fd, EVFILT_READ, EV_CLEAR | EV_ENABLE | EV_ADD);
 		this->clear();
-		// resetvalues();
+		resetvalues();
 	}
 	else
 		keventUP(kq, Fd, EVFILT_WRITE, EV_ENABLE);
 	this->updateTime();
-	std::cout << "SENDDDDDDDD :::= " << Fd << std::endl;;
 }
 
 std::string	vectostring(std::vector<std::string> vec) {
-
-	// size_t size = vec.size();
 
 	std::string ret = "";
 	std::vector<std::string>::iterator it = vec.begin();
@@ -454,11 +409,8 @@ std::string vectorToString(const std::vector<std::string>& vec) {
 int	Response::GetMethod(Req &obj) {
 	std::vector<std::string> cgiBuff;
 	getifQuerry(obj.getURL());
-	CGI	cgi("/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php", obj.getMETHOD(), type, filePath, obj.getBody(), Querry, obj.getBody().length());
-	std::cout << "QUERRY : " << this->Querry << std::endl;
-	std::cout << "FilePath :" << this->filePath << std::endl;
+	CGI	cgi("/UTILS/fileCGI.php", obj.getMETHOD(), type, filePath, obj.getBody(), Querry, obj.getBody().length());
 	std::string tt = "";
-	// size_t pos = 0;
 	size_t j = 0;
 	while (j < filePath.size()){
 		if (filePath[j] == '.')
@@ -468,14 +420,12 @@ int	Response::GetMethod(Req &obj) {
 	
 	tt = filePath.erase(0, j + 1);
 	// tt = filePath.substr(filePath.rfind(".", pos) + 1, filePath.length());
-	std::cout << "TYPE :: " << tt << std::endl;
-	if (!checkCgipath(filePath) || tt == "php") {
+	if (!checkCgipath(filePath) or tt == "php" or tt == "py") {
 
 		size_t	i = 0;
 		size_t	size = response.size() - 2;
 		cgiBuff = cgi.executeCGI();
 		this->fileData = convertTocharVec(cgiBuff);
-		file_size = this->fileData.size();
 		response = vectorToString(cgiBuff);
 		while (response.find("\r\n\r\n", i) != std::string::npos || response.find("\r\n\r\n", i) == i) {
 
@@ -491,20 +441,20 @@ int	Response::GetMethod(Req &obj) {
 		while (response.find("\r\n", size) == size)
 			size -= 2;
 		response_body = response.substr(i, size - i);
-		std::cout << "response body" << response_body << std::endl;
-		std::cout << "response headers" << response_header << std::endl;
 		if (fileData.size() > 0)
 			fileData.clear();
 		for (size_t i = 0; i < response_body.length(); i++)
 			fileData.push_back(response_body[i]);
+		file_size = fileData.size();
 	}
 	else if (code == 200)
 		code = readcontent();
-	if (code == 500) {
-		
-		code = 500;
+	if (code == 500)
 		readErrorsfiles(errorsFiles[code]);
-	}
 	response_header = getResponseHeader();
+	if (_headers.size() > 1)
+		_headers.clear();
+	for (size_t i = 0; i < response_header.length(); i++)
+		_headers.push_back(response_header[i]);
 	return code;
 }

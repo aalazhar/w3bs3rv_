@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:37:50 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/22 20:42:42 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/23 15:14:13 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ private :
 	std::map<int, std::string>			errors;
 	std::map<int, std::string>			errorsFiles;
 	std::string							response;
-	std::vector<char>					_response;
 	std::string							type;
 	int									code;
 	std::string							Date;
@@ -56,6 +55,7 @@ private :
 	std::string							root;
 	size_t								headers_size;
 	size_t								file_size;
+	std::vector<char>					_headers;
 	std::vector<char>					fileData;
 
 public:

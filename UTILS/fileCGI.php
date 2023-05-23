@@ -1,8 +1,4 @@
 <?php
-
-    echo "------- hello ------";
-    echo "********************";
-    echo "------- hello ------";
     // header("Location: /index.html");
     // $name = $_SERVER['QUERY_STRING'];
     // $new_query_string = $name . '&ages=30' . '&name=argg' . '&aged=999';

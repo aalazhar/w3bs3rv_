@@ -4,265 +4,27 @@ zzzzzzz
 -------accepteNewCl-------
  CLientSock = 5
 waa zzeeeb
-KHREEEEEEEEEEEEJ 
-KHREEEEEEEEEEEEJ 
-KHREEEEEEEEEEEEJ 
 ----Accepted new client connection on socket----
-KHREEEEEEEEEEEEJ 
-
-------read data---------
-server n = 3map size = 1
-fd = 5   size : 699
-====step=3
-GET /fileCGI.php HTTP/1.1
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Cache-Control: max-age=0
-Connection: keep-alive
-Host: localhost:8080
-Sec-Fetch-Dest: document
-Sec-Fetch-Mode: navigate
-Sec-Fetch-Site: none
-Sec-Fetch-User: ?1
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-r = 3
---------finish read data---------
 
 -------accepteNewCl-------
  CLientSock = 6
 waa zzeeeb
-KHREEEEEEEEEEEEJ 
-KHREEEEEEEEEEEEJ 
-KHREEEEEEEEEEEEJ 
 ----Accepted new client connection on socket----
-KHREEEEEEEEEEEEJ 
-
-------send data---------
-server n = 3map size = 2
------request : ------
-====step=3
-GET /fileCGI.php HTTP/1.1
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Cache-Control: max-age=0
-Connection: keep-alive
-Host: localhost:8080
-Sec-Fetch-Dest: document
-Sec-Fetch-Mode: navigate
-Sec-Fetch-Site: none
-Sec-Fetch-User: ?1
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-------------
-QUERRY : 
-FilePath :/fileCGI.php
-TYPE :: php
-here
-X-Powered-By: PHP/8.1.12
-Content-type: text/html; charset=UTF-8
-
-------- hello ------********************------- hello ------<!DOCTYPE html>
-<html>
-    <head>
-        <style>
-            body {background-color: powderblue;}
-            h1   {color: blue;}
-            p    {color: red;}
-            </style>
-    </head>
-    <body>
-        
-        <h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-
-    
-
-    
-    
-</body>
-</html>
-
-response body
-------- hello ------********************------- hello ------<!DOCTYPE html>
-<html>
-    <head>
-        <style>
-            body {background-color: powderblue;}
-            h1   {color: blue;}
-            p    {color: red;}
-            </style>
-    </head>
-    <body>
-        
-        <h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-
-    
-
-    
-    
-</body>
-</html>
-
-
-response headersX-Powered-By: PHP/8.1.12
-Content-type: text/html; charset=UTF-8
-
-FILE SIZE : 789
-HEADERS SIZE : 163
-HEADERS B STATUS : HTTP/1.1 200 OK
-X-Powered-By: PHP/8.1.12
-Content-type: text/html; charset=UTF-8
-Content-Type: text/plain
-Content-length: 789
-Date: Tue May 23 02:55:34 2023
-
-
-HEADS : HTTP/1.1 200 OK
-X-Powered-By: PHP/8.1.12
-Content-type: text/html; charset=UTF-8
-Content-Type: text/plain
-Content-length: 789
-Date: Tue May 23 02:55:34 2023
-
-
-VEC0 = 
-------- hello ------********************------- hello ------<!DOCTYPE html>
-<html>
-    <head>
-        <style>
-            body {background-color: powderblue;}
-            h1   {color: blue;}
-            p    {color: red;}
-            </style>
-    </head>
-    <body>
-        
-        <h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-
-    
-
-    
-    
-</body>
-</html>
-
-
-HEADERS : HTTP/1.1 200 OK
-X-Powered-By: PHP/8.1.12
-Content-type: text/html; charset=UTF-8
-Content-Type: text/plain
-Content-length: 789
-Date: Tue May 23 02:55:34 2023
-
-
-headers R === 163
-BODY : 
-------- hello ------********************------- hello ------<!DOCTYPE html>
-<html>
-    <head>
-        <style>
-            body {background-color: powderblue;}
-            h1   {color: blue;}
-            p    {color: red;}
-            </style>
-    </head>
-    <body>
-        
-        <h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-
-    
-
-    
-    
-</body>
-</html>
-
-HELLO WORLD !!! SERVER MDF</h1>
-
-    
-
-    
-    
-</body>
-</html>
-
-
-Body R 0=== 163
-Body R 1=== 952
-SENDDDDDDDD :::= 5
-VEC1 = 
-------- hello ------********************------- hello ------<!DOCTYPE html>
-<html>
-    <head>
-        <style>
-            body {background-color: powderblue;}
-            h1   {color: blue;}
-            p    {color: red;}
-            </style>
-    </head>
-    <body>
-        
-        <h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-
-    
-
-    
-    
-</body>
-</html>
-
-
-LLLLLLL 
-------------
 
 ------read data---------
 server n = 3map size = 2
-fd = 5   size : 699
+fd = 5   size : 550
 ====step=3
-GET /fileCGI.php HTTP/1.1
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+GET /style.css HTTP/1.1
+Accept: text/css,*/*;q=0.1
 Accept-Encoding: gzip, deflate, br
 Accept-Language: en-US,en;q=0.9
-Cache-Control: max-age=0
 Connection: keep-alive
 Host: localhost:8080
-Sec-Fetch-Dest: document
-Sec-Fetch-Mode: navigate
-Sec-Fetch-Site: none
-Sec-Fetch-User: ?1
-Upgrade-Insecure-Requests: 1
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
 sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
 sec-ch-ua-mobile: ?0
@@ -276,18 +38,16 @@ r = 3
 server n = 3map size = 2
 -----request : ------
 ====step=3
-GET /fileCGI.php HTTP/1.1
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+GET /style.css HTTP/1.1
+Accept: text/css,*/*;q=0.1
 Accept-Encoding: gzip, deflate, br
 Accept-Language: en-US,en;q=0.9
-Cache-Control: max-age=0
 Connection: keep-alive
 Host: localhost:8080
-Sec-Fetch-Dest: document
-Sec-Fetch-Mode: navigate
-Sec-Fetch-Site: none
-Sec-Fetch-User: ?1
-Upgrade-Insecure-Requests: 1
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
 sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
 sec-ch-ua-mobile: ?0
@@ -295,215 +55,25 @@ sec-ch-ua-platform: "macOS"
 
 
 ------------
-QUERRY : 
-FilePath :/fileCGI.php
-TYPE :: php
-here
-X-Powered-By: PHP/8.1.12
-Content-type: text/html; charset=UTF-8
-
-------- hello ------********************------- hello ------<!DOCTYPE html>
-<html>
-    <head>
-        <style>
-            body {background-color: powderblue;}
-            h1   {color: blue;}
-            p    {color: red;}
-            </style>
-    </head>
-    <body>
-        
-        <h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-
-    
-
-    
-    
-</body>
-</html>
-
-response body
-------- hello ------********************------- hello ------<!DOCTYPE html>
-<html>
-    <head>
-        <style>
-            body {background-color: powderblue;}
-            h1   {color: blue;}
-            p    {color: red;}
-            </style>
-    </head>
-    <body>
-        
-        <h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-
-    
-
-    
-    
-</body>
-</html>
-response headersHTTP/1.1 200 OK
-X-Powered-By: PHP/8.1.12
-Content-type: text/html; charset=UTF-8
-Content-Type: text/plain
-Content-length: 789
-Date: Tue May 23 02:55:34 2023
-
-X-Powered-By: PHP/8.1.12
-Content-type: text/html; charset=UTF-8
-
-FILE SIZE : 789
-HEADERS SIZE : 326
-HEADERS B STATUS : HTTP/1.1 200 OK
-HTTP/1.1 200 OK
-X-Powered-By: PHP/8.1.12
-Content-type: text/html; charset=UTF-8
-Content-Type: text/plain
-Content-length: 789
-Date: Tue May 23 02:55:34 2023
-
-X-Powered-By: PHP/8.1.12
-Content-type: text/html; charset=UTF-8
-Content-Type: text/plain
-Content-length: 789
-Date: Tue May 23 02:55:34 2023
-
-
-HEADS : HTTP/1.1 200 OK
-HTTP/1.1 200 OK
-X-Powered-By: PHP/8.1.12
-Content-type: text/html; charset=UTF-8
-Content-Type: text/plain
-Content-length: 789
-Date: Tue May 23 02:55:34 2023
-
-X-Powered-By: PHP/8.1.12
-Content-type: text/html; charset=UTF-8
-Content-Type: text/plain
-Content-length: 789
-Date: Tue May 23 02:55:34 2023
-
-
-VEC0 = 
-------- hello ------********************------- hello ------<!DOCTYPE html>
-<html>
-    <head>
-        <style>
-            body {background-color: powderblue;}
-            h1   {color: blue;}
-            p    {color: red;}
-            </style>
-    </head>
-    <body>
-        
-        <h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-
-    
-
-    
-    
-</body>
-</html>
-HEADERS : HTTP/1.1 200 OK
-HTTP/1.1 200 OK
-X-Powered-By: PHP/8.1.12
-Content-type: text/html; charset=UTF-8
-Content-Type: text/plain
-Content-length: 789
-Date: Tue May 23 02:55:34 2023
-
-X-Powered-By: PHP/8.1.12
-Content-type: text/html; charset=UTF-8
-Content-Type: text/plain
-Content-length: 789
-Date: Tue May 23 02:55:34 2023
-
-
-headers R === 326
-BODY : 
-------- hello ------********************------- hello ------<!DOCTYPE html>
-<html>
-    <head>
-        <style>
-            body {background-color: powderblue;}
-            h1   {color: blue;}
-            p    {color: red;}
-            </style>
-    </head>
-    <body>
-        
-        <h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-
-    
-
-    
-    
-</body>
-</html>1>HELLO WORLD !!! SERVER MDF</h1>
-
-    
-
-    
-    
-</body>
-</html>
-
-
-Body R 0=== 326
-Body R 1=== 1115
-SENDDDDDDDD :::= 5
-VEC1 = 
-------- hello ------********************------- hello ------<!DOCTYPE html>
-<html>
-    <head>
-        <style>
-            body {background-color: powderblue;}
-            h1   {color: blue;}
-            p    {color: red;}
-            </style>
-    </head>
-    <body>
-        
-        <h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-
-    
-
-    
-    
-</body>
-</html>
+SIZE = 1070
+KOLSHI = 1070
+SALA SEND 
 LLLLLLL 
 ------------
 ----EOF-----
 client 5 is disconnected
-KHREEEEEEEEEEEEJ 
 ----END_EOF-----
 
+-------accepteNewCl-------
+ CLientSock = 5
+waa zzeeeb
+----Accepted new client connection on socket----
+
 ------read data---------
-server n = 3map size = 1
-fd = 6   size : 699
+server n = 3map size = 2
+fd = 6   size : 698
 ====step=3
-GET /fileCGI.php HTTP/1.1
+GET /index.html HTTP/1.1
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
 Accept-Encoding: gzip, deflate, br
 Accept-Language: en-US,en;q=0.9
@@ -525,10 +95,10 @@ r = 3
 --------finish read data---------
 
 ------send data---------
-server n = 3map size = 1
+server n = 3map size = 2
 -----request : ------
 ====step=3
-GET /fileCGI.php HTTP/1.1
+GET /index.html HTTP/1.1
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
 Accept-Encoding: gzip, deflate, br
 Accept-Language: en-US,en;q=0.9
@@ -547,14 +117,189 @@ sec-ch-ua-platform: "macOS"
 
 
 ------------
-QUERRY : 
-FilePath :/fileCGI.php
-TYPE :: php
+SIZE = 1828
+KOLSHI = 1828
+SALA SEND 
+LLLLLLL 
+------------
+----EOF-----
+client 6 is disconnected
+----END_EOF-----
+
+------read data---------
+server n = 3map size = 1
+fd = 5   size : 550
+====step=3
+GET /style.css HTTP/1.1
+Accept: text/css,*/*;q=0.1
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 1
+-----request : ------
+====step=3
+GET /style.css HTTP/1.1
+Accept: text/css,*/*;q=0.1
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+SIZE = 1070
+KOLSHI = 1070
+SALA SEND 
+LLLLLLL 
+------------
+
+-------accepteNewCl-------
+ CLientSock = 6
+waa zzeeeb
+----Accepted new client connection on socket----
+----EOF-----
+client 5 is disconnected
+----END_EOF-----
+
+------read data---------
+server n = 3map size = 1
+fd = 6   size : 595
+====step=3
+GET /test.png HTTP/1.1
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 1
+-----request : ------
+====step=3
+GET /test.png HTTP/1.1
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+SIZE = 5938
+KOLSHI = 5938
+SALA SEND 
+LLLLLLL 
+------------
+----EOF-----
+client 6 is disconnected
+----END_EOF-----
+
+-------accepteNewCl-------
+ CLientSock = 5
+waa zzeeeb
+----Accepted new client connection on socket----
+
+-------accepteNewCl-------
+ CLientSock = 6
+waa zzeeeb
+----Accepted new client connection on socket----
+
+------read data---------
+server n = 3map size = 2
+fd = 5   size : 747
+====step=3
+GET /fileCGI.php?fname=ddsg&lname=fshhsd HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /fileCGI.php?fname=ddsg&lname=fshhsd HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
 here
 X-Powered-By: PHP/8.1.12
 Content-type: text/html; charset=UTF-8
 
-------- hello ------********************------- hello ------<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <style>
@@ -578,55 +323,151 @@ Content-type: text/html; charset=UTF-8
 </body>
 </html>
 
-response body
-------- hello ------********************------- hello ------<!DOCTYPE html>
-<html>
-    <head>
-        <style>
-            body {background-color: powderblue;}
-            h1   {color: blue;}
-            p    {color: red;}
-            </style>
-    </head>
-    <body>
-        
-        <h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+SIZE = 800
+KOLSHI = 800
+SALA SEND 
+LLLLLLL 
+------------
 
-    
+------read data---------
+server n = 3map size = 2
+fd = 5   size : 773
+====step=3
+GET /fileCGI.php?fname=ddsg&lname=fshhsd HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
 
-    
-    
-</body>
-</html>
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /fileCGI.php?fname=ddsg&lname=fshhsd HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
 
 
-response headersX-Powered-By: PHP/8.1.12
-Content-type: text/html; charset=UTF-8
-
-FILE SIZE : 789
-HEADERS SIZE : 163
-HEADERS B STATUS : HTTP/1.1 200 OK
+------------
+here
 X-Powered-By: PHP/8.1.12
 Content-type: text/html; charset=UTF-8
-Content-Type: text/plain
-Content-length: 789
-Date: Tue May 23 02:55:35 2023
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+SIZE = 798
+KOLSHI = 798
+SALA SEND 
+LLLLLLL 
+------------
+
+------read data---------
+server n = 3map size = 2
+fd = 5   size : 773
+====step=3
+GET /fileCGI.php?fname=ddsg&lname=fshhsd HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
 
 
-HEADS : HTTP/1.1 200 OK
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /fileCGI.php?fname=ddsg&lname=fshhsd HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+here
 X-Powered-By: PHP/8.1.12
 Content-type: text/html; charset=UTF-8
-Content-Type: text/plain
-Content-length: 789
-Date: Tue May 23 02:55:35 2023
 
-
-VEC0 = 
-------- hello ------********************------- hello ------<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <style>
@@ -650,18 +491,67 @@ VEC0 =
 </body>
 </html>
 
+SIZE = 798
+KOLSHI = 798
+SALA SEND 
+LLLLLLL 
+------------
 
-HEADERS : HTTP/1.1 200 OK
+------read data---------
+server n = 3map size = 2
+fd = 5   size : 773
+====step=3
+GET /fileCGI.php?fname=ddsg&lname=fshhsd HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /fileCGI.php?fname=ddsg&lname=fshhsd HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+here
 X-Powered-By: PHP/8.1.12
 Content-type: text/html; charset=UTF-8
-Content-Type: text/plain
-Content-length: 789
-Date: Tue May 23 02:55:35 2023
 
-
-headers R === 163
-BODY : 
-------- hello ------********************------- hello ------<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <style>
@@ -685,21 +575,67 @@ BODY :
 </body>
 </html>
 
-HELLO WORLD !!! SERVER MDF</h1>
+SIZE = 798
+KOLSHI = 798
+SALA SEND 
+LLLLLLL 
+------------
 
-    
+------read data---------
+server n = 3map size = 2
+fd = 5   size : 773
+====step=3
+GET /fileCGI.php?fname=ddsg&lname=fshhsd HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
 
-    
-    
-</body>
-</html>
 
-/fileCGI.phtext/html; charset=UTF-8
-Body R 0=== 163
-Body R 1=== 952
-SENDDDDDDDD :::= 6
-VEC1 = 
-------- hello ------********************------- hello ------<!DOCTYPE html>
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /fileCGI.php?fname=ddsg&lname=fshhsd HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+here
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE html>
 <html>
     <head>
         <style>
@@ -723,24 +659,2181 @@ VEC1 =
 </body>
 </html>
 
+SIZE = 798
+KOLSHI = 798
+SALA SEND 
+LLLLLLL 
+------------
 
+------read data---------
+server n = 3map size = 2
+fd = 5   size : 550
+====step=3
+GET /style.css HTTP/1.1
+Accept: text/css,*/*;q=0.1
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /style.css HTTP/1.1
+Accept: text/css,*/*;q=0.1
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+SIZE = 1070
+KOLSHI = 1070
+SALA SEND 
+LLLLLLL 
+------------
+----EOF-----
+client 5 is disconnected
+----END_EOF-----
+
+-------accepteNewCl-------
+ CLientSock = 5
+waa zzeeeb
+----Accepted new client connection on socket----
+
+------read data---------
+server n = 3map size = 2
+fd = 6   size : 747
+====step=3
+GET /fileCGI.php?fname=ddsg&lname=fshhsd HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /fileCGI.php?fname=ddsg&lname=fshhsd HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+here
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+SIZE = 800
+KOLSHI = 800
+SALA SEND 
+LLLLLLL 
+------------
+
+------read data---------
+server n = 3map size = 2
+fd = 6   size : 773
+====step=3
+GET /fileCGI.php?fname=ddsg&lname=fshhsd HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /fileCGI.php?fname=ddsg&lname=fshhsd HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+here
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+SIZE = 798
+KOLSHI = 798
+SALA SEND 
+LLLLLLL 
+------------
+
+------read data---------
+server n = 3map size = 2
+fd = 6   size : 773
+====step=3
+GET /fileCGI.php?fname=ddsg&lname=fshhsd HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /fileCGI.php?fname=ddsg&lname=fshhsd HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+here
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+SIZE = 798
+KOLSHI = 798
+SALA SEND 
+LLLLLLL 
+------------
+
+------read data---------
+server n = 3map size = 2
+fd = 6   size : 773
+====step=3
+GET /fileCGI.php?fname=ddsg&lname=fshhsd HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /fileCGI.php?fname=ddsg&lname=fshhsd HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+here
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+SIZE = 798
+KOLSHI = 798
+SALA SEND 
+LLLLLLL 
+------------
+
+------read data---------
+server n = 3map size = 2
+fd = 6   size : 773
+====step=3
+GET /fileCGI.php?fname=ddsg&lname=fshhsd HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /fileCGI.php?fname=ddsg&lname=fshhsd HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+here
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+SIZE = 798
+KOLSHI = 798
+SALA SEND 
+LLLLLLL 
+------------
+
+------read data---------
+server n = 3map size = 2
+fd = 6   size : 773
+====step=3
+GET /fileCGI.php?fname=ddsg&lname=fshhsd HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /fileCGI.php?fname=ddsg&lname=fshhsd HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+here
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+SIZE = 798
+KOLSHI = 798
+SALA SEND 
+LLLLLLL 
+------------
+
+------read data---------
+server n = 3map size = 2
+fd = 6   size : 773
+====step=3
+GET /fileCGI.php?fname=ddsg&lname=fshhsd HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /fileCGI.php?fname=ddsg&lname=fshhsd HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+here
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+SIZE = 798
+KOLSHI = 798
+SALA SEND 
+LLLLLLL 
+------------
+
+------read data---------
+server n = 3map size = 2
+fd = 6   size : 773
+====step=3
+GET /fileCGI.php?fname=ddsg&lname=fshhsd HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /fileCGI.php?fname=ddsg&lname=fshhsd HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+here
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+SIZE = 798
+KOLSHI = 798
+SALA SEND 
+LLLLLLL 
+------------
+
+------read data---------
+server n = 3map size = 2
+fd = 6   size : 698
+====step=3
+GET /index.html HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /index.html HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+SIZE = 1828
+KOLSHI = 1828
+SALA SEND 
+LLLLLLL 
+------------
+----EOF-----
+client 6 is disconnected
+----END_EOF-----
+
+------read data---------
+server n = 3map size = 1
+fd = 5   size : 550
+====step=3
+GET /style.css HTTP/1.1
+Accept: text/css,*/*;q=0.1
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 1
+-----request : ------
+====step=3
+GET /style.css HTTP/1.1
+Accept: text/css,*/*;q=0.1
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+SIZE = 1070
+KOLSHI = 1070
+SALA SEND 
+LLLLLLL 
+------------
+
+-------accepteNewCl-------
+ CLientSock = 6
+waa zzeeeb
+----Accepted new client connection on socket----
+----EOF-----
+client 5 is disconnected
+----END_EOF-----
+
+------read data---------
+server n = 3map size = 1
+fd = 6   size : 595
+====step=3
+GET /test.png HTTP/1.1
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 1
+-----request : ------
+====step=3
+GET /test.png HTTP/1.1
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+SIZE = 5938
+KOLSHI = 5938
+SALA SEND 
+LLLLLLL 
+------------
+----EOF-----
+client 6 is disconnected
+----END_EOF-----
+
+-------accepteNewCl-------
+ CLientSock = 5
+waa zzeeeb
+----Accepted new client connection on socket----
+
+-------accepteNewCl-------
+ CLientSock = 6
+waa zzeeeb
+----Accepted new client connection on socket----
+
+------read data---------
+server n = 3map size = 2
+fd = 5   size : 698
+====step=3
+GET /index.html HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /index.html HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+SIZE = 1828
+KOLSHI = 1828
+SALA SEND 
+LLLLLLL 
+------------
+----EOF-----
+client 5 is disconnected
+----END_EOF-----
+
+------read data---------
+server n = 3map size = 1
+fd = 6   size : 550
+====step=3
+GET /style.css HTTP/1.1
+Accept: text/css,*/*;q=0.1
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 1
+-----request : ------
+====step=3
+GET /style.css HTTP/1.1
+Accept: text/css,*/*;q=0.1
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+SIZE = 1070
+KOLSHI = 1070
+SALA SEND 
+LLLLLLL 
+------------
+----EOF-----
+client 6 is disconnected
+----END_EOF-----
+
+-------accepteNewCl-------
+ CLientSock = 5
+waa zzeeeb
+----Accepted new client connection on socket----
+
+------read data---------
+server n = 3map size = 1
+fd = 5   size : 595
+====step=3
+GET /test.png HTTP/1.1
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 1
+-----request : ------
+====step=3
+GET /test.png HTTP/1.1
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+SIZE = 5938
+KOLSHI = 5938
+SALA SEND 
+LLLLLLL 
+------------
+----EOF-----
+client 5 is disconnected
+----END_EOF-----
+
+-------accepteNewCl-------
+ CLientSock = 5
+waa zzeeeb
+----Accepted new client connection on socket----
+
+-------accepteNewCl-------
+ CLientSock = 6
+waa zzeeeb
+----Accepted new client connection on socket----
+
+------read data---------
+server n = 3map size = 2
+fd = 5   size : 698
+====step=3
+GET /index.html HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /index.html HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+SIZE = 1828
+KOLSHI = 1828
+SALA SEND 
+LLLLLLL 
+------------
+----EOF-----
+client 5 is disconnected
+----END_EOF-----
+
+------read data---------
+server n = 3map size = 1
+fd = 6   size : 550
+====step=3
+GET /style.css HTTP/1.1
+Accept: text/css,*/*;q=0.1
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 1
+-----request : ------
+====step=3
+GET /style.css HTTP/1.1
+Accept: text/css,*/*;q=0.1
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+SIZE = 1070
+KOLSHI = 1070
+SALA SEND 
+LLLLLLL 
+------------
+----EOF-----
+client 6 is disconnected
+----END_EOF-----
+
+-------accepteNewCl-------
+ CLientSock = 5
+waa zzeeeb
+----Accepted new client connection on socket----
+
+------read data---------
+server n = 3map size = 1
+fd = 5   size : 595
+====step=3
+GET /test.png HTTP/1.1
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 1
+-----request : ------
+====step=3
+GET /test.png HTTP/1.1
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+SIZE = 5938
+KOLSHI = 5938
+SALA SEND 
+LLLLLLL 
+------------
+----EOF-----
+client 5 is disconnected
+----END_EOF-----
+
+-------accepteNewCl-------
+ CLientSock = 5
+waa zzeeeb
+----Accepted new client connection on socket----
+
+-------accepteNewCl-------
+ CLientSock = 6
+waa zzeeeb
+----Accepted new client connection on socket----
+
+------read data---------
+server n = 3map size = 2
+fd = 5   size : 751
+====step=3
+GET /fileCGI.php?fname=gchg&lname=jgfkjfgvlg HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /fileCGI.php?fname=gchg&lname=jgfkjfgvlg HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+here
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+SIZE = 800
+KOLSHI = 800
+SALA SEND 
+LLLLLLL 
+------------
+
+------read data---------
+server n = 3map size = 2
+fd = 5   size : 777
+====step=3
+GET /fileCGI.php?fname=gchg&lname=jgfkjfgvlg HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /fileCGI.php?fname=gchg&lname=jgfkjfgvlg HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+here
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+SIZE = 798
+KOLSHI = 798
+SALA SEND 
+LLLLLLL 
+------------
+
+------read data---------
+server n = 3map size = 2
+fd = 5   size : 777
+====step=3
+GET /fileCGI.php?fname=gchg&lname=jgfkjfgvlg HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /fileCGI.php?fname=gchg&lname=jgfkjfgvlg HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+here
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+SIZE = 798
+KOLSHI = 798
+SALA SEND 
+LLLLLLL 
+------------
+
+------read data---------
+server n = 3map size = 2
+fd = 5   size : 777
+====step=3
+GET /fileCGI.php?fname=gchg&lname=jgfkjfgvlg HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /fileCGI.php?fname=gchg&lname=jgfkjfgvlg HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+here
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+SIZE = 798
+KOLSHI = 798
+SALA SEND 
+LLLLLLL 
+------------
+
+------read data---------
+server n = 3map size = 2
+fd = 6   size : 777
+====step=3
+GET /fileCGI.php?fname=gchg&lname=jgfkjfgvlg HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+----EOF-----
+client 5 is disconnected
+----END_EOF-----
+
+------send data---------
+server n = 3map size = 1
+-----request : ------
+====step=3
+GET /fileCGI.php?fname=gchg&lname=jgfkjfgvlg HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+here
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+SIZE = 800
+KOLSHI = 800
+SALA SEND 
+LLLLLLL 
+------------
+
+------read data---------
+server n = 3map size = 1
+fd = 6   size : 777
+====step=3
+GET /fileCGI.php?fname=gchg&lname=jgfkjfgvlg HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 1
+-----request : ------
+====step=3
+GET /fileCGI.php?fname=gchg&lname=jgfkjfgvlg HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+here
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+SIZE = 798
+KOLSHI = 798
+SALA SEND 
 LLLLLLL 
 ------------
 
 -------accepteNewCl-------
  CLientSock = 5
 waa zzeeeb
-KHREEEEEEEEEEEEJ 
-KHREEEEEEEEEEEEJ 
-KHREEEEEEEEEEEEJ 
 ----Accepted new client connection on socket----
-KHREEEEEEEEEEEEJ 
 
 ------read data---------
 server n = 3map size = 2
-fd = 6   size : 699
+fd = 6   size : 777
 ====step=3
-GET /fileCGI.php HTTP/1.1
+GET /fileCGI.php?fname=gchg&lname=jgfkjfgvlg HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /fileCGI.php?fname=gchg&lname=jgfkjfgvlg HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+here
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+SIZE = 798
+KOLSHI = 798
+SALA SEND 
+LLLLLLL 
+------------
+
+------read data---------
+server n = 3map size = 2
+fd = 6   size : 777
+====step=3
+GET /fileCGI.php?fname=gchg&lname=jgfkjfgvlg HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /fileCGI.php?fname=gchg&lname=jgfkjfgvlg HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+here
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+SIZE = 798
+KOLSHI = 798
+SALA SEND 
+LLLLLLL 
+------------
+
+------read data---------
+server n = 3map size = 2
+fd = 6   size : 777
+====step=3
+GET /fileCGI.php?fname=gchg&lname=jgfkjfgvlg HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /fileCGI.php?fname=gchg&lname=jgfkjfgvlg HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+here
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+SIZE = 798
+KOLSHI = 798
+SALA SEND 
+LLLLLLL 
+------------
+
+------read data---------
+server n = 3map size = 2
+fd = 6   size : 550
+====step=3
+GET /style.css HTTP/1.1
+Accept: text/css,*/*;q=0.1
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /style.css HTTP/1.1
+Accept: text/css,*/*;q=0.1
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+SIZE = 1070
+KOLSHI = 1070
+SALA SEND 
+LLLLLLL 
+------------
+----EOF-----
+client 6 is disconnected
+----END_EOF-----
+
+-------accepteNewCl-------
+ CLientSock = 6
+waa zzeeeb
+----Accepted new client connection on socket----
+
+------read data---------
+server n = 3map size = 2
+fd = 5   size : 751
+====step=3
+GET /fileCGI.php?fname=gchg&lname=jgfkjfgvlg HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /fileCGI.php?fname=gchg&lname=jgfkjfgvlg HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+here
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+SIZE = 800
+KOLSHI = 800
+SALA SEND 
+LLLLLLL 
+------------
+
+------read data---------
+server n = 3map size = 2
+fd = 5   size : 698
+====step=3
+GET /index.html HTTP/1.1
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
 Accept-Encoding: gzip, deflate, br
 Accept-Language: en-US,en;q=0.9
@@ -762,10 +2855,10 @@ r = 3
 --------finish read data---------
 
 ------send data---------
-server n = 3map size = 2
+server n = 3map size = 1
 -----request : ------
 ====step=3
-GET /fileCGI.php HTTP/1.1
+GET /index.html HTTP/1.1
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
 Accept-Encoding: gzip, deflate, br
 Accept-Language: en-US,en;q=0.9
@@ -784,14 +2877,194 @@ sec-ch-ua-platform: "macOS"
 
 
 ------------
-QUERRY : 
-FilePath :/fileCGI.php
-TYPE :: php
+SIZE = 1886
+KOLSHI = 1886
+SALA SEND 
+LLLLLLL 
+------------
+----EOF-----
+client 5 is disconnected
+----END_EOF-----
+
+-------accepteNewCl-------
+ CLientSock = 5
+waa zzeeeb
+----Accepted new client connection on socket----
+
+------read data---------
+server n = 3map size = 1
+fd = 5   size : 550
+====step=3
+GET /style.css HTTP/1.1
+Accept: text/css,*/*;q=0.1
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 1
+-----request : ------
+====step=3
+GET /style.css HTTP/1.1
+Accept: text/css,*/*;q=0.1
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+SIZE = 1070
+KOLSHI = 1070
+SALA SEND 
+LLLLLLL 
+------------
+----EOF-----
+client 5 is disconnected
+----END_EOF-----
+
+-------accepteNewCl-------
+ CLientSock = 5
+waa zzeeeb
+----Accepted new client connection on socket----
+
+------read data---------
+server n = 3map size = 1
+fd = 5   size : 595
+====step=3
+GET /test.png HTTP/1.1
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 1
+-----request : ------
+====step=3
+GET /test.png HTTP/1.1
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+SIZE = 5938
+KOLSHI = 5938
+SALA SEND 
+LLLLLLL 
+------------
+----EOF-----
+client 5 is disconnected
+----END_EOF-----
+
+-------accepteNewCl-------
+ CLientSock = 5
+waa zzeeeb
+----Accepted new client connection on socket----
+
+-------accepteNewCl-------
+ CLientSock = 6
+waa zzeeeb
+----Accepted new client connection on socket----
+
+------read data---------
+server n = 3map size = 2
+fd = 5   size : 798
+====step=3
+GET /System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php?fname=gh&lname=gh HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php?fname=gh&lname=gh HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
 here
 X-Powered-By: PHP/8.1.12
 Content-type: text/html; charset=UTF-8
 
-------- hello ------********************------- hello ------<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <style>
@@ -815,8 +3088,123 @@ Content-type: text/html; charset=UTF-8
 </body>
 </html>
 
-response body
-------- hello ------********************------- hello ------<!DOCTYPE html>
+SIZE = 800
+KOLSHI = 800
+SALA SEND 
+LLLLLLL 
+------------
+
+------read data---------
+server n = 3map size = 2
+fd = 5   size : 550
+====step=3
+GET /style.css HTTP/1.1
+Accept: text/css,*/*;q=0.1
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /style.css HTTP/1.1
+Accept: text/css,*/*;q=0.1
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+SIZE = 1070
+KOLSHI = 1070
+SALA SEND 
+LLLLLLL 
+------------
+----EOF-----
+client 5 is disconnected
+----END_EOF-----
+
+-------accepteNewCl-------
+ CLientSock = 5
+waa zzeeeb
+----Accepted new client connection on socket----
+
+------read data---------
+server n = 3map size = 2
+fd = 6   size : 798
+====step=3
+GET /System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php?fname=gh&lname=gh HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php?fname=gh&lname=gh HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+here
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+
+<!DOCTYPE html>
 <html>
     <head>
         <style>
@@ -839,50 +3227,66 @@ response body
     
 </body>
 </html>
-response headersHTTP/1.1 200 OK
+
+SIZE = 800
+KOLSHI = 800
+SALA SEND 
+LLLLLLL 
+------------
+
+------read data---------
+server n = 3map size = 2
+fd = 6   size : 798
+====step=3
+GET /System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php?fname=gh&lname=gh HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php?fname=gh&lname=gh HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+here
 X-Powered-By: PHP/8.1.12
 Content-type: text/html; charset=UTF-8
-Content-Type: text/plain
-Content-length: 789
-Date: Tue May 23 02:55:35 2023
 
-X-Powered-By: PHP/8.1.12
-Content-type: text/html; charset=UTF-8
-
-FILE SIZE : 789
-HEADERS SIZE : 326
-HEADERS B STATUS : HTTP/1.1 200 OK
-HTTP/1.1 200 OK
-X-Powered-By: PHP/8.1.12
-Content-type: text/html; charset=UTF-8
-Content-Type: text/plain
-Content-length: 789
-Date: Tue May 23 02:55:35 2023
-
-X-Powered-By: PHP/8.1.12
-Content-type: text/html; charset=UTF-8
-Content-Type: text/plain
-Content-length: 789
-Date: Tue May 23 02:55:35 2023
-
-
-HEADS : HTTP/1.1 200 OK
-HTTP/1.1 200 OK
-X-Powered-By: PHP/8.1.12
-Content-type: text/html; charset=UTF-8
-Content-Type: text/plain
-Content-length: 789
-Date: Tue May 23 02:55:35 2023
-
-X-Powered-By: PHP/8.1.12
-Content-type: text/html; charset=UTF-8
-Content-Type: text/plain
-Content-length: 789
-Date: Tue May 23 02:55:35 2023
-
-
-VEC0 = 
-------- hello ------********************------- hello ------<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <style>
@@ -905,24 +3309,66 @@ VEC0 =
     
 </body>
 </html>
-HEADERS : HTTP/1.1 200 OK
-HTTP/1.1 200 OK
+
+SIZE = 798
+KOLSHI = 798
+SALA SEND 
+LLLLLLL 
+------------
+
+------read data---------
+server n = 3map size = 2
+fd = 6   size : 798
+====step=3
+GET /System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php?fname=gh&lname=gh HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php?fname=gh&lname=gh HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Host: localhost:8080
+Referer: http://localhost:8080/index.html
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+here
 X-Powered-By: PHP/8.1.12
 Content-type: text/html; charset=UTF-8
-Content-Type: text/plain
-Content-length: 789
-Date: Tue May 23 02:55:35 2023
 
-X-Powered-By: PHP/8.1.12
-Content-type: text/html; charset=UTF-8
-Content-Type: text/plain
-Content-length: 789
-Date: Tue May 23 02:55:35 2023
-
-
-headers R === 326
-BODY : 
-------- hello ------********************------- hello ------<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <style>
@@ -944,40 +3390,7 @@ BODY :
     
     
 </body>
-</html>1>HELLO WORLD !!! SERVER MDF</h1>
-
-    
-
-    
-    
-</body>
 </html>
 
-/fileCGI.phtext/html; charset=UTF-8
-Body R 0=== 326
-Body R 1=== 1115
-SENDDDDDDDD :::= 6
-VEC1 = 
-------- hello ------********************------- hello ------<!DOCTYPE html>
-<html>
-    <head>
-        <style>
-            body {background-color: powderblue;}
-            h1   {color: blue;}
-            p    {color: red;}
-            </style>
-    </head>
-    <body>
-        
-        <h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-
-    
-
-    
-    
-</body>
-</html>
+SIZE = 798
+KOLSHI = 798
