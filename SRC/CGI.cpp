@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   CGI.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
+/*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:56:14 by aalazhar          #+#    #+#             */
-/*   Updated: 2023/05/15 18:27:18 by hameur           ###   ########.fr       */
+/*   Updated: 2023/05/23 00:09:59 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ CGI::CGI(std::string fileName_, std::string method_, \
 		envMap.insert(std::make_pair("QUERY_STRING", this->quiry));
 		envMap.insert(std::make_pair("REQUEST_METHOD", this->method));
 		envMap.insert(std::make_pair("REDIRECT_STATUS", "200"));
-		envMap.insert(std::make_pair("SCRIPT_FILENAME", this->fileName));
+		envMap.insert(std::make_pair("SCRIPT_FILENAME", "/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php"));
 		envMap.insert(std::make_pair("CONTENT_TYPE", this->cntType));
 		envMap.insert(std::make_pair("BODY", this->body));
 		it = envMap.begin();
@@ -72,7 +72,7 @@ CGI::CGI(std::string fileName_, std::string method_, \
 		while (it != envMap.end()){
 			this->env[i] = putEnvValues(it->first, it->second);
 			test.push_back(std::string(this->env[i]));
-			std::cout << "----- --- " << this->env[i] <<std::endl;
+			// std::cout << "----- --- " << this->env[i] <<std::endl;
 			it ++;
 			i++;
 		}
@@ -102,11 +102,11 @@ std::vector<std::string> CGI::executeCGI(){
 
 	int fds[2];
 	int status;
-	std::vector<std::string> envp;
+	std::vector<char> envp;
 	std::vector<std::string> buff;
 	
 	std::cout << "here\n";
-	const char *filePath = "../CGI-bin/php-cgi";
+	const char *filePath = "/Users/megrisse/Desktop/webserv/CGI-bin/php-cgi";
 	char *args[] = {(char *)filePath, (char *)this->fileName.c_str(), NULL};
 	pipe(fds);
 	// std::cout << "hey\n";

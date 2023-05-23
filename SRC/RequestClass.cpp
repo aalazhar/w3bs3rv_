@@ -1,7 +1,11 @@
 #include "../Headers/RequestClass.hpp"
 
-Req::Req(){
+Req::Req(int serverfd, int clientfd, struct config &serverConf) : _Config(serverConf) {
     this->step = 0;
+    // this->_Config = serverConf;
+    this->ServerFd = serverfd;
+    this->clientFd = clientfd;
+    this->updateTime();
 }
 
 
@@ -20,6 +24,12 @@ void Req::append(const std::string &rq){
         }
     }
 
+}
+
+time_t Req::getTime(){ return this->time; }
+
+void Req::updateTime(){
+    this->time = std::time(NULL);
 }
 
 int Req::parseBody(std::string &s){
@@ -83,8 +93,10 @@ void Req::parseErr(const int&i){
 }
 
 int Req::checkMETHOD(const std::string &method){
-    if (method == "GET" || method == "POST" || method == "DELETE")
-        return 0;
+    for (std::vector<std::string>::iterator it = this->_Config.a_meth.begin(); it != this->_Config.a_meth.end(); it++) {
+	    if (method == *it)
+		    return 0;
+	}
     return this->step = -1;
 }
 

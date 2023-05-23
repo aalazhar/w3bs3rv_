@@ -1,0 +1,983 @@
+hellllllll
+zzzzzzz
+
+-------accepteNewCl-------
+ CLientSock = 5
+waa zzeeeb
+KHREEEEEEEEEEEEJ 
+KHREEEEEEEEEEEEJ 
+KHREEEEEEEEEEEEJ 
+----Accepted new client connection on socket----
+KHREEEEEEEEEEEEJ 
+
+------read data---------
+server n = 3map size = 1
+fd = 5   size : 699
+====step=3
+GET /fileCGI.php HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+-------accepteNewCl-------
+ CLientSock = 6
+waa zzeeeb
+KHREEEEEEEEEEEEJ 
+KHREEEEEEEEEEEEJ 
+KHREEEEEEEEEEEEJ 
+----Accepted new client connection on socket----
+KHREEEEEEEEEEEEJ 
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /fileCGI.php HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+QUERRY : 
+FilePath :/fileCGI.php
+TYPE :: php
+here
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+
+------- hello ------********************------- hello ------<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+response body
+------- hello ------********************------- hello ------<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+
+response headersX-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+
+FILE SIZE : 789
+HEADERS SIZE : 163
+HEADERS B STATUS : HTTP/1.1 200 OK
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+Content-Type: text/plain
+Content-length: 789
+Date: Tue May 23 02:55:34 2023
+
+
+HEADS : HTTP/1.1 200 OK
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+Content-Type: text/plain
+Content-length: 789
+Date: Tue May 23 02:55:34 2023
+
+
+VEC0 = 
+------- hello ------********************------- hello ------<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+
+HEADERS : HTTP/1.1 200 OK
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+Content-Type: text/plain
+Content-length: 789
+Date: Tue May 23 02:55:34 2023
+
+
+headers R === 163
+BODY : 
+------- hello ------********************------- hello ------<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+
+Body R 0=== 163
+Body R 1=== 952
+SENDDDDDDDD :::= 5
+VEC1 = 
+------- hello ------********************------- hello ------<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+
+LLLLLLL 
+------------
+
+------read data---------
+server n = 3map size = 2
+fd = 5   size : 699
+====step=3
+GET /fileCGI.php HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /fileCGI.php HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+QUERRY : 
+FilePath :/fileCGI.php
+TYPE :: php
+here
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+
+------- hello ------********************------- hello ------<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+response body
+------- hello ------********************------- hello ------<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+response headersHTTP/1.1 200 OK
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+Content-Type: text/plain
+Content-length: 789
+Date: Tue May 23 02:55:34 2023
+
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+
+FILE SIZE : 789
+HEADERS SIZE : 326
+HEADERS B STATUS : HTTP/1.1 200 OK
+HTTP/1.1 200 OK
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+Content-Type: text/plain
+Content-length: 789
+Date: Tue May 23 02:55:34 2023
+
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+Content-Type: text/plain
+Content-length: 789
+Date: Tue May 23 02:55:34 2023
+
+
+HEADS : HTTP/1.1 200 OK
+HTTP/1.1 200 OK
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+Content-Type: text/plain
+Content-length: 789
+Date: Tue May 23 02:55:34 2023
+
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+Content-Type: text/plain
+Content-length: 789
+Date: Tue May 23 02:55:34 2023
+
+
+VEC0 = 
+------- hello ------********************------- hello ------<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+HEADERS : HTTP/1.1 200 OK
+HTTP/1.1 200 OK
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+Content-Type: text/plain
+Content-length: 789
+Date: Tue May 23 02:55:34 2023
+
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+Content-Type: text/plain
+Content-length: 789
+Date: Tue May 23 02:55:34 2023
+
+
+headers R === 326
+BODY : 
+------- hello ------********************------- hello ------<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+
+Body R 0=== 326
+Body R 1=== 1115
+SENDDDDDDDD :::= 5
+VEC1 = 
+------- hello ------********************------- hello ------<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+LLLLLLL 
+------------
+----EOF-----
+client 5 is disconnected
+KHREEEEEEEEEEEEJ 
+----END_EOF-----
+
+------read data---------
+server n = 3map size = 1
+fd = 6   size : 699
+====step=3
+GET /fileCGI.php HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 1
+-----request : ------
+====step=3
+GET /fileCGI.php HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+QUERRY : 
+FilePath :/fileCGI.php
+TYPE :: php
+here
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+
+------- hello ------********************------- hello ------<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+response body
+------- hello ------********************------- hello ------<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+
+response headersX-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+
+FILE SIZE : 789
+HEADERS SIZE : 163
+HEADERS B STATUS : HTTP/1.1 200 OK
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+Content-Type: text/plain
+Content-length: 789
+Date: Tue May 23 02:55:35 2023
+
+
+HEADS : HTTP/1.1 200 OK
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+Content-Type: text/plain
+Content-length: 789
+Date: Tue May 23 02:55:35 2023
+
+
+VEC0 = 
+------- hello ------********************------- hello ------<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+
+HEADERS : HTTP/1.1 200 OK
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+Content-Type: text/plain
+Content-length: 789
+Date: Tue May 23 02:55:35 2023
+
+
+headers R === 163
+BODY : 
+------- hello ------********************------- hello ------<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+/fileCGI.phtext/html; charset=UTF-8
+Body R 0=== 163
+Body R 1=== 952
+SENDDDDDDDD :::= 6
+VEC1 = 
+------- hello ------********************------- hello ------<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+
+LLLLLLL 
+------------
+
+-------accepteNewCl-------
+ CLientSock = 5
+waa zzeeeb
+KHREEEEEEEEEEEEJ 
+KHREEEEEEEEEEEEJ 
+KHREEEEEEEEEEEEJ 
+----Accepted new client connection on socket----
+KHREEEEEEEEEEEEJ 
+
+------read data---------
+server n = 3map size = 2
+fd = 6   size : 699
+====step=3
+GET /fileCGI.php HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+r = 3
+--------finish read data---------
+
+------send data---------
+server n = 3map size = 2
+-----request : ------
+====step=3
+GET /fileCGI.php HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Host: localhost:8080
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+
+
+------------
+QUERRY : 
+FilePath :/fileCGI.php
+TYPE :: php
+here
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+
+------- hello ------********************------- hello ------<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+response body
+------- hello ------********************------- hello ------<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+response headersHTTP/1.1 200 OK
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+Content-Type: text/plain
+Content-length: 789
+Date: Tue May 23 02:55:35 2023
+
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+
+FILE SIZE : 789
+HEADERS SIZE : 326
+HEADERS B STATUS : HTTP/1.1 200 OK
+HTTP/1.1 200 OK
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+Content-Type: text/plain
+Content-length: 789
+Date: Tue May 23 02:55:35 2023
+
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+Content-Type: text/plain
+Content-length: 789
+Date: Tue May 23 02:55:35 2023
+
+
+HEADS : HTTP/1.1 200 OK
+HTTP/1.1 200 OK
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+Content-Type: text/plain
+Content-length: 789
+Date: Tue May 23 02:55:35 2023
+
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+Content-Type: text/plain
+Content-length: 789
+Date: Tue May 23 02:55:35 2023
+
+
+VEC0 = 
+------- hello ------********************------- hello ------<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+HEADERS : HTTP/1.1 200 OK
+HTTP/1.1 200 OK
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+Content-Type: text/plain
+Content-length: 789
+Date: Tue May 23 02:55:35 2023
+
+X-Powered-By: PHP/8.1.12
+Content-type: text/html; charset=UTF-8
+Content-Type: text/plain
+Content-length: 789
+Date: Tue May 23 02:55:35 2023
+
+
+headers R === 326
+BODY : 
+------- hello ------********************------- hello ------<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>
+
+/fileCGI.phtext/html; charset=UTF-8
+Body R 0=== 326
+Body R 1=== 1115
+SENDDDDDDDD :::= 6
+VEC1 = 
+------- hello ------********************------- hello ------<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background-color: powderblue;}
+            h1   {color: blue;}
+            p    {color: red;}
+            </style>
+    </head>
+    <body>
+        
+        <h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+
+    
+
+    
+    
+</body>
+</html>

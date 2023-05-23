@@ -12,6 +12,7 @@ Server::Server(struct config &c): ServerConfig(c){
     this->port = getport(c);
     // std::cout << "size : " << Cmap.size() << "\n";
     this->Cmap.clear();
+    this->Clientvec.clear();
 }
 
 int Server::creatSocket(){
@@ -40,4 +41,59 @@ void Server::testConnection(const int& test, const std::string& msg){
 		std::cerr << "Error : " << strerror(errno) << std::endl;
 		exit(EXIT_FAILURE);
     }
+}
+
+// void Server::printIt(){
+//     _ClientMap::iterator it = Cmap.begin();
+//     for(; it != Cmap.end(); it++){
+//         std::cout << "Server[" << sockFd << "] == client fd = " << it->first <<std::endl;
+//         std::cout << it->second << std::endl;
+//     }
+// }
+
+// void Server::eraseClient(int fd){
+//     std::cout <<  this->Cmap.size() << std::endl;
+//     _ClientMap::iterator it = this->Cmap.begin();
+//     std::cout <<  it->first << " iikhan "<< std::endl;
+//     std::cout << (it != this->Cmap.end()) << "    aaaaaa\n";
+//             // std::cout << "kgvkhskghskjghbbse hb\n"<< *it->second;
+//     if (it != this->Cmap.end()){
+//         Cmap.erase(it);
+//     }
+//     close(fd);
+        
+// }
+
+// void Server::addNewClient(int fd){
+//     if (Cmap.find(fd) == Cmap.end())
+//         std::cout << "tkhwiira\n";
+//     Response res(this->ServerConfig, this->sockFd, fd);
+//     std::cout << "size of cmap = " << Cmap.size() << std::endl;;
+//     // try{
+//         this->Cmap.insert(std::make_pair(fd, res));
+//         this->Clientvec.push_back(res);
+//     // }
+//     // catch(...){
+//     //     std::cout << "ERRRRRRRRRROOOOOORRRR\n";
+//     // }
+// }
+
+struct config &Server::getConfig(){
+    return this->ServerConfig;
+}
+
+// _ClientMap::iterator Server::getClientBegin() {
+//     return this->Cmap.begin();
+// }
+
+// _ClientMap::iterator Server::getClientEnd(){
+//     return this->Cmap.end();
+// }
+
+// _ClientMap &Server::getClientMap(){
+//     return  this->Cmap;
+// }
+
+int Server::getSock(){
+    return this->sockFd;
 }

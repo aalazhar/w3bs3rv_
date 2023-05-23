@@ -1,6 +1,7 @@
  #pragma once
 
 #include "Headers.hpp"
+#include "parserObjectU.hpp"
 
 #define DONE 3
 
@@ -28,7 +29,12 @@ class Req{
         std::string URL;
         std::string HTTPV;
         std::string Body;
+        time_t time;
         int step;
+        int ServerFd;
+        int clientFd;
+        struct config &_Config;
+
 
     public:
         void clear(){
@@ -39,7 +45,7 @@ class Req{
             this->Body = "";
             this->step = 0;
         };
-        Req();
+        Req(int, int, struct config &);
         // Req(const std::string&);
         Req &operator=(const Req &);
         void append(const std::string&);
@@ -49,13 +55,16 @@ class Req{
         std::string &getHTTPV();
         std::string &getBody();
         int getStep(){return step;};
+        int getServerFd(){return this->ServerFd;}
+        int getClientFd(){return this->clientFd;}
         void parseErr(const int&);
         int parseHeaders(std::string&);
         int parseBody(std::string&);
         int checkStep();
         int checkMETHOD(const std::string&);
         _map getHEADERS();
-        
+        void updateTime();
+        time_t getTime();
         void    printRe(){
             iter_map iter = HEADERS.begin();
             for (; iter != HEADERS.end(); iter++)

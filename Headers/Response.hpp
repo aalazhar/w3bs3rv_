@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:37:50 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/18 19:55:33 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/22 20:42:42 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@
 
 
 // class Req;
+class webServ;
 
 class   Response  : public Req {
 private :
 	std::map<std::string, std::string>	_env;
 	struct config						Locations;
 	std::string							_Cgipath;
-	std::string							AllowedM;
 	bool								autoInx;
 	std::string							Querry;
 	std::string							filePath;
@@ -47,22 +47,29 @@ private :
 	std::map<int, std::string>			errors;
 	std::map<int, std::string>			errorsFiles;
 	std::string							response;
-	std::vector<std::string>			_response;
+	std::vector<char>					_response;
 	std::string							type;
 	int									code;
 	std::string							Date;
 	size_t									r;
 	bool								cgi;
 	std::string							root;
+	size_t								headers_size;
+	size_t								file_size;
+	std::vector<char>					fileData;
 
 public:
-	size_t getR(){return this->r;}
 	void setR(size_t R){this->r = R;}
-	Response(struct config &);
-	Response(const	parserObject &);
+	void setLocation(struct config &server);
+	Response(struct config &, int, int);
+	// Response(const	parserObject &);
 	~Response();
 	Response	&operator=(Req &);
 	//Getters
+	size_t getR(){return this->r;}
+	size_t getFileSize(){return file_size;}
+	size_t getHeadersSize(){return headers_size;}
+	std::vector<char>	&getFileData() {return fileData;};
 	std::string	getStatusLine() {
 
 		return (status_line);
@@ -75,12 +82,16 @@ public:
 
 		return (response_body);
 	}
+	std::string		getheaders(){return this->response_header;};
 	//Methods 
 
 	int	GetMethod(Req &obj);
 	int	DeletMethod(Req &);
 	int	PostMethod(Req &);
 	//Memeber Function
+	int				checkmethod(std::string);
+	void			buildResponse(Req &, int);
+	void			sendResponse(int, int);
 	void			initResponse();
 	int				getifQuerry(std::string &);
 	int				checkCgipath(std::string &);
@@ -88,13 +99,19 @@ public:
 	void			initErrorMsgs();
 	void			initErrorFiles();
 	int				readcontent();
-	std::string		readErrorsfiles(std::string);
+	void			readErrorsfiles(std::string);
 	std::string		executeCgi(std::string );
 	std::string		getResponseHeader();
 	std::string		getStatusMsg(int code);
-	std::string		getheaders(){return this->response_header;};
 	std::string		getContentType();
-	int 			makeResponse();
+	void 			makeResponse(Req &, int);
 	void			getDate();
 	void			resetvalues();
+	void			Readimage(std::string);
+	void			ReadFile(std::string);
+	void			printvector(std::vector<char> vec, int);
+	void			sendHeaders(int, std::string);
+	void			sendBody(int, char *, size_t);
+	void			keventUP(int, int, int, int);
+	std::vector<char> convertTocharVec(std::vector<std::string> cgiBuff);
 };
