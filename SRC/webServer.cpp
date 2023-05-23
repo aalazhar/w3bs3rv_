@@ -109,7 +109,7 @@ void webServ::lunche(){
                     continue;
             }
         }
-        this->Timeout();
+        this->Timeout(kq);
     }
 }
 
@@ -124,12 +124,13 @@ void webServ::lunche(){
 // }
 
 
-void webServ::Timeout(){
+void webServ::Timeout(int kq){
     for (_ClientMap::iterator it = this->Cmap.begin(); it != this->Cmap.end(); it++){
         if (std::time(NULL) - it->second.getTime() > 10)
         {
-                Cmap.erase(it->first);
-                close(it->first);
+            it->second.setStep(-2);
+        	keventUP(kq, it->first, EVFILT_READ, EV_DISABLE);
+            keventUP(kq, it->first, EVFILT_WRITE, EV_CLEAR|EV_ENABLE | EV_ADD);
         }
     }
 
@@ -198,36 +199,12 @@ int webServ::sendData(int &kq,int& fd, struct kevent &event){
     Response &res = this->Cmap.find(fd)->second;
     std::cout << "-----request : ------\n" << *dynamic_cast<Req*>(&res) << "\n------------\n";
     res.buildResponse(*dynamic_cast<Req*>(&res), kq);
-    std::cout << "LLLLLLL \n";
-    std::cout << "------------\n";
-    // std::string response = res.getheaders() + res.getResponse_body();
-    // std::cout << "---RESPONS---\n| " << response << "|\n------------\n";
-    // std::cout << "r = " << res.getR() << std::endl;
-    // std::cout << "LHIH LHIH : " << res.getHeadersSize() << std::endl;
-    // size_t length = res.getFileSize();
-    // std::cout << "HNA HNA   : " << res.getFileSize() << std::endl;
-    // const char *buff;
-    // if (res.getR() < response.length())
-    //     buff = &response.c_str()[res.getR()];
-    //     std::cout << "BUFF : " << buff <<std::endl;
-    // sendeHeders(fd, res.getheaders());
-    // sendBody(fd, res.getFileData().data(), res.getFileSize());
-    // res.printvector(res.getFileData(), 0);
-    // // if (send(fd, response.c_str(), length, 0) < 0)
-    // //     std::cout << "send() < 0\n";
-    // res.setR(res.getR() + length);
-    // if (res.getR() > response.length())
-    // {
-    //     keventUP(kq, fd, EVFILT_WRITE, EV_DISABLE);
-    //     keventUP(kq, fd, EVFILT_READ, EV_CLEAR | EV_ENABLE | EV_ADD);
-    //     res.clear();
-    //     // Server->eraseClient(fd);
-    // }
-    // else{
-    //     keventUP(kq, fd, EVFILT_WRITE, EV_ENABLE);
-    // }
-    // res.updateTime();
-    // std::cout << "-------f snd data--------\n";
+    if (res.getCode() == 408) {
+
+        this->Cmap.erase(fd);
+        close(fd);
+    }
+    std::cout << "LLLLLLL \n";    std::cout << "------------\n";
     return 0;
 
 }

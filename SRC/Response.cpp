@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 21:20:47 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/23 17:06:14 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/23 21:53:19 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ Response::Response(struct config &server, int serverfd, int clientfd) :Req(serve
 	this->Locations = server;	
 	// this->setLocation(server);
 	code = 200;
+	file_size = 0;
 	if (Locations.pRoot != "")	
 		root = Locations.pRoot;
 	if (server.autoIndex == "on")
@@ -51,7 +52,8 @@ void	Response::resetvalues() {
 
 	this->Querry = "";
 	this->filePath = "";
-	this->code = 200;
+	// this->code = 200;
+	this->r = 0;
 	this->status_line = "";
 	this->response_header = "";
 	this->fileData.clear();
@@ -110,7 +112,7 @@ void	Response::Readimage(std::string path) {
     std::streamsize fileSize = file.tellg();
 	file_size = fileSize;
     file.seekg(0, std::ios::beg);
-	std::vector<char>	Data(fileSize + 2);
+	std::vector<char>	Data(fileSize);
 	file.read(Data.data(), fileSize);
 	fileData = Data;
 	file.close();
@@ -144,7 +146,7 @@ void	Response::ReadFile(std::string path) {
     std::streamsize fileSize = file.tellg();
 	file_size = fileSize;
     file.seekg(0, std::ios::beg);
-	std::vector<char>	Data(fileSize + 2);
+	std::vector<char>	Data(fileSize);
 	file.read(Data.data(), fileSize);
 	fileData = Data;
 	file.close();
@@ -253,11 +255,12 @@ std::string	Response::getResponseHeader() {
 }
 
 void	Response::initErrorFiles() {
-	//add the correct lien to the files
+
 	errorsFiles[400] = "./ErrorFiles/400.html";
 	errorsFiles[403] = "./ErrorFiles/403.html";
 	errorsFiles[404] = "./ErrorFiles/404.html";
 	errorsFiles[405] = "./ErrorFiles/405.html";
+	errorsFiles[408] = "./ErrorFiles/408.html";
 	errorsFiles[410]  = "./ErrorFiles/410.html";
 	errorsFiles[413]  = "./ErrorFiles/413.html";
 	errorsFiles[500]  = "./ErrorFiles/500.html";
@@ -299,8 +302,12 @@ void	Response::buildResponse(Req &obj, int kq) {
 		code = 505;
 		readErrorsfiles(errorsFiles[code]);
 	}
-	else 
-		makeResponse(obj, kq);
+	else if (obj.getStep() == -2) {
+
+		code = 408;
+		readErrorsfiles(errorsFiles[code]);
+	}
+	makeResponse(obj, kq);
 		
 }
 
@@ -354,10 +361,12 @@ void Response::keventUP(int kq, int fd, int filter, int flag){
 void	Response::sendResponse(int Fd, int kq) {
 
 	_headers.insert(_headers.end(), fileData.begin(), fileData.end());
+	std::cout << "SIZE lll = " << response_header.length() << std::endl;
 	std::cout << "SIZE = " << _headers.size() << std::endl;
 	std::cout << "KOLSHI = " << fileData.size() + response_header.length() << std::endl;
 	if (send(Fd, _headers.data(), _headers.size(), 0) < 0)
 		code = 500;
+	printvector(_headers, 404);
 	this->setR(_headers.size());
 	if (getR() >= getHeadersSize() + getFileSize()) {
 
@@ -452,8 +461,8 @@ int	Response::GetMethod(Req &obj) {
 	if (code == 500)
 		readErrorsfiles(errorsFiles[code]);
 	response_header = getResponseHeader();
-	if (_headers.size() > 1)
-		_headers.clear();
+	if (_headers.size() >= 1)
+	_headers.clear();
 	for (size_t i = 0; i < response_header.length(); i++)
 		_headers.push_back(response_header[i]);
 	return code;

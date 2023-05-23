@@ -46,6 +46,7 @@ class Req{
             this->step = 0;
         };
         Req(int, int, struct config &);
+        void setStep(int s){this->step = s;}
         // Req(const std::string&);
         Req &operator=(const Req &);
         void append(const std::string&);

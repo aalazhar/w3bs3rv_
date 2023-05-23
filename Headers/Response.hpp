@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:37:50 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/23 15:14:13 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/23 20:19:43 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ public:
 	~Response();
 	Response	&operator=(Req &);
 	//Getters
+	int		getCode() {return this->code;}
 	size_t getR(){return this->r;}
 	size_t getFileSize(){return file_size;}
 	size_t getHeadersSize(){return headers_size;}
