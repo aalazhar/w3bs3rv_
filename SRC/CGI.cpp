@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:56:14 by aalazhar          #+#    #+#             */
-/*   Updated: 2023/05/23 00:09:59 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/24 00:34:16 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ CGI::CGI(std::string fileName_, std::string method_, \
 		int i = 0;
 		std::map<std::string, std::string> envMap;
 		std::map<std::string, std::string>::iterator it;
-        this->fileName = fileName_;
+        this->fileName = "UTILS/" + fileName_;
         this->method = method_;
         this->cntType = cntType_;
         this->locaPath = locaPath_;
@@ -58,7 +58,7 @@ CGI::CGI(std::string fileName_, std::string method_, \
 		envMap.insert(std::make_pair("QUERY_STRING", this->quiry));
 		envMap.insert(std::make_pair("REQUEST_METHOD", this->method));
 		envMap.insert(std::make_pair("REDIRECT_STATUS", "200"));
-		envMap.insert(std::make_pair("SCRIPT_FILENAME", "/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php"));
+		envMap.insert(std::make_pair("SCRIPT_FILENAME", fileName));
 		envMap.insert(std::make_pair("CONTENT_TYPE", this->cntType));
 		envMap.insert(std::make_pair("BODY", this->body));
 		it = envMap.begin();

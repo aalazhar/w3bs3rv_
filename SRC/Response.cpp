@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 21:20:47 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/23 21:53:19 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/24 00:32:05 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,18 +69,37 @@ Response::~Response() {
 	// std::cout << "KHREEEEEEEEEEEEJ \n";
 }
 
+
+std::string getFilePath(std::string url){
+
+	int pos = url.find('?');
+	std::string quiry = url;
+	std::string _filePath = url;
+	int count = 0;
+	if (pos == -1)
+		pos = url.size();
+	else if (pos >= 0)
+		url[pos] = '\0';
+	while (--pos){
+		if (url[pos] == '/')
+			break;
+		count++;			
+	}
+	_filePath = url.substr(pos + 1, count);
+	std::cout << "new file path = " << _filePath << std::endl;
+
+	return (_filePath);
+	
+}
+
 int	Response::getifQuerry(std::string &url) {
 
 	size_t	pos = url.find("?");
 
-	if (pos != std::string::npos) {
-
-		filePath = url.substr(0, pos);
+	filePath = getFilePath(url);
+	if (pos != std::string::npos) 
 		Querry = url.substr(pos + 1, url.length());
-		return 0;
-	}
-	filePath = url;
-	Querry = "";
+	std::cout << "Querry "<< Querry <<std:: endl;
 	return 1;
 }
 
@@ -418,7 +437,9 @@ std::string vectorToString(const std::vector<std::string>& vec) {
 int	Response::GetMethod(Req &obj) {
 	std::vector<std::string> cgiBuff;
 	getifQuerry(obj.getURL());
-	CGI	cgi("/UTILS/fileCGI.php", obj.getMETHOD(), type, filePath, obj.getBody(), Querry, obj.getBody().length());
+	std::cout << "FILE PATH :: " << filePath << std::endl;
+	std::cout << "URL :: " << getURL() << std::endl;
+	CGI	cgi(filePath, obj.getMETHOD(), type, "", obj.getBody(), Querry, obj.getBody().length());
 	std::string tt = "";
 	size_t j = 0;
 	while (j < filePath.size()){
