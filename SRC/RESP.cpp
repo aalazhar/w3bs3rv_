@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RESP.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
+/*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:16 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/25 23:06:35 by hameur           ###   ########.fr       */
+/*   Updated: 2023/05/26 00:03:59 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,18 @@ void	printvector(std::vector<char> vec, int key) {
 		std::cout << *it;
 	}
 	std::cout << "---------------------------------------------------------\n";
+}
+
+void	Res::initErrorFiles() {
+
+	errorsFiles[400] = "./ErrorFiles/400.html";
+	errorsFiles[403] = "./ErrorFiles/403.html";
+	errorsFiles[404] = "./ErrorFiles/404.html";
+	errorsFiles[405] = "./ErrorFiles/405.html";
+	errorsFiles[408] = "./ErrorFiles/408.html";
+	errorsFiles[410]  = "./ErrorFiles/410.html";
+	errorsFiles[413]  = "./ErrorFiles/413.html";
+	errorsFiles[500]  = "./ErrorFiles/500.html";
 }
 
 void	Res::resetvalues() {
@@ -44,7 +56,8 @@ Res::Res(struct config server, int serverfd, int clientfd) : Req(serverfd, clien
 
     server = Conf;
 	setMIME();
-    
+    initErrorFiles();
+	code = 0;
 }
 
 std::string getFilePath(std::string url){
@@ -310,10 +323,7 @@ void Res::keventUP(int kq, int fd, int filter, int flag){
 }
 
 void	Res::mergeResponse() {
-	// _headers.reserve(_headers.size() + fileData.size());
-	// _headers.insert(_headers.end(), fileData.begin(), fileData.end());
 
-	// int	j = 0;
 	for (size_t i = 0; i < _headers.size() + fileData.size(); i++) {
 
 		if (i < _headers.size())
@@ -323,34 +333,8 @@ void	Res::mergeResponse() {
 			Resp.push_back(fileData[i - _headers.size()]);
 		} 
 	}
-	// for (size_t i = 0; i < fileData.size(); i++)
-	// 	_headers.push_back(fileData[i]);
-	// setSizesend(_headers.size());
-	printvector(Resp, 6);
+	printvector(Resp, 88888);
 }
-
-// std::vector<char>	Res::makeResponse() {
-	
-// 	if (getSizeSend() >= _headers.size())
-// }
-
-// void	Res::sendResponse(int kq) {
-
-// 	printvector(_headers, 5555);
-// 	if (send(clientFd, _headers.data(), _headers.size(), 0) < 0)
-// 		code = 500;
-// 	else
-// 		setSizesend(_headers.size());
-// 	if (getSizeSend() >= _headers.size()) {
-
-// 		keventUP(kq, clientFd, EVFILT_WRITE, EV_DISABLE);
-// 		keventUP(kq, clientFd, EVFILT_READ, EV_CLEAR | EV_ENABLE | EV_ADD);
-// 		// resetvalues();
-// 	}
-// 	else
-// 		keventUP(kq, clientFd, EVFILT_WRITE, EV_ENABLE);
-// 	updateTime();
-// }
 
 void	Res::GET() {
 
@@ -370,10 +354,7 @@ void	Res::GET() {
 			buildCGIResponse();
 			break ;
 	}
-	printvector(_headers, 3);
-	printvector(fileData, 4);
 	mergeResponse();
-	// printvector(_headers, 88);
 }
 
 void	Res::buildResponse() {
@@ -382,5 +363,4 @@ void	Res::buildResponse() {
 	if (this->getMETHOD() == "GET")
 		GET();
 	// std::cout <<"--------response-------\n"<< this->getResp().data()<<"---------------------\n" << std::endl;
-	printvector(Resp, 55);
 }

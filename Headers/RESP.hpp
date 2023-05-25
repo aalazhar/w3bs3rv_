@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RESP.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
+/*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:46 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/25 20:21:35 by hameur           ###   ########.fr       */
+/*   Updated: 2023/05/26 00:00:31 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ public :
 	void	getDate();
 	int		checkCgipath(std::string &path);
 	void	mergeResponse();
-	// void	sendResponse(int);
 	void 	keventUP(int, int, int, int);
 	void	GET();
 	std::string	getStatusMsg(int);
 	std::string	getMimetype(std::string);
+	void	initErrorFiles();
 };
