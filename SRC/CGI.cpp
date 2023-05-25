@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   CGI.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:56:14 by aalazhar          #+#    #+#             */
-/*   Updated: 2023/05/25 02:41:01 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/25 20:17:45 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ std::vector<std::string> CGI::executeCGI(){
 	std::vector<std::string> buff;
 	
 	std::cout << "here\n";
-	const char *filePath = "/Users/megrisse/Desktop/webserv/CGI-bin/php-cgi";
+	const char *filePath = "./CGI-bin/php-cgi";
 	char *args[] = {(char *)filePath, (char *)this->fileName.c_str(), NULL};
 	pipe(fds);
 	// std::cout << "hey\n";

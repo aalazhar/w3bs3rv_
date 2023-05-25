@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RESP.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:16 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/25 17:08:07 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/25 20:45:14 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	printvector(std::vector<char> vec, int key) {
 
 		std::cout << *it;
 	}
-	std::cout << std::endl;
 	std::cout << "---------------------------------------------------------\n";
 }
 
@@ -35,6 +34,7 @@ void	Res::resetvalues() {
 	this->status_line = "";
 	this->fileData.clear();
 	this->_headers.clear();
+	this->Resp.clear();
 	this->clearData();
 	file_size = 0;
 	this->type = "";
@@ -146,9 +146,14 @@ std::string	Res::getStatusMsg(int code) {
 		return "INVALID CODE !";
 }
 
+std::string	Res::getMimetype(std::string type) {
+
+	return (mimeTypes[type]);
+}
+
 void	Res::getHeadersRes() {
 
-	std::string	headers;
+	std::string	headers = "";
 	std::stringstream	ss;
 	std::stringstream	sss;
 
@@ -156,11 +161,17 @@ void	Res::getHeadersRes() {
 	getDate();
 	status_line = "HTTP/1.1 " + ss.str() + " " + getStatusMsg(code) + CRLF;
 	sss << file_size;
-	headers = status_line + "Content-Type: " + mimeTypes[type] + CRLF;
+	std::cout << "HAHOWA TYPE + " << type << std::endl;
+	std::cout << "HAHOWA TYPE MIME + " << getMimetype(type) << std::endl;
+	headers = status_line + "Content-Type: " + getMimetype(type) + CRLF;
 	headers += "Content-length: " + sss.str() + CRLF;
 	headers += "Date: " + Date + CRLF;
-	for (size_t i = 0; i < headers.length(); i++)
+	std::cout << "headers : " << headers << std::endl;
+	// std::cout << "_headers : " << prin << std::endl;
+
+	for (size_t i = 0; i < headers.size(); i++)
 		_headers.push_back(headers[i]);
+	printvector(_headers, 0);
 }
 
 void	Res::readContent() {
@@ -221,14 +232,27 @@ void	Res::buildCGIResponse() {
 	std::vector<std::string> cgiBuff;
 	std::string	response_body = "";
 	std::string	response_header = "";
-	type = filePath.substr(filePath.rfind(".") + 1 , filePath.size() - filePath.rfind("."));
+	std::string	response = "";
+	std::string	t = "";
+	getifQuerry(getURL());
+	
+	std::cout << "CGI FILE :" << filePath << std::endl;
+	t = filePath.substr(filePath.rfind(".") + 1 , filePath.size() - filePath.rfind("."));
+	type = t;
+	std::cout << "CGI type :" << type << std::endl;
 	if (!checkCgipath(filePath) or type == "php" or type == "py") {
 
+		std::cout << "7awli 7awli \n";
 		CGI	cgi(filePath, getMETHOD(), type, "", getBody(), Querry, getBody().length()); 
 		size_t	i = 0;
 		size_t	size = response.size() - 2;
 		cgiBuff = cgi.executeCGI();
+		std::cout << "hna hna : \n";
+		for (std::vector<std::string>::iterator i = cgiBuff.begin(); i < cgiBuff.end(); i++)
+			std::cout << *i;
+		std::cout << std::endl;
 		response = vectorToString(cgiBuff);
+		std::cout << "CGI : " << response << std::endl;
 		while (response.find("\r\n\r\n", i) != std::string::npos || response.find("\r\n\r\n", i) == i) {
 
 			std::string	resp = response.substr(i, response.find("\r\n", i) - i);
@@ -237,7 +261,7 @@ void	Res::buildCGIResponse() {
 			if (!resp.find("Status: "))
 				code = std::atoi(resp.substr(8, 3).c_str());
 			else if (!resp.find("Content-type: "))
-				type = resp.substr(14, resp.size());
+				this->type = resp.substr(14, resp.size());
 			i += resp.size() + 2;
 		}
 		while (response.find("\r\n", size) == size)
@@ -248,6 +272,12 @@ void	Res::buildCGIResponse() {
 		for (size_t i = 0; i < response_body.length(); i++)
 			fileData.push_back(response_body[i]);
 		file_size = fileData.size();
+		code = 200;
+	}
+	else {
+		
+		code = 404;
+		readErrorsfiles(errorsFiles[code]);
 	}
 	getHeadersRes();
 }
@@ -280,9 +310,23 @@ void Res::keventUP(int kq, int fd, int filter, int flag){
 }
 
 void	Res::mergeResponse() {
+	// _headers.reserve(_headers.size() + fileData.size());
+	// _headers.insert(_headers.end(), fileData.begin(), fileData.end());
 
-	_headers.insert(_headers.end(), fileData.begin(), fileData.end());
-	setSizesend(_headers.size());
+	// int	j = 0;
+	for (size_t i = 0; i < _headers.size() + fileData.size(); i++) {
+
+		if (i < _headers.size())
+			Resp.push_back(_headers[i]);
+		else {
+
+			Resp.push_back(fileData[i - _headers.size()]);
+		} 
+	}
+	// for (size_t i = 0; i < fileData.size(); i++)
+	// 	_headers.push_back(fileData[i]);
+	// setSizesend(_headers.size());
+	printvector(Resp, 6);
 }
 
 // std::vector<char>	Res::makeResponse() {
@@ -325,13 +369,16 @@ void	Res::GET() {
 			buildCGIResponse();
 			break ;
 	}
+	printvector(_headers, 3);
+	printvector(fileData, 4);
 	mergeResponse();
-	printvector(_headers, 88);
+	// printvector(_headers, 88);
 }
 
 void	Res::buildResponse() {
-	
+	std::cout << "METHOD : " << this->getMETHOD() << std::endl;
 	if (this->getMETHOD() == "GET")
 		GET();
-		
+	// std::cout <<"--------response-------\n"<< this->getResp().data()<<"---------------------\n" << std::endl;
+	printvector(Resp, 55);
 }

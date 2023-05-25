@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RESP.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:46 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/25 16:49:33 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/25 20:21:35 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ private :
 	std::map<int, std::string>			CodesMsgs;
 	std::map<int, std::string>			errorsFiles;
 	std::map<std::string, std::string>	mimeTypes;
-    std::string							response;
 	std::string							type;
 	int									code;
 	std::string							Date;
@@ -40,6 +39,7 @@ private :
 	size_t								file_size;
 	std::vector<char>					_headers;
 	std::vector<char>					fileData;
+	std::vector<char>					Resp;
 
 public :
 
@@ -47,7 +47,7 @@ public :
 	void setSizesend(size_t n) {Size_send = n;}
 	size_t	getSizeSend(){return Size_send;}
     Res(struct config, int, int);
-	std::vector<char>	&getResp() {return _headers;}
+	std::vector<char>	&getResp() {return Resp;}
 	std::vector<char>	makeResponse();
     void    resetvalues();
 	void	buildResponse();
@@ -67,4 +67,5 @@ public :
 	void 	keventUP(int, int, int, int);
 	void	GET();
 	std::string	getStatusMsg(int);
+	std::string	getMimetype(std::string);
 };

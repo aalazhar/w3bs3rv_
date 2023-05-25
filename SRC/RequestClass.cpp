@@ -73,6 +73,10 @@ void Req::checkSendType(){
     
     size_t  pos = this->URL.rfind(".");
     std::string type = this->URL.substr(pos + 1, this->URL.size());
+    size_t pos2 = type.find("?");
+    if (pos2 != std::string::npos)
+        type.erase(pos2, type.size());
+    std::cout << "wa l3adaw : " << type << std::endl;
     if (type == "php" or type == "py" or type == "pl")
         return (void)(this->step = CGII);
     else if (type == "" or this->step < 0)
