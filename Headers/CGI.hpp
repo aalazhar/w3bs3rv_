@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:54:32 by aalazhar          #+#    #+#             */
-/*   Updated: 2023/05/22 20:32:52 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/25 02:35:45 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,20 @@ private:
     std::string body;
     std::string quiry;
     std::string cgiPath;
+    // char    *str;
     // std::vector<std::string> buff;
     int         cntLenght;
     char        **env;
+    CGI();
 
 public :
-    CGI();
     CGI(std::string fileName_, std::string method_, \
         std::string cntType_, std::string locaPath_, \
         std::string body_, std::string quiry_, int cntLenght_);
     std::vector<std::string> executeCGI();
     char ** getEnv();
-    char * putEnvValues(std::string s1, std::string s2);
-    // ~CGI();
+    char * putEnvValues(std::string s1, std::string s2, std::string&);
+    ~CGI();
 
 };
 

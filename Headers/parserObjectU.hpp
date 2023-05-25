@@ -33,6 +33,7 @@ struct config{
     std::vector <loca> vect;
     std::vector <std::string> s_names;
     std::vector <std::string> err_p;
+    std::map <std::string, std::string> err_pm;
     std::vector <std::string> a_meth;
     std::vector <std::string> lsten;
     std::vector <std::string> uploads;

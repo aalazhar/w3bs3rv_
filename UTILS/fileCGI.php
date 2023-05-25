@@ -52,6 +52,7 @@
     // echo "<title>NO FUCK</title>";
     // echo "</head>";
     // echo "<body>";
+
     // echo "<img src=\"./warning.png\" alt=Image />";  
     // echo "</body>";
     // echo "</html>";
@@ -68,7 +69,6 @@
 
         exit;
     }
-    // }
     // elseif ($method1 === 'POST'){
     //     print $method1;
     //     $name = $_POST['fname'];
@@ -80,7 +80,7 @@
     
     // exit;
 ?>
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <style>
@@ -97,10 +97,9 @@
         <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
     <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
 
-     -->
 
     
     
-<!-- </body>
-</html> -->
+<!</body>
+</html>
 

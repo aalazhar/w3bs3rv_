@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:56:14 by aalazhar          #+#    #+#             */
-/*   Updated: 2023/05/24 00:34:16 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/25 02:41:01 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,23 @@ char **CGI::getEnv(){
 	return (this->env);
 }
 
-char *CGI::putEnvValues(std::string s1, std::string s2){
-	// std::cout << "++++==" << s1 << std::endl;
-	// std::cout << "++++==" << s2 << std::endl;
-	// std::string merge = s1 + "=" + s2;
-	std::string merge(s1);
-	merge.append("=");
-	merge.append(s2);
-	int len = merge.size();
-	// std::cout << merge << std::endl;
-	char *str = new char[len];
-	strcpy(str, merge.c_str());
-	// const char *str = merge.c_str();
-	// std::cout << ")))))))" << str << std::endl;
-	return (str);
+// char *CGI::putEnvValues(std::string s1, std::string s2, std::string& s){
+// 	// std::cout << "++++==" << s1 << std::endl;
+// 	// std::cout << "++++==" << s2 << std::endl;
+// 	// std::string merge = s1 + "=" + s2;
+// 	std::string merge(s1);
+// 	merge.append("=");
+// 	merge.append(s2);
+// 	// s = 
+// 	// std::cout << merge << std::endl;
+// 	// char *str = new char[len];
+// 	char str[1024];
+// 	strcpy(str, merge.c_str());
+// 	// const char *str = merge.c_str();
+// 	// std::cout << ")))))))" << str << std::endl;
+// 	return (str);
 
-}
+// }
 
 CGI::CGI(std::string fileName_, std::string method_, \
         std::string cntType_, std::string locaPath_, \
@@ -69,11 +70,13 @@ CGI::CGI(std::string fileName_, std::string method_, \
 		// std::cout << "--&--" << putEnvValues("it->first", "it->second") << std::endl;
 		// std::cout << it->first << "=" << it->second << std::endl;
 		std::vector<std::string> test;
+		std::string s = "";
 		while (it != envMap.end()){
-			this->env[i] = putEnvValues(it->first, it->second);
-			test.push_back(std::string(this->env[i]));
+			// (putEnvValues(it->first, it->second, s))
+			s = it->first + "=" + it->second;
+			this->env[i] = const_cast<char *>(s.c_str());
 			// std::cout << "----- --- " << this->env[i] <<std::endl;
-			it ++;
+			it++;
 			i++;
 		}
 		this->env[i] = NULL;
@@ -150,9 +153,7 @@ std::vector<std::string> CGI::executeCGI(){
 	}
 	return buff;
 }
-// CGI::~CGI(){
-// 	// int i = 0;
-// 	std::cout << "Destructer\n";
-// 	// while (++i < 10)
-// 	// 	delete [] this->env[i];
-// }
+
+CGI::~CGI(){
+	delete [] env;
+}

@@ -2,16 +2,17 @@ NAME = webServ
 
 CC = c++
 
-CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -g
+SANI = -fsanitize=address
 
+CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -g $(SANI)
 
 OBJ_FILE = OBJ/
 FOBJ = OBJ
 
-HEADERS = $(addprefix Headers/, Headers.hpp  webServer.hpp Server.hpp RequestClass.hpp parserObjectU.hpp CGI.hpp Response.hpp)
+HEADERS = $(addprefix Headers/, Headers.hpp  webServer.hpp Server.hpp RequestClass.hpp parserObjectU.hpp CGI.hpp RESP.hpp)
 
 SRC_FILE = SRC/
-SRC =  webServer.cpp Server.cpp RequestClass.cpp parserObjectU.cpp CGI.cpp Response.cpp main.cpp
+SRC =  webServer.cpp Server.cpp RequestClass.cpp parserObjectU.cpp CGI.cpp RESP.cpp main.cpp mimeTypes.cpp
 
 OBJS = $(addprefix $(OBJ_FILE),  $(SRC:%.cpp=%.o))
 

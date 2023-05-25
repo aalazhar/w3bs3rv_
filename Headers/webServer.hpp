@@ -2,14 +2,15 @@
 
 #include "Headers.hpp"
 #include "Server.hpp"
-#include "Response.hpp"
+// #include "Response.hpp"
 #include "RequestClass.hpp"
+#include "RESP.hpp"
 
 #define TIMEOUT 10
 
 
 typedef std::vector<Server> ServerVec;
-typedef std::map<int, Response> _ClientMap;
+typedef std::map<int, Res> _ClientMap;
 
 class webServ{
     private:

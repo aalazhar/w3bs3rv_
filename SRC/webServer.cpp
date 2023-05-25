@@ -159,7 +159,7 @@ int webServ::acceptNewCl(int kq, int ServerSock){
             break;
     }
     std::cout << " CLientSock = " << clientSock << "\n";
-    Response rs(Servers[i].getConfig(), ServerSock, clientSock);
+    Res rs(Servers[i].getConfig(), ServerSock, clientSock);
     std::cout << "waa zzeeeb\n";
     testConnection(clientSock, "accepte a new client");
     // try{
@@ -196,14 +196,23 @@ int webServ::sendData(int &kq,int& fd, struct kevent &event){
             break;;
     }
     std::cout << "server n = " << Servers[i].getSock() << "map size = " << this->Cmap.size() << "\n";
-    Response &res = this->Cmap.find(fd)->second;
-    std::cout << "-----request : ------\n" << *dynamic_cast<Req*>(&res) << "\n------------\n";
-    res.buildResponse(*dynamic_cast<Req*>(&res), kq);
-    if (res.getCode() == 408) {
+    Res &res = this->Cmap.find(fd)->second;
+    /*
+        res.buildResponse(*dynamic_cast<Req*>(&res), kq);
+    */
+   res.buildResponse();
+   size_t length = res.getResp().size();
+   if (send(fd, res.getResp().data(), length, 0) < 0)
+        std::cout << "SEND FAILD\n";
+    keventUP(kq, fd, EVFILT_WRITE, EV_DISABLE);
+	keventUP(kq, fd, EVFILT_READ, EV_CLEAR | EV_ENABLE | EV_ADD);
+	res.resetvalues();
+    // std::cout << "-----request : ------\n" << *dynamic_cast<Req*>(&res) << "\n------------\n";
+    // if (res.getCode() == 408) {
 
-        this->Cmap.erase(fd);
-        close(fd);
-    }
+    //     this->Cmap.erase(fd);
+    //     close(fd);
+    // }
     std::cout << "LLLLLLL \n";    std::cout << "------------\n";
     return 0;
 
@@ -219,7 +228,7 @@ int webServ::readData(int &kq, int& fd, struct kevent &event){
             break;;
     }
     std::cout << "server n = " << Servers[i].getSock() << "map size = " << this->Cmap.size() << "\n" ;
-    char buffer[event.data];
+    char buffer[1024];
     std::cout << "fd = " << fd  << "   size : " << event.data << std::endl;
     memset(buffer, 0, event.data);
     int rd = recv(fd, buffer, event.data, 0);
@@ -235,14 +244,14 @@ int webServ::readData(int &kq, int& fd, struct kevent &event){
     }
     else
     {
-        buffer[event.data] = 0;
+        buffer[rd] = 0;
         std::string req(buffer); 
         //append the read string in the request class
         Cmap.find(fd)->second.append(req);
         std::cout << *dynamic_cast<Req *>(&Cmap.find(fd)->second) << std::endl;;
     }
     std::cout << "r = " << Cmap.find(fd)->second.getStep() << std::endl;;
-    if (Cmap.find(fd)->second.getStep() == DONE || Cmap.find(fd)->second.getStep() < 0)
+    if (Cmap.find(fd)->second.getStep() > 2 || Cmap.find(fd)->second.getStep() < 0)
     {
 		keventUP(kq, fd, EVFILT_READ, EV_DISABLE);
         keventUP(kq, fd, EVFILT_WRITE, EV_CLEAR|EV_ENABLE | EV_ADD);

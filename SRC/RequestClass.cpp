@@ -19,10 +19,18 @@ void Req::append(const std::string &rq){
             parseHeaders(s);
         
         else if (step == 2){
+            std::cout << "dkhaal hna\n";
             s += "\n";
-            parseBody(s);
+            if (parseBody(s) == 3){
+                this->checkSendType();
+                std::cout << "here\n";
+                }
         }
+            std::cout << "kk step = " << this->step << std::endl;
     }
+    this->checkSendType();
+        std::cout << "last step = " << this->step << std::endl;
+
 
 }
 
@@ -34,12 +42,13 @@ void Req::updateTime(){
 
 int Req::parseBody(std::string &s){
     this->Body.append(s);
+    std::cout << "METHOD = " << METHOD << std::endl;
     if (METHOD != "POST")
-        return  step = 3;
+        return  std::cout << "first re\n" ,step = 3;
     size_t BodySize = (size_t)std::atoi(HEADERS["Content-Length"].c_str());
     if (Body.size() >= BodySize)
-        return step = 3;
-    return 0;
+        return std::cout << "2 re\n", step = 3;
+    return std::cout << "3 re\n",0;
 }
 
 Req &Req::operator=(const Req &other){
@@ -52,14 +61,27 @@ Req &Req::operator=(const Req &other){
     return *this;
 }
 
-int Req::checkStep(){
-    if (METHOD == "POST")
-        return this->step = 2;
-    else
-        return this->step = 3;
+// int Req::checkStep(){
+//     if (METHOD == "POST")
+//         return this->step = 2;
+//     else
+//         return this->step = 3;
         
-}
+// }
 
+void Req::checkSendType(){
+    
+    size_t  pos = this->URL.rfind(".");
+    std::string type = this->URL.substr(pos + 1, this->URL.size());
+    if (type == "php" or type == "py" or type == "pl")
+        return (void)(this->step = CGII);
+    else if (type == "" or this->step < 0)
+        return (void)(this->step = ERROR);
+    else if (type == "png" or type == "jpeg" or type == "jpg")
+        return (void)(this->step = BINARYFILE);
+    else
+        return (void)(this->step = NORMFILE);
+}
 
 int Req::parseHeaders(std::string&hd){
     std::string key;
@@ -68,7 +90,7 @@ int Req::parseHeaders(std::string&hd){
     std::string::iterator j = hd.begin();
 
     if (hd == "\r")
-        return checkStep();
+        return std::cout << "return here\n",this->step = 2;
     while (i != hd.end() && *i != ':')
         i++;
 

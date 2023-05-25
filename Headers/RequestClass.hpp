@@ -4,6 +4,11 @@
 #include "parserObjectU.hpp"
 
 #define DONE 3
+#define CGII 10
+#define BINARYFILE 11
+#define NORMFILE 12
+#define ERROR 13
+
 
 /*
     ERROR STEPS in Req class:
@@ -16,6 +21,9 @@
     -3 : invalid HTTPV
 
 */
+
+
+
 
 
 #define CRLF "\r\n"
@@ -33,17 +41,21 @@ class Req{
         int step;
         int ServerFd;
         int clientFd;
-        struct config &_Config;
+        struct config _Config;
 
 
     public:
-        void clear(){
+        void clearData() {
+
+            std::cout << "KKKKKKK \n";
             this->HEADERS.clear();
+            std::cout << "KKKKKKK1 \n";
             this->METHOD = "";
             this->URL = "";
             this->HTTPV = "";
             this->Body = "";
             this->step = 0;
+            std::cout << "KKKKKKK2 \n";
         };
         Req(int, int, struct config &);
         void setStep(int s){this->step = s;}
@@ -73,6 +85,8 @@ class Req{
         }
         iter_map   reqBegin(){ return (HEADERS.begin());}
         iter_map   reqEnd(){ return (HEADERS.end()); }
+
+        void checkSendType();
 };
 
 std::ostream &operator<<(std::ostream &, Req &);

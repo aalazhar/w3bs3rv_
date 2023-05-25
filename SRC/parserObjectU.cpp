@@ -471,14 +471,17 @@ void parserObject::split_listen_line(std::string line, struct config& conf){
 }
 
 void parserObject::split_lines(std::string line, char sep, struct config& conf, int *tab){
-    int i = 0;
+    size_t i = 0;
     (void)sep;
     std::string res = "";
     std::string tmp = "";
     struct loca loca;
 
-    while (line[i] != ' ' && line.size() > 0 && line[i] != '}')
-        i++;
+    // while (line.c_str()[i] != ' ' && line.size() > 0 && line.c_str()[i] != '}') {
+    //     std::cout << "line[i] == " << line.c_str()[i] << " i == " << i << std::endl; 
+    //     i++;
+    // }
+    for (; line[i] != ' ' && line.size() > i && line[i] != '}'; i++);
     res = line.substr(0, i);
     if (res == "listen"){
         conf.listen = &line[i + 1];

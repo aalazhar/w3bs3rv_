@@ -1,2421 +1,0 @@
-hellllllll
-zzzzzzz
-
--------accepteNewCl-------
- CLientSock = 5
-waa zzeeeb
-----Accepted new client connection on socket----
-
-------read data---------
-server n = 3map size = 1
-fd = 5   size : 698
-====step=3
-GET /index.html HTTP/1.1
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Cache-Control: max-age=0
-Connection: keep-alive
-Host: localhost:8080
-Sec-Fetch-Dest: document
-Sec-Fetch-Mode: navigate
-Sec-Fetch-Site: none
-Sec-Fetch-User: ?1
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-r = 3
---------finish read data---------
-
-------send data---------
-server n = 3map size = 1
------request : ------
-====step=3
-GET /index.html HTTP/1.1
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Cache-Control: max-age=0
-Connection: keep-alive
-Host: localhost:8080
-Sec-Fetch-Dest: document
-Sec-Fetch-Mode: navigate
-Sec-Fetch-Site: none
-Sec-Fetch-User: ?1
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-------------
-new file path = index.html
-Querry 
-FILE PATH :: index.html
-URL :: /index.html
-SIZE lll = 97
-SIZE = 1883
-KOLSHI = 1883
----------------------------------------------------------
-VECTOR 404 :
-HTTP/1.1 200 OK
-Content-Type: text/html
-Content-length: 1786
-Date: Wed May 24 01:09:41 2023
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>My Blog</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <header>
-      <h1>My Blog</h1>
-    </header>
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
-    <main>
-      <article>
-        <header>
-          <h2>My First Blog Post</h2>
-          <p>Posted on May 1, 2023</p>
-        </header>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel felis nec turpis commodo hendrerit. Integer sed enim non mauris tincidunt sagittis. Vestibulum hendrerit scelerisque ipsum vel aliquam. Sed a odio vel quam facilisis sodales. Etiam at lacus vel enim feugiat fringilla. Sed feugiat erat ac urna pharetra interdum.</p>
-        <p>Etiam sit amet leo ac massa commodo bibendum. Aliquam erat volutpat. Duis posuere urna sit amet nunc bibendum lobortis. Nulla fermentum nulla vel purus ullamcorper, eget venenatis arcu tristique. Maecenas at est non urna fermentum eleifend eu eu dolor. Fusce placerat libero quis blandit iaculis. Mauris feugiat velit at consequat rhoncus.</p>
-      </article>
-    </main>
-    <aside>
-      <h3>Categories</h3>
-      <ul>
-        <li><a href="#">Category 1</a></li>
-        <li><a href="#">Category 2</a></li>
-        <li><a href="#">Category 3</a></li>
-      </ul>
-    </aside>
-    <footer>
-      <p>&copy; 2023 My Blog</p>
-      <img src="test.png" alt="teeeest">
-    </footer>
-    <form action="/System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php" method="GET">  
-    First Name: <input type="text" name="fname" size=30><p>
-    Your Age  :  <input type="text" name="age" size=30><p>
-    <input type="submit">
-    <form/>
-  </body>
-</html>
----------------------------------------------------------
-SALA SEND 
-LLLLLLL 
-------------
-
--------accepteNewCl-------
- CLientSock = 6
-waa zzeeeb
-----Accepted new client connection on socket----
-
-------read data---------
-server n = 3map size = 2
-fd = 5   size : 550
-====step=3
-GET /style.css HTTP/1.1
-Accept: text/css,*/*;q=0.1
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: style
-Sec-Fetch-Mode: no-cors
-Sec-Fetch-Site: same-origin
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-r = 3
---------finish read data---------
-
-------read data---------
-server n = 3map size = 2
-fd = 6   size : 595
-====step=3
-GET /test.png HTTP/1.1
-Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: image
-Sec-Fetch-Mode: no-cors
-Sec-Fetch-Site: same-origin
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-r = 3
---------finish read data---------
-
-------send data---------
-server n = 3map size = 2
------request : ------
-====step=3
-GET /style.css HTTP/1.1
-Accept: text/css,*/*;q=0.1
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: style
-Sec-Fetch-Mode: no-cors
-Sec-Fetch-Site: same-origin
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-------------
-new file path = style.css
-Querry 
-FILE PATH :: style.css
-URL :: /style.css
-SIZE lll = 95
-SIZE = 1068
-KOLSHI = 1068
----------------------------------------------------------
-VECTOR 404 :
-HTTP/1.1 200 OK
-Content-Type: text/css
-Content-length: 973
-Date: Wed May 24 01:09:41 2023
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-  }
-  
-  header {
-    background-color: #434343;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-  }
-  
-  nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-around;
-    background-color: #f2f2f2;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  nav li {
-    margin: 0;
-  }
-  
-  nav a {
-    display: block;
-    padding: 10px;
-    color: #333;
-    text-decoration: none;
-  }
-  
-  nav a:hover {
-    background-color: #ccc;
-  }
-  
-  main {
-    width: 80%;
-    margin: 0 auto;
-  }
-  
-  article {
-    margin-bottom: 30px;
-  }
-  
-  article header {
-    background-color: #921a1a;
-    padding: 10px;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    border-radius: 15 15;
-  }
-  
-  article h2 {
-    margin: 0;
-  }
-  
-  article p {
-    line-height: 1.5;
-  }
-  
-  aside {
-    width: 20%;
-    float: right;
-  }
----------------------------------------------------------
-SALA SEND 
-LLLLLLL 
-------------
-
-------send data---------
-server n = 3map size = 2
------request : ------
-====step=3
-GET /test.png HTTP/1.1
-Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: image
-Sec-Fetch-Mode: no-cors
-Sec-Fetch-Site: same-origin
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-------------
-new file path = test.png
-Querry 
-FILE PATH :: test.png
-URL :: /test.png
-SIZE lll = 97
-SIZE = 5936
-KOLSHI = 5936
----------------------------------------------------------
-VECTOR 404 :
-HTTP/1.1 200 OK
-Content-Type: image/png
-Content-length: 5839
-Date: Wed May 24 01:09:41 2023
-
-‰PNG
-
-   IHDR   e   f   ]ŠÈ6    cHRM  z&  €„  ú   €è  u0  ê`  :˜  pœºQ<   bKGD ÿ ÿ ÿ ½§“   tIMEç.œ¦R®  ¯IDATxÚí]{Œ¤U•ÿ{ï÷¨G¿f˜‚:3(LDXEyÌ"Én6A3Â(:º²™5nv£	ÿ¸‰n6›,ûp×İ¨Ñ ,Š ‚FÅÍ
-™aPQPAÁì 3È0ÌtwU×ë{İsö[US]ı¨êîêîìM§SUß½ßwî¯Î=÷¼î)ª×ëøÿÖwS«MÀ+¬™•¤ˆêVD´ÂÄ¯^Æì¡ÖÚ•&~…Ÿ'"•JED–Èî¹\n…Ylåğ‘ {î¹mÛ¶5­õ¢&Yks¹Ü={^ûÚ×Æq¼b¨­(^ ²,;rä°µ¼ôj­²,C‹×VfË…—ˆt±Oû“0êõ†ÖjiüÅa´oËÌ]–	ÁeÁKD<Ïó<¯óCfVJ…a®V€,[êSj5„ahŒÉçóJMSŒÒ4MÓt9 <^ÖÚb±ø­o}ë¦›nkoaDHS¬]Ë÷?°Ö÷2a-Z± "ISó±½o|\yÚœªµ.•J7Şxã?øÁjµªµ>Ùñr«ìĞ¡CO<ñÄÌ«kÖàÊ?^dÀ¿|ìµ×><11ËµC‡a ŠŞ²àÅÌÌìd°ï ù|`msá!ŠdtÔ¯V‘ÏÃZ,z¹ˆ@kÔë'&’0¤ş2õzìî(QJu­Ö“/)
-í·D9 õzLS)_zÉ*GÿRğr7yé%puwpOsoëõú dÄŞfæB¡póÍ7?øàƒÅb>I¼Ÿ:óÌ_e™Hk°ÃÃtİ¬gx‰k…Y¦n¿]OM‰Öè¸“:táÑ£[|?­Vë—_~ù®]»jµÚ@¸l0üå¶óûî»ï{îqŸ|üŞG?º˜u€`1üáÏz#ÿ†ö~ıë?vojµÚ®]»Üî¼úxYkEÄm‚ÃÃE ##a¹œz¦ dÓ½e>Š ËºñÊ2Éå2c
-@edÄ+—#G•£ˆ–¸c.•öb±Ø~Å@¹œ \­ZgYÎ¸úÙoNÕªl¹, ¢Xu×Æªá¥”ºã;=êyZ©ÜYg>·kWÎ÷SS|å•`¥VÚß¢rå•a½î«$©­]{øK_º™¹¦vãÆÛ·oï2Ô/ïıüÆ7¾ñÀî“o~shçÎ`rÚÅŠ»§aPJ
-@ßv[íCª¸K›6mÚ¿ÿRìó%ñ—ˆ¸=;Ÿ÷ëu›¦4b”¢Nñ*20ä¨—U@k™Ùfr9G•Îçu½Œ-q¯€¼e°D¨™2‹ˆ‰–l.¶n&âõì¤Z¢€ˆ°Î\]ºqÙı9DÇ…ññS{òEÏ&¢</>å”#ËMó<myñQDñK/½æî»?æy©m6Išú§¬{şº÷ÿ{KD®B[F¼D¨1l‹P[İ_ÌıÄjÍ"DDN .gO¼ˆ„()e™…ÙùÃÎıç0R*Ømp"v×¬^D’¦a’äDÈ÷£8ñ}ßóhq»$3·´sa«kµµDË$+Dpm¯&^"
-¨ÿş÷oÛ·ïê\®‘e<<¼æ‚Î±Ö.TëcÌøøøŒ1Zg•ÊØw¾ó7DÂ¬Œ—¼wû—‹Å	f³bs9ğ Özq\ÔZ¥)giÎYm‹ÀKkİiñ‰¨$)¸ÌÑ ÕºUÁK !rÿY)«”UJHñÌğGŸxÍHd‰À,J1‘ Œ9—¤´´ü“/"ğˆ 0à¡¹E6ç;¸èÃ	o*Q „„Ù×# JO:¼œÚü™ÏL}şóFD5Õ‹/n\u•j4ºCj¾ïoÚ´I©¾‚iÎD=xğàşıû».)…8¦+ß55UÒÚ“–ªÒù€ÖÏÚ,x‰>~şùØ}rê©‰14"Êçóâµ f„2¡˜ñ›ÇkQñüw Xìc€ş{Zë4µA@sQè\.(íÜ3û¸ 3Ïš6@Ôt@
-*Š 5Í‡H“¶“¯6en)ôü:‹Í“«ÃÌ=ÙĞ9²˜{?nPmò™ÚMD>ùÉO>ûì³+Nk].—¯¿şú;v¤i:ÀPØ@Újâà®»îzá…f~~ŞyçíØ±c)ĞejƒÄKk‘R”$è“-FGG_xáß÷ÛĞc¢(Êçó}>€1ó¬G‘fÕ/^taz •J_Îè–»1ëb¥ù9Ëí"xùe¦óH/ÁÃË…—R”e¸úê‘·¾Õo4H¤6<\¬×Y)²vğ¢˜Ìğ<|ö³k³Œˆ¼Y•xfäóôÈ#Éîİe­i ‹{PxÀÎæÚk›^àƒÕ~ …ÂÀÅ®&B'Ÿûœj9ˆfe!èÎ;ÍîİıÊ‡ÂËµ©)¤^§|>«T˜ˆznóÎ–ÖZ·UcL–e}l‹"‚RÉ9ÇÇ,OÊ2är<5u²ÚÎaÔç÷Y*• ¤é	ÏI´~¢|D0†Ü&3·„"­OV¼ÑŞó÷<óÌ3a¶õ/¥T¹\>ï¼óÜëÕ%of[M¼ˆè‹_üâ\W1´ŠäÍÚ–ÏïÂâş0Ã™å^Ìc?5­Âî"M_şJÇ:–/7;f•¦¾çei*Özne9–éôµö³â¦qÁeü°(6Ë ª¬<^.Ê†Õuë‡ad-‡a\¯ÁÒÌ|š˜˜hû'æ¿3AP©Tš=‰”Ír“% "d¼D1¯p rYğ	¶lùÍæÍOˆÖÑ‘#oº÷Ş¼ç%Îİşøã/änä²Ó…™=/œœ<û{w)a¢œÕ;V+¹2—OŞ3‘YçÚï=hF—fÈ’@€‹ÇifrÊV@x%Û²î„æ4•ˆÑ=Â9
-35Ü¶gY VÄDLPrâÃW^Í)e=¯Ñ+Bh±4ó:9äeVC5…ß«íü#‘ şúõ‡?ğ›'¤*]À¿]Sº?o†Xl‹-z#§³X€ˆÙÚ,I.ÓtˆWRä/»¾*BÆ$CCÇçíäS•2#,Ü\iDdÙæ}5$‹3ÜI”r/ÚºÈRÒXN2¼ĞŒBÎ›äÆPFXxZ<‚mŠ1Xµ¶ŠXTvqa‘Uğ¾®=4~ƒ á„Óºˆ/’‰2¤<,)ˆ´–]S­‚u¹Êöv @§ÿõÔú÷ÕI‰.ÊñïÇ¿[4ÃBV5²Úá©ƒÒµâ˜ÙMbÍ
-.Æ“/„QÜasŒÊY¾d2ÉÒtª«?,ÈğÊ/ÉÁOS€¶Ìd‰”¨efÄ’Ä’ )‘iw…ºv@"™iyf%2M±,Ô`cLƒÂK äs s§„Ÿ9\XZ–‚ËÄÆH& ‚d³é
-$bA1	SûñZ×ZÇ*›5 ås¦MáÉ‚—ˆx÷ŞkKáõêT”]òæ®¸ğËù…qOÑØ¶HL¨@æš¦Èˆ¶ 	HQz×ıuàÈ9¡qËŠ`æâPqßŞ½À­, §è|š€‡{×“ÕHe²BZÙ+.¼C¸½@*	Â4¼µ1¼µŸƒ>$Ù~zÍ¾}¸€µ:ÀäÓ¸uP™u‹Á«]Å }rÕØÅ|}Í08-‘ığ,«¦êhZõ
-µdYsÖBÌjÖn¤ 3ie†‹SëÆ¸˜Ÿbn>Q8óÂ±¬PmS¨²,Ë²¬göÆÀğ"¢¡¡¡öÛj• Ä¨×‰Öê4ƒç%@ø¥G •H¡·£š=DH«T£>·OĞ$õFş¥I•$£mşc|¢Ğ¦°Z¥0Ã0t¢(ZhÓÂğRJ5Ûo¿=Š"¥ˆ ¯º*yûÛ‹Jå5Æ³ÿr_©ÀÃşgßü??ÿËztB~Á².„•m}ßè´Ÿ"BJ%/¾üú‡{¥g’¹‡R|î;cã3Z[´º‰XíË[vôüœöŠÖ6ŠÅä+_ùªˆeæ0Ìmß¾=—Ë-(KcçÓ\và±cÇÎ8ãŒö×òä“§œ{®(ÿÓ7¾zëîcÃu•$~”¨Îıq‚×n8öı/\Sı$5[ÖFO>ğÈÎ]ËpsÍ‹õßû—?;oó}@nº\À
- êw¿³[·¾ÜE‡Ş°aC’$ıû9úâ/W@Äy“Edİºµãã/{Ç˜ª H*U=TLãÈ¥¬0A]³â$†ŠÑ,ª§·YAk­íè†òUf5}!‹R€HÂ —$>KÒa5M>’0[›0#ŸG¥¢‰¼ @š¦k×®u3rñ^a ^.©»0S,K¥ÔZX›(ä ¡¢³éÂ©ŒÊ,<#¾w® "d¬E(VŠÑ¦§N¤µâÀ‹¬…eÕäíVkä]îI=‹¬Vì@låÁóšdäó"’ºz¥RZ,ƒ ‚ @Çıœè—«R©<üğÃDPÊÔj¥w¼#_«%Z›,ÃşıAšJ#R9¿¨§/»à×WÕŠM¼æÈñ×u@FŠ$IÃ_ï¿,ğ,½3½™u!_9px«V@·ğ"Eö-g?â›H@qê&İY3ÅAyü¸yê)­5‚ ÒEk³B!ÿóŸÿ¤PeÎD°uëÖ¡VnÁ<$õ_®¸ËC=tÙe—µø/¾xZ±è|TúüóK?^wiî·Ü2ú‘P–)cÆï¼ÿÆÏ}åÇ†ëÖNc
-l¶ ¿‚ Š¤+¦O$Öê\XûŞ?_¶vä 6]hÓñÏ2x}ík²k×¤;òû–·ä{lÌ™•ª:íÔªÕfç}ûö]zé¥=KÈôà/¶û¯µ²V‚ÀDQR,Ú4Ï3Æ0€ à¸™£LiFÆ(ë|¤3ó£Ï›.·g•b_ò\J¾ ÍPÖ*¢9ÓÍ´@‚@âÆ0§©õ<Ä‘¯ZÍ´&k¹s¦‹Çkú¼ÄE©=€ûßš×‰ìwšfòÒ¬÷™ş}ÌNb_‡ÙZGh{gÄ	×Íó€çµgÔ?×WEhr2§4§‰É²N°‘ Ò” ımĞ6‹Åe{wœÙ€ˆR†Ô@“' ²Œjµ|gO“J¤¼ĞÛ,ˆ¿  V£>u~Ì¬”~öĞÆ¢Ã€ÏÿáIT&ub¯$Pf“S6sÊÆ7eÙ4£~ˆöÙğú]oc¶J©8NjµËE_ ^.Ô,BÕJÇ¡+¥¬U$€šYD0§Ö&J¸“¿8‹…pâXZ·Ù¯´½D€eU©„ÌL¤Ò¤}H—ú_“··	Ú°1ÌÌJu	wZıF³u‰0"R}s• .Sg.›†;)!‚ÖLÄJ™‡ëW¿G+gÙZå§– còD€Q¤ Mı#"2Môyö ”4)=+)@u•r R-¾S.—ÑÍ«Oëm?*¥jµÚÓO?ÀS*•>üç×—JecDjµŠµ™RšÙ¾ãêÏ¾éâëµ’çÉxyãÑñÓÊdŞ/1«"İKODŒj/œ_´ñY§ıŞ3±Ì¡ú
-Û0?ö¿¿¸ã§»ÿ”¶ZëBaDY–|ãÖ[FGG{jóæÍ…B¡§íİ›¿\m¯‹/¾Ø½œœ¬VÊõÚ´ „G½>zêì,f2š}“H/÷s#³ ÑL®ëAºˆÚÿ‡óf×:\øRØêåã¯šæµvjj²9s.¸ ]S-ã~}­Gf®Õj.¯¨V«ù¾Àó<i% ’ÒYš~”aŠÈ JĞÛB¥îIÿúH.hÌâ#ˆ0DD2Œ^@-,he]¤iêû~­VËçó®’fŸ¹²ıÊ{—áæ¿'&&0=©ÙeÙ§ÖóB’[ˆú˜ö’Ô5Ë7"¢tAiÃ‘Z@–vŸ‘œ˜˜påÀtaú„3'o»í¶8;¿f)äıÿúö/÷İùŞb1—Æå5gn_öõYÚèSğª‰°ñrÇŸºeâĞİ^0R­5.}ÛY7}çöZ=é,®å2‹ÅâB«,LŸp¹îºëf½úÃî®½»àåNİxÎõHx¥£öÂ¤Q9ş³ñÃ?p+uıĞû¯İ1;ÁQ-ôÜ"ì!©V«]»¯µvttT ó#Q½lü3Dl·bDDÔYÁ.L¿î5\Ä
-ÃøEÂüH£^vT•J¥.ÇÃâjó-&>4×c*•) z@½‘ Ãİì%È’¤-¢½ ß¿#€6iK"š9\AµF*-JUZëÔİÔy+àšk®9í´Óòù‚gìï	İó×ÁˆDÂ™ñG×½ÍerôÉ/¥ÑqR^o.#N½pı)[ş¢•æ™¾øÛ/gI‰Ô‰DˆSºìÂÑsw|:Ít½^»ä’K0¸£"ƒ©¿
-@D:yşç|ş7|zf7m†.|ÿsd
-&ğ¯¾û†¤ñbÿOñs§şÑƒR’Uùí3mV™Ùí?¾ğ¯ÿÄ§ÚoX¯v€çEÉÉµ,ËÆÆÆ¢˜„¹B–e"Â–[²`°	Æ’Æ‹¤|+={Ä¡5\	'&kZ©@¼p­V{ºáÆ˜¨QsOŸœœ4Æ,½†è²à…ér-Ib Q£ÖFÓå†ˆ°P*h«à D2‚Ø¹K¼Q«'å]Ú°pÓ¶DÍáNÏrO7Æğ·BW{n ¶lÙòÎw¾sxxX)uìØ±G}´yR?yTÙÀ!‰ZhòùçŸúé§wF]ÄóÈ‘#=ö)%’È"@±m@´Êq\tÑE6l`æ©©©-[¶ çòbf·¿×äê¸´ÙmïŞ½Û¶msštæ.ßö§Zk' ÷=øßµjÅ½÷Ş{¯¾úê™wÛ½{÷»ßın×§Pºìò?Aó¸¸}pÏ¢¨áî¼gÏ+®¸ÂÉ²lAQØşÛ2ÕK#g¾ZkGFFjµZçEA ĞBÎ‰wbJ®[¹\n=ÇpßùËdzÃÎá}_O¼0]œ¶—´Ví*/~+×­«àW×puo›æş˜kø+¯¹š°T+e¥µ“1/ì8<³­VJ.ÿÙ
-¿ªÎMGJ@7~²ï‡]öYÛ
-@½^İ·÷û‹şÊÃ«ı7ÓëŒ’Î%qÚWçşjÃkÖZÄíSÉ˜›Mæ9¹Ü9|eÚJàå$q†s9O´ÖFc.¯=|.\”RQ­L1eÑ¿º&S¯×;6O>"bæõë×ÏŒ8¸hËñãÇ{ß°aC>Ÿ_î’NË—›s×o]ÍÚÒ4u¶K>Ø¶x¡W½¥&)sÔ)é³éÊ¬Ç’÷K™ÌòıxÜb&²Ú¼ÂÚÿÅå#s
-1?   %tEXtdate:create 2023-05-21T22:46:04+00:00¹€n   %tEXtdate:modify 2023-05-21T22:46:04+00:00Èİ©Ò   (tEXtdate:timestamp 2023-05-21T22:46:14+00:00Sbˆ“    IEND®B`‚
----------------------------------------------------------
-SALA SEND 
-LLLLLLL 
-------------
-
-------read data---------
-server n = 3map size = 2
-fd = 6   size : 799
-====step=3
-GET /System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php?fname=fshfs&age=50 HTTP/1.1
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: document
-Sec-Fetch-Mode: navigate
-Sec-Fetch-Site: same-origin
-Sec-Fetch-User: ?1
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-r = 3
---------finish read data---------
-
-------send data---------
-server n = 3map size = 2
------request : ------
-====step=3
-GET /System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php?fname=fshfs&age=50 HTTP/1.1
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: document
-Sec-Fetch-Mode: navigate
-Sec-Fetch-Site: same-origin
-Sec-Fetch-User: ?1
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-------------
-new file path = fileCGI.php
-Querry fname=fshfs&age=50
-FILE PATH :: fileCGI.php
-URL :: /System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php?fname=fshfs&age=50
-here
-X-Powered-By: PHP/8.1.12
-Content-type: text/html; charset=UTF-8
-
-<html><head><title>HTML Page with Images</title></head><body><h1>HTML Page with Images</h1><img src="./warning.png" alt="Image 1"></body></html><!-- <!DOCTYPE html>
-<html>
-    <head>
-        <style>
-            body {background-color: powderblue;}
-            h1   {color: blue;}
-            p    {color: red;}
-            </style>
-    </head>
-    <body>
-        
-        <h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-
-     -->
-
-    
-    
-<!-- </body>
-</html> -->
-
-SIZE lll = 137
-SIZE = 962
-KOLSHI = 962
----------------------------------------------------------
-VECTOR 404 :
-HTTP/1.1 200 OK
-X-Powered-By: PHP/8.1.12
-Content-type: text/html; charset=UTF-8
-Content-length: 825
-Date: Wed May 24 01:09:47 2023
-
-
-<html><head><title>HTML Page with Images</title></head><body><h1>HTML Page with Images</h1><img src="./warning.png" alt="Image 1"></body></html><!-- <!DOCTYPE html>
-<html>
-    <head>
-        <style>
-            body {background-color: powderblue;}
-            h1   {color: blue;}
-            p    {color: red;}
-            </style>
-    </head>
-    <body>
-        
-        <h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-
-     -->
-
-    
-    
-<!-- </body>
-</html> -->
-
-
----------------------------------------------------------
-SALA SEND 
-LLLLLLL 
-------------
-
-------read data---------
-server n = 3map size = 2
-fd = 6   size : 732
-====step=3
-GET /System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/warning.png HTTP/1.1
-Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php?fname=fshfs&age=50
-Sec-Fetch-Dest: image
-Sec-Fetch-Mode: no-cors
-Sec-Fetch-Site: same-origin
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-r = 3
---------finish read data---------
-
-------send data---------
-server n = 3map size = 2
------request : ------
-====step=3
-GET /System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/warning.png HTTP/1.1
-Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php?fname=fshfs&age=50
-Sec-Fetch-Dest: image
-Sec-Fetch-Mode: no-cors
-Sec-Fetch-Site: same-origin
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-------------
-new file path = warning.png
-Querry 
-FILE PATH :: warning.png
-URL :: /System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/warning.png
-SIZE lll = 101
-SIZE = 375
-KOLSHI = 375
----------------------------------------------------------
-VECTOR 404 :
-HTTP/1.1 404 Not Found
-Content-Type: text/html
-Content-length: 0
-Date: Wed May 24 01:09:47 2023
-
-<!DOCTYPE html>
-<html>
-    <title> 404 Error: Not Found </title>
-    <body>
-        <div>
-            <h1> 404 Not Found </h1>
-            <p> We're sorry, the page you requested could not be found. Please check the URL and try again. </p>
-        </div>
-    </body>
-</html>
----------------------------------------------------------
-SALA SEND 
-LLLLLLL 
-------------
-----EOF-----
-client 6 is disconnected
-----END_EOF-----
-
-------read data---------
-server n = 3map size = 1
-fd = 5   size : 698
-====step=3
-GET /index.html HTTP/1.1
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Cache-Control: max-age=0
-Connection: keep-alive
-Host: localhost:8080
-Sec-Fetch-Dest: document
-Sec-Fetch-Mode: navigate
-Sec-Fetch-Site: none
-Sec-Fetch-User: ?1
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-r = 3
---------finish read data---------
-
-------send data---------
-server n = 3map size = 1
------request : ------
-====step=3
-GET /index.html HTTP/1.1
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Cache-Control: max-age=0
-Connection: keep-alive
-Host: localhost:8080
-Sec-Fetch-Dest: document
-Sec-Fetch-Mode: navigate
-Sec-Fetch-Site: none
-Sec-Fetch-User: ?1
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-------------
-new file path = index.html
-Querry 
-FILE PATH :: index.html
-URL :: /index.html
-SIZE lll = 97
-SIZE = 1883
-KOLSHI = 1883
----------------------------------------------------------
-VECTOR 404 :
-HTTP/1.1 200 OK
-Content-Type: text/html
-Content-length: 1786
-Date: Wed May 24 01:11:03 2023
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>My Blog</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <header>
-      <h1>My Blog</h1>
-    </header>
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
-    <main>
-      <article>
-        <header>
-          <h2>My First Blog Post</h2>
-          <p>Posted on May 1, 2023</p>
-        </header>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel felis nec turpis commodo hendrerit. Integer sed enim non mauris tincidunt sagittis. Vestibulum hendrerit scelerisque ipsum vel aliquam. Sed a odio vel quam facilisis sodales. Etiam at lacus vel enim feugiat fringilla. Sed feugiat erat ac urna pharetra interdum.</p>
-        <p>Etiam sit amet leo ac massa commodo bibendum. Aliquam erat volutpat. Duis posuere urna sit amet nunc bibendum lobortis. Nulla fermentum nulla vel purus ullamcorper, eget venenatis arcu tristique. Maecenas at est non urna fermentum eleifend eu eu dolor. Fusce placerat libero quis blandit iaculis. Mauris feugiat velit at consequat rhoncus.</p>
-      </article>
-    </main>
-    <aside>
-      <h3>Categories</h3>
-      <ul>
-        <li><a href="#">Category 1</a></li>
-        <li><a href="#">Category 2</a></li>
-        <li><a href="#">Category 3</a></li>
-      </ul>
-    </aside>
-    <footer>
-      <p>&copy; 2023 My Blog</p>
-      <img src="test.png" alt="teeeest">
-    </footer>
-    <form action="/System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php" method="GET">  
-    First Name: <input type="text" name="fname" size=30><p>
-    Your Age  :  <input type="text" name="age" size=30><p>
-    <input type="submit">
-    <form/>
-  </body>
-</html>
----------------------------------------------------------
-SALA SEND 
-LLLLLLL 
-------------
-
--------accepteNewCl-------
- CLientSock = 6
-waa zzeeeb
-----Accepted new client connection on socket----
-
-------read data---------
-server n = 3map size = 2
-fd = 5   size : 550
-====step=3
-GET /style.css HTTP/1.1
-Accept: text/css,*/*;q=0.1
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: style
-Sec-Fetch-Mode: no-cors
-Sec-Fetch-Site: same-origin
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-r = 3
---------finish read data---------
-
-------send data---------
-server n = 3map size = 2
------request : ------
-====step=3
-GET /style.css HTTP/1.1
-Accept: text/css,*/*;q=0.1
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: style
-Sec-Fetch-Mode: no-cors
-Sec-Fetch-Site: same-origin
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-------------
-new file path = style.css
-Querry 
-FILE PATH :: style.css
-URL :: /style.css
-SIZE lll = 95
-SIZE = 1068
-KOLSHI = 1068
----------------------------------------------------------
-VECTOR 404 :
-HTTP/1.1 200 OK
-Content-Type: text/css
-Content-length: 973
-Date: Wed May 24 01:11:03 2023
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-  }
-  
-  header {
-    background-color: #434343;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-  }
-  
-  nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-around;
-    background-color: #f2f2f2;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  nav li {
-    margin: 0;
-  }
-  
-  nav a {
-    display: block;
-    padding: 10px;
-    color: #333;
-    text-decoration: none;
-  }
-  
-  nav a:hover {
-    background-color: #ccc;
-  }
-  
-  main {
-    width: 80%;
-    margin: 0 auto;
-  }
-  
-  article {
-    margin-bottom: 30px;
-  }
-  
-  article header {
-    background-color: #921a1a;
-    padding: 10px;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    border-radius: 15 15;
-  }
-  
-  article h2 {
-    margin: 0;
-  }
-  
-  article p {
-    line-height: 1.5;
-  }
-  
-  aside {
-    width: 20%;
-    float: right;
-  }
----------------------------------------------------------
-SALA SEND 
-LLLLLLL 
-------------
-
-------read data---------
-server n = 3map size = 2
-fd = 6   size : 595
-====step=3
-GET /test.png HTTP/1.1
-Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: image
-Sec-Fetch-Mode: no-cors
-Sec-Fetch-Site: same-origin
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-r = 3
---------finish read data---------
-
-------send data---------
-server n = 3map size = 2
------request : ------
-====step=3
-GET /test.png HTTP/1.1
-Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: image
-Sec-Fetch-Mode: no-cors
-Sec-Fetch-Site: same-origin
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-------------
-new file path = test.png
-Querry 
-FILE PATH :: test.png
-URL :: /test.png
-SIZE lll = 97
-SIZE = 5936
-KOLSHI = 5936
----------------------------------------------------------
-VECTOR 404 :
-HTTP/1.1 200 OK
-Content-Type: image/png
-Content-length: 5839
-Date: Wed May 24 01:11:03 2023
-
-‰PNG
-
-   IHDR   e   f   ]ŠÈ6    cHRM  z&  €„  ú   €è  u0  ê`  :˜  pœºQ<   bKGD ÿ ÿ ÿ ½§“   tIMEç.œ¦R®  ¯IDATxÚí]{Œ¤U•ÿ{ï÷¨G¿f˜‚:3(LDXEyÌ"Én6A3Â(:º²™5nv£	ÿ¸‰n6›,ûp×İ¨Ñ ,Š ‚FÅÍ
-™aPQPAÁì 3È0ÌtwU×ë{İsö[US]ı¨êîêîìM§SUß½ßwî¯Î=÷¼î)ª×ëøÿÖwS«MÀ+¬™•¤ˆêVD´ÂÄ¯^Æì¡ÖÚ•&~…Ÿ'"•JED–Èî¹\n…Ylåğ‘ {î¹mÛ¶5­õ¢&Yks¹Ü={^ûÚ×Æq¼b¨­(^ ²,;rä°µ¼ôj­²,C‹×VfË…—ˆt±Oû“0êõ†ÖjiüÅa´oËÌ]–	ÁeÁKD<Ïó<¯óCfVJ…a®V€,[êSj5„ahŒÉçóJMSŒÒ4MÓt9 <^ÖÚb±ø­o}ë¦›nkoaDHS¬]Ë÷?°Ö÷2a-Z± "ISó±½o|\yÚœªµ.•J7Şxã?øÁjµªµ>Ùñr«ìĞ¡CO<ñÄÌ«kÖàÊ?^dÀ¿|ìµ×><11ËµC‡a ŠŞ²àÅÌÌìd°ï ù|`msá!ŠdtÔ¯V‘ÏÃZ,z¹ˆ@kÔë'&’0¤ş2õzìî(QJu­Ö“/)
-í·D9 õzLS)_zÉ*GÿRğr7yé%puwpOsoëõú dÄŞfæB¡póÍ7?øàƒÅb>I¼Ÿ:óÌ_e™Hk°ÃÃtİ¬gx‰k…Y¦n¿]OM‰Öè¸“:táÑ£[|?­Vë—_~ù®]»jµÚ@¸l0üå¶óûî»ï{îqŸ|üŞG?º˜u€`1üáÏz#ÿ†ö~ıë?vojµÚ®]»Üî¼úxYkEÄm‚ÃÃE ##a¹œz¦ dÓ½e>Š ËºñÊ2Éå2c
-@edÄ+—#G•£ˆ–¸c.•öb±Ø~Å@¹œ \­ZgYÎ¸úÙoNÕªl¹, ¢Xu×Æªá¥”ºã;=êyZ©ÜYg>·kWÎ÷SS|å•`¥VÚß¢rå•a½î«$©­]{øK_º™¹¦vãÆÛ·oï2Ô/ïıüÆ7¾ñÀî“o~shçÎ`rÚÅŠ»§aPJ
-@ßv[íCª¸K›6mÚ¿ÿRìó%ñ—ˆ¸=;Ÿ÷ëu›¦4b”¢Nñ*20ä¨—U@k™Ùfr9G•Îçu½Œ-q¯€¼e°D¨™2‹ˆ‰–l.¶n&âõì¤Z¢€ˆ°Î\]ºqÙı9DÇ…ññS{òEÏ&¢</>å”#ËMó<myñQDñK/½æî»?æy©m6Išú§¬{şº÷ÿ{KD®B[F¼D¨1l‹P[İ_ÌıÄjÍ"DDN .gO¼ˆ„()e™…ÙùÃÎıç0R*Ømp"v×¬^D’¦a’äDÈ÷£8ñ}ßóhq»$3·´sa«kµµDË$+Dpm¯&^"
-¨ÿş÷oÛ·ïê\®‘e<<¼æ‚Î±Ö.TëcÌøøøŒ1Zg•ÊØw¾ó7DÂ¬Œ—¼wû—‹Å	f³bs9ğ Özq\ÔZ¥)giÎYm‹ÀKkİiñ‰¨$)¸ÌÑ ÕºUÁK !rÿY)«”UJHñÌğGŸxÍHd‰À,J1‘ Œ9—¤´´ü“/"ğˆ 0à¡¹E6ç;¸èÃ	o*Q „„Ù×# JO:¼œÚü™ÏL}şóFD5Õ‹/n\u•j4ºCj¾ïoÚ´I©¾‚iÎD=xğàşıû».)…8¦+ß55UÒÚ“–ªÒù€ÖÏÚ,x‰>~şùØ}rê©‰14"Êçóâµ f„2¡˜ñ›ÇkQñüw Xìc€ş{Zë4µA@sQè\.(íÜ3û¸ 3Ïš6@Ôt@
-*Š 5Í‡H“¶“¯6en)ôü:‹Í“«ÃÌ=ÙĞ9²˜{?nPmò™ÚMD>ùÉO>ûì³+Nk].—¯¿şú;v¤i:ÀPØ@Újâà®»îzá…f~~ŞyçíØ±c)ĞejƒÄKk‘R”$è“-FGG_xáß÷ÛĞc¢(Êçó}>€1ó¬G‘fÕ/^taz •J_Îè–»1ëb¥ù9Ëí"xùe¦óH/ÁÃË…—R”e¸úê‘·¾Õo4H¤6<\¬×Y)²vğ¢˜Ìğ<|ö³k³Œˆ¼Y•xfäóôÈ#Éîİe­i ‹{PxÀÎæÚk›^àƒÕ~ …ÂÀÅ®&B'Ÿûœj9ˆfe!èÎ;ÍîİıÊ‡ÂËµ©)¤^§|>«T˜ˆznóÎ–ÖZ·UcL–e}l‹"‚RÉ9ÇÇ,OÊ2är<5u²ÚÎaÔç÷Y*• ¤é	ÏI´~¢|D0†Ü&3·„"­OV¼ÑŞó÷<óÌ3a¶õ/¥T¹\>ï¼óÜëÕ%of[M¼ˆè‹_üâ\W1´ŠäÍÚ–ÏïÂâş0Ã™å^Ìc?5­Âî"M_şJÇ:–/7;f•¦¾çei*Özne9–éôµö³â¦qÁeü°(6Ë ª¬<^.Ê†Õuë‡ad-‡a\¯ÁÒÌ|š˜˜hû'æ¿3AP©Tš=‰”Ír“% "d¼D1¯p rYğ	¶lùÍæÍOˆÖÑ‘#oº÷Ş¼ç%Îİşøã/änä²Ó…™=/œœ<û{w)a¢œÕ;V+¹2—OŞ3‘YçÚï=hF—fÈ’@€‹ÇifrÊV@x%Û²î„æ4•ˆÑ=Â9
-35Ü¶gY VÄDLPrâÃW^Í)e=¯Ñ+Bh±4ó:9äeVC5…ß«íü#‘ şúõ‡?ğ›'¤*]À¿]Sº?o†Xl‹-z#§³X€ˆÙÚ,I.ÓtˆWRä/»¾*BÆ$CCÇçíäS•2#,Ü\iDdÙæ}5$‹3ÜI”r/ÚºÈRÒXN2¼ĞŒBÎ›äÆPFXxZ<‚mŠ1Xµ¶ŠXTvqa‘Uğ¾®=4~ƒ á„Óºˆ/’‰2¤<,)ˆ´–]S­‚u¹Êöv @§ÿõÔú÷ÕI‰.ÊñïÇ¿[4ÃBV5²Úá©ƒÒµâ˜ÙMbÍ
-.Æ“/„QÜasŒÊY¾d2ÉÒtª«?,ÈğÊ/ÉÁOS€¶Ìd‰”¨efÄ’Ä’ )‘iw…ºv@"™iyf%2M±,Ô`cLƒÂK äs s§„Ÿ9\XZ–‚ËÄÆH& ‚d³é
-$bA1	SûñZ×ZÇ*›5 ås¦MáÉ‚—ˆx÷ŞkKáõêT”]òæ®¸ğËù…qOÑØ¶HL¨@æš¦Èˆ¶ 	HQz×ıuàÈ9¡qËŠ`æâPqßŞ½À­, §è|š€‡{×“ÕHe²BZÙ+.¼C¸½@*	Â4¼µ1¼µŸƒ>$Ù~zÍ¾}¸€µ:ÀäÓ¸uP™u‹Á«]Å }rÕØÅ|}Í08-‘ığ,«¦êhZõ
-µdYsÖBÌjÖn¤ 3ie†‹SëÆ¸˜Ÿbn>Q8óÂ±¬PmS¨²,Ë²¬göÆÀğ"¢¡¡¡öÛj• Ä¨×‰Öê4ƒç%@ø¥G •H¡·£š=DH«T£>·OĞ$õFş¥I•$£mşc|¢Ğ¦°Z¥0Ã0t¢(ZhÓÂğRJ5Ûo¿=Š"¥ˆ ¯º*yûÛ‹Jå5Æ³ÿr_©ÀÃşgßü??ÿËztB~Á².„•m}ßè´Ÿ"BJ%/¾üú‡{¥g’¹‡R|î;cã3Z[´º‰XíË[vôüœöŠÖ6ŠÅä+_ùªˆeæ0Ìmß¾=—Ë-(KcçÓ\và±cÇÎ8ãŒö×òä“§œ{®(ÿÓ7¾zëîcÃu•$~”¨Îıq‚×n8öı/\Sı$5[ÖFO>ğÈÎ]ËpsÍ‹õßû—?;oó}@nº\À
- êw¿³[·¾ÜE‡Ş°aC’$ıû9úâ/W@Äy“Edİºµãã/{Ç˜ª H*U=TLãÈ¥¬0A]³â$†ŠÑ,ª§·YAk­íè†òUf5}!‹R€HÂ —$>KÒa5M>’0[›0#ŸG¥¢‰¼ @š¦k×®u3rñ^a ^.©»0S,K¥ÔZX›(ä ¡¢³éÂ©ŒÊ,<#¾w® "d¬E(VŠÑ¦§N¤µâÀ‹¬…eÕäíVkä]îI=‹¬Vì@låÁóšdäó"’ºz¥RZ,ƒ ‚ @Çıœè—«R©<üğÃDPÊÔj¥w¼#_«%Z›,ÃşıAšJ#R9¿¨§/»à×WÕŠM¼æÈñ×u@FŠ$IÃ_ï¿,ğ,½3½™u!_9px«V@·ğ"Eö-g?â›H@qê&İY3ÅAyü¸yê)­5‚ ÒEk³B!ÿóŸÿ¤PeÎD°uëÖ¡VnÁ<$õ_®¸ËC=tÙe—µø/¾xZ±è|TúüóK?^wiî·Ü2ú‘P–)cÆï¼ÿÆÏ}åÇ†ëÖNc
-l¶ ¿‚ Š¤+¦O$Öê\XûŞ?_¶vä 6]hÓñÏ2x}ík²k×¤;òû–·ä{lÌ™•ª:íÔªÕfç}ûö]zé¥=KÈôà/¶û¯µ²V‚ÀDQR,Ú4Ï3Æ0€ à¸™£LiFÆ(ë|¤3ó£Ï›.·g•b_ò\J¾ ÍPÖ*¢9ÓÍ´@‚@âÆ0§©õ<Ä‘¯ZÍ´&k¹s¦‹Çkú¼ÄE©=€ûßš×‰ìwšfòÒ¬÷™ş}ÌNb_‡ÙZGh{gÄ	×Íó€çµgÔ?×WEhr2§4§‰É²N°‘ Ò” ımĞ6‹Åe{wœÙ€ˆR†Ô@“' ²Œjµ|gO“J¤¼ĞÛ,ˆ¿  V£>u~Ì¬”~öĞÆ¢Ã€ÏÿáIT&ub¯$Pf“S6sÊÆ7eÙ4£~ˆöÙğú]oc¶J©8NjµËE_ ^.Ô,BÕJÇ¡+¥¬U$€šYD0§Ö&J¸“¿8‹…pâXZ·Ù¯´½D€eU©„ÌL¤Ò¤}H—ú_“··	Ú°1ÌÌJu	wZıF³u‰0"R}s• .Sg.›†;)!‚ÖLÄJ™‡ëW¿G+gÙZå§– còD€Q¤ Mı#"2Môyö ”4)=+)@u•r R-¾S.—ÑÍ«Oëm?*¥jµÚÓO?ÀS*•>üç×—JecDjµŠµ™RšÙ¾ãêÏ¾éâëµ’çÉxyãÑñÓÊdŞ/1«"İKODŒj/œ_´ñY§ıŞ3±Ì¡ú
-Û0?ö¿¿¸ã§»ÿ”¶ZëBaDY–|ãÖ[FGG{jóæÍ…B¡§íİ›¿\m¯‹/¾Ø½œœ¬VÊõÚ´ „G½>zêì,f2š}“H/÷s#³ ÑL®ëAºˆÚÿ‡óf×:\øRØêåã¯šæµvjj²9s.¸ ]S-ã~}­Gf®Õj.¯¨V«ù¾Àó<i% ’ÒYš~”aŠÈ JĞÛB¥îIÿúH.hÌâ#ˆ0DD2Œ^@-,he]¤iêû~­VËçó®’fŸ¹²ıÊ{—áæ¿'&&0=©ÙeÙ§ÖóB’[ˆú˜ö’Ô5Ë7"¢tAiÃ‘Z@–vŸ‘œ˜˜påÀtaú„3'o»í¶8;¿f)äıÿúö/÷İùŞb1—Æå5gn_öõYÚèSğª‰°ñrÇŸºeâĞİ^0R­5.}ÛY7}çöZ=é,®å2‹ÅâB«,LŸp¹îºëf½úÃî®½»àåNİxÎõHx¥£öÂ¤Q9ş³ñÃ?p+uıĞû¯İ1;ÁQ-ôÜ"ì!©V«]»¯µvttT ó#Q½lü3Dl·bDDÔYÁ.L¿î5\Ä
-ÃøEÂüH£^vT•J¥.ÇÃâjó-&>4×c*•) z@½‘ Ãİì%È’¤-¢½ ß¿#€6iK"š9\AµF*-JUZëÔİÔy+àšk®9í´Óòù‚gìï	İó×ÁˆDÂ™ñG×½ÍerôÉ/¥ÑqR^o.#N½pı)[ş¢•æ™¾øÛ/gI‰Ô‰DˆSºìÂÑsw|:Ít½^»ä’K0¸£"ƒ©¿
-@D:yşç|ş7|zf7m†.|ÿsd
-&ğ¯¾û†¤ñbÿOñs§şÑƒR’Uùí3mV™Ùí?¾ğ¯ÿÄ§ÚoX¯v€çEÉÉµ,ËÆÆÆ¢˜„¹B–e"Â–[²`°	Æ’Æ‹¤|+={Ä¡5\	'&kZ©@¼p­V{ºáÆ˜¨QsOŸœœ4Æ,½†è²à…ér-Ib Q£ÖFÓå†ˆ°P*h«à D2‚Ø¹K¼Q«'å]Ú°pÓ¶DÍáNÏrO7Æğ·BW{n ¶lÙòÎw¾sxxX)uìØ±G}´yR?yTÙÀ!‰ZhòùçŸúé§wF]ÄóÈ‘#=ö)%’È"@±m@´Êq\tÑE6l`æ©©©-[¶ çòbf·¿×äê¸´ÙmïŞ½Û¶msštæ.ßö§Zk' ÷=øßµjÅ½÷Ş{¯¾úê™wÛ½{÷»ßın×§Pºìò?Aó¸¸}pÏ¢¨áî¼gÏ+®¸ÂÉ²lAQØşÛ2ÕK#g¾ZkGFFjµZçEA ĞBÎ‰wbJ®[¹\n=ÇpßùËdzÃÎá}_O¼0]œ¶—´Ví*/~+×­«àW×puo›æş˜kø+¯¹š°T+e¥µ“1/ì8<³­VJ.ÿÙ
-¿ªÎMGJ@7~²ï‡]öYÛ
-@½^İ·÷û‹şÊÃ«ı7ÓëŒ’Î%qÚWçşjÃkÖZÄíSÉ˜›Mæ9¹Ü9|eÚJàå$q†s9O´ÖFc.¯=|.\”RQ­L1eÑ¿º&S¯×;6O>"bæõë×ÏŒ8¸hËñãÇ{ß°aC>Ÿ_î’NË—›s×o]ÍÚÒ4u¶K>Ø¶x¡W½¥&)sÔ)é³éÊ¬Ç’÷K™ÌòıxÜb&²Ú¼ÂÚÿÅå#s
-1?   %tEXtdate:create 2023-05-21T22:46:04+00:00¹€n   %tEXtdate:modify 2023-05-21T22:46:04+00:00Èİ©Ò   (tEXtdate:timestamp 2023-05-21T22:46:14+00:00Sbˆ“    IEND®B`‚
----------------------------------------------------------
-SALA SEND 
-LLLLLLL 
-------------
-
-------read data---------
-server n = 3map size = 2
-fd = 6   size : 797
-====step=3
-GET /System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php?fname=ghfn&age=5 HTTP/1.1
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: document
-Sec-Fetch-Mode: navigate
-Sec-Fetch-Site: same-origin
-Sec-Fetch-User: ?1
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-r = 3
---------finish read data---------
-
-------send data---------
-server n = 3map size = 2
------request : ------
-====step=3
-GET /System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php?fname=ghfn&age=5 HTTP/1.1
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: document
-Sec-Fetch-Mode: navigate
-Sec-Fetch-Site: same-origin
-Sec-Fetch-User: ?1
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-------------
-new file path = fileCGI.php
-Querry fname=ghfn&age=5
-FILE PATH :: fileCGI.php
-URL :: /System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php?fname=ghfn&age=5
-here
-X-Powered-By: PHP/8.1.12
-Content-type: text/html; charset=UTF-8
-
-GET<h1>Hello Mrs ghfn </h1><h1>But this  age : 5, is too young to watch porn !!!! . </h1>SIZE lll = 136
-SIZE = 227
-KOLSHI = 227
----------------------------------------------------------
-VECTOR 404 :
-HTTP/1.1 200 OK
-X-Powered-By: PHP/8.1.12
-Content-type: text/html; charset=UTF-8
-Content-length: 91
-Date: Wed May 24 01:11:08 2023
-
-
-GET<h1>Hello Mrs ghfn </h1><h1>But this  age : 5, is too young to watch porn !!!! . </h1>
----------------------------------------------------------
-SALA SEND 
-LLLLLLL 
-------------
-
-------read data---------
-server n = 3map size = 2
-fd = 6   size : 698
-====step=3
-GET /index.html HTTP/1.1
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Cache-Control: max-age=0
-Connection: keep-alive
-Host: localhost:8080
-Sec-Fetch-Dest: document
-Sec-Fetch-Mode: navigate
-Sec-Fetch-Site: none
-Sec-Fetch-User: ?1
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-r = 3
---------finish read data---------
-
-------send data---------
-server n = 3map size = 2
------request : ------
-====step=3
-GET /index.html HTTP/1.1
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Cache-Control: max-age=0
-Connection: keep-alive
-Host: localhost:8080
-Sec-Fetch-Dest: document
-Sec-Fetch-Mode: navigate
-Sec-Fetch-Site: none
-Sec-Fetch-User: ?1
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-------------
-new file path = index.html
-Querry 
-FILE PATH :: index.html
-URL :: /index.html
-SIZE lll = 97
-SIZE = 1883
-KOLSHI = 1883
----------------------------------------------------------
-VECTOR 404 :
-HTTP/1.1 200 OK
-Content-Type: text/html
-Content-length: 1786
-Date: Wed May 24 01:11:22 2023
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>My Blog</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <header>
-      <h1>My Blog</h1>
-    </header>
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
-    <main>
-      <article>
-        <header>
-          <h2>My First Blog Post</h2>
-          <p>Posted on May 1, 2023</p>
-        </header>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel felis nec turpis commodo hendrerit. Integer sed enim non mauris tincidunt sagittis. Vestibulum hendrerit scelerisque ipsum vel aliquam. Sed a odio vel quam facilisis sodales. Etiam at lacus vel enim feugiat fringilla. Sed feugiat erat ac urna pharetra interdum.</p>
-        <p>Etiam sit amet leo ac massa commodo bibendum. Aliquam erat volutpat. Duis posuere urna sit amet nunc bibendum lobortis. Nulla fermentum nulla vel purus ullamcorper, eget venenatis arcu tristique. Maecenas at est non urna fermentum eleifend eu eu dolor. Fusce placerat libero quis blandit iaculis. Mauris feugiat velit at consequat rhoncus.</p>
-      </article>
-    </main>
-    <aside>
-      <h3>Categories</h3>
-      <ul>
-        <li><a href="#">Category 1</a></li>
-        <li><a href="#">Category 2</a></li>
-        <li><a href="#">Category 3</a></li>
-      </ul>
-    </aside>
-    <footer>
-      <p>&copy; 2023 My Blog</p>
-      <img src="test.png" alt="teeeest">
-    </footer>
-    <form action="/System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php" method="GET">  
-    First Name: <input type="text" name="fname" size=30><p>
-    Your Age  :  <input type="text" name="age" size=30><p>
-    <input type="submit">
-    <form/>
-  </body>
-</html>
----------------------------------------------------------
-SALA SEND 
-LLLLLLL 
-------------
-
-------send data---------
-server n = 3map size = 2
------request : ------
-====step=-2
-  
-
-
-------------
-SIZE lll = 0
-SIZE = 277
-KOLSHI = 277
----------------------------------------------------------
-VECTOR 404 :
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>408 Error: Request Timeout</title>
-    </head>
-    <body>
-        <div>
-            <h1>408 Request Timeout</h1>
-            <p>The server timed out waiting for the request from the client.</p>
-        </div>
-    </body>
-</html>
----------------------------------------------------------
-SALA SEND 
-LLLLLLL 
-------------
-
--------accepteNewCl-------
- CLientSock = 5
-waa zzeeeb
-----Accepted new client connection on socket----
-
-------read data---------
-server n = 3map size = 2
-fd = 6   size : 550
-====step=3
-GET /style.css HTTP/1.1
-Accept: text/css,*/*;q=0.1
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: style
-Sec-Fetch-Mode: no-cors
-Sec-Fetch-Site: same-origin
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-r = 3
---------finish read data---------
-
-------send data---------
-server n = 3map size = 2
------request : ------
-====step=3
-GET /style.css HTTP/1.1
-Accept: text/css,*/*;q=0.1
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: style
-Sec-Fetch-Mode: no-cors
-Sec-Fetch-Site: same-origin
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-------------
-new file path = style.css
-Querry 
-FILE PATH :: style.css
-URL :: /style.css
-SIZE lll = 95
-SIZE = 1068
-KOLSHI = 1068
----------------------------------------------------------
-VECTOR 404 :
-HTTP/1.1 200 OK
-Content-Type: text/css
-Content-length: 973
-Date: Wed May 24 01:11:22 2023
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-  }
-  
-  header {
-    background-color: #434343;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-  }
-  
-  nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-around;
-    background-color: #f2f2f2;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  nav li {
-    margin: 0;
-  }
-  
-  nav a {
-    display: block;
-    padding: 10px;
-    color: #333;
-    text-decoration: none;
-  }
-  
-  nav a:hover {
-    background-color: #ccc;
-  }
-  
-  main {
-    width: 80%;
-    margin: 0 auto;
-  }
-  
-  article {
-    margin-bottom: 30px;
-  }
-  
-  article header {
-    background-color: #921a1a;
-    padding: 10px;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    border-radius: 15 15;
-  }
-  
-  article h2 {
-    margin: 0;
-  }
-  
-  article p {
-    line-height: 1.5;
-  }
-  
-  aside {
-    width: 20%;
-    float: right;
-  }
----------------------------------------------------------
-SALA SEND 
-LLLLLLL 
-------------
-
-------read data---------
-server n = 3map size = 2
-fd = 6   size : 595
-====step=3
-GET /test.png HTTP/1.1
-Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: image
-Sec-Fetch-Mode: no-cors
-Sec-Fetch-Site: same-origin
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-r = 3
---------finish read data---------
-
-------send data---------
-server n = 3map size = 2
------request : ------
-====step=3
-GET /test.png HTTP/1.1
-Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: image
-Sec-Fetch-Mode: no-cors
-Sec-Fetch-Site: same-origin
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-------------
-new file path = test.png
-Querry 
-FILE PATH :: test.png
-URL :: /test.png
-SIZE lll = 97
-SIZE = 5936
-KOLSHI = 5936
----------------------------------------------------------
-VECTOR 404 :
-HTTP/1.1 200 OK
-Content-Type: image/png
-Content-length: 5839
-Date: Wed May 24 01:11:22 2023
-
-‰PNG
-
-   IHDR   e   f   ]ŠÈ6    cHRM  z&  €„  ú   €è  u0  ê`  :˜  pœºQ<   bKGD ÿ ÿ ÿ ½§“   tIMEç.œ¦R®  ¯IDATxÚí]{Œ¤U•ÿ{ï÷¨G¿f˜‚:3(LDXEyÌ"Én6A3Â(:º²™5nv£	ÿ¸‰n6›,ûp×İ¨Ñ ,Š ‚FÅÍ
-™aPQPAÁì 3È0ÌtwU×ë{İsö[US]ı¨êîêîìM§SUß½ßwî¯Î=÷¼î)ª×ëøÿÖwS«MÀ+¬™•¤ˆêVD´ÂÄ¯^Æì¡ÖÚ•&~…Ÿ'"•JED–Èî¹\n…Ylåğ‘ {î¹mÛ¶5­õ¢&Yks¹Ü={^ûÚ×Æq¼b¨­(^ ²,;rä°µ¼ôj­²,C‹×VfË…—ˆt±Oû“0êõ†ÖjiüÅa´oËÌ]–	ÁeÁKD<Ïó<¯óCfVJ…a®V€,[êSj5„ahŒÉçóJMSŒÒ4MÓt9 <^ÖÚb±ø­o}ë¦›nkoaDHS¬]Ë÷?°Ö÷2a-Z± "ISó±½o|\yÚœªµ.•J7Şxã?øÁjµªµ>Ùñr«ìĞ¡CO<ñÄÌ«kÖàÊ?^dÀ¿|ìµ×><11ËµC‡a ŠŞ²àÅÌÌìd°ï ù|`msá!ŠdtÔ¯V‘ÏÃZ,z¹ˆ@kÔë'&’0¤ş2õzìî(QJu­Ö“/)
-í·D9 õzLS)_zÉ*GÿRğr7yé%puwpOsoëõú dÄŞfæB¡póÍ7?øàƒÅb>I¼Ÿ:óÌ_e™Hk°ÃÃtİ¬gx‰k…Y¦n¿]OM‰Öè¸“:táÑ£[|?­Vë—_~ù®]»jµÚ@¸l0üå¶óûî»ï{îqŸ|üŞG?º˜u€`1üáÏz#ÿ†ö~ıë?vojµÚ®]»Üî¼úxYkEÄm‚ÃÃE ##a¹œz¦ dÓ½e>Š ËºñÊ2Éå2c
-@edÄ+—#G•£ˆ–¸c.•öb±Ø~Å@¹œ \­ZgYÎ¸úÙoNÕªl¹, ¢Xu×Æªá¥”ºã;=êyZ©ÜYg>·kWÎ÷SS|å•`¥VÚß¢rå•a½î«$©­]{øK_º™¹¦vãÆÛ·oï2Ô/ïıüÆ7¾ñÀî“o~shçÎ`rÚÅŠ»§aPJ
-@ßv[íCª¸K›6mÚ¿ÿRìó%ñ—ˆ¸=;Ÿ÷ëu›¦4b”¢Nñ*20ä¨—U@k™Ùfr9G•Îçu½Œ-q¯€¼e°D¨™2‹ˆ‰–l.¶n&âõì¤Z¢€ˆ°Î\]ºqÙı9DÇ…ññS{òEÏ&¢</>å”#ËMó<myñQDñK/½æî»?æy©m6Išú§¬{şº÷ÿ{KD®B[F¼D¨1l‹P[İ_ÌıÄjÍ"DDN .gO¼ˆ„()e™…ÙùÃÎıç0R*Ømp"v×¬^D’¦a’äDÈ÷£8ñ}ßóhq»$3·´sa«kµµDË$+Dpm¯&^"
-¨ÿş÷oÛ·ïê\®‘e<<¼æ‚Î±Ö.TëcÌøøøŒ1Zg•ÊØw¾ó7DÂ¬Œ—¼wû—‹Å	f³bs9ğ Özq\ÔZ¥)giÎYm‹ÀKkİiñ‰¨$)¸ÌÑ ÕºUÁK !rÿY)«”UJHñÌğGŸxÍHd‰À,J1‘ Œ9—¤´´ü“/"ğˆ 0à¡¹E6ç;¸èÃ	o*Q „„Ù×# JO:¼œÚü™ÏL}şóFD5Õ‹/n\u•j4ºCj¾ïoÚ´I©¾‚iÎD=xğàşıû».)…8¦+ß55UÒÚ“–ªÒù€ÖÏÚ,x‰>~şùØ}rê©‰14"Êçóâµ f„2¡˜ñ›ÇkQñüw Xìc€ş{Zë4µA@sQè\.(íÜ3û¸ 3Ïš6@Ôt@
-*Š 5Í‡H“¶“¯6en)ôü:‹Í“«ÃÌ=ÙĞ9²˜{?nPmò™ÚMD>ùÉO>ûì³+Nk].—¯¿şú;v¤i:ÀPØ@Újâà®»îzá…f~~ŞyçíØ±c)ĞejƒÄKk‘R”$è“-FGG_xáß÷ÛĞc¢(Êçó}>€1ó¬G‘fÕ/^taz •J_Îè–»1ëb¥ù9Ëí"xùe¦óH/ÁÃË…—R”e¸úê‘·¾Õo4H¤6<\¬×Y)²vğ¢˜Ìğ<|ö³k³Œˆ¼Y•xfäóôÈ#Éîİe­i ‹{PxÀÎæÚk›^àƒÕ~ …ÂÀÅ®&B'Ÿûœj9ˆfe!èÎ;ÍîİıÊ‡ÂËµ©)¤^§|>«T˜ˆznóÎ–ÖZ·UcL–e}l‹"‚RÉ9ÇÇ,OÊ2är<5u²ÚÎaÔç÷Y*• ¤é	ÏI´~¢|D0†Ü&3·„"­OV¼ÑŞó÷<óÌ3a¶õ/¥T¹\>ï¼óÜëÕ%of[M¼ˆè‹_üâ\W1´ŠäÍÚ–ÏïÂâş0Ã™å^Ìc?5­Âî"M_şJÇ:–/7;f•¦¾çei*Özne9–éôµö³â¦qÁeü°(6Ë ª¬<^.Ê†Õuë‡ad-‡a\¯ÁÒÌ|š˜˜hû'æ¿3AP©Tš=‰”Ír“% "d¼D1¯p rYğ	¶lùÍæÍOˆÖÑ‘#oº÷Ş¼ç%Îİşøã/änä²Ó…™=/œœ<û{w)a¢œÕ;V+¹2—OŞ3‘YçÚï=hF—fÈ’@€‹ÇifrÊV@x%Û²î„æ4•ˆÑ=Â9
-35Ü¶gY VÄDLPrâÃW^Í)e=¯Ñ+Bh±4ó:9äeVC5…ß«íü#‘ şúõ‡?ğ›'¤*]À¿]Sº?o†Xl‹-z#§³X€ˆÙÚ,I.ÓtˆWRä/»¾*BÆ$CCÇçíäS•2#,Ü\iDdÙæ}5$‹3ÜI”r/ÚºÈRÒXN2¼ĞŒBÎ›äÆPFXxZ<‚mŠ1Xµ¶ŠXTvqa‘Uğ¾®=4~ƒ á„Óºˆ/’‰2¤<,)ˆ´–]S­‚u¹Êöv @§ÿõÔú÷ÕI‰.ÊñïÇ¿[4ÃBV5²Úá©ƒÒµâ˜ÙMbÍ
-.Æ“/„QÜasŒÊY¾d2ÉÒtª«?,ÈğÊ/ÉÁOS€¶Ìd‰”¨efÄ’Ä’ )‘iw…ºv@"™iyf%2M±,Ô`cLƒÂK äs s§„Ÿ9\XZ–‚ËÄÆH& ‚d³é
-$bA1	SûñZ×ZÇ*›5 ås¦MáÉ‚—ˆx÷ŞkKáõêT”]òæ®¸ğËù…qOÑØ¶HL¨@æš¦Èˆ¶ 	HQz×ıuàÈ9¡qËŠ`æâPqßŞ½À­, §è|š€‡{×“ÕHe²BZÙ+.¼C¸½@*	Â4¼µ1¼µŸƒ>$Ù~zÍ¾}¸€µ:ÀäÓ¸uP™u‹Á«]Å }rÕØÅ|}Í08-‘ığ,«¦êhZõ
-µdYsÖBÌjÖn¤ 3ie†‹SëÆ¸˜Ÿbn>Q8óÂ±¬PmS¨²,Ë²¬göÆÀğ"¢¡¡¡öÛj• Ä¨×‰Öê4ƒç%@ø¥G •H¡·£š=DH«T£>·OĞ$õFş¥I•$£mşc|¢Ğ¦°Z¥0Ã0t¢(ZhÓÂğRJ5Ûo¿=Š"¥ˆ ¯º*yûÛ‹Jå5Æ³ÿr_©ÀÃşgßü??ÿËztB~Á².„•m}ßè´Ÿ"BJ%/¾üú‡{¥g’¹‡R|î;cã3Z[´º‰XíË[vôüœöŠÖ6ŠÅä+_ùªˆeæ0Ìmß¾=—Ë-(KcçÓ\và±cÇÎ8ãŒö×òä“§œ{®(ÿÓ7¾zëîcÃu•$~”¨Îıq‚×n8öı/\Sı$5[ÖFO>ğÈÎ]ËpsÍ‹õßû—?;oó}@nº\À
- êw¿³[·¾ÜE‡Ş°aC’$ıû9úâ/W@Äy“Edİºµãã/{Ç˜ª H*U=TLãÈ¥¬0A]³â$†ŠÑ,ª§·YAk­íè†òUf5}!‹R€HÂ —$>KÒa5M>’0[›0#ŸG¥¢‰¼ @š¦k×®u3rñ^a ^.©»0S,K¥ÔZX›(ä ¡¢³éÂ©ŒÊ,<#¾w® "d¬E(VŠÑ¦§N¤µâÀ‹¬…eÕäíVkä]îI=‹¬Vì@låÁóšdäó"’ºz¥RZ,ƒ ‚ @Çıœè—«R©<üğÃDPÊÔj¥w¼#_«%Z›,ÃşıAšJ#R9¿¨§/»à×WÕŠM¼æÈñ×u@FŠ$IÃ_ï¿,ğ,½3½™u!_9px«V@·ğ"Eö-g?â›H@qê&İY3ÅAyü¸yê)­5‚ ÒEk³B!ÿóŸÿ¤PeÎD°uëÖ¡VnÁ<$õ_®¸ËC=tÙe—µø/¾xZ±è|TúüóK?^wiî·Ü2ú‘P–)cÆï¼ÿÆÏ}åÇ†ëÖNc
-l¶ ¿‚ Š¤+¦O$Öê\XûŞ?_¶vä 6]hÓñÏ2x}ík²k×¤;òû–·ä{lÌ™•ª:íÔªÕfç}ûö]zé¥=KÈôà/¶û¯µ²V‚ÀDQR,Ú4Ï3Æ0€ à¸™£LiFÆ(ë|¤3ó£Ï›.·g•b_ò\J¾ ÍPÖ*¢9ÓÍ´@‚@âÆ0§©õ<Ä‘¯ZÍ´&k¹s¦‹Çkú¼ÄE©=€ûßš×‰ìwšfòÒ¬÷™ş}ÌNb_‡ÙZGh{gÄ	×Íó€çµgÔ?×WEhr2§4§‰É²N°‘ Ò” ımĞ6‹Åe{wœÙ€ˆR†Ô@“' ²Œjµ|gO“J¤¼ĞÛ,ˆ¿  V£>u~Ì¬”~öĞÆ¢Ã€ÏÿáIT&ub¯$Pf“S6sÊÆ7eÙ4£~ˆöÙğú]oc¶J©8NjµËE_ ^.Ô,BÕJÇ¡+¥¬U$€šYD0§Ö&J¸“¿8‹…pâXZ·Ù¯´½D€eU©„ÌL¤Ò¤}H—ú_“··	Ú°1ÌÌJu	wZıF³u‰0"R}s• .Sg.›†;)!‚ÖLÄJ™‡ëW¿G+gÙZå§– còD€Q¤ Mı#"2Môyö ”4)=+)@u•r R-¾S.—ÑÍ«Oëm?*¥jµÚÓO?ÀS*•>üç×—JecDjµŠµ™RšÙ¾ãêÏ¾éâëµ’çÉxyãÑñÓÊdŞ/1«"İKODŒj/œ_´ñY§ıŞ3±Ì¡ú
-Û0?ö¿¿¸ã§»ÿ”¶ZëBaDY–|ãÖ[FGG{jóæÍ…B¡§íİ›¿\m¯‹/¾Ø½œœ¬VÊõÚ´ „G½>zêì,f2š}“H/÷s#³ ÑL®ëAºˆÚÿ‡óf×:\øRØêåã¯šæµvjj²9s.¸ ]S-ã~}­Gf®Õj.¯¨V«ù¾Àó<i% ’ÒYš~”aŠÈ JĞÛB¥îIÿúH.hÌâ#ˆ0DD2Œ^@-,he]¤iêû~­VËçó®’fŸ¹²ıÊ{—áæ¿'&&0=©ÙeÙ§ÖóB’[ˆú˜ö’Ô5Ë7"¢tAiÃ‘Z@–vŸ‘œ˜˜påÀtaú„3'o»í¶8;¿f)äıÿúö/÷İùŞb1—Æå5gn_öõYÚèSğª‰°ñrÇŸºeâĞİ^0R­5.}ÛY7}çöZ=é,®å2‹ÅâB«,LŸp¹îºëf½úÃî®½»àåNİxÎõHx¥£öÂ¤Q9ş³ñÃ?p+uıĞû¯İ1;ÁQ-ôÜ"ì!©V«]»¯µvttT ó#Q½lü3Dl·bDDÔYÁ.L¿î5\Ä
-ÃøEÂüH£^vT•J¥.ÇÃâjó-&>4×c*•) z@½‘ Ãİì%È’¤-¢½ ß¿#€6iK"š9\AµF*-JUZëÔİÔy+àšk®9í´Óòù‚gìï	İó×ÁˆDÂ™ñG×½ÍerôÉ/¥ÑqR^o.#N½pı)[ş¢•æ™¾øÛ/gI‰Ô‰DˆSºìÂÑsw|:Ít½^»ä’K0¸£"ƒ©¿
-@D:yşç|ş7|zf7m†.|ÿsd
-&ğ¯¾û†¤ñbÿOñs§şÑƒR’Uùí3mV™Ùí?¾ğ¯ÿÄ§ÚoX¯v€çEÉÉµ,ËÆÆÆ¢˜„¹B–e"Â–[²`°	Æ’Æ‹¤|+={Ä¡5\	'&kZ©@¼p­V{ºáÆ˜¨QsOŸœœ4Æ,½†è²à…ér-Ib Q£ÖFÓå†ˆ°P*h«à D2‚Ø¹K¼Q«'å]Ú°pÓ¶DÍáNÏrO7Æğ·BW{n ¶lÙòÎw¾sxxX)uìØ±G}´yR?yTÙÀ!‰ZhòùçŸúé§wF]ÄóÈ‘#=ö)%’È"@±m@´Êq\tÑE6l`æ©©©-[¶ çòbf·¿×äê¸´ÙmïŞ½Û¶msštæ.ßö§Zk' ÷=øßµjÅ½÷Ş{¯¾úê™wÛ½{÷»ßın×§Pºìò?Aó¸¸}pÏ¢¨áî¼gÏ+®¸ÂÉ²lAQØşÛ2ÕK#g¾ZkGFFjµZçEA ĞBÎ‰wbJ®[¹\n=ÇpßùËdzÃÎá}_O¼0]œ¶—´Ví*/~+×­«àW×puo›æş˜kø+¯¹š°T+e¥µ“1/ì8<³­VJ.ÿÙ
-¿ªÎMGJ@7~²ï‡]öYÛ
-@½^İ·÷û‹şÊÃ«ı7ÓëŒ’Î%qÚWçşjÃkÖZÄíSÉ˜›Mæ9¹Ü9|eÚJàå$q†s9O´ÖFc.¯=|.\”RQ­L1eÑ¿º&S¯×;6O>"bæõë×ÏŒ8¸hËñãÇ{ß°aC>Ÿ_î’NË—›s×o]ÍÚÒ4u¶K>Ø¶x¡W½¥&)sÔ)é³éÊ¬Ç’÷K™ÌòıxÜb&²Ú¼ÂÚÿÅå#s
-1?   %tEXtdate:create 2023-05-21T22:46:04+00:00¹€n   %tEXtdate:modify 2023-05-21T22:46:04+00:00Èİ©Ò   (tEXtdate:timestamp 2023-05-21T22:46:14+00:00Sbˆ“    IEND®B`‚
----------------------------------------------------------
-SALA SEND 
-LLLLLLL 
-------------
-
-------read data---------
-server n = 3map size = 2
-fd = 6   size : 801
-====step=3
-GET /System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php?fname=MITIRIX&age=26 HTTP/1.1
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: document
-Sec-Fetch-Mode: navigate
-Sec-Fetch-Site: same-origin
-Sec-Fetch-User: ?1
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-r = 3
---------finish read data---------
-
-------send data---------
-server n = 3map size = 2
------request : ------
-====step=3
-GET /System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php?fname=MITIRIX&age=26 HTTP/1.1
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: document
-Sec-Fetch-Mode: navigate
-Sec-Fetch-Site: same-origin
-Sec-Fetch-User: ?1
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-------------
-new file path = fileCGI.php
-Querry fname=MITIRIX&age=26
-FILE PATH :: fileCGI.php
-URL :: /System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php?fname=MITIRIX&age=26
-here
-X-Powered-By: PHP/8.1.12
-Content-type: text/html; charset=UTF-8
-
-GET<h1>Hello Mrs MITIRIX </h1><h1>But this  age : 26, is too young to watch porn !!!! . </h1>SIZE lll = 136
-SIZE = 231
-KOLSHI = 231
----------------------------------------------------------
-VECTOR 404 :
-HTTP/1.1 200 OK
-X-Powered-By: PHP/8.1.12
-Content-type: text/html; charset=UTF-8
-Content-length: 95
-Date: Wed May 24 01:11:44 2023
-
-
-GET<h1>Hello Mrs MITIRIX </h1><h1>But this  age : 26, is too young to watch porn !!!! . </h1>
----------------------------------------------------------
-SALA SEND 
-LLLLLLL 
-------------
-
-------send data---------
-server n = 3map size = 2
------request : ------
-====step=-2
-  
-
-
-------------
-SIZE lll = 0
-SIZE = 277
-KOLSHI = 277
----------------------------------------------------------
-VECTOR 404 :
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>408 Error: Request Timeout</title>
-    </head>
-    <body>
-        <div>
-            <h1>408 Request Timeout</h1>
-            <p>The server timed out waiting for the request from the client.</p>
-        </div>
-    </body>
-</html>
----------------------------------------------------------
-SALA SEND 
-LLLLLLL 
-------------
-
-------read data---------
-server n = 3map size = 1
-fd = 6   size : 698
-====step=3
-GET /index.html HTTP/1.1
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Cache-Control: max-age=0
-Connection: keep-alive
-Host: localhost:8080
-Sec-Fetch-Dest: document
-Sec-Fetch-Mode: navigate
-Sec-Fetch-Site: none
-Sec-Fetch-User: ?1
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-r = 3
---------finish read data---------
-
-------send data---------
-server n = 3map size = 1
------request : ------
-====step=3
-GET /index.html HTTP/1.1
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Cache-Control: max-age=0
-Connection: keep-alive
-Host: localhost:8080
-Sec-Fetch-Dest: document
-Sec-Fetch-Mode: navigate
-Sec-Fetch-Site: none
-Sec-Fetch-User: ?1
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-------------
-new file path = index.html
-Querry 
-FILE PATH :: index.html
-URL :: /index.html
-SIZE lll = 97
-SIZE = 1883
-KOLSHI = 1883
----------------------------------------------------------
-VECTOR 404 :
-HTTP/1.1 200 OK
-Content-Type: text/html
-Content-length: 1786
-Date: Wed May 24 01:12:15 2023
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>My Blog</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <header>
-      <h1>My Blog</h1>
-    </header>
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
-    <main>
-      <article>
-        <header>
-          <h2>My First Blog Post</h2>
-          <p>Posted on May 1, 2023</p>
-        </header>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel felis nec turpis commodo hendrerit. Integer sed enim non mauris tincidunt sagittis. Vestibulum hendrerit scelerisque ipsum vel aliquam. Sed a odio vel quam facilisis sodales. Etiam at lacus vel enim feugiat fringilla. Sed feugiat erat ac urna pharetra interdum.</p>
-        <p>Etiam sit amet leo ac massa commodo bibendum. Aliquam erat volutpat. Duis posuere urna sit amet nunc bibendum lobortis. Nulla fermentum nulla vel purus ullamcorper, eget venenatis arcu tristique. Maecenas at est non urna fermentum eleifend eu eu dolor. Fusce placerat libero quis blandit iaculis. Mauris feugiat velit at consequat rhoncus.</p>
-      </article>
-    </main>
-    <aside>
-      <h3>Categories</h3>
-      <ul>
-        <li><a href="#">Category 1</a></li>
-        <li><a href="#">Category 2</a></li>
-        <li><a href="#">Category 3</a></li>
-      </ul>
-    </aside>
-    <footer>
-      <p>&copy; 2023 My Blog</p>
-      <img src="test.png" alt="teeeest">
-    </footer>
-    <form action="/System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php" method="GET">  
-    First Name: <input type="text" name="fname" size=30><p>
-    Your Age  :  <input type="text" name="age" size=30><p>
-    <input type="submit">
-    <form/>
-  </body>
-</html>
----------------------------------------------------------
-SALA SEND 
-LLLLLLL 
-------------
-
-------read data---------
-server n = 3map size = 1
-fd = 6   size : 550
-====step=3
-GET /style.css HTTP/1.1
-Accept: text/css,*/*;q=0.1
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: style
-Sec-Fetch-Mode: no-cors
-Sec-Fetch-Site: same-origin
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-r = 3
---------finish read data---------
-
-------send data---------
-server n = 3map size = 1
------request : ------
-====step=3
-GET /style.css HTTP/1.1
-Accept: text/css,*/*;q=0.1
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: style
-Sec-Fetch-Mode: no-cors
-Sec-Fetch-Site: same-origin
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-------------
-new file path = style.css
-Querry 
-FILE PATH :: style.css
-URL :: /style.css
-SIZE lll = 95
-SIZE = 1068
-KOLSHI = 1068
----------------------------------------------------------
-VECTOR 404 :
-HTTP/1.1 200 OK
-Content-Type: text/css
-Content-length: 973
-Date: Wed May 24 01:12:15 2023
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-  }
-  
-  header {
-    background-color: #434343;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-  }
-  
-  nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-around;
-    background-color: #f2f2f2;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  nav li {
-    margin: 0;
-  }
-  
-  nav a {
-    display: block;
-    padding: 10px;
-    color: #333;
-    text-decoration: none;
-  }
-  
-  nav a:hover {
-    background-color: #ccc;
-  }
-  
-  main {
-    width: 80%;
-    margin: 0 auto;
-  }
-  
-  article {
-    margin-bottom: 30px;
-  }
-  
-  article header {
-    background-color: #921a1a;
-    padding: 10px;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    border-radius: 15 15;
-  }
-  
-  article h2 {
-    margin: 0;
-  }
-  
-  article p {
-    line-height: 1.5;
-  }
-  
-  aside {
-    width: 20%;
-    float: right;
-  }
----------------------------------------------------------
-SALA SEND 
-LLLLLLL 
-------------
-
-------read data---------
-server n = 3map size = 1
-fd = 6   size : 698
-====step=3
-GET /index.html HTTP/1.1
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Cache-Control: max-age=0
-Connection: keep-alive
-Host: localhost:8080
-Sec-Fetch-Dest: document
-Sec-Fetch-Mode: navigate
-Sec-Fetch-Site: none
-Sec-Fetch-User: ?1
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-r = 3
---------finish read data---------
-
-------send data---------
-server n = 3map size = 1
------request : ------
-====step=3
-GET /index.html HTTP/1.1
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Cache-Control: max-age=0
-Connection: keep-alive
-Host: localhost:8080
-Sec-Fetch-Dest: document
-Sec-Fetch-Mode: navigate
-Sec-Fetch-Site: none
-Sec-Fetch-User: ?1
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-------------
-new file path = index.html
-Querry 
-FILE PATH :: index.html
-URL :: /index.html
-SIZE lll = 97
-SIZE = 1883
-KOLSHI = 1883
----------------------------------------------------------
-VECTOR 404 :
-HTTP/1.1 200 OK
-Content-Type: text/html
-Content-length: 1786
-Date: Wed May 24 01:12:18 2023
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>My Blog</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <header>
-      <h1>My Blog</h1>
-    </header>
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
-    <main>
-      <article>
-        <header>
-          <h2>My First Blog Post</h2>
-          <p>Posted on May 1, 2023</p>
-        </header>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel felis nec turpis commodo hendrerit. Integer sed enim non mauris tincidunt sagittis. Vestibulum hendrerit scelerisque ipsum vel aliquam. Sed a odio vel quam facilisis sodales. Etiam at lacus vel enim feugiat fringilla. Sed feugiat erat ac urna pharetra interdum.</p>
-        <p>Etiam sit amet leo ac massa commodo bibendum. Aliquam erat volutpat. Duis posuere urna sit amet nunc bibendum lobortis. Nulla fermentum nulla vel purus ullamcorper, eget venenatis arcu tristique. Maecenas at est non urna fermentum eleifend eu eu dolor. Fusce placerat libero quis blandit iaculis. Mauris feugiat velit at consequat rhoncus.</p>
-      </article>
-    </main>
-    <aside>
-      <h3>Categories</h3>
-      <ul>
-        <li><a href="#">Category 1</a></li>
-        <li><a href="#">Category 2</a></li>
-        <li><a href="#">Category 3</a></li>
-      </ul>
-    </aside>
-    <footer>
-      <p>&copy; 2023 My Blog</p>
-      <img src="test.png" alt="teeeest">
-    </footer>
-    <form action="/System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php" method="GET">  
-    First Name: <input type="text" name="fname" size=30><p>
-    Your Age  :  <input type="text" name="age" size=30><p>
-    <input type="submit">
-    <form/>
-  </body>
-</html>
----------------------------------------------------------
-SALA SEND 
-LLLLLLL 
-------------
-
--------accepteNewCl-------
- CLientSock = 5
-waa zzeeeb
-----Accepted new client connection on socket----
-
-------read data---------
-server n = 3map size = 2
-fd = 6   size : 550
-====step=3
-GET /style.css HTTP/1.1
-Accept: text/css,*/*;q=0.1
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: style
-Sec-Fetch-Mode: no-cors
-Sec-Fetch-Site: same-origin
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-r = 3
---------finish read data---------
-
-------read data---------
-server n = 3map size = 2
-fd = 5   size : 595
-====step=3
-GET /test.png HTTP/1.1
-Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: image
-Sec-Fetch-Mode: no-cors
-Sec-Fetch-Site: same-origin
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-r = 3
---------finish read data---------
-
-------send data---------
-server n = 3map size = 2
------request : ------
-====step=3
-GET /style.css HTTP/1.1
-Accept: text/css,*/*;q=0.1
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: style
-Sec-Fetch-Mode: no-cors
-Sec-Fetch-Site: same-origin
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-------------
-new file path = style.css
-Querry 
-FILE PATH :: style.css
-URL :: /style.css
-SIZE lll = 95
-SIZE = 1068
-KOLSHI = 1068
----------------------------------------------------------
-VECTOR 404 :
-HTTP/1.1 200 OK
-Content-Type: text/css
-Content-length: 973
-Date: Wed May 24 01:12:18 2023
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-  }
-  
-  header {
-    background-color: #434343;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-  }
-  
-  nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-around;
-    background-color: #f2f2f2;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  nav li {
-    margin: 0;
-  }
-  
-  nav a {
-    display: block;
-    padding: 10px;
-    color: #333;
-    text-decoration: none;
-  }
-  
-  nav a:hover {
-    background-color: #ccc;
-  }
-  
-  main {
-    width: 80%;
-    margin: 0 auto;
-  }
-  
-  article {
-    margin-bottom: 30px;
-  }
-  
-  article header {
-    background-color: #921a1a;
-    padding: 10px;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    border-radius: 15 15;
-  }
-  
-  article h2 {
-    margin: 0;
-  }
-  
-  article p {
-    line-height: 1.5;
-  }
-  
-  aside {
-    width: 20%;
-    float: right;
-  }
----------------------------------------------------------
-SALA SEND 
-LLLLLLL 
-------------
-
-------send data---------
-server n = 3map size = 2
------request : ------
-====step=3
-GET /test.png HTTP/1.1
-Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: image
-Sec-Fetch-Mode: no-cors
-Sec-Fetch-Site: same-origin
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-------------
-new file path = test.png
-Querry 
-FILE PATH :: test.png
-URL :: /test.png
-SIZE lll = 97
-SIZE = 5936
-KOLSHI = 5936
----------------------------------------------------------
-VECTOR 404 :
-HTTP/1.1 200 OK
-Content-Type: image/png
-Content-length: 5839
-Date: Wed May 24 01:12:18 2023
-
-‰PNG
-
-   IHDR   e   f   ]ŠÈ6    cHRM  z&  €„  ú   €è  u0  ê`  :˜  pœºQ<   bKGD ÿ ÿ ÿ ½§“   tIMEç.œ¦R®  ¯IDATxÚí]{Œ¤U•ÿ{ï÷¨G¿f˜‚:3(LDXEyÌ"Én6A3Â(:º²™5nv£	ÿ¸‰n6›,ûp×İ¨Ñ ,Š ‚FÅÍ
-™aPQPAÁì 3È0ÌtwU×ë{İsö[US]ı¨êîêîìM§SUß½ßwî¯Î=÷¼î)ª×ëøÿÖwS«MÀ+¬™•¤ˆêVD´ÂÄ¯^Æì¡ÖÚ•&~…Ÿ'"•JED–Èî¹\n…Ylåğ‘ {î¹mÛ¶5­õ¢&Yks¹Ü={^ûÚ×Æq¼b¨­(^ ²,;rä°µ¼ôj­²,C‹×VfË…—ˆt±Oû“0êõ†ÖjiüÅa´oËÌ]–	ÁeÁKD<Ïó<¯óCfVJ…a®V€,[êSj5„ahŒÉçóJMSŒÒ4MÓt9 <^ÖÚb±ø­o}ë¦›nkoaDHS¬]Ë÷?°Ö÷2a-Z± "ISó±½o|\yÚœªµ.•J7Şxã?øÁjµªµ>Ùñr«ìĞ¡CO<ñÄÌ«kÖàÊ?^dÀ¿|ìµ×><11ËµC‡a ŠŞ²àÅÌÌìd°ï ù|`msá!ŠdtÔ¯V‘ÏÃZ,z¹ˆ@kÔë'&’0¤ş2õzìî(QJu­Ö“/)
-í·D9 õzLS)_zÉ*GÿRğr7yé%puwpOsoëõú dÄŞfæB¡póÍ7?øàƒÅb>I¼Ÿ:óÌ_e™Hk°ÃÃtİ¬gx‰k…Y¦n¿]OM‰Öè¸“:táÑ£[|?­Vë—_~ù®]»jµÚ@¸l0üå¶óûî»ï{îqŸ|üŞG?º˜u€`1üáÏz#ÿ†ö~ıë?vojµÚ®]»Üî¼úxYkEÄm‚ÃÃE ##a¹œz¦ dÓ½e>Š ËºñÊ2Éå2c
-@edÄ+—#G•£ˆ–¸c.•öb±Ø~Å@¹œ \­ZgYÎ¸úÙoNÕªl¹, ¢Xu×Æªá¥”ºã;=êyZ©ÜYg>·kWÎ÷SS|å•`¥VÚß¢rå•a½î«$©­]{øK_º™¹¦vãÆÛ·oï2Ô/ïıüÆ7¾ñÀî“o~shçÎ`rÚÅŠ»§aPJ
-@ßv[íCª¸K›6mÚ¿ÿRìó%ñ—ˆ¸=;Ÿ÷ëu›¦4b”¢Nñ*20ä¨—U@k™Ùfr9G•Îçu½Œ-q¯€¼e°D¨™2‹ˆ‰–l.¶n&âõì¤Z¢€ˆ°Î\]ºqÙı9DÇ…ññS{òEÏ&¢</>å”#ËMó<myñQDñK/½æî»?æy©m6Išú§¬{şº÷ÿ{KD®B[F¼D¨1l‹P[İ_ÌıÄjÍ"DDN .gO¼ˆ„()e™…ÙùÃÎıç0R*Ømp"v×¬^D’¦a’äDÈ÷£8ñ}ßóhq»$3·´sa«kµµDË$+Dpm¯&^"
-¨ÿş÷oÛ·ïê\®‘e<<¼æ‚Î±Ö.TëcÌøøøŒ1Zg•ÊØw¾ó7DÂ¬Œ—¼wû—‹Å	f³bs9ğ Özq\ÔZ¥)giÎYm‹ÀKkİiñ‰¨$)¸ÌÑ ÕºUÁK !rÿY)«”UJHñÌğGŸxÍHd‰À,J1‘ Œ9—¤´´ü“/"ğˆ 0à¡¹E6ç;¸èÃ	o*Q „„Ù×# JO:¼œÚü™ÏL}şóFD5Õ‹/n\u•j4ºCj¾ïoÚ´I©¾‚iÎD=xğàşıû».)…8¦+ß55UÒÚ“–ªÒù€ÖÏÚ,x‰>~şùØ}rê©‰14"Êçóâµ f„2¡˜ñ›ÇkQñüw Xìc€ş{Zë4µA@sQè\.(íÜ3û¸ 3Ïš6@Ôt@
-*Š 5Í‡H“¶“¯6en)ôü:‹Í“«ÃÌ=ÙĞ9²˜{?nPmò™ÚMD>ùÉO>ûì³+Nk].—¯¿şú;v¤i:ÀPØ@Újâà®»îzá…f~~ŞyçíØ±c)ĞejƒÄKk‘R”$è“-FGG_xáß÷ÛĞc¢(Êçó}>€1ó¬G‘fÕ/^taz •J_Îè–»1ëb¥ù9Ëí"xùe¦óH/ÁÃË…—R”e¸úê‘·¾Õo4H¤6<\¬×Y)²vğ¢˜Ìğ<|ö³k³Œˆ¼Y•xfäóôÈ#Éîİe­i ‹{PxÀÎæÚk›^àƒÕ~ …ÂÀÅ®&B'Ÿûœj9ˆfe!èÎ;ÍîİıÊ‡ÂËµ©)¤^§|>«T˜ˆznóÎ–ÖZ·UcL–e}l‹"‚RÉ9ÇÇ,OÊ2är<5u²ÚÎaÔç÷Y*• ¤é	ÏI´~¢|D0†Ü&3·„"­OV¼ÑŞó÷<óÌ3a¶õ/¥T¹\>ï¼óÜëÕ%of[M¼ˆè‹_üâ\W1´ŠäÍÚ–ÏïÂâş0Ã™å^Ìc?5­Âî"M_şJÇ:–/7;f•¦¾çei*Özne9–éôµö³â¦qÁeü°(6Ë ª¬<^.Ê†Õuë‡ad-‡a\¯ÁÒÌ|š˜˜hû'æ¿3AP©Tš=‰”Ír“% "d¼D1¯p rYğ	¶lùÍæÍOˆÖÑ‘#oº÷Ş¼ç%Îİşøã/änä²Ó…™=/œœ<û{w)a¢œÕ;V+¹2—OŞ3‘YçÚï=hF—fÈ’@€‹ÇifrÊV@x%Û²î„æ4•ˆÑ=Â9
-35Ü¶gY VÄDLPrâÃW^Í)e=¯Ñ+Bh±4ó:9äeVC5…ß«íü#‘ şúõ‡?ğ›'¤*]À¿]Sº?o†Xl‹-z#§³X€ˆÙÚ,I.ÓtˆWRä/»¾*BÆ$CCÇçíäS•2#,Ü\iDdÙæ}5$‹3ÜI”r/ÚºÈRÒXN2¼ĞŒBÎ›äÆPFXxZ<‚mŠ1Xµ¶ŠXTvqa‘Uğ¾®=4~ƒ á„Óºˆ/’‰2¤<,)ˆ´–]S­‚u¹Êöv @§ÿõÔú÷ÕI‰.ÊñïÇ¿[4ÃBV5²Úá©ƒÒµâ˜ÙMbÍ
-.Æ“/„QÜasŒÊY¾d2ÉÒtª«?,ÈğÊ/ÉÁOS€¶Ìd‰”¨efÄ’Ä’ )‘iw…ºv@"™iyf%2M±,Ô`cLƒÂK äs s§„Ÿ9\XZ–‚ËÄÆH& ‚d³é
-$bA1	SûñZ×ZÇ*›5 ås¦MáÉ‚—ˆx÷ŞkKáõêT”]òæ®¸ğËù…qOÑØ¶HL¨@æš¦Èˆ¶ 	HQz×ıuàÈ9¡qËŠ`æâPqßŞ½À­, §è|š€‡{×“ÕHe²BZÙ+.¼C¸½@*	Â4¼µ1¼µŸƒ>$Ù~zÍ¾}¸€µ:ÀäÓ¸uP™u‹Á«]Å }rÕØÅ|}Í08-‘ığ,«¦êhZõ
-µdYsÖBÌjÖn¤ 3ie†‹SëÆ¸˜Ÿbn>Q8óÂ±¬PmS¨²,Ë²¬göÆÀğ"¢¡¡¡öÛj• Ä¨×‰Öê4ƒç%@ø¥G •H¡·£š=DH«T£>·OĞ$õFş¥I•$£mşc|¢Ğ¦°Z¥0Ã0t¢(ZhÓÂğRJ5Ûo¿=Š"¥ˆ ¯º*yûÛ‹Jå5Æ³ÿr_©ÀÃşgßü??ÿËztB~Á².„•m}ßè´Ÿ"BJ%/¾üú‡{¥g’¹‡R|î;cã3Z[´º‰XíË[vôüœöŠÖ6ŠÅä+_ùªˆeæ0Ìmß¾=—Ë-(KcçÓ\và±cÇÎ8ãŒö×òä“§œ{®(ÿÓ7¾zëîcÃu•$~”¨Îıq‚×n8öı/\Sı$5[ÖFO>ğÈÎ]ËpsÍ‹õßû—?;oó}@nº\À
- êw¿³[·¾ÜE‡Ş°aC’$ıû9úâ/W@Äy“Edİºµãã/{Ç˜ª H*U=TLãÈ¥¬0A]³â$†ŠÑ,ª§·YAk­íè†òUf5}!‹R€HÂ —$>KÒa5M>’0[›0#ŸG¥¢‰¼ @š¦k×®u3rñ^a ^.©»0S,K¥ÔZX›(ä ¡¢³éÂ©ŒÊ,<#¾w® "d¬E(VŠÑ¦§N¤µâÀ‹¬…eÕäíVkä]îI=‹¬Vì@låÁóšdäó"’ºz¥RZ,ƒ ‚ @Çıœè—«R©<üğÃDPÊÔj¥w¼#_«%Z›,ÃşıAšJ#R9¿¨§/»à×WÕŠM¼æÈñ×u@FŠ$IÃ_ï¿,ğ,½3½™u!_9px«V@·ğ"Eö-g?â›H@qê&İY3ÅAyü¸yê)­5‚ ÒEk³B!ÿóŸÿ¤PeÎD°uëÖ¡VnÁ<$õ_®¸ËC=tÙe—µø/¾xZ±è|TúüóK?^wiî·Ü2ú‘P–)cÆï¼ÿÆÏ}åÇ†ëÖNc
-l¶ ¿‚ Š¤+¦O$Öê\XûŞ?_¶vä 6]hÓñÏ2x}ík²k×¤;òû–·ä{lÌ™•ª:íÔªÕfç}ûö]zé¥=KÈôà/¶û¯µ²V‚ÀDQR,Ú4Ï3Æ0€ à¸™£LiFÆ(ë|¤3ó£Ï›.·g•b_ò\J¾ ÍPÖ*¢9ÓÍ´@‚@âÆ0§©õ<Ä‘¯ZÍ´&k¹s¦‹Çkú¼ÄE©=€ûßš×‰ìwšfòÒ¬÷™ş}ÌNb_‡ÙZGh{gÄ	×Íó€çµgÔ?×WEhr2§4§‰É²N°‘ Ò” ımĞ6‹Åe{wœÙ€ˆR†Ô@“' ²Œjµ|gO“J¤¼ĞÛ,ˆ¿  V£>u~Ì¬”~öĞÆ¢Ã€ÏÿáIT&ub¯$Pf“S6sÊÆ7eÙ4£~ˆöÙğú]oc¶J©8NjµËE_ ^.Ô,BÕJÇ¡+¥¬U$€šYD0§Ö&J¸“¿8‹…pâXZ·Ù¯´½D€eU©„ÌL¤Ò¤}H—ú_“··	Ú°1ÌÌJu	wZıF³u‰0"R}s• .Sg.›†;)!‚ÖLÄJ™‡ëW¿G+gÙZå§– còD€Q¤ Mı#"2Môyö ”4)=+)@u•r R-¾S.—ÑÍ«Oëm?*¥jµÚÓO?ÀS*•>üç×—JecDjµŠµ™RšÙ¾ãêÏ¾éâëµ’çÉxyãÑñÓÊdŞ/1«"İKODŒj/œ_´ñY§ıŞ3±Ì¡ú
-Û0?ö¿¿¸ã§»ÿ”¶ZëBaDY–|ãÖ[FGG{jóæÍ…B¡§íİ›¿\m¯‹/¾Ø½œœ¬VÊõÚ´ „G½>zêì,f2š}“H/÷s#³ ÑL®ëAºˆÚÿ‡óf×:\øRØêåã¯šæµvjj²9s.¸ ]S-ã~}­Gf®Õj.¯¨V«ù¾Àó<i% ’ÒYš~”aŠÈ JĞÛB¥îIÿúH.hÌâ#ˆ0DD2Œ^@-,he]¤iêû~­VËçó®’fŸ¹²ıÊ{—áæ¿'&&0=©ÙeÙ§ÖóB’[ˆú˜ö’Ô5Ë7"¢tAiÃ‘Z@–vŸ‘œ˜˜påÀtaú„3'o»í¶8;¿f)äıÿúö/÷İùŞb1—Æå5gn_öõYÚèSğª‰°ñrÇŸºeâĞİ^0R­5.}ÛY7}çöZ=é,®å2‹ÅâB«,LŸp¹îºëf½úÃî®½»àåNİxÎõHx¥£öÂ¤Q9ş³ñÃ?p+uıĞû¯İ1;ÁQ-ôÜ"ì!©V«]»¯µvttT ó#Q½lü3Dl·bDDÔYÁ.L¿î5\Ä
-ÃøEÂüH£^vT•J¥.ÇÃâjó-&>4×c*•) z@½‘ Ãİì%È’¤-¢½ ß¿#€6iK"š9\AµF*-JUZëÔİÔy+àšk®9í´Óòù‚gìï	İó×ÁˆDÂ™ñG×½ÍerôÉ/¥ÑqR^o.#N½pı)[ş¢•æ™¾øÛ/gI‰Ô‰DˆSºìÂÑsw|:Ít½^»ä’K0¸£"ƒ©¿
-@D:yşç|ş7|zf7m†.|ÿsd
-&ğ¯¾û†¤ñbÿOñs§şÑƒR’Uùí3mV™Ùí?¾ğ¯ÿÄ§ÚoX¯v€çEÉÉµ,ËÆÆÆ¢˜„¹B–e"Â–[²`°	Æ’Æ‹¤|+={Ä¡5\	'&kZ©@¼p­V{ºáÆ˜¨QsOŸœœ4Æ,½†è²à…ér-Ib Q£ÖFÓå†ˆ°P*h«à D2‚Ø¹K¼Q«'å]Ú°pÓ¶DÍáNÏrO7Æğ·BW{n ¶lÙòÎw¾sxxX)uìØ±G}´yR?yTÙÀ!‰ZhòùçŸúé§wF]ÄóÈ‘#=ö)%’È"@±m@´Êq\tÑE6l`æ©©©-[¶ çòbf·¿×äê¸´ÙmïŞ½Û¶msštæ.ßö§Zk' ÷=øßµjÅ½÷Ş{¯¾úê™wÛ½{÷»ßın×§Pºìò?Aó¸¸}pÏ¢¨áî¼gÏ+®¸ÂÉ²lAQØşÛ2ÕK#g¾ZkGFFjµZçEA ĞBÎ‰wbJ®[¹\n=ÇpßùËdzÃÎá}_O¼0]œ¶—´Ví*/~+×­«àW×puo›æş˜kø+¯¹š°T+e¥µ“1/ì8<³­VJ.ÿÙ
-¿ªÎMGJ@7~²ï‡]öYÛ
-@½^İ·÷û‹şÊÃ«ı7ÓëŒ’Î%qÚWçşjÃkÖZÄíSÉ˜›Mæ9¹Ü9|eÚJàå$q†s9O´ÖFc.¯=|.\”RQ­L1eÑ¿º&S¯×;6O>"bæõë×ÏŒ8¸hËñãÇ{ß°aC>Ÿ_î’NË—›s×o]ÍÚÒ4u¶K>Ø¶x¡W½¥&)sÔ)é³éÊ¬Ç’÷K™ÌòıxÜb&²Ú¼ÂÚÿÅå#s
-1?   %tEXtdate:create 2023-05-21T22:46:04+00:00¹€n   %tEXtdate:modify 2023-05-21T22:46:04+00:00Èİ©Ò   (tEXtdate:timestamp 2023-05-21T22:46:14+00:00Sbˆ“    IEND®B`‚
----------------------------------------------------------
-SALA SEND 
-LLLLLLL 
-------------
-
-------read data---------
-server n = 3map size = 2
-fd = 5   size : 799
-====step=3
-GET /System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php?fname=jesus&age=23 HTTP/1.1
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: document
-Sec-Fetch-Mode: navigate
-Sec-Fetch-Site: same-origin
-Sec-Fetch-User: ?1
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-r = 3
---------finish read data---------
-
-------send data---------
-server n = 3map size = 2
------request : ------
-====step=3
-GET /System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php?fname=jesus&age=23 HTTP/1.1
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: document
-Sec-Fetch-Mode: navigate
-Sec-Fetch-Site: same-origin
-Sec-Fetch-User: ?1
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-------------
-new file path = fileCGI.php
-Querry fname=jesus&age=23
-FILE PATH :: fileCGI.php
-URL :: /System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php?fname=jesus&age=23
-here
-X-Powered-By: PHP/8.1.12
-Content-type: text/html; charset=UTF-8
-
-GET<h1>Hello Mrs jesus </h1><h1>But this  age : 23, is too young to watch porn !!!! . </h1>SIZE lll = 136
-SIZE = 229
-KOLSHI = 229
----------------------------------------------------------
-VECTOR 404 :
-HTTP/1.1 200 OK
-X-Powered-By: PHP/8.1.12
-Content-type: text/html; charset=UTF-8
-Content-length: 93
-Date: Wed May 24 01:12:28 2023
-
-
-GET<h1>Hello Mrs jesus </h1><h1>But this  age : 23, is too young to watch porn !!!! . </h1>
----------------------------------------------------------
-SALA SEND 
-LLLLLLL 
-------------
-
-------read data---------
-server n = 3map size = 2
-fd = 5   size : 698
-====step=3
-GET /index.html HTTP/1.1
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Cache-Control: max-age=0
-Connection: keep-alive
-Host: localhost:8080
-Sec-Fetch-Dest: document
-Sec-Fetch-Mode: navigate
-Sec-Fetch-Site: none
-Sec-Fetch-User: ?1
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-r = 3
---------finish read data---------
-
-------send data---------
-server n = 3map size = 2
------request : ------
-====step=3
-GET /index.html HTTP/1.1
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Cache-Control: max-age=0
-Connection: keep-alive
-Host: localhost:8080
-Sec-Fetch-Dest: document
-Sec-Fetch-Mode: navigate
-Sec-Fetch-Site: none
-Sec-Fetch-User: ?1
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-------------
-new file path = index.html
-Querry 
-FILE PATH :: index.html
-URL :: /index.html
-SIZE lll = 97
-SIZE = 1883
-KOLSHI = 1883
----------------------------------------------------------
-VECTOR 404 :
-HTTP/1.1 200 OK
-Content-Type: text/html
-Content-length: 1786
-Date: Wed May 24 01:12:52 2023
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>My Blog</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <header>
-      <h1>My Blog</h1>
-    </header>
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
-    <main>
-      <article>
-        <header>
-          <h2>My First Blog Post</h2>
-          <p>Posted on May 1, 2023</p>
-        </header>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel felis nec turpis commodo hendrerit. Integer sed enim non mauris tincidunt sagittis. Vestibulum hendrerit scelerisque ipsum vel aliquam. Sed a odio vel quam facilisis sodales. Etiam at lacus vel enim feugiat fringilla. Sed feugiat erat ac urna pharetra interdum.</p>
-        <p>Etiam sit amet leo ac massa commodo bibendum. Aliquam erat volutpat. Duis posuere urna sit amet nunc bibendum lobortis. Nulla fermentum nulla vel purus ullamcorper, eget venenatis arcu tristique. Maecenas at est non urna fermentum eleifend eu eu dolor. Fusce placerat libero quis blandit iaculis. Mauris feugiat velit at consequat rhoncus.</p>
-      </article>
-    </main>
-    <aside>
-      <h3>Categories</h3>
-      <ul>
-        <li><a href="#">Category 1</a></li>
-        <li><a href="#">Category 2</a></li>
-        <li><a href="#">Category 3</a></li>
-      </ul>
-    </aside>
-    <footer>
-      <p>&copy; 2023 My Blog</p>
-      <img src="test.png" alt="teeeest">
-    </footer>
-    <form action="/System/Volumes/Data/Users/megrisse/Desktop/webserv/UTILS/fileCGI.php" method="GET">  
-    First Name: <input type="text" name="fname" size=30><p>
-    Your Age  :  <input type="text" name="age" size=30><p>
-    <input type="submit">
-    <form/>
-  </body>
-</html>
----------------------------------------------------------
-SALA SEND 
-LLLLLLL 
-------------
-
-------send data---------
-server n = 3map size = 2
------request : ------
-====step=-2
-  
-
-
-------------
-SIZE lll = 0
-SIZE = 277
-KOLSHI = 277
----------------------------------------------------------
-VECTOR 404 :
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>408 Error: Request Timeout</title>
-    </head>
-    <body>
-        <div>
-            <h1>408 Request Timeout</h1>
-            <p>The server timed out waiting for the request from the client.</p>
-        </div>
-    </body>
-</html>
----------------------------------------------------------
-SALA SEND 
-LLLLLLL 
-------------
-
--------accepteNewCl-------
- CLientSock = 6
-waa zzeeeb
-----Accepted new client connection on socket----
-
-------read data---------
-server n = 3map size = 2
-fd = 5   size : 550
-====step=3
-GET /style.css HTTP/1.1
-Accept: text/css,*/*;q=0.1
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: style
-Sec-Fetch-Mode: no-cors
-Sec-Fetch-Site: same-origin
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-r = 3
---------finish read data---------
-
-------read data---------
-server n = 3map size = 2
-fd = 6   size : 595
-====step=3
-GET /test.png HTTP/1.1
-Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: image
-Sec-Fetch-Mode: no-cors
-Sec-Fetch-Site: same-origin
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-r = 3
---------finish read data---------
-
-------send data---------
-server n = 3map size = 2
------request : ------
-====step=3
-GET /style.css HTTP/1.1
-Accept: text/css,*/*;q=0.1
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: style
-Sec-Fetch-Mode: no-cors
-Sec-Fetch-Site: same-origin
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-------------
-new file path = style.css
-Querry 
-FILE PATH :: style.css
-URL :: /style.css
-SIZE lll = 95
-SIZE = 1068
-KOLSHI = 1068
----------------------------------------------------------
-VECTOR 404 :
-HTTP/1.1 200 OK
-Content-Type: text/css
-Content-length: 973
-Date: Wed May 24 01:12:52 2023
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-  }
-  
-  header {
-    background-color: #434343;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-  }
-  
-  nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-around;
-    background-color: #f2f2f2;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  nav li {
-    margin: 0;
-  }
-  
-  nav a {
-    display: block;
-    padding: 10px;
-    color: #333;
-    text-decoration: none;
-  }
-  
-  nav a:hover {
-    background-color: #ccc;
-  }
-  
-  main {
-    width: 80%;
-    margin: 0 auto;
-  }
-  
-  article {
-    margin-bottom: 30px;
-  }
-  
-  article header {
-    background-color: #921a1a;
-    padding: 10px;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    border-radius: 15 15;
-  }
-  
-  article h2 {
-    margin: 0;
-  }
-  
-  article p {
-    line-height: 1.5;
-  }
-  
-  aside {
-    width: 20%;
-    float: right;
-  }
----------------------------------------------------------
-SALA SEND 
-LLLLLLL 
-------------
-
-------send data---------
-server n = 3map size = 2
------request : ------
-====step=3
-GET /test.png HTTP/1.1
-Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Connection: keep-alive
-Host: localhost:8080
-Referer: http://localhost:8080/index.html
-Sec-Fetch-Dest: image
-Sec-Fetch-Mode: no-cors
-Sec-Fetch-Site: same-origin
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-
-
-------------
-new file path = test.png
-Querry 
-FILE PATH :: test.png
-URL :: /test.png
-SIZE lll = 97
-SIZE = 5936
-KOLSHI = 5936
----------------------------------------------------------
-VECTOR 404 :
-HTTP/1.1 200 OK
-Content-Type: image/png
-Content-length: 5839
-Date: Wed May 24 01:12:52 2023
-
-‰PNG
-
-   IHDR   e   f   ]ŠÈ6    cHRM  z&  €„  ú   €è  u0  ê`  :˜  pœºQ<   bKGD ÿ ÿ ÿ ½§“   tIMEç.œ¦R®  ¯IDATxÚí]{Œ¤U•ÿ{ï÷¨G¿f˜‚:3(LDXEyÌ"Én6A3Â(:º²™5nv£	ÿ¸‰n6›,ûp×İ¨Ñ ,Š ‚FÅÍ
-™aPQPAÁì 3È0ÌtwU×ë{İsö[US]ı¨êîêîìM§SUß½ßwî¯Î=÷¼î)ª×ëøÿÖwS«MÀ+¬™•¤ˆêVD´ÂÄ¯^Æì¡ÖÚ•&~…Ÿ'"•JED–Èî¹\n…Ylåğ‘ {î¹mÛ¶5­õ¢&Yks¹Ü={^ûÚ×Æq¼b¨­(^ ²,;rä°µ¼ôj­²,C‹×VfË…—ˆt±Oû“0êõ†ÖjiüÅa´oËÌ]–	ÁeÁKD<Ïó<¯óCfVJ…a®V€,[êSj5„ahŒÉçóJMSŒÒ4MÓt9 <^ÖÚb±ø­o}ë¦›nkoaDHS¬]Ë÷?°Ö÷2a-Z± "ISó±½o|\yÚœªµ.•J7Şxã?øÁjµªµ>Ùñr«ìĞ¡CO<ñÄÌ«kÖàÊ?^dÀ¿|ìµ×><11ËµC‡a ŠŞ²àÅÌÌìd°ï ù|`msá!ŠdtÔ¯V‘ÏÃZ,z¹ˆ@kÔë'&’0¤ş2õzìî(QJu­Ö“/)
-í·D9 õzLS)_zÉ*GÿRğr7yé%puwpOsoëõú dÄŞfæB¡póÍ7?øàƒÅb>I¼Ÿ:óÌ_e™Hk°ÃÃtİ¬gx‰k…Y¦n¿]OM‰Öè¸“:táÑ£[|?­Vë—_~ù®]»jµÚ@¸l0üå¶óûî»ï{îqŸ|üŞG?º˜u€`1üáÏz#ÿ†ö~ıë?vojµÚ®]»Üî¼úxYkEÄm‚ÃÃE ##a¹œz¦ dÓ½e>Š ËºñÊ2Éå2c
-@edÄ+—#G•£ˆ–¸c.•öb±Ø~Å@¹œ \­ZgYÎ¸úÙoNÕªl¹, ¢Xu×Æªá¥”ºã;=êyZ©ÜYg>·kWÎ÷SS|å•`¥VÚß¢rå•a½î«$©­]{øK_º™¹¦vãÆÛ·oï2Ô/ïıüÆ7¾ñÀî“o~shçÎ`rÚÅŠ»§aPJ
-@ßv[íCª¸K›6mÚ¿ÿRìó%ñ—ˆ¸=;Ÿ÷ëu›¦4b”¢Nñ*20ä¨—U@k™Ùfr9G•Îçu½Œ-q¯€¼e°D¨™2‹ˆ‰–l.¶n&âõì¤Z¢€ˆ°Î\]ºqÙı9DÇ…ññS{òEÏ&¢</>å”#ËMó<myñQDñK/½æî»?æy©m6Išú§¬{şº÷ÿ{KD®B[F¼D¨1l‹P[İ_ÌıÄjÍ"DDN .gO¼ˆ„()e™…ÙùÃÎıç0R*Ømp"v×¬^D’¦a’äDÈ÷£8ñ}ßóhq»$3·´sa«kµµDË$+Dpm¯&^"
-¨ÿş÷oÛ·ïê\®‘e<<¼æ‚Î±Ö.TëcÌøøøŒ1Zg•ÊØw¾ó7DÂ¬Œ—¼wû—‹Å	f³bs9ğ Özq\ÔZ¥)giÎYm‹ÀKkİiñ‰¨$)¸ÌÑ ÕºUÁK !rÿY)«”UJHñÌğGŸxÍHd‰À,J1‘ Œ9—¤´´ü“/"ğˆ 0à¡¹E6ç;¸èÃ	o*Q „„Ù×# JO:¼œÚü™ÏL}şóFD5Õ‹/n\u•j4ºCj¾ïoÚ´I©¾‚iÎD=xğàşıû».)…8¦+ß55UÒÚ“–ªÒù€ÖÏÚ,x‰>~şùØ}rê©‰14"Êçóâµ f„2¡˜ñ›ÇkQñüw Xìc€ş{Zë4µA@sQè\.(íÜ3û¸ 3Ïš6@Ôt@
-*Š 5Í‡H“¶“¯6en)ôü:‹Í“«ÃÌ=ÙĞ9²˜{?nPmò™ÚMD>ùÉO>ûì³+Nk].—¯¿şú;v¤i:ÀPØ@Újâà®»îzá…f~~ŞyçíØ±c)ĞejƒÄKk‘R”$è“-FGG_xáß÷ÛĞc¢(Êçó}>€1ó¬G‘fÕ/^taz •J_Îè–»1ëb¥ù9Ëí"xùe¦óH/ÁÃË…—R”e¸úê‘·¾Õo4H¤6<\¬×Y)²vğ¢˜Ìğ<|ö³k³Œˆ¼Y•xfäóôÈ#Éîİe­i ‹{PxÀÎæÚk›^àƒÕ~ …ÂÀÅ®&B'Ÿûœj9ˆfe!èÎ;ÍîİıÊ‡ÂËµ©)¤^§|>«T˜ˆznóÎ–ÖZ·UcL–e}l‹"‚RÉ9ÇÇ,OÊ2är<5u²ÚÎaÔç÷Y*• ¤é	ÏI´~¢|D0†Ü&3·„"­OV¼ÑŞó÷<óÌ3a¶õ/¥T¹\>ï¼óÜëÕ%of[M¼ˆè‹_üâ\W1´ŠäÍÚ–ÏïÂâş0Ã™å^Ìc?5­Âî"M_şJÇ:–/7;f•¦¾çei*Özne9–éôµö³â¦qÁeü°(6Ë ª¬<^.Ê†Õuë‡ad-‡a\¯ÁÒÌ|š˜˜hû'æ¿3AP©Tš=‰”Ír“% "d¼D1¯p rYğ	¶lùÍæÍOˆÖÑ‘#oº÷Ş¼ç%Îİşøã/änä²Ó…™=/œœ<û{w)a¢œÕ;V+¹2—OŞ3‘YçÚï=hF—fÈ’@€‹ÇifrÊV@x%Û²î„æ4•ˆÑ=Â9
-35Ü¶gY VÄDLPrâÃW^Í)e=¯Ñ+Bh±4ó:9äeVC5…ß«íü#‘ şúõ‡?ğ›'¤*]À¿]Sº?o†Xl‹-z#§³X€ˆÙÚ,I.ÓtˆWRä/»¾*BÆ$CCÇçíäS•2#,Ü\iDdÙæ}5$‹3ÜI”r/ÚºÈRÒXN2¼ĞŒBÎ›äÆPFXxZ<‚mŠ1Xµ¶ŠXTvqa‘Uğ¾®=4~ƒ á„Óºˆ/’‰2¤<,)ˆ´–]S­‚u¹Êöv @§ÿõÔú÷ÕI‰.ÊñïÇ¿[4ÃBV5²Úá©ƒÒµâ˜ÙMbÍ
-.Æ“/„QÜasŒÊY¾d2ÉÒtª«?,ÈğÊ/ÉÁOS€¶Ìd‰”¨efÄ’Ä’ )‘iw…ºv@"™iyf%2M±,Ô`cLƒÂK äs s§„Ÿ9\XZ–‚ËÄÆH& ‚d³é
-$bA1	SûñZ×ZÇ*›5 ås¦MáÉ‚—ˆx÷ŞkKáõêT”]òæ®¸ğËù…qOÑØ¶HL¨@æš¦Èˆ¶ 	HQz×ıuàÈ9¡qËŠ`æâPqßŞ½À­, §è|š€‡{×“ÕHe²BZÙ+.¼C¸½@*	Â4¼µ1¼µŸƒ>$Ù~zÍ¾}¸€µ:ÀäÓ¸uP™u‹Á«]Å }rÕØÅ|}Í08-‘ığ,«¦êhZõ
-µdYsÖBÌjÖn¤ 3ie†‹SëÆ¸˜Ÿbn>Q8óÂ±¬PmS¨²,Ë²¬göÆÀğ"¢¡¡¡öÛj• Ä¨×‰Öê4ƒç%@ø¥G •H¡·£š=DH«T£>·OĞ$õFş¥I•$£mşc|¢Ğ¦°Z¥0Ã0t¢(ZhÓÂğRJ5Ûo¿=Š"¥ˆ ¯º*yûÛ‹Jå5Æ³ÿr_©ÀÃşgßü??ÿËztB~Á².„•m}ßè´Ÿ"BJ%/¾üú‡{¥g’¹‡R|î;cã3Z[´º‰XíË[vôüœöŠÖ6ŠÅä+_ùªˆeæ0Ìmß¾=—Ë-(KcçÓ\và±cÇÎ8ãŒö×òä“§œ{®(ÿÓ7¾zëîcÃu•$~”¨Îıq‚×n8öı/\Sı$5[ÖFO>ğÈÎ]ËpsÍ‹õßû—?;oó}@nº\À
- êw¿³[·¾ÜE‡Ş°aC’$ıû9úâ/W@Äy“Edİºµãã/{Ç˜ª H*U=TLãÈ¥¬0A]³â$†ŠÑ,ª§·YAk­íè†òUf5}!‹R€HÂ —$>KÒa5M>’0[›0#ŸG¥¢‰¼ @š¦k×®u3rñ^a ^.©»0S,K¥ÔZX›(ä ¡¢³éÂ©ŒÊ,<#¾w® "d¬E(VŠÑ¦§N¤µâÀ‹¬…eÕäíVkä]îI=‹¬Vì@låÁóšdäó"’ºz¥RZ,ƒ ‚ @Çıœè—«R©<üğÃDPÊÔj¥w¼#_«%Z›,ÃşıAšJ#R9¿¨§/»à×WÕŠM¼æÈñ×u@FŠ$IÃ_ï¿,ğ,½3½™u!_9px«V@·ğ"Eö-g?â›H@qê&İY3ÅAyü¸yê)­5‚ ÒEk³B!ÿóŸÿ¤PeÎD°uëÖ¡VnÁ<$õ_®¸ËC=tÙe—µø/¾xZ±è|TúüóK?^wiî·Ü2ú‘P–)cÆï¼ÿÆÏ}åÇ†ëÖNc
-l¶ ¿‚ Š¤+¦O$Öê\XûŞ?_¶vä 6]hÓñÏ2x}ík²k×¤;òû–·ä{lÌ™•ª:íÔªÕfç}ûö]zé¥=KÈôà/¶û¯µ²V‚ÀDQR,Ú4Ï3Æ0€ à¸™£LiFÆ(ë|¤3ó£Ï›.·g•b_ò\J¾ ÍPÖ*¢9ÓÍ´@‚@âÆ0§©õ<Ä‘¯ZÍ´&k¹s¦‹Çkú¼ÄE©=€ûßš×‰ìwšfòÒ¬÷™ş}ÌNb_‡ÙZGh{gÄ	×Íó€çµgÔ?×WEhr2§4§‰É²N°‘ Ò” ımĞ6‹Åe{wœÙ€ˆR†Ô@“' ²Œjµ|gO“J¤¼ĞÛ,ˆ¿  V£>u~Ì¬”~öĞÆ¢Ã€ÏÿáIT&ub¯$Pf“S6sÊÆ7eÙ4£~ˆöÙğú]oc¶J©8NjµËE_ ^.Ô,BÕJÇ¡+¥¬U$€šYD0§Ö&J¸“¿8‹…pâXZ·Ù¯´½D€eU©„ÌL¤Ò¤}H—ú_“··	Ú°1ÌÌJu	wZıF³u‰0"R}s• .Sg.›†;)!‚ÖLÄJ™‡ëW¿G+gÙZå§– còD€Q¤ Mı#"2Môyö ”4)=+)@u•r R-¾S.—ÑÍ«Oëm?*¥jµÚÓO?ÀS*•>üç×—JecDjµŠµ™RšÙ¾ãêÏ¾éâëµ’çÉxyãÑñÓÊdŞ/1«"İKODŒj/œ_´ñY§ıŞ3±Ì¡ú
-Û0?ö¿¿¸ã§»ÿ”¶ZëBaDY–|ãÖ[FGG{jóæÍ…B¡§íİ›¿\m¯‹/¾Ø½œœ¬VÊõÚ´ „G½>zêì,f2š}“H/÷s#³ ÑL®ëAºˆÚÿ‡óf×:\øRØêåã¯šæµvjj²9s.¸ ]S-ã~}­Gf®Õj.¯¨V«ù¾Àó<i% ’ÒYš~”aŠÈ JĞÛB¥îIÿúH.hÌâ#ˆ0DD2Œ^@-,he]¤iêû~­VËçó®’fŸ¹²ıÊ{—áæ¿'&&0=©ÙeÙ§ÖóB’[ˆú˜ö’Ô5Ë7"¢tAiÃ‘Z@–vŸ‘œ˜˜påÀtaú„3'o»í¶8;¿f)äıÿúö/÷İùŞb1—Æå5gn_öõYÚèSğª‰°ñrÇŸºeâĞİ^0R­5.}ÛY7}çöZ=é,®å2‹ÅâB«,LŸp¹îºëf½úÃî®½»àåNİxÎõHx¥£öÂ¤Q9ş³ñÃ?p+uıĞû¯İ1;ÁQ-ôÜ"ì!©V«]»¯µvttT ó#Q½lü3Dl·bDDÔYÁ.L¿î5\Ä
-ÃøEÂüH£^vT•J¥.ÇÃâjó-&>4×c*•) z@½‘ Ãİì%È’¤-¢½ ß¿#€6iK"š9\AµF*-JUZëÔİÔy+àšk®9í´Óòù‚gìï	İó×ÁˆDÂ™ñG×½ÍerôÉ/¥ÑqR^o.#N½pı)[ş¢•æ™¾øÛ/gI‰Ô‰DˆSºìÂÑsw|:Ít½^»ä’K0¸£"ƒ©¿
-@D:yşç|ş7|zf7m†.|ÿsd
-&ğ¯¾û†¤ñbÿOñs§şÑƒR’Uùí3mV™Ùí?¾ğ¯ÿÄ§ÚoX¯v€çEÉÉµ,ËÆÆÆ¢˜„¹B–e"Â–[²`°	Æ’Æ‹¤|+={Ä¡5\	'&kZ©@¼p­V{ºáÆ˜¨QsOŸœœ4Æ,½†è²à…ér-Ib Q£ÖFÓå†ˆ°P*h«à D2‚Ø¹K¼Q«'å]Ú°pÓ¶DÍáNÏrO7Æğ·BW{n ¶lÙòÎw¾sxxX)uìØ±G}´yR?yTÙÀ!‰ZhòùçŸúé§wF]ÄóÈ‘#=ö)%’È"@±m@´Êq\tÑE6l`æ©©©-[¶ çòbf·¿×äê¸´ÙmïŞ½Û¶msštæ.ßö§Zk' ÷=øßµjÅ½÷Ş{¯¾úê™wÛ½{÷»ßın×§Pºìò?Aó¸¸}pÏ¢¨áî¼gÏ+®¸ÂÉ²lAQØşÛ2ÕK#g¾ZkGFFjµZçEA ĞBÎ‰wbJ®[¹\n=ÇpßùËdzÃÎá}_O¼0]œ¶—´Ví*/~+×­«àW×puo›æş˜kø+¯¹š°T+e¥µ“1/ì8<³­VJ.ÿÙ
-¿ªÎMGJ@7~²ï‡]öYÛ
-@½^İ·÷û‹şÊÃ«ı7ÓëŒ’Î%qÚWçşjÃkÖZÄíSÉ˜›Mæ9¹Ü9|eÚJàå$q†s9O´ÖFc.¯=|.\”RQ­L1eÑ¿º&S¯×;6O>"bæõë×ÏŒ8¸hËñãÇ{ß°aC>Ÿ_î’NË—›s×o]ÍÚÒ4u¶K>Ø¶x¡W½¥&)sÔ)é³éÊ¬Ç’÷K™ÌòıxÜb&²Ú¼ÂÚÿÅå#s
-1?   %tEXtdate:create 2023-05-21T22:46:04+00:00¹€n   %tEXtdate:modify 2023-05-21T22:46:04+00:00Èİ©Ò   (tEXtdate:timestamp 2023-05-21T22:46:14+00:00Sbˆ“    IEND®B`‚
