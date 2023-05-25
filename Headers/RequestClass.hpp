@@ -8,6 +8,7 @@
 #define BINARYFILE 11
 #define NORMFILE 12
 #define ERROR 13
+#define TIMEOUT -2
 
 
 /*

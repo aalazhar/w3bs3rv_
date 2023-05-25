@@ -72,13 +72,15 @@ std::string webServ::storeClientIP(int clientSocket) {
 
 void webServ::lunche(){
     int kq = kqueue();
+    
     for (ServerVec::iterator it = this->Servers.begin(); it != this->Servers.end(); it++)
         keventUP(kq, it->getSock(), EVFILT_READ, EV_ADD);
-    
     // int clientSock = 0;
     while (true){
+
 		struct kevent events[MAXEVENT];
 		int n_event = kevent(kq, NULL, 0, events, MAXEVENT, NULL);
+
         for (int i = 0; i < n_event; i++)
         {
             int fd = events[i].ident;
@@ -105,7 +107,7 @@ void webServ::lunche(){
             } 
             else if (events[i].filter == EVFILT_WRITE)
             {
-                if (sendData(kq, fd, events[i]) < 0)
+                if (sendData(kq, fd) < 0)
                     continue;
             }
         }
@@ -113,24 +115,14 @@ void webServ::lunche(){
     }
 }
 
-// int Server::getServerFd(int fd) {
-    
-//     _ClientMap pp;
-
-//     std::map<int, Response> it;
-//     if (it = pp.find(fd) != pp.end())
-
-//     it->first;
-// }
-
-
 void webServ::Timeout(int kq){
     for (_ClientMap::iterator it = this->Cmap.begin(); it != this->Cmap.end(); it++){
-        if (std::time(NULL) - it->second.getTime() > 10)
+        if (std::time(NULL) - it->second.getTime() > 3)
         {
             it->second.setStep(-2);
         	keventUP(kq, it->first, EVFILT_READ, EV_DISABLE);
             keventUP(kq, it->first, EVFILT_WRITE, EV_CLEAR|EV_ENABLE | EV_ADD);
+            // sendData(kq, it->first);
         }
     }
 
@@ -162,33 +154,14 @@ int webServ::acceptNewCl(int kq, int ServerSock){
     Res rs(Servers[i].getConfig(), ServerSock, clientSock);
     std::cout << "waa zzeeeb\n";
     testConnection(clientSock, "accepte a new client");
-    // try{
-        this->Cmap.insert(std::make_pair(clientSock, rs));
-    // }catch(...){
-    //     std::cout << "errrrrror\n";
-    // }
+    this->Cmap.insert(std::make_pair(clientSock, rs));
     keventUP(kq, clientSock, EVFILT_READ, EV_ADD);
     std::cout << "----Accepted new client connection on socket----\n";
     return 0;
 }
 
-void    webServ::sendeHeders(int fd, std::string headers) {
-
-    if (send(fd, headers.c_str(), headers.length(), 0) < 0)
-        std::cout << "send Headers Bad < 0 \n";
-}
-
-void    webServ::sendBody(int fd, char* body, size_t size) {
-
-    if (send(fd, body, size, 0) < 0)
-        std::cout << "Send Body Bad < 0 \n";
-}
-
-int webServ::sendData(int &kq,int& fd, struct kevent &event){
+int webServ::sendData(int kq,int fd){
     std::cout << "\n------send data---------\n";
-
-    (void)event;
-    // ServerVec::iterator Server = getServClien(fd);
     int ServerFd = Cmap.find(fd)->second.getServerFd();
     size_t i = 0;
     for(; i < Servers.size(); i++){
@@ -197,22 +170,22 @@ int webServ::sendData(int &kq,int& fd, struct kevent &event){
     }
     std::cout << "server n = " << Servers[i].getSock() << "map size = " << this->Cmap.size() << "\n";
     Res &res = this->Cmap.find(fd)->second;
-    /*
-        res.buildResponse(*dynamic_cast<Req*>(&res), kq);
-    */
    res.buildResponse();
    size_t length = res.getResp().size();
    if (send(fd, res.getResp().data(), length, 0) < 0)
         std::cout << "SEND FAILD\n";
     keventUP(kq, fd, EVFILT_WRITE, EV_DISABLE);
 	keventUP(kq, fd, EVFILT_READ, EV_CLEAR | EV_ENABLE | EV_ADD);
-	res.resetvalues();
-    // std::cout << "-----request : ------\n" << *dynamic_cast<Req*>(&res) << "\n------------\n";
-    // if (res.getCode() == 408) {
-
-    //     this->Cmap.erase(fd);
-    //     close(fd);
-    // }
+    std::cout << "SSSTTTEEEP = " << res.getStep() << "\n";
+    if (res.getStep() == TIMEOUT)
+    {
+        keventUP(kq, fd, EVFILT_WRITE, EV_DELETE);
+        keventUP(kq, fd, EVFILT_READ, EV_DELETE);
+        Cmap.erase(fd);
+        close(fd);
+    }
+    else
+	    res.resetvalues();
     std::cout << "LLLLLLL \n";    std::cout << "------------\n";
     return 0;
 

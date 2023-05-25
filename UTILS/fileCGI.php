@@ -16,7 +16,31 @@
     // echo "<h1>Hello, $aged_value!</h1>";
     // echo "<h1>Hello, $age_value!</h1>";
     // echo "</body></html>";
-    // $method1 = $_SERVER['REQUEST_METHOD'];
+    $var  = getenv('REQUEST_METHOD');
+    if (isset($var)){
+        // $method1 = $_SERVER['REQUEST_METHOD'];
+        if ($var === 'GET'){
+            
+            print $var;
+            $name = $_GET['fname'];
+            $age = $_GET[('age')];
+            $image = '';
+            $path = '';
+            echo"<h1>Hello Mrs $name </h1>";
+            echo"<h1>But this  age : $age, is too young to watch porn !!!! . </h1>";
+    
+            exit;
+        }
+        elseif ($var === 'POST'){
+            print $var;
+            $name = $_POST['fname'];
+            $age = $_POST[('lname')];
+            print"<h1>$name</h1>";
+            print"<h1>$age</h1>";
+            exit;
+        }
+
+    }
     // readfile ( "fileCGI1.php" );
 
     // if ($_SERVER['REQUEST_METHOD'] != 'GET' && $_SERVER['REQUEST_METHOD'] != 'POST') {
@@ -57,26 +81,6 @@
     // echo "</body>";
     // echo "</html>";
     
-    // if ($method1 === 'GET'){
-        
-    //     print $method1;
-    //     $name = $_GET['fname'];
-    //     $age = $_GET[('age')];
-    //     $image = '';
-    //     $path = '';
-    //     echo"<h1>Hello Mrs $name </h1>";
-    //     echo"<h1>But this  age : $age, is too young to watch porn !!!! . </h1>";
-
-    //     exit;
-    // }
-    // elseif ($method1 === 'POST'){
-    //     print $method1;
-    //     $name = $_POST['fname'];
-    //     $age = $_POST[('lname')];
-    //     print"<h1>$name</h1>";
-    //     print"<h1>$age</h1>";
-    //     exit;
-    // }
     
     // exit;
 ?>

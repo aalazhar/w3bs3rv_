@@ -6,7 +6,7 @@
 #include "RequestClass.hpp"
 #include "RESP.hpp"
 
-#define TIMEOUT 10
+
 
 
 typedef std::vector<Server> ServerVec;
@@ -33,7 +33,7 @@ class webServ{
         std::string 					storeClientIP(int clientSocket) ;
         int 							acceptNewCl(int, int);
         int								readData(int& ,int& , struct kevent &);
-        int								sendData(int& ,int& , struct kevent &);
+        int								sendData(int ,int);
         static void							testConnection(const int&, const std::string&);
         static void						keventUP(int kq, int fd, int filter, int flag);
         void							Timeout(int);

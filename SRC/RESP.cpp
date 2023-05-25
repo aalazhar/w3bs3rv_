@@ -6,7 +6,7 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:16 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/25 20:45:14 by hameur           ###   ########.fr       */
+/*   Updated: 2023/05/25 23:06:35 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -357,6 +357,7 @@ void	Res::GET() {
 	switch (getStep()) {
 
 		case ERROR :
+		case TIMEOUT :
 			buildErrorResponse();
 			break;
 		case NORMFILE :
@@ -377,6 +378,7 @@ void	Res::GET() {
 
 void	Res::buildResponse() {
 	std::cout << "METHOD : " << this->getMETHOD() << std::endl;
+	std::cout << "STEP : " << this->getStep() << std::endl;
 	if (this->getMETHOD() == "GET")
 		GET();
 	// std::cout <<"--------response-------\n"<< this->getResp().data()<<"---------------------\n" << std::endl;
