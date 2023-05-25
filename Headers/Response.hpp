@@ -6,7 +6,7 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:37:50 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/22 16:35:06 by hameur           ###   ########.fr       */
+/*   Updated: 2023/05/23 22:00:21 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ private :
 	size_t									r;
 	bool								cgi;
 	std::string							root;
+	/*
+	
+	*/
 
 public:
 	size_t getR(){return this->r;}

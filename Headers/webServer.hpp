@@ -35,7 +35,7 @@ class webServ{
         int								sendData(int& ,int& , struct kevent &);
         void							testConnection(const int&, const std::string&);
         void							keventUP(int kq, int fd, int filter, int flag);
-        void							Timeout();
+        void							Timeout(int);
         bool ifServer(int fd){
             for(ServerVec::iterator it = this->Servers.begin();it != this->Servers.end(); it++){
                 if (it->getSock() == fd)

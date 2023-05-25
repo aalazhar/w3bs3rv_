@@ -104,7 +104,7 @@ void webServ::lunche(){
                     continue;
             }
         }
-        this->Timeout();
+        this->Timeout(kq);
     }
 }
 
@@ -119,12 +119,13 @@ void webServ::lunche(){
 // }
 
 
-void webServ::Timeout(){
+void webServ::Timeout(int kq){
     for (_ClientMap::iterator it = this->Cmap.begin(); it != this->Cmap.end(); it++){
         if (std::time(NULL) - it->second.getTime() > 10)
         {
-                Cmap.erase(it->first);
-                close(it->first);
+                keventUP(kq, it->first, EVFILT_READ, EV_DISABLE);
+                keventUP(kq, it->first, EVFILT_WRITE, EV_CLEAR|EV_ENABLE | EV_ADD);
+                it->second.setStep(-2);
         }
     }
 

@@ -11,7 +11,7 @@
     1 : parse methode and URL and HTTPV done
     0 : void Request
     -1 : invalide method
-    -2 : invalid URL
+    -2 : TIMEOUT
     -3 : invalid HTTPV
 
 */
@@ -43,9 +43,10 @@ class Req{
             this->step = 0;
         };
         Req(int, int);
-        // Req(const std::string&);
         Req &operator=(const Req &);
-        void append(const std::string&);
+
+
+        // Req(const std::string&);
         int getMETHOD(std::string&);
         std::string &getMETHOD();
         std::string &getURL();
@@ -53,14 +54,20 @@ class Req{
         std::string &getBody();
         int getStep(){return step;};
         int getServerFd(){return this->ServerFd;}
+        time_t getTime();
+        _map getHEADERS();
+
+        void setStep(int s){
+            this->step = s;
+        }
+
+        void append(const std::string&);
         void parseErr(const int&);
         int parseHeaders(std::string&);
         int parseBody(std::string&);
         int checkStep();
         int checkMETHOD(const std::string&);
-        _map getHEADERS();
         void updateTime();
-        time_t getTime();
         void    printRe(){
             iter_map iter = HEADERS.begin();
             for (; iter != HEADERS.end(); iter++)
