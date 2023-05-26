@@ -32,7 +32,7 @@
             $image = '';
             $path = '';
             echo"<h1>Hello Mrs $name </h1>";
-            echo"<h1>But this  age : $age, is too young to watch porn !!!! . </h1>";
+            echo"<h1>But this  age : $age, is too young to watch french films !!!! . </h1>";
 
             exit;
         }
@@ -91,26 +91,21 @@
     
     // exit;
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <style>
-            body {background-color: powderblue;}
-            h1   {color: blue;}
-            p    {color: red;}
-            </style>
-    </head>
-    <body>
-        
-        <h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-        <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-    <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
-
-
-    
-    
-<!</body>
-</html>
+ <!-- <!DOCTYPE html>
+ <html>
+     <head>
+         <style>
+             body {background-color: powderblue;}
+             h1   {color: blue;}
+             p    {color: red;}
+             </style>
+     </head>
+     <body>      
+         <h1>HELLO WORLD !!! SERVER MDF</h1>
+         <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+         <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+         <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>
+     <h3>ERROR 404 Ya ZEBI : Page Not found MDF .</h3><h1>HELLO WORLD !!! SERVER MDF</h1>   
+ <!</body>
+ </html> -->
 

@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:16 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/26 02:04:13 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/26 17:02:15 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,6 @@ std::string getFilePath(std::string url){
 		count++;			
 	}
 	_filePath = url.substr(pos + 1, count);
-	std::cout << "new file path = " << _filePath << std::endl;
-
 	return (_filePath);
 	
 }
@@ -93,7 +91,6 @@ void	Res::getifQuerry(std::string &url) {
 	pos = url.rfind(".");
 
 	type = url.substr(pos + 1, url.size() - pos);
-	std::cout << "Querry "<< Querry <<std:: endl;
 }
 
 int	checkpath(std::string &path) {
@@ -122,6 +119,7 @@ void	Res::initCodesMsgs() {
 	CodesMsgs[403] = "Forbidden";
 	CodesMsgs[404] = "Not Found";
 	CodesMsgs[405] = "Method Not Allowed";
+	CodesMsgs[408] = "Request Timeout";
 	CodesMsgs[413] = "Payload Too Large";
 	CodesMsgs[500] = "Internal Server Error";
 }
@@ -176,28 +174,21 @@ void	Res::getHeadersRes() {
 	getDate();
 	status_line = "HTTP/1.1 " + ss.str() + " " + getStatusMsg(code) + CRLF;
 	sss << file_size;
-	std::cout << "HAHOWA TYPE + " << type << std::endl;
-	std::cout << "HAHOWA TYPE MIME + " << getMimetype(type) << std::endl;
 	if (getStep() == CGII)
 		headers = status_line + response_header;
 	else
 		headers = status_line + "Content-Type: " + getMimetype(type) + CRLF;
 	headers += "Content-length: " + sss.str() + CRLF;
 	headers += "Date: " + Date + CRLF;
-	std::cout << "headers : " << headers << std::endl;
-	// std::cout << "_headers : " << prin << std::endl;
 	for (size_t i = 0; i < headers.size(); i++)
 		_headers.push_back(headers[i]);
-	printvector(_headers, 0);
 }
 
 void	Res::readContent() {
 
 	std::ifstream	file;
 
-	std::cout << "||" << Conf.pRoot << "||\n";
-	filePath = "./www/" + filePath;
-	std::cout << "||" << filePath << "||\n";
+	filePath = "./www/" + filePath;//hna ra Proot khawhi fi config;
 	if (checkpath(filePath)) {
 
 		file.open(filePath, std::ios::in);
@@ -257,12 +248,11 @@ void	Res::buildCGIResponse() {
 	type = t;
 	if (!checkCgipath(filePath) or type == "php" or type == "py") {
 
-		CGI	cgi(filePath, getMETHOD(), type, "", getBody(), Querry, getBody().length()); 
+		CGI	cgi(filePath, getMETHOD(), type, "", getBody(), Querry, getBody().length());
 		size_t	i = 0;
 		size_t	size = response.size() - 2;
 		cgiBuff = cgi.executeCGI();
 		response = vectorToString(cgiBuff);
-		std::cout << "CGI : " << response << std::endl;
 		while (response.find("\r\n\r\n", i) != std::string::npos || response.find("\r\n\r\n", i) == i) {
 
 			std::string	resp = response.substr(i, response.find("\r\n", i) - i);
@@ -290,25 +280,32 @@ void	Res::buildCGIResponse() {
 		readErrorsfiles(errorsFiles[code]);
 	}
 	getHeadersRes();
+	mergeResponse();
 }
 
 void	Res::buildNormalResponse() {
 
 	getifQuerry(getURL());
 	readContent();
+	mergeResponse();
 }
 
 void	Res::buildErrorResponse() {
 
-	code = 400;
+
+	if (getStep() == TIMEOUT)
+		code = 408;
+	else
+		code = 400;
 	readErrorsfiles(errorsFiles[code]);
 	getHeadersRes();
+	mergeResponse();
 }
 
 void Res::keventUP(int kq, int fd, int filter, int flag){
     struct kevent ev;
     struct timespec timeout;
-     if (clock_gettime(CLOCK_REALTIME, &timeout) == -1) {
+    if (clock_gettime(CLOCK_REALTIME, &timeout) == -1) {
         perror("clock_gettime");
         return ;
     }
@@ -318,7 +315,6 @@ void Res::keventUP(int kq, int fd, int filter, int flag){
 		std::cerr << "KEVENT FAILDE !!" << std::endl;
 		exit(EXIT_FAILURE);
 	}
-    // testConnection(kevent(kq, &ev, 1, NULL, 0, NULL), "FAILDE ADD THE FD TO KEVENT");
 }
 
 void	Res::mergeResponse() {
@@ -332,17 +328,12 @@ void	Res::mergeResponse() {
 			Resp.push_back(fileData[i - _headers.size()]);
 		} 
 	}
-	printvector(Resp, 88888);
 }
 
 void	Res::GET() {
 
 	switch (getStep()) {
 
-		case ERROR :
-		case TIMEOUT :
-			buildErrorResponse();
-			break;
 		case NORMFILE :
 			buildNormalResponse();
 			break;
@@ -353,13 +344,11 @@ void	Res::GET() {
 			buildCGIResponse();
 			break ;
 	}
-	mergeResponse();
 }
 
 void	Res::buildResponse() {
-	std::cout << "METHOD : " << this->getMETHOD() << std::endl;
-	std::cout << "STEP : " << this->getStep() << std::endl;
-	if (this->getMETHOD() == "GET")
+	if (this->getStep() == ERROR or  this->getStep() == TIMEOUT)
+		buildErrorResponse();
+	else if (this->getMETHOD() == "GET")
 		GET();
-	// std::cout <<"--------response-------\n"<< this->getResp().data()<<"---------------------\n" << std::endl;
 }

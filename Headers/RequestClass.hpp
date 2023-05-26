@@ -48,19 +48,15 @@ class Req{
     public:
         void clearData() {
 
-            std::cout << "KKKKKKK \n";
             this->HEADERS.clear();
-            std::cout << "KKKKKKK1 \n";
             this->METHOD = "";
             this->URL = "";
             this->HTTPV = "";
             this->Body = "";
             this->step = 0;
-            std::cout << "KKKKKKK2 \n";
         };
         Req(int, int, struct config &);
         void setStep(int s){this->step = s;}
-        // Req(const std::string&);
         Req &operator=(const Req &);
         void append(const std::string&);
         int getMETHOD(std::string&);

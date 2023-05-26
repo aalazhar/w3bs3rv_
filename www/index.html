@@ -37,9 +37,8 @@
       <p>&copy; 2023 My Blog</p>
       <img src="test.png" alt="teeeest">
     </footer>
-    <form action="../UTILs/fileCGI.php" method="GET">  
-    First Name: <input type="text" name="fname" size=30><p>
-    Your Age  :  <input type="text" name="age" size=30><p>
+    <form action="../UPLOADS/" method="POST" enctype="multipart/form-data">  
+    file      : <input type="file" name="file">
     <input type="submit">
     </form>
   </body>

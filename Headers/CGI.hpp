@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:54:32 by aalazhar          #+#    #+#             */
-/*   Updated: 2023/05/26 04:40:43 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/26 16:53:31 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ private:
     std::string body;
     std::string quiry;
     std::string cgiPath;
+    char buffer[1024];
     // char    *str;
     // std::vector<std::string> buff;
     std::vector<std::string> vec;

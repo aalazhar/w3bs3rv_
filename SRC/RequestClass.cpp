@@ -26,10 +26,12 @@ void Req::append(const std::string &rq){
                 std::cout << "here\n";
                 }
         }
-            std::cout << "kk step = " << this->step << std::endl;
+        std::cout << "kk step = " << this->step << std::endl;
+        std::cout << s << std::endl;
     }
     this->checkSendType();
-        std::cout << "last step = " << this->step << std::endl;
+    std::cout << "last step = " << this->step << std::endl;
+    // std::cout
 
 
 }
@@ -42,13 +44,12 @@ void Req::updateTime(){
 
 int Req::parseBody(std::string &s){
     this->Body.append(s);
-    std::cout << "METHOD = " << METHOD << std::endl;
-    if (METHOD != "POST")
-        return  std::cout << "first re\n" ,step = 3;
+    // if (METHOD != "POST")
+    //     return  step = 3;
     size_t BodySize = (size_t)std::atoi(HEADERS["Content-Length"].c_str());
     if (Body.size() >= BodySize)
-        return std::cout << "2 re\n", step = 3;
-    return std::cout << "3 re\n",0;
+        return step = 3;
+    return 0;
 }
 
 Req &Req::operator=(const Req &other){
@@ -61,22 +62,15 @@ Req &Req::operator=(const Req &other){
     return *this;
 }
 
-// int Req::checkStep(){
-//     if (METHOD == "POST")
-//         return this->step = 2;
-//     else
-//         return this->step = 3;
-        
-// }
-
 void Req::checkSendType(){
     
     size_t  pos = this->URL.rfind(".");
     std::string type = this->URL.substr(pos + 1, this->URL.size());
     size_t pos2 = type.find("?");
+    if (getMETHOD() == "POST" && step == 2)
+        return ;
     if (pos2 != std::string::npos)
         type.erase(pos2, type.size());
-    std::cout << "wa l3adaw : " << type << std::endl;
     if (type == "php" or type == "py" or type == "pl")
         return (void)(this->step = CGII);
     else if (type == "" or this->step < 0)
@@ -94,7 +88,7 @@ int Req::parseHeaders(std::string&hd){
     std::string::iterator j = hd.begin();
 
     if (hd == "\r")
-        return std::cout << "return here\n",this->step = 2;
+        return this->step = 2;
     while (i != hd.end() && *i != ':')
         i++;
 
@@ -188,7 +182,7 @@ std::map<std::string, std::string> Req::getHEADERS(){
 }
 
 std::ostream &operator<<(std::ostream &os, Req &request){
-	os << "====step=" << request.getStep() << std::endl;
+
 	os  << request.getMETHOD()<< " " << request.getURL() << " " << request.getHTTPV()  << std::endl;
 	iter_map it = request.reqBegin();
 	for(; it != request.reqEnd(); it++)

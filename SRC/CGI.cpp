@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:56:14 by aalazhar          #+#    #+#             */
-/*   Updated: 2023/05/26 04:40:39 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/26 16:53:36 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ std::vector<std::string> CGI::executeCGI(){
 		
 		waitpid(pid, &status, 0);
 		close(fds[1]);
-		char *buffer = new char[1024];
+		// char *buffer = new char[1024];
 		memset(buffer, 0, 1024);
 		int r = 0;
 		r = read(fds[0], buffer, 1024);
@@ -84,10 +84,12 @@ std::vector<std::string> CGI::executeCGI(){
 			it++;
 		}
 		close(fds[0]);
+		// delete [] buffer;
 	}
 	return buff;
 }
 
 CGI::~CGI(){
 
+	vec.clear();
 }

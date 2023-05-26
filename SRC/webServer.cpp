@@ -201,17 +201,16 @@ int webServ::readData(int &kq, int& fd, struct kevent &event){
             break;;
     }
     std::cout << "server n = " << Servers[i].getSock() << "map size = " << this->Cmap.size() << "\n" ;
-    char buffer[1024];
+    char *buffer[1024];
     std::cout << "fd = " << fd  << "   size : " << event.data << std::endl;
-    memset(buffer, 0, event.data);
-    int rd = recv(fd, buffer, event.data, 0);
+    memset(buffer, 0, 1024);
+    int rd = recv(fd, buffer, 1024, 0);
     if (rd <= 0)
     {
         if (rd == 0)
             std::cout <<"client "<< fd << " is disconnected\n";
 		else
 			std::cout << "Error receving data from client\n";
-		//erase client  from _map
         Cmap.erase(fd);
         return (-1);
     }
@@ -226,6 +225,7 @@ int webServ::readData(int &kq, int& fd, struct kevent &event){
     std::cout << "r = " << Cmap.find(fd)->second.getStep() << std::endl;;
     if (Cmap.find(fd)->second.getStep() > 2 || Cmap.find(fd)->second.getStep() < 0)
     {
+        std::cout << "daz mn hna\n";
 		keventUP(kq, fd, EVFILT_READ, EV_DISABLE);
         keventUP(kq, fd, EVFILT_WRITE, EV_CLEAR|EV_ENABLE | EV_ADD);
     }
