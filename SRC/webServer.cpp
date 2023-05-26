@@ -201,7 +201,7 @@ int webServ::readData(int &kq, int& fd, struct kevent &event){
             break;;
     }
     std::cout << "server n = " << Servers[i].getSock() << "map size = " << this->Cmap.size() << "\n" ;
-    char *buffer[1024];
+    char buffer[1024];
     std::cout << "fd = " << fd  << "   size : " << event.data << std::endl;
     memset(buffer, 0, 1024);
     int rd = recv(fd, buffer, 1024, 0);
@@ -217,7 +217,7 @@ int webServ::readData(int &kq, int& fd, struct kevent &event){
     else
     {
         buffer[rd] = 0;
-        std::string req(buffer); 
+        std::string req(buffer);
         //append the read string in the request class
         Cmap.find(fd)->second.append(req);
         std::cout << *dynamic_cast<Req *>(&Cmap.find(fd)->second) << std::endl;;
