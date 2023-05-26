@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:46 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/26 00:00:31 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/26 02:00:51 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ private :
     size_t							    Size_send;
 	bool								cgi;
     std::string							root;
+	std::string							response_header;
 	size_t								headers_size;
 	size_t								file_size;
 	std::vector<char>					_headers;

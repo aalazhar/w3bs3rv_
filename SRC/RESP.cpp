@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:16 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/26 01:30:38 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/26 02:04:13 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	Res::resetvalues() {
 	// this->code = 200;
 	this->Size_send = 0;
 	this->status_line = "";
+	this->response_header = "";
 	this->fileData.clear();
 	this->_headers.clear();
 	this->Resp.clear();
@@ -178,8 +179,8 @@ void	Res::getHeadersRes() {
 	std::cout << "HAHOWA TYPE + " << type << std::endl;
 	std::cout << "HAHOWA TYPE MIME + " << getMimetype(type) << std::endl;
 	if (getStep() == CGII)
-		headers = status_line + "Content-Type: " + type + CRLF;
-	else	
+		headers = status_line + response_header;
+	else
 		headers = status_line + "Content-Type: " + getMimetype(type) + CRLF;
 	headers += "Content-length: " + sss.str() + CRLF;
 	headers += "Date: " + Date + CRLF;
@@ -247,27 +248,19 @@ void	Res::buildCGIResponse() {
 
 	std::vector<std::string> cgiBuff;
 	std::string	response_body = "";
-	std::string	response_header = "";
 	std::string	response = "";
 	std::string	t = "";
+	response_header = "";
 	getifQuerry(getURL());
-	
-	std::cout << "CGI FILE :" << filePath << std::endl;
+
 	t = filePath.substr(filePath.rfind(".") + 1 , filePath.size() - filePath.rfind("."));
 	type = t;
-	std::cout << "CGI type :" << type << std::endl;
 	if (!checkCgipath(filePath) or type == "php" or type == "py") {
 
-		std::cout << "7awli 7awli \n";
-		std::cout << "CGI METHOD  :" << getMETHOD() << std::endl;
 		CGI	cgi(filePath, getMETHOD(), type, "", getBody(), Querry, getBody().length()); 
 		size_t	i = 0;
 		size_t	size = response.size() - 2;
 		cgiBuff = cgi.executeCGI();
-		std::cout << "hna hna : \n";
-		for (std::vector<std::string>::iterator i = cgiBuff.begin(); i < cgiBuff.end(); i++)
-			std::cout << *i;
-		std::cout << std::endl;
 		response = vectorToString(cgiBuff);
 		std::cout << "CGI : " << response << std::endl;
 		while (response.find("\r\n\r\n", i) != std::string::npos || response.find("\r\n\r\n", i) == i) {
@@ -307,7 +300,9 @@ void	Res::buildNormalResponse() {
 
 void	Res::buildErrorResponse() {
 
-	
+	code = 400;
+	readErrorsfiles(errorsFiles[code]);
+	getHeadersRes();
 }
 
 void Res::keventUP(int kq, int fd, int filter, int flag){
