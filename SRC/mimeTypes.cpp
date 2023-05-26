@@ -101,6 +101,7 @@ void    Res::setMIME() {
         this->mimeTypes.insert(std::make_pair( "hqx", "application/mac-binhex40"));
         this->mimeTypes.insert(std::make_pair( "htm", "text/html"));
         this->mimeTypes.insert(std::make_pair( "html", "text/html"));
+        this->mimeTypes.insert(std::make_pair( "ico", "image/icon"));
         this->mimeTypes.insert(std::make_pair( "ics", "text/calendar"));
         this->mimeTypes.insert(std::make_pair( "ief", "image/ief"));
         this->mimeTypes.insert(std::make_pair( "ifb", "text/calendar"));

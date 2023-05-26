@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:16 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/26 00:03:59 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/26 01:30:38 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ void	Res::readErrorsfiles(std::string path) {
 		file.seekg(0, std::ios::beg);
 		std::vector<char>	data(fileSize);
 		file.read(data.data(), fileSize);
+		file_size = fileSize;
 		fileData = data;
 		file.close();
 	}
@@ -176,12 +177,14 @@ void	Res::getHeadersRes() {
 	sss << file_size;
 	std::cout << "HAHOWA TYPE + " << type << std::endl;
 	std::cout << "HAHOWA TYPE MIME + " << getMimetype(type) << std::endl;
-	headers = status_line + "Content-Type: " + getMimetype(type) + CRLF;
+	if (getStep() == CGII)
+		headers = status_line + "Content-Type: " + type + CRLF;
+	else	
+		headers = status_line + "Content-Type: " + getMimetype(type) + CRLF;
 	headers += "Content-length: " + sss.str() + CRLF;
 	headers += "Date: " + Date + CRLF;
 	std::cout << "headers : " << headers << std::endl;
 	// std::cout << "_headers : " << prin << std::endl;
-
 	for (size_t i = 0; i < headers.size(); i++)
 		_headers.push_back(headers[i]);
 	printvector(_headers, 0);
@@ -204,8 +207,8 @@ void	Res::readContent() {
 		}
 		file.seekg(0, std::ios::end);
     	std::streamsize fileSize = file.tellg();
-		file_size = fileSize;
     	file.seekg(0, std::ios::beg);
+		file_size = fileSize;
 		std::vector<char>	Data(fileSize);
 		file.read(Data.data(), fileSize);
 		fileData = Data;
@@ -256,6 +259,7 @@ void	Res::buildCGIResponse() {
 	if (!checkCgipath(filePath) or type == "php" or type == "py") {
 
 		std::cout << "7awli 7awli \n";
+		std::cout << "CGI METHOD  :" << getMETHOD() << std::endl;
 		CGI	cgi(filePath, getMETHOD(), type, "", getBody(), Querry, getBody().length()); 
 		size_t	i = 0;
 		size_t	size = response.size() - 2;
@@ -345,10 +349,10 @@ void	Res::GET() {
 			buildErrorResponse();
 			break;
 		case NORMFILE :
-			std::cout << "ZEBIIII 4 \n", buildNormalResponse();
+			buildNormalResponse();
 			break;
 		case BINARYFILE :
-			std::cout << "ZEBIIII 5 \n", buildNormalResponse();
+			buildNormalResponse();
 			break;
 		case CGII :
 			buildCGIResponse();
