@@ -160,6 +160,10 @@ int webServ::acceptNewCl(int kq, int ServerSock){
     return 0;
 }
 
+/*_______SEND DATA___________*/
+/*_______SEND DATA___________*/
+/*_______SEND DATA___________*/
+
 int webServ::sendData(int kq,int fd){
     std::cout << "\n------send data---------\n";
     int ServerFd = Cmap.find(fd)->second.getServerFd();
@@ -191,6 +195,19 @@ int webServ::sendData(int kq,int fd){
 
 }
 
+
+/*__________READ DATA___________*/
+/*__________READ DATA___________*/
+/*__________READ DATA___________*/
+
+
+std::vector<char> addtoVec(const char *s, size_t length){
+    std::vector<char> vec;
+    for (size_t i = 0; i < length; i++)
+        vec.push_back(s[i]);
+        return vec;
+}
+
 int webServ::readData(int &kq, int& fd, struct kevent &event){
     std::cout << "\n------read data---------\n";
     // ServerVec::iterator Server = getServClien(fd);
@@ -200,24 +217,29 @@ int webServ::readData(int &kq, int& fd, struct kevent &event){
         if (Servers[i].getSock() == ServerFd)
             break;;
     }
-    std::cout << "server n = " << Servers[i].getSock() << "map size = " << this->Cmap.size() << "\n" ;
-    char buffer[1024];
+    // std::cout << "server n = " << Servers[i].getSock() << "map size = " << this->Cmap.size() << "\n" ;
+    char buffer[event.data];
+    std::vector<char> vec;
+    vec.clear();
     std::cout << "fd = " << fd  << "   size : " << event.data << std::endl;
-    memset(buffer, 0, 1024);
-    int rd = recv(fd, buffer, 1024, 0);
+    // memset(buffer, 0, 1024);
+    int rd = recv(fd, buffer, event.data, 0);
     if (rd <= 0)
     {
         if (rd == 0)
             std::cout <<"client "<< fd << " is disconnected\n";
 		else
 			std::cout << "Error receving data from client\n";
+        keventUP(kq, fd,  EVFILT_READ , EV_CLEAR | EV_DELETE);
         Cmap.erase(fd);
         return (-1);
     }
     else
     {
-        buffer[rd] = 0;
-        std::string req(buffer);
+        // buffer[rd] = 0;
+        vec = addtoVec(buffer, event.data);
+        std::string req(vec.begin(), vec.end());
+
         //append the read string in the request class
         Cmap.find(fd)->second.append(req);
         std::cout << *dynamic_cast<Req *>(&Cmap.find(fd)->second) << std::endl;;

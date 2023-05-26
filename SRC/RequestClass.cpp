@@ -42,6 +42,17 @@ void Req::updateTime(){
     this->time = std::time(NULL);
 }
 
+void Req::addTovect(std::string s){
+    for (size_t i = 0; i < s.size();i++)
+        body.push_back(s[i]);
+}
+
+void Req::addTovect(const char *s, size_t length){
+    for (size_t i = 0; i < length;i++)
+        body.push_back(s[i]);
+}
+
+
 int Req::parseBody(std::string &s){
     this->Body.append(s);
     // if (METHOD != "POST")
