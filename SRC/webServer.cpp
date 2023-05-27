@@ -111,21 +111,24 @@ void webServ::lunche(){
                     continue;
             }
         }
+        std::cout << "ENDLLLLL " << std::endl;
         this->Timeout(kq);
     }
 }
 
 void webServ::Timeout(int kq){
+
     for (_ClientMap::iterator it = this->Cmap.begin(); it != this->Cmap.end(); it++){
+        std::cout << "TIME OUT" << std::endl;
         if (std::time(NULL) - it->second.getTime() > 3)
         {
+            std::cout << "TIME OUT IF" << std::endl;
             it->second.setStep(-2);
         	keventUP(kq, it->first, EVFILT_READ, EV_DISABLE);
             keventUP(kq, it->first, EVFILT_WRITE, EV_CLEAR|EV_ENABLE | EV_ADD);
-            // sendData(kq, it->first);
         }
     }
-
+    std::cout << "TIME OUT KHREJ" << std::endl;
 }
 
 
@@ -160,15 +163,19 @@ int webServ::acceptNewCl(int kq, int ServerSock){
     return 0;
 }
 
+/*_______SEND DATA___________*/
+/*_______SEND DATA___________*/
+/*_______SEND DATA___________*/
+
 int webServ::sendData(int kq,int fd){
-    std::cout << "\n------send data---------\n";
+    std::cout << "\n------send data--------"<< std::endl;
     int ServerFd = Cmap.find(fd)->second.getServerFd();
     size_t i = 0;
     for(; i < Servers.size(); i++){
         if (Servers[i].getSock() == ServerFd)
             break;;
     }
-    std::cout << "server n = " << Servers[i].getSock() << "map size = " << this->Cmap.size() << "\n";
+    std::cout << "server n = " << Servers[i].getSock() << "map size = " << this->Cmap.size() << std::endl;;
     Res &res = this->Cmap.find(fd)->second;
    res.buildResponse();
    size_t length = res.getResp().size();
@@ -176,7 +183,7 @@ int webServ::sendData(int kq,int fd){
         std::cout << "SEND FAILD\n";
     keventUP(kq, fd, EVFILT_WRITE, EV_DISABLE);
 	keventUP(kq, fd, EVFILT_READ, EV_CLEAR | EV_ENABLE | EV_ADD);
-    std::cout << "SSSTTTEEEP = " << res.getStep() << "\n";
+    std::cout << "SSSTTTEEEP = " << res.getStep() << "     if " << (res.getStep() == TIMEOUT) << std::endl;;
     if (res.getStep() == TIMEOUT)
     {
         keventUP(kq, fd, EVFILT_WRITE, EV_DELETE);
@@ -186,9 +193,22 @@ int webServ::sendData(int kq,int fd){
     }
     else
 	    res.resetvalues();
-    std::cout << "LLLLLLL \n";    std::cout << "------------\n";
+    std::cout << "LLLLLLL"  << "------------" << std::endl;;
     return 0;
 
+}
+
+
+/*__________READ DATA___________*/
+/*__________READ DATA___________*/
+/*__________READ DATA___________*/
+
+
+std::vector<char> addtoVec(const char *s, size_t length){
+    std::vector<char> vec;
+    for (size_t i = 0; i < length; i++)
+        vec.push_back(s[i]);
+        return vec;
 }
 
 int webServ::readData(int &kq, int& fd, struct kevent &event){
@@ -200,37 +220,44 @@ int webServ::readData(int &kq, int& fd, struct kevent &event){
         if (Servers[i].getSock() == ServerFd)
             break;;
     }
-    std::cout << "server n = " << Servers[i].getSock() << "map size = " << this->Cmap.size() << "\n" ;
-    char buffer[1024];
+    // std::cout << "server n = " << Servers[i].getSock() << "map size = " << this->Cmap.size() << "\n" ;
+    char buffer[event.data];
+    std::vector<char> vec;
+    vec.clear();
     std::cout << "fd = " << fd  << "   size : " << event.data << std::endl;
-    memset(buffer, 0, 1024);
-    int rd = recv(fd, buffer, 1024, 0);
+    // memset(buffer, 0, 1024);
+    int rd = recv(fd, buffer, event.data, 0);
     if (rd <= 0)
     {
         if (rd == 0)
             std::cout <<"client "<< fd << " is disconnected\n";
 		else
 			std::cout << "Error receving data from client\n";
+        keventUP(kq, fd,  EVFILT_READ , EV_CLEAR | EV_DELETE);
         Cmap.erase(fd);
         return (-1);
     }
     else
     {
-        buffer[rd] = 0;
-        std::string req(buffer);
+        // buffer[rd] = 0;
+        vec = addtoVec(buffer, event.data);
+        std::string req(vec.begin(), vec.end());
+
         //append the read string in the request class
         Cmap.find(fd)->second.append(req);
         std::cout << *dynamic_cast<Req *>(&Cmap.find(fd)->second) << std::endl;;
     }
-    std::cout << "r = " << Cmap.find(fd)->second.getStep() << std::endl;;
+    std::cout << "khdem a zbi " << std::endl;;
+    // std::cout << "r = " << Cmap.find(fd)->second.getStep() << std::endl;;
     if (Cmap.find(fd)->second.getStep() > 2 || Cmap.find(fd)->second.getStep() < 0)
     {
-        std::cout << "daz mn hna\n";
+        std::cout << "daz mn hna" << std::endl;;
 		keventUP(kq, fd, EVFILT_READ, EV_DISABLE);
         keventUP(kq, fd, EVFILT_WRITE, EV_CLEAR|EV_ENABLE | EV_ADD);
     }
+    std::cout << "--------finish read data 1---------" << std::endl;
     Cmap.find(fd)->second.updateTime();
-    std::cout << "--------finish read data---------\n";
+    std::cout << "--------finish read data---------" << std::endl;
     return 0;
 }
 

@@ -245,12 +245,13 @@ void parserObject::setDefaultsDirectives(struct config *cf, int *tab){
     // int len = server.size();
     // while (y < len){
     i = 0;
+    std::cout << "Root indice = " << tab[0] << std::endl;
     while (i < 7){
         if (tab[i] == 0){
             switch (i)
             {
                 case 0 :
-                    cf->pRoot = "./www";
+                    cf->pRoot = "./www/frr/";
                     break;
                 case 1 :
                     cf->lsten.push_back("0.0.0.0");
@@ -483,6 +484,7 @@ void parserObject::split_lines(std::string line, char sep, struct config& conf, 
     // }
     for (; line[i] != ' ' && line.size() > i && line[i] != '}'; i++);
     res = line.substr(0, i);
+    std::cout << "result line = " << res << std::endl;
     if (res == "listen"){
         conf.listen = &line[i + 1];
         split_listen_line(&line[i + 1], conf);
@@ -492,6 +494,7 @@ void parserObject::split_lines(std::string line, char sep, struct config& conf, 
         conf.pRoot = &line[i + 1];
         conf.pRoot.erase(conf.pRoot.size() - 1, conf.pRoot.size());
         tab[0] += 1;
+        std::cout << "tab daz mn hna" << tab[0] << std::endl;
     }
     else if (res == "index"){
         conf.index = &line[i + 1];

@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:16 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/26 17:02:15 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/28 00:45:07 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	printvector(std::vector<char> vec, int key) {
 
 void	Res::initErrorFiles() {
 
+	errorsFiles[201] = "./ErrorFiles/201.html";
 	errorsFiles[400] = "./ErrorFiles/400.html";
 	errorsFiles[403] = "./ErrorFiles/403.html";
 	errorsFiles[404] = "./ErrorFiles/404.html";
@@ -55,7 +56,7 @@ void	Res::resetvalues() {
 
 Res::Res(struct config server, int serverfd, int clientfd) : Req(serverfd, clientfd, server){
 
-    server = Conf;
+    Conf = server;
 	setMIME();
     initErrorFiles();
 	code = 0;
@@ -188,7 +189,9 @@ void	Res::readContent() {
 
 	std::ifstream	file;
 
-	filePath = "./www/" + filePath;//hna ra Proot khawhi fi config;
+	std::cout << "HA root " << Conf.pRoot << std::endl;
+	filePath = Conf.pRoot + filePath;//hna ra Proot khawhi fi config;
+	std::cout << "HA Lfile kml " << filePath << std::endl;
 	if (checkpath(filePath)) {
 
 		file.open(filePath, std::ios::in);
@@ -346,9 +349,116 @@ void	Res::GET() {
 	}
 }
 
+std::string	Res::getBoundry() {
+
+	std::string	headers = getHEADERS()["Content-Type"];
+	size_t	pos =  0;
+	pos = headers.find("boundary=", pos);
+	std::string boundry = "--" + headers.erase(0, pos + 9);
+	// std::cout << "POS = " << pos << std::endl;
+	// std::string boundry = headers.substr(pos + 9, headers.length());
+	std::cout << "BOOUND : " << boundry << std::endl;
+	return boundry;
+}
+
+void	Res::getUpFname(std::string body) {
+
+	std::string from = "filename=\"";
+	std::string sh;
+	if (body.find(from) != std::string::npos) {
+
+		size_t pos = 0;
+		size_t pos1 = 0;
+		pos = body.find(from, pos);
+		pos1 = body.find("Content-Type:", pos1);
+		sh = body.substr(pos + from.size(), pos1);
+		pos = sh.find("\"");
+		upld_file_name = sh.substr(0, pos);
+		std::cout << "file = " << upld_file_name << "|" << std::endl;
+	}
+}
+
+void	Res::beginInPOST() {
+
+	std::string	body = getBody();
+	std::string filename = "";
+	size_t	pos1 = 0;
+	std::string	boundry =getBoundry();
+	body.erase(0, boundry.size() + 2);
+	std::string	boundry2 = boundry + "--";
+	pos1 = body.find(boundry2);
+	if (pos1 != std::string::npos)
+		body.erase(pos1, boundry2.size());
+	else
+		std::cout << "Boundary Not Found !" << std::endl;
+	pos1 = 0;
+	pos1 = body.find("filename=", pos1);
+	for (int i = pos1 + 10; body[i] != '"'; i++)
+		filename.push_back(body[i]);
+	size_t start = 0;
+	size_t end = 0;
+	start = body.find("Content-Disposition", start);
+	end = body.find("\n", start);
+	if (start != std::string::npos && end != std::string::npos)
+		body.erase(start, end);
+	start = 0;
+	end = 0;
+	start = body.find("Content-Type", start);
+	end = body.find("\n", start);
+	if (start != std::string::npos && end != std::string::npos)
+		body.erase(start, end);
+	upld_body = body;
+	upld_file_name = filename;
+}
+
+void	Res::getpathtoUp() {
+
+	path_to_upld = getURL();
+	if (getURL().find("/") != std::string::npos)
+		path_to_upld.erase(std::remove(path_to_upld.begin(), path_to_upld.end(), '/'), path_to_upld.end());
+	std:: cout << "PATH TO UP = " << path_to_upld << "|" << std::endl;
+}
+
+void	Res::CreateFile() {
+
+	std::ofstream file;
+	std::string	file_name;
+	file_name = path_to_upld + "/";
+	file_name += upld_file_name;
+	file.open(file_name);
+	for (size_t i = 0; i < upld_body.size(); i++)
+		file << upld_body[i];
+	file.close();
+	code = 201;
+	readErrorsfiles(errorsFiles[code]);
+}
+
+void	Res::POST() {
+	
+	beginInPOST();
+	if (getBody().empty()) {
+
+		code = 400;
+		readErrorsfiles(errorsFiles[code]);
+	}
+	getpathtoUp();
+	struct stat st;
+	if (stat(path_to_upld.c_str(), &st) != 0) {
+
+		std::cout << "PPPP" << std::endl;
+		mkdir(path_to_upld.c_str(), 0777);
+	}
+	CreateFile();
+	getHeadersRes();
+	mergeResponse();
+}
+
 void	Res::buildResponse() {
+
 	if (this->getStep() == ERROR or  this->getStep() == TIMEOUT)
 		buildErrorResponse();
+	else if (this->getMETHOD() == "POST")
+		POST();
 	else if (this->getMETHOD() == "GET")
 		GET();
 }

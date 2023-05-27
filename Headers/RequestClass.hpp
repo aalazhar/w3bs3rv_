@@ -38,11 +38,15 @@ class Req{
         std::string URL;
         std::string HTTPV;
         std::string Body;
+        std::vector<char> body;
         time_t time;
         int step;
         int ServerFd;
         int clientFd;
         struct config _Config;
+
+
+
 
 
 
@@ -58,6 +62,8 @@ class Req{
             this->step = 0;
         };
         Req(int, int, struct config &);
+        void addTovect(std::string );
+        void addTovect( const char *, size_t  );
         void setStep(int s){this->step = s;}
         Req &operator=(const Req &);
         void append(const std::string&);

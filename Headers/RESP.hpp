@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:46 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/26 02:00:51 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/27 23:00:55 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ private :
     struct config                       Conf;
     bool								autoInx;
     std::string							Querry;
+	std::string							path_to_upld;
+	std::string							upld_file_name;
+	std::string							upld_body;
 	std::string							filePath;
 	std::string							_Cgipath;
 	std::string							status_line;
@@ -66,7 +69,13 @@ public :
 	void	mergeResponse();
 	void 	keventUP(int, int, int, int);
 	void	GET();
+	void	beginInPOST();
+	void	POST();
+	void	getUpFname(std::string);
+	std::string	getBoundry();
 	std::string	getStatusMsg(int);
 	std::string	getMimetype(std::string);
 	void	initErrorFiles();
+	void	getpathtoUp();
+	void	CreateFile();
 };
