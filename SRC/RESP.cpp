@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:16 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/28 17:11:58 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/28 18:33:55 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	printvector(std::vector<char> vec, int key) {
 void	Res::initErrorFiles() {
 
 	errorsFiles[201] = "./ErrorFiles/201.html";
+	errorsFiles[204] = "./ErrorFiles/204.html";
 	errorsFiles[400] = "./ErrorFiles/400.html";
 	errorsFiles[403] = "./ErrorFiles/403.html";
 	errorsFiles[404] = "./ErrorFiles/404.html";
@@ -452,6 +453,27 @@ void	Res::POST() {
 	mergeResponse();
 }
 
+void	Res::DELETE() {
+
+	// filePath = getURL();
+	size_t start = getURL().find_first_of('/');
+	
+	filePath = getURL().substr(start + 1, getURL().size() - start);
+	std::cout << "FILE TO DELETE == |" << filePath << "|" <<std::endl;
+	if (checkpath(filePath)) {
+
+		if (remove(filePath.c_str()) == 0)
+			code = 204;
+		else
+			code = 403;
+	}
+	else
+		code = 404;
+	readErrorsfiles(errorsFiles[code]);
+	getHeadersRes();
+	mergeResponse();
+}
+
 void	Res::buildResponse() {
 
 	if (this->getStep() == ERROR or  this->getStep() == TIMEOUT)
@@ -460,4 +482,6 @@ void	Res::buildResponse() {
 		POST();
 	else if (this->getMETHOD() == "GET")
 		GET();
+	else if (this->getMETHOD() == "DELETE")
+		DELETE();
 }

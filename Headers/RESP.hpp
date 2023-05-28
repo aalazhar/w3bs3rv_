@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:46 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/27 23:00:55 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/28 18:16:16 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ public :
 	void	GET();
 	void	beginInPOST();
 	void	POST();
+	void	DELETE();
 	void	getUpFname(std::string);
 	std::string	getBoundry();
 	std::string	getStatusMsg(int);
