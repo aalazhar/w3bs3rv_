@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:16 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/28 00:45:07 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/28 17:11:58 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -407,7 +407,9 @@ void	Res::beginInPOST() {
 	end = body.find("\n", start);
 	if (start != std::string::npos && end != std::string::npos)
 		body.erase(start, end);
-	upld_body = body;
+	start = body.find_first_not_of("\n\r\t ");
+	end = body.find_last_not_of("\n\r\t ");
+	upld_body = body.substr(start, end - start + 1);
 	upld_file_name = filename;
 }
 
@@ -443,11 +445,8 @@ void	Res::POST() {
 	}
 	getpathtoUp();
 	struct stat st;
-	if (stat(path_to_upld.c_str(), &st) != 0) {
-
-		std::cout << "PPPP" << std::endl;
+	if (stat(path_to_upld.c_str(), &st) != 0)
 		mkdir(path_to_upld.c_str(), 0777);
-	}
 	CreateFile();
 	getHeadersRes();
 	mergeResponse();
