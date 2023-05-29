@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:56:14 by aalazhar          #+#    #+#             */
-/*   Updated: 2023/05/26 16:53:36 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/29 23:55:29 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ std::vector<std::string> CGI::executeCGI(){
 	std::vector<std::string> buff;
 	
 	std::cout << "here\n";
-	const char *filePath = "./CGI-bin/php-cgi";
+	const char *filePath = "/usr/bin/perl";
 	char	*env[vec.size() + 1];
 	for (std::size_t i = 0 ; i < vec.size(); i++)
 		env[i] = const_cast<char *>(vec[i].c_str());

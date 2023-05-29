@@ -17,11 +17,21 @@ webServ::~webServ(){
     delete this->ob;
 }
 
+bool webServ::checkport(int port){
+    for (size_t i = 0; i < Servers.size(); i++){
+        if (Servers[i].getport() == port)
+            return true;
+    }
+    return false;
+}
+
 void webServ::creatServers(parserObject *obj){
     std::vector<config>::iterator it = obj->getItBegin();
     for (;it != obj->getItend(); it++){
         Server s(*it);
-		s.creatSocket();
+        if (checkport(s.getport()) == true)
+            testConnection(-1, "Duplicate Port in Config File");
+        s.creatSocket();
         this->Servers.push_back(s);
     }
     std::cout << "hellllllll\n";
@@ -79,40 +89,47 @@ void webServ::lunche(){
     while (true){
 
 		struct kevent events[MAXEVENT];
-		int n_event = kevent(kq, NULL, 0, events, MAXEVENT, NULL);
-
-        for (int i = 0; i < n_event; i++)
+        struct timespec timeout;
+        timeout.tv_sec = 5;
+        timeout.tv_nsec = 0;
+		int n_event = kevent(kq, NULL, 0, events, MAXEVENT, &timeout);
+        if (n_event == 0)
+            this->Timeout(kq);
+        else
         {
-            int fd = events[i].ident;
-            // ServerVec::iterator itS = this->getServClien(fd);
-            if (events[i].flags & EV_EOF)
+            for (int i = 0; i < n_event; i++)
             {
-                std::cout << "----EOF-----\n";
-                keventUP(kq, fd,  EVFILT_READ , EV_CLEAR | EV_DELETE);
-                std::cout <<"client "<< fd << " is disconnected\n";
-                Cmap.erase(fd);
-                close(fd);
+                int fd = events[i].ident;
+                // ServerVec::iterator itS = this->getServClien(fd);
+                if (events[i].flags & EV_EOF)
+                {
+                    std::cout << "----EOF-----\n";
+                    keventUP(kq, fd,  EVFILT_READ , EV_CLEAR | EV_DELETE);
+                    std::cout <<"client "<< fd << " is disconnected\n";
+                    Cmap.erase(fd);
+                    close(fd);
 
-                std::cout << "----END_EOF-----\n";
-            }
-            else if ( this->ifServer(fd) )
-            { //new client
-                if (acceptNewCl(kq, fd) < 0)
-                    continue;
-            }
-            else if (events[i].filter == EVFILT_READ) // else if (read data)
-            {
-                if (readData(kq ,fd, events[i]) < 0)
-                    continue;;
-            } 
-            else if (events[i].filter == EVFILT_WRITE)
-            {
-                if (sendData(kq, fd) < 0)
-                    continue;
+                    std::cout << "----END_EOF-----\n";
+                }
+                else if ( this->ifServer(fd) )
+                { //new client
+                    if (acceptNewCl(kq, fd) < 0)
+                        continue;
+                }
+                else if (events[i].filter == EVFILT_READ) // else if (read data)
+                {
+                    if (readData(kq ,fd, events[i]) < 0)
+                        continue;;
+                } 
+                else if (events[i].filter == EVFILT_WRITE)
+                {
+                    if (sendData(kq, fd) < 0)
+                        continue;
+                }
             }
         }
         std::cout << "ENDLLLLL " << std::endl;
-        this->Timeout(kq);
+        
     }
 }
 
@@ -120,7 +137,7 @@ void webServ::Timeout(int kq){
 
     for (_ClientMap::iterator it = this->Cmap.begin(); it != this->Cmap.end(); it++){
         std::cout << "TIME OUT" << std::endl;
-        if (std::time(NULL) - it->second.getTime() > 3)
+        if (std::time(NULL) - it->second.getTime() > 5)
         {
             std::cout << "TIME OUT IF" << std::endl;
             it->second.setStep(-2);
@@ -152,6 +169,7 @@ int webServ::acceptNewCl(int kq, int ServerSock){
     while(i < Servers.size()){
         if (Servers[i].getSock() == ServerSock)
             break;
+        i++; 
     }
     std::cout << " CLientSock = " << clientSock << "\n";
     Res rs(Servers[i].getConfig(), ServerSock, clientSock);

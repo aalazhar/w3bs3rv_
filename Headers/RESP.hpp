@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:46 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/28 18:16:16 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/30 00:35:53 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ private :
 	std::string							type;
 	int									code;
 	std::string							Date;
+	std::string							index;
     size_t							    Size_send;
 	bool								cgi;
     std::string							root;
@@ -46,37 +47,38 @@ private :
 	std::vector<char>					Resp;
 
 public :
-
-	//
-	void setSizesend(size_t n) {Size_send = n;}
+	void 	setSizesend(size_t n) {Size_send = n;}
 	size_t	getSizeSend(){return Size_send;}
     Res(struct config, int, int);
 	std::vector<char>	&getResp() {return Resp;}
 	std::vector<char>	makeResponse();
-    void    resetvalues();
-	void	buildResponse();
-	void	buildErrorResponse();
-	void	buildNormalResponse();
-	void	buildCGIResponse();
-	void	getifQuerry(std::string &);
-	void	readErrorsfiles(std::string);
-	void	readContent();
-	void	getHeadersRes();
-	void	setMIME();
-	void	initCodesMsgs();
-	void	getDate();
-	int		checkCgipath(std::string &path);
-	void	mergeResponse();
-	void 	keventUP(int, int, int, int);
+	//Headers
+	void		setMIME();
+	void		getHeadersRes();
+	void		initCodesMsgs();
+	void		getDate();
+	void		mergeResponse();
+	std::string	getStatusMsg(int);
+	//Methods
 	void	GET();
-	void	beginInPOST();
 	void	POST();
 	void	DELETE();
-	void	getUpFname(std::string);
+	//Methods Utils
+	void		beginInPOST();
+	void		getUpFname(std::string);
 	std::string	getBoundry();
-	std::string	getStatusMsg(int);
 	std::string	getMimetype(std::string);
-	void	initErrorFiles();
-	void	getpathtoUp();
-	void	CreateFile();
+	void		getpathtoUp();
+	void		CreateFile();
+	void		buildResponse();
+	void		initErrorFiles();
+	void		buildErrorResponse();
+	void		buildNormalResponse();
+	void		buildCGIResponse();
+	void		getifQuerry(std::string &);
+	int			checkCgipath(std::string &path);
+	void		readErrorsfiles(std::string);
+	void		readContent();
+    void    	resetvalues();
+	void		autoindex();
 };

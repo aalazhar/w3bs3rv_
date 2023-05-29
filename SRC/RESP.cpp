@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:16 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/28 18:33:55 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/30 00:51:53 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,9 @@ Res::Res(struct config server, int serverfd, int clientfd) : Req(serverfd, clien
 	setMIME();
     initErrorFiles();
 	code = 0;
+	root = Conf.pRoot;
+	index = "";
+	autoInx = false;
 }
 
 std::string getFilePath(std::string url){
@@ -83,11 +86,47 @@ std::string getFilePath(std::string url){
 	
 }
 
+void	Res::autoindex() {
+
+	DIR* directory;
+    struct dirent* entry;
+
+    // Open the directory
+	std::cout << "LLLLL++++555666 " << std::endl;
+	std::string	html = "<!DOCTYPE html><html><title> autoindex of " + root + "</title><body><div>";
+    directory = opendir(root.c_str());
+    if (directory == NULL) {
+        std::cerr << "Error opening directory." << std::endl;
+    }
+    // Read directory entries
+    while ((entry = readdir(directory)) != NULL) {
+		std::string file(entry->d_name );
+		if (file[0] != '.')
+			html += "<p>" + file + "</p>";
+        // std::cout << entry->d_name << std::endl;
+    }
+	html += "</div></body></html>";
+	for (size_t i = 0; i < html.length(); i++)
+		fileData.push_back(html[i]);
+	printvector(fileData, 1337);
+	code = 200;
+	type = "html";
+	file_size = html.length();
+    // Close the directory
+    closedir(directory);
+}
+
 void	Res::getifQuerry(std::string &url) {
 
 	size_t	pos = url.find("?");
-
-	filePath = getFilePath(url);
+	std::cout << "auto index = " << Conf.autoIndex << std::endl;
+	if (getURL() == "/" && !index.empty())
+		filePath = index;
+	else if (index.empty() && Conf.autoIndex == "on")
+		autoInx = true;
+	else
+		filePath = getFilePath(url);
+	std::cout << "PATH = " << getURL() << std::endl;
 	if (pos != std::string::npos) 
 		Querry = url.substr(pos + 1, url.length());
 	pos = url.rfind(".");
@@ -191,7 +230,7 @@ void	Res::readContent() {
 	std::ifstream	file;
 
 	std::cout << "HA root " << Conf.pRoot << std::endl;
-	filePath = Conf.pRoot + filePath;//hna ra Proot khawhi fi config;
+	filePath = root + filePath;
 	std::cout << "HA Lfile kml " << filePath << std::endl;
 	if (checkpath(filePath)) {
 
@@ -211,6 +250,8 @@ void	Res::readContent() {
 		file.close();
 		code = 200;
 	}
+	else if (autoInx == true)
+		autoindex();
 	else {
 
 		code = 404;
@@ -250,7 +291,7 @@ void	Res::buildCGIResponse() {
 
 	t = filePath.substr(filePath.rfind(".") + 1 , filePath.size() - filePath.rfind("."));
 	type = t;
-	if (!checkCgipath(filePath) or type == "php" or type == "py") {
+	if (!checkCgipath(filePath) or type == "php" or type == "py" or type == "pl") {
 
 		CGI	cgi(filePath, getMETHOD(), type, "", getBody(), Querry, getBody().length());
 		size_t	i = 0;
@@ -276,6 +317,7 @@ void	Res::buildCGIResponse() {
 		for (size_t i = 0; i < response_body.length(); i++)
 			fileData.push_back(response_body[i]);
 		file_size = fileData.size();
+		printvector(fileData, 555);
 		code = 200;
 	}
 	else {
@@ -290,6 +332,7 @@ void	Res::buildCGIResponse() {
 void	Res::buildNormalResponse() {
 
 	getifQuerry(getURL());
+	std::cout << "auto = " << Conf.index << std::endl;
 	readContent();
 	mergeResponse();
 }
@@ -304,21 +347,6 @@ void	Res::buildErrorResponse() {
 	readErrorsfiles(errorsFiles[code]);
 	getHeadersRes();
 	mergeResponse();
-}
-
-void Res::keventUP(int kq, int fd, int filter, int flag){
-    struct kevent ev;
-    struct timespec timeout;
-    if (clock_gettime(CLOCK_REALTIME, &timeout) == -1) {
-        perror("clock_gettime");
-        return ;
-    }
-    EV_SET(&ev, fd, filter, flag, 0, 0, &timeout);
-	if (kevent(kq, &ev, 1, NULL, 0, NULL) < 0) {
-
-		std::cerr << "KEVENT FAILDE !!" << std::endl;
-		exit(EXIT_FAILURE);
-	}
 }
 
 void	Res::mergeResponse() {
@@ -356,9 +384,6 @@ std::string	Res::getBoundry() {
 	size_t	pos =  0;
 	pos = headers.find("boundary=", pos);
 	std::string boundry = "--" + headers.erase(0, pos + 9);
-	// std::cout << "POS = " << pos << std::endl;
-	// std::string boundry = headers.substr(pos + 9, headers.length());
-	std::cout << "BOOUND : " << boundry << std::endl;
 	return boundry;
 }
 
@@ -381,6 +406,8 @@ void	Res::getUpFname(std::string body) {
 
 void	Res::beginInPOST() {
 
+
+	std::cout << "LBODY LI JA |" << getBody() << "|" << std::endl;
 	std::string	body = getBody();
 	std::string filename = "";
 	size_t	pos1 = 0;
@@ -410,8 +437,14 @@ void	Res::beginInPOST() {
 		body.erase(start, end);
 	start = body.find_first_not_of("\n\r\t ");
 	end = body.find_last_not_of("\n\r\t ");
-	upld_body = body.substr(start, end - start + 1);
+	std::cout << "TEST " << std::endl;
+	if (start == std::string::npos || end == std::string::npos)
+		code = 400;
+	else
+		upld_body = body.substr(start, end - start + 1);
+	std::cout << "TEST " << std::endl;
 	upld_file_name = filename;
+	std::cout << "BODY D ZAB |" << upld_body << "|" << std::endl;
 }
 
 void	Res::getpathtoUp() {
@@ -437,13 +470,8 @@ void	Res::CreateFile() {
 }
 
 void	Res::POST() {
-	
-	beginInPOST();
-	if (getBody().empty()) {
 
-		code = 400;
-		readErrorsfiles(errorsFiles[code]);
-	}
+	beginInPOST();
 	getpathtoUp();
 	struct stat st;
 	if (stat(path_to_upld.c_str(), &st) != 0)
@@ -462,10 +490,12 @@ void	Res::DELETE() {
 	std::cout << "FILE TO DELETE == |" << filePath << "|" <<std::endl;
 	if (checkpath(filePath)) {
 
+		if (access(filePath.c_str(), R_OK) != 0)
+			code = 403;
 		if (remove(filePath.c_str()) == 0)
 			code = 204;
-		else
-			code = 403;
+		// else
+		// 	code = 403;
 	}
 	else
 		code = 404;

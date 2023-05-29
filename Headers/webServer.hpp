@@ -29,6 +29,7 @@ class webServ{
         
         
         void 							creatServers(parserObject*);
+        bool                            checkport(int);
         void 							lunche();
         std::string 					storeClientIP(int clientSocket) ;
         int 							acceptNewCl(int, int);

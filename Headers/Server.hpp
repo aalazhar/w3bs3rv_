@@ -21,7 +21,7 @@ class Server{
         void testConnection(const int&, const std::string&);
 
         struct config &getConfig();
-        int getport(struct config &);
+        int getport() {return this->port;}
         int getSock();
         int getServerFd(int);
 

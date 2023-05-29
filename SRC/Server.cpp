@@ -3,13 +3,14 @@
 #define BACKLOG 10
 
 
-int Server::getport(struct config &c){
-    std::string port = c.lsten[1];
-    return std::stoi(port);
-}
+// int Server::getport(struct config &c){
+//     std::string port = c.lsten[1];
+//     return std::stoi(port);
+// }
 
 Server::Server(struct config &c): ServerConfig(c){
-    this->port = getport(c);
+    std::string port = c.lsten[1];
+    this->port = std::stoi(port);
     // std::cout << "size : " << Cmap.size() << "\n";
 }
 
