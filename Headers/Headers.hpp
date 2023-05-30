@@ -7,6 +7,7 @@
 #include <netinet/in.h>
 #include <sys/socket.h>
 #include <unistd.h>
+#include <fcntl.h>
 #include <fstream>
 #include <sys/event.h>
 #include <vector>
@@ -17,6 +18,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <ctime>
+#include <dirent.h>
 
 
 

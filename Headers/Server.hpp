@@ -18,10 +18,10 @@ class Server{
     public:
         Server(struct config &);
         int creatSocket();
-        void testConnection(const int&, const std::string&);
+        void ErrorHandler(const int, const std::string);
 
         struct config &getConfig();
-        int getport(struct config &);
+        int getport(){return this->port;};
         int getSock();
         int getServerFd(int);
 
