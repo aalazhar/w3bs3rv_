@@ -4,25 +4,22 @@ use CGI;
 
 my ($form) = new CGI;
 
+
+
 print $form->header;
 print $form->start_html(-title => 'Infos page');
-print $form->h1("(9ALWA)");
+print $form->h1("(SALAM)");
 
 if ($form->param){
-    print_data_form($form);
+    my $fname = $form->param('fullName');
+    my $addre = $form->param('address');
+    print $form->h3("Hello Mr $fname,");
+    print $form->h3("Yout new Adress in this form now is : $addre");
 }
 else {
-    output_my_form($form);
-}
-print $form->end_html;
-
-exit (0);
-
-sub output_my_form {
-    my ($form) = @_;
-
     print $form->start_form(
         -method => 'GET',
+        -action => '',
     );
     print 'FULL NAME : ';
     print $form->textfield(
@@ -45,12 +42,7 @@ sub output_my_form {
     print $form->end_form;
 }
 
-sub print_data_form {
-    my ($form) = @_;
 
-    my $fname = $form->param('fullName');
-    my $addre = $form->param('address');
+print $form->end_html;
 
-    print $form->h3("Hello Mr $fname,");
-    print $form->h3("Yout new Adress in this form now is : $addre");
-}
+exit (0);
