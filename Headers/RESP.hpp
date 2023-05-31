@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:46 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/30 00:35:53 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/31 19:30:02 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ private :
 	std::vector<char>					_headers;
 	std::vector<char>					fileData;
 	std::vector<char>					Resp;
+	std::map<std::string, std::string>	pairs;
 
 public :
 	void 	setSizesend(size_t n) {Size_send = n;}
@@ -81,4 +82,6 @@ public :
 	void		readContent();
     void    	resetvalues();
 	void		autoindex();
+	void		getPairs();
+	void		CreatepairsFiles();
 };

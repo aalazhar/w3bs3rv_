@@ -8,6 +8,7 @@
 #include <sys/socket.h>
 #include <unistd.h>
 #include <fstream>
+#include <fcntl.h>
 #include <sys/event.h>
 #include <vector>
 #include <map>
