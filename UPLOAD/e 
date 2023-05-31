@@ -9,7 +9,7 @@ void parserObject::print_directs_keys_val(std::vector<struct config> server){
     size_t i = 0;
     
     while (i < server.size()){
-        std::cout << "------ DRCT------" << std::endl;
+        std::cout << "-- DRCT------" << std::endl;
         std::cout << "root :" << server[i].pRoot << std::endl;
         std::cout << "indx :" << server[i].index << std::endl;
         std::cout << "lstn :" << server[i].listen << std::endl;
@@ -685,4 +685,3 @@ parserObject::~parserObject(){
 
 std::vector<config> parserObject::getServerConfig(){
     return (this->server);
-}

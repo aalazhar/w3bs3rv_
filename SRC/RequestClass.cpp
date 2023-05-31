@@ -5,6 +5,7 @@ Req::Req(int serverfd, int clientfd, struct config &serverConf) : _Config(server
     // this->_Config = serverConf;
     this->ServerFd = serverfd;
     this->clientFd = clientfd;
+    this->chunkSize = -1;
     this->updateTime();
 }
 
@@ -19,19 +20,17 @@ void Req::append(const std::string &rq){
             parseHeaders(s);
         
         else if (step == 2){
-            std::cout << "dkhaal hna\n";
             s += "\n";
             if (parseBody(s) == 3){
                 this->checkSendType();
-                std::cout << "here\n";
             }
+        }else if (step == CHUNCKED){
+            s += "\n";
+            parseCHuncked(s);
         }
-        std::cout << "kk step = " << this->step << std::endl;
-        std::cout << s << std::endl;
     }
     this->checkSendType();
-    std::cout << "last step = " << this->step << std::endl;
-    // std::cout
+    std::cout << *this << std::endl;
 
 
 }
@@ -57,10 +56,36 @@ int Req::parseBody(std::string &s){
     this->Body.append(s);
     // if (METHOD != "POST")
     //     return  step = 3;
-    size_t BodySize = (size_t)std::atoi(HEADERS["Content-Length"].c_str());
+    // if (HEADERS.find("Transfer-Encoding") != HEADERS.end() 
+    //     && HEADERS.find("Transfer-Encoding")->second == "chunked")
+    //         parseCHuncked(st, s);
+    size_t BodySize = 0;
+    if (HEADERS.find("Content-Length") != HEADERS.end())
+        BodySize = (size_t)std::atoi(HEADERS["Content-Length"].c_str());
     if (Body.size() >= BodySize)
-        return step = 3;
+        return step = DONE;
     return 0;
+}
+
+int hexToDec(const std::string& hexString) {
+    std::stringstream ss;
+    ss << std::hex << hexString;  // Set the stringstream to interpret input as hexadecimal
+    int decimalValue;
+    ss >> decimalValue;  // Read the hexadecimal value as decimal
+    return decimalValue;
+}
+
+void Req::parseCHuncked(std::string &s){
+    int size = Body.size();
+    if (this->chunkSize == -1)
+        return (void)(this->chunkSize = hexToDec(s));
+    if (this->chunkSize == 0)
+        return (void)(this->step = 3);
+    for (int i = 0; i + size < chunkSize && i < static_cast<int>(s.size()); i++){
+        this->Body.push_back(s[i]);
+    }
+    if (static_cast<int>(Body.size()) >= chunkSize)
+        return (void)(this->chunkSize = -1);
 }
 
 Req &Req::operator=(const Req &other){
@@ -98,8 +123,13 @@ int Req::parseHeaders(std::string&hd){
     std::string::iterator i = hd.begin();
     std::string::iterator j = hd.begin();
 
-    if (hd == "\r")
-        return this->step = 2;
+    if (hd == "\r"){
+        if (HEADERS.find("Transfer-Encoding") != HEADERS.end() 
+        && HEADERS.find("Transfer-Encoding")->second == "chunked")
+            return this->step = CHUNCKED;
+        else
+            return this->step = 2;
+    }
     while (i != hd.end() && *i != ':')
         i++;
 
@@ -190,6 +220,16 @@ int Req::getMETHOD(std::string &meth){
 
 std::map<std::string, std::string> Req::getHEADERS(){
 	return this->HEADERS;
+}
+
+void Req::clearData() {
+    this->HEADERS.clear();
+    this->METHOD = "";
+    this->URL = "";
+    this->HTTPV = "";
+    this->Body = "";
+    this->step = 0;
+    this->chunkSize = -1;
 }
 
 std::ostream &operator<<(std::ostream &os, Req &request){

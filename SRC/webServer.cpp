@@ -61,32 +61,32 @@ void webServ::keventUP(int kq, int fd, int filter, int flag){
 }
 
 
-std::string webServ::storeClientIP(int clientSocket) {
-    struct sockaddr_storage addr;
-    socklen_t addrLength = sizeof(addr);
+// std::string webServ::storeClientIP(int clientSocket) {
+//     struct sockaddr_storage addr;
+//     socklen_t addrLength = sizeof(addr);
 
-    // Get the client's address information
-    if (getpeername(clientSocket, (struct sockaddr*)&addr, &addrLength) == 0) {
-        if (addr.ss_family == AF_INET) {
-            // IPv4 address
-            struct sockaddr_in* s = (struct sockaddr_in*)&addr;
-            char ipAddress[INET_ADDRSTRLEN];
-            inet_ntop(AF_INET, &(s->sin_addr), ipAddress, INET_ADDRSTRLEN);
-            return std::string(ipAddress);
-        } else if (addr.ss_family == AF_INET6) {
-            // IPv6 address
-            struct sockaddr_in6* s = (struct sockaddr_in6*)&addr;
-            char ipAddress[INET6_ADDRSTRLEN];
-            inet_ntop(AF_INET6, &(s->sin6_addr), ipAddress, INET6_ADDRSTRLEN);
-            return std::string(ipAddress);
-        } else {
-            return "Unknown address family";
-        }
-    } else {
-        perror("getpeername");
-        return "Error retrieving client IP";
-    }
-}
+//     // Get the client's address information
+//     if (getpeername(clientSocket, (struct sockaddr*)&addr, &addrLength) == 0) {
+//         if (addr.ss_family == AF_INET) {
+//             // IPv4 address
+//             struct sockaddr_in* s = (struct sockaddr_in*)&addr;
+//             char ipAddress[INET_ADDRSTRLEN];
+//             inet_ntop(AF_INET, &(s->sin_addr), ipAddress, INET_ADDRSTRLEN);
+//             return std::string(ipAddress);
+//         } else if (addr.ss_family == AF_INET6) {
+//             // IPv6 address
+//             struct sockaddr_in6* s = (struct sockaddr_in6*)&addr;
+//             char ipAddress[INET6_ADDRSTRLEN];
+//             inet_ntop(AF_INET6, &(s->sin6_addr), ipAddress, INET6_ADDRSTRLEN);
+//             return std::string(ipAddress);
+//         } else {
+//             return "Unknown address family";
+//         }
+//     } else {
+//         perror("getpeername");
+//         return "Error retrieving client IP";
+//     }
+// }
 
 void webServ::lunche(){
     int kq = kqueue();
@@ -242,7 +242,7 @@ int webServ::readData(int &kq, int& fd, struct kevent &event){
     Cmap.find(fd)->second.append(req);
     std::cout << *dynamic_cast<Req *>(&Cmap.find(fd)->second) << std::endl;;
     std::cout << "khdem a zbi " << std::endl;;
-    if (Cmap.find(fd)->second.getStep() > 2 || Cmap.find(fd)->second.getStep() < 0)
+    if ( Cmap.find(fd)->second.getStep() > 3 || Cmap.find(fd)->second.getStep() < 0)
     {
         std::cout << "daz mn hna" << std::endl;;
 		keventUP(kq, fd, EVFILT_READ, EV_DISABLE);

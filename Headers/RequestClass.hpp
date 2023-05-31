@@ -3,11 +3,12 @@
 #include "Headers.hpp"
 #include "parserObjectU.hpp"
 
-#define DONE 3
+#define DONE 4
 #define CGII 10
 #define BINARYFILE 11
 #define NORMFILE 12
 #define ERROR 13
+#define CHUNCKED 3
 #define TIMEOUT -2
 
 
@@ -43,6 +44,7 @@ class Req{
         int step;
         int ServerFd;
         int clientFd;
+        int chunkSize;
         struct config _Config;
 
 
@@ -52,15 +54,7 @@ class Req{
 
 
     public:
-        void clearData() {
-
-            this->HEADERS.clear();
-            this->METHOD = "";
-            this->URL = "";
-            this->HTTPV = "";
-            this->Body = "";
-            this->step = 0;
-        };
+        void clearData();
         Req(int, int, struct config &);
         void addTovect(std::string );
         void addTovect( const char *, size_t  );
@@ -78,7 +72,7 @@ class Req{
         void parseErr(const int&);
         int parseHeaders(std::string&);
         int parseBody(std::string&);
-        int checkStep();
+        void parseCHuncked(std::string&);
         int checkMETHOD(const std::string&);
         _map getHEADERS();
         void updateTime();
