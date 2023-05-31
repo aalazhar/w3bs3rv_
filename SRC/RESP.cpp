@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:16 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/31 20:25:26 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/31 23:32:14 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ Res::Res(struct config server, int serverfd, int clientfd) : Req(serverfd, clien
     initErrorFiles();
 	code = 0;
 	root = Conf.pRoot;
-	index = "";
+	index = Conf.index;
 	autoInx = false;
 }
 
@@ -129,7 +129,6 @@ void	Res::getifQuerry(std::string &url) {
 	if (pos != std::string::npos) 
 		Querry = url.substr(pos + 1, url.length());
 	pos = url.rfind(".");
-
 	type = url.substr(pos + 1, url.size() - pos);
 }
 
@@ -316,7 +315,7 @@ void	Res::buildCGIResponse() {
 		for (size_t i = 0; i < response_body.length(); i++)
 			fileData.push_back(response_body[i]);
 		file_size = fileData.size();
-		printvector(fileData, 555);
+		// printvector(fileData, 555);
 		code = 200;
 	}
 	else {
@@ -509,15 +508,45 @@ void	Res::getPairs() {
 
 void	Res::POST() {
 
-
-	std::cout << "YAW YAW YAW = "  << getStep() << std::endl;
+	std::vector<std::string> cgiBuff;
+	std::string	response_body = "";
+	std::string	response = "";
 	std::string tt = getHEADERS().find("Content-Type")->second;
-	std::string check;
 	size_t pos = 0;
 	pos = tt.find_last_of('/', tt.length());
 	tt = tt.substr(pos + 1, tt.length() - pos);
 	getpathtoUp();
-	if (tt == "x-www-form-urlencoded") {
+	getifQuerry(getURL());
+
+	if (!checkCgipath(filePath) or type == "php" or type == "pl") {
+
+		CGI	cgi(filePath, getMETHOD(), type, "", getBody(), Querry, getBody().length());
+		size_t	i = 0;
+		size_t	size = response.size() - 2;
+		cgiBuff = cgi.executeCGI();
+		response = vectorToString(cgiBuff);
+		while (response.find("\r\n\r\n", i) != std::string::npos || response.find("\r\n\r\n", i) == i) {
+
+			std::string	resp = response.substr(i, response.find("\r\n", i) - i);
+			response_header += resp;
+			response_header += CRLF;
+			if (!resp.find("Status: "))
+				code = std::atoi(resp.substr(8, 3).c_str());
+			else if (!resp.find("Content-type: "))
+				this->type = resp.substr(14, resp.size());
+			i += resp.size() + 2;
+		}
+		while (response.find("\r\n", size) == size)
+			size -= 2;
+		response_body = response.substr(i, size - i);
+		if (fileData.size() > 0)
+			fileData.clear();
+		for (size_t i = 0; i < response_body.length(); i++)
+			fileData.push_back(response_body[i]);
+		file_size = fileData.size();
+		code = 200;
+	}
+	else if (tt == "x-www-form-urlencoded") {
 
 		getPairs();
 		CreatepairsFiles();

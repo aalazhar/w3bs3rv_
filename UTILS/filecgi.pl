@@ -26,7 +26,7 @@ if ($form->param){
     }
     else {
         print $form->start_form(
-            -method => 'GET',
+            -method => 'Post',
             -action => '',
         );
         print 'FULL NAME : ';
