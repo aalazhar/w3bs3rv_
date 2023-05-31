@@ -240,15 +240,12 @@ int webServ::readData(int &kq, int& fd, struct kevent &event){
 
     //append the read string in the request class
     Cmap.find(fd)->second.append(req);
-    std::cout << *dynamic_cast<Req *>(&Cmap.find(fd)->second) << std::endl;;
-    std::cout << "khdem a zbi " << std::endl;;
     if ( Cmap.find(fd)->second.getStep() > 3 || Cmap.find(fd)->second.getStep() < 0)
     {
-        std::cout << "daz mn hna" << std::endl;;
+        std::cout << *dynamic_cast<Req *>(&Cmap.find(fd)->second) << std::endl;;
 		keventUP(kq, fd, EVFILT_READ, EV_DISABLE);
         keventUP(kq, fd, EVFILT_WRITE, EV_CLEAR|EV_ENABLE | EV_ADD);
     }
-    std::cout << "--------finish read data 1---------" << std::endl;
     Cmap.find(fd)->second.updateTime();
     std::cout << "--------finish read data---------" << std::endl;
     return 0;

@@ -78,9 +78,9 @@ int hexToDec(const std::string& hexString) {
 void Req::parseCHuncked(std::string &s){
     int size = Body.size();
     if (this->chunkSize == -1)
-        return (void)(this->chunkSize = hexToDec(s));
+        return (void)(this->chunkSize = hexToDec(s), std::cout << "SIZE CHUNKED = " << this->chunkSize <<std::endl);
     if (this->chunkSize == 0)
-        return (void)(this->step = 3);
+        return (void)(std::cout << "FINAL BODY\n************\n" << Body << "************" << std::endl,this->step = CHUNCKEDDONE);
     for (int i = 0; i + size < chunkSize && i < static_cast<int>(s.size()); i++){
         this->Body.push_back(s[i]);
     }

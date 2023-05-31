@@ -9,6 +9,7 @@
 #define NORMFILE 12
 #define ERROR 13
 #define CHUNCKED 3
+#define CHUNCKEDDONE 30
 #define TIMEOUT -2
 
 
