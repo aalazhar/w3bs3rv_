@@ -29,24 +29,17 @@ class webServ{
         
         
         void 							creatServers(parserObject*);
-        bool                            checkport(int);
         void 							lunche();
         std::string 					storeClientIP(int clientSocket) ;
         int 							acceptNewCl(int, int);
         int								readData(int& ,int& , struct kevent &);
         int								sendData(int ,int);
-        static void							testConnection(const int&, const std::string&);
+        static void						ErrorHandler(const int, const std::string);
         static void						keventUP(int kq, int fd, int filter, int flag);
         void							Timeout(int);
-        bool ifServer(int fd){
-            for(ServerVec::iterator it = this->Servers.begin();it != this->Servers.end(); it++){
-                if (it->getSock() == fd)
-                    return true;
-            }
-            return false;
-        }
-        void                            sendeHeders(int, std::string);
-        void                            sendBody(int, char*, size_t);
+        bool                            ifServer(int);
+        bool                            checkport(int);
+        void                            eraseClient(int,int);
 
         // ServerVec::iterator getServer(int fd){
         //     std::vector<Server>::iterator it = this->Servers.begin();

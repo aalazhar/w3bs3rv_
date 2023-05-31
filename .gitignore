@@ -31,10 +31,7 @@
 *.out
 *.app
 
-
-
-
-
 auto
 webServ
 .DS_Store
+rendu

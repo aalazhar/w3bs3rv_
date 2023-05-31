@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:16 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/30 00:51:53 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/05/31 20:25:26 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,20 +92,19 @@ void	Res::autoindex() {
     struct dirent* entry;
 
     // Open the directory
-	std::cout << "LLLLL++++555666 " << std::endl;
-	std::string	html = "<!DOCTYPE html><html><title> autoindex of " + root + "</title><body><div>";
+	std::string	html = "<!DOCTYPE html><html><head><title> autoindex </title></head><body>";
+	html += "<h1> autoindex of " + root + "</h1>";
     directory = opendir(root.c_str());
     if (directory == NULL) {
         std::cerr << "Error opening directory." << std::endl;
     }
     // Read directory entries
     while ((entry = readdir(directory)) != NULL) {
-		std::string file(entry->d_name );
+		std::string file(entry->d_name);
 		if (file[0] != '.')
-			html += "<p>" + file + "</p>";
-        // std::cout << entry->d_name << std::endl;
+			html += "<h3>" + file + "</h3>";
     }
-	html += "</div></body></html>";
+	html += "</body></html>";
 	for (size_t i = 0; i < html.length(); i++)
 		fileData.push_back(html[i]);
 	printvector(fileData, 1337);
@@ -407,11 +406,10 @@ void	Res::getUpFname(std::string body) {
 void	Res::beginInPOST() {
 
 
-	std::cout << "LBODY LI JA |" << getBody() << "|" << std::endl;
 	std::string	body = getBody();
 	std::string filename = "";
 	size_t	pos1 = 0;
-	std::string	boundry =getBoundry();
+	std::string	boundry = getBoundry();
 	body.erase(0, boundry.size() + 2);
 	std::string	boundry2 = boundry + "--";
 	pos1 = body.find(boundry2);
@@ -421,8 +419,9 @@ void	Res::beginInPOST() {
 		std::cout << "Boundary Not Found !" << std::endl;
 	pos1 = 0;
 	pos1 = body.find("filename=", pos1);
-	for (int i = pos1 + 10; body[i] != '"'; i++)
-		filename.push_back(body[i]);
+	if (pos1 != std::string::npos)
+		for (int i = pos1 + 10; body[i] != '"'; i++)
+			filename.push_back(body[i]);
 	size_t start = 0;
 	size_t end = 0;
 	start = body.find("Content-Disposition", start);
@@ -437,14 +436,11 @@ void	Res::beginInPOST() {
 		body.erase(start, end);
 	start = body.find_first_not_of("\n\r\t ");
 	end = body.find_last_not_of("\n\r\t ");
-	std::cout << "TEST " << std::endl;
 	if (start == std::string::npos || end == std::string::npos)
 		code = 400;
 	else
 		upld_body = body.substr(start, end - start + 1);
-	std::cout << "TEST " << std::endl;
 	upld_file_name = filename;
-	std::cout << "BODY D ZAB |" << upld_body << "|" << std::endl;
 }
 
 void	Res::getpathtoUp() {
@@ -452,7 +448,6 @@ void	Res::getpathtoUp() {
 	path_to_upld = getURL();
 	if (getURL().find("/") != std::string::npos)
 		path_to_upld.erase(std::remove(path_to_upld.begin(), path_to_upld.end(), '/'), path_to_upld.end());
-	std:: cout << "PATH TO UP = " << path_to_upld << "|" << std::endl;
 }
 
 void	Res::CreateFile() {
@@ -469,14 +464,81 @@ void	Res::CreateFile() {
 	readErrorsfiles(errorsFiles[code]);
 }
 
+void	Res::CreatepairsFiles() {
+
+	std::string file;
+	std::ofstream f;
+	std::map<std::string, std::string>::iterator it = pairs.begin();
+
+	while (it != pairs.end()) {
+
+		file = path_to_upld;
+		file += "/" + it->first + ".txt";
+		f.open(file.c_str());
+		f << it->second;
+		f.close();
+		it++;
+	}
+}
+
+void	Res::getPairs() {
+
+	std::string	line = getBody();
+	size_t		start = 0;
+	size_t		end = 0;
+
+	while (start != std::string::npos) {
+
+		end = line.find('&', start);
+		std::string	pair = line.substr(start, end - start);
+		size_t p = pair.find('=');
+		if (p != std::string::npos) {
+
+			std::string key = pair.substr(0, p);
+			std::string value = pair.substr(p + 1);
+			if (value.find('\n') != std::string::npos)
+				value.erase(std::remove(value.begin(), value.end(), '\n'), value.end());
+			pairs[key] = value;
+		}
+		if (end == std::string::npos)
+			break ;
+		start = end + 1;
+	}
+	type = "txt";
+}
+
 void	Res::POST() {
 
-	beginInPOST();
+
+	std::cout << "YAW YAW YAW = "  << getStep() << std::endl;
+	std::string tt = getHEADERS().find("Content-Type")->second;
+	std::string check;
+	size_t pos = 0;
+	pos = tt.find_last_of('/', tt.length());
+	tt = tt.substr(pos + 1, tt.length() - pos);
 	getpathtoUp();
-	struct stat st;
-	if (stat(path_to_upld.c_str(), &st) != 0)
-		mkdir(path_to_upld.c_str(), 0777);
-	CreateFile();
+	if (tt == "x-www-form-urlencoded") {
+
+		getPairs();
+		CreatepairsFiles();
+		code = 201;
+		readErrorsfiles(errorsFiles[code]);
+	}
+	else if (getStep() == CHUNCKEDDONE) {
+
+		std::cout << "CHUNKED YA ZAAABI path = " << path_to_upld << std::endl;
+		upld_body = getBody();
+		std::cout << "CHUNKED YA ZAAABI content = |" << upld_body << "|" << std::endl;
+		CreateFile();
+	}
+	else {
+
+		beginInPOST();
+		struct stat st;
+		if (stat(path_to_upld.c_str(), &st) != 0)
+			mkdir(path_to_upld.c_str(), 0777);
+		CreateFile();
+	}
 	getHeadersRes();
 	mergeResponse();
 }
@@ -487,15 +549,12 @@ void	Res::DELETE() {
 	size_t start = getURL().find_first_of('/');
 	
 	filePath = getURL().substr(start + 1, getURL().size() - start);
-	std::cout << "FILE TO DELETE == |" << filePath << "|" <<std::endl;
 	if (checkpath(filePath)) {
 
 		if (access(filePath.c_str(), R_OK) != 0)
 			code = 403;
 		if (remove(filePath.c_str()) == 0)
 			code = 204;
-		// else
-		// 	code = 403;
 	}
 	else
 		code = 404;

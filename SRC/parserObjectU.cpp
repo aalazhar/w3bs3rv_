@@ -198,9 +198,12 @@ void parserObject::setDefaultsLocaDirectives(struct loca *loca, int *tab){
     int i = 0;
 
     while (i < 9){
-        if (tab[i] == 0){
-            switch (i){
-            	case 0:
+
+        if (tab[i] == 0) {
+
+            switch (i) {
+
+                case 0:
             	    loca->root = "Default/root/path";
             	    break;
             	case 1:
