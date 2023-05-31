@@ -107,9 +107,6 @@ void Req::checkSendType(){
         return ;
     if (pos2 != std::string::npos)
         type.erase(pos2, type.size());
-    // std::cou
-    if (getStep() == CHUNCKEDDONE)
-        return ;
     if (type == "php" or type == "py" or type == "pl")
         return (void)(this->step = CGII);
     else if (type == "" or this->step < 0)
