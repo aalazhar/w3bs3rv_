@@ -38,3 +38,5 @@
 auto
 webServ
 .DS_Store
+.vscode
+UPLOAD
