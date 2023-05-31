@@ -78,7 +78,7 @@ void Req::checkSendType(){
     size_t  pos = this->URL.rfind(".");
     std::string type = this->URL.substr(pos + 1, this->URL.size());
     size_t pos2 = type.find("?");
-    if (getMETHOD() == "POST" && step == 2)
+    if ((getMETHOD() == "POST" && step == 2) || step == CHUNCKEDDONE )
         return ;
     if (pos2 != std::string::npos)
         type.erase(pos2, type.size());
