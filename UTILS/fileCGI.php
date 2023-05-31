@@ -36,7 +36,7 @@
 
             exit;
         }
-        elseif ($var === 'POST'){
+        else if ($var === 'POST'){
             print $var;
             $name = $_POST['fname'];
             $age = $_POST[('lname')];
