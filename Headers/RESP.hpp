@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:46 by megrisse          #+#    #+#             */
-/*   Updated: 2023/06/01 14:56:13 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/06/01 16:14:08 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,5 @@ public :
 	void		autoindex();
 	void		getPairs();
 	void		CreatepairsFiles();
+	void		Generatename();
 };
