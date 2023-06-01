@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:16 by megrisse          #+#    #+#             */
-/*   Updated: 2023/06/01 14:59:18 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/06/01 16:48:46 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	Res::resetvalues() {
 
 	this->Querry = "";
 	this->filePath = "";
-	// this->code = 200;
 	this->Size_send = 0;
 	this->status_line = "";
 	this->response_header = "";
@@ -456,18 +455,21 @@ void	Res::CreateFile() {
 
 	std::ofstream file;
 	std::string	file_name;
+	Generatename();
 	if (upld_file_name == "")
 		upld_file_name = "upload." + type;
-	std::cout << type << std::endl;
-	std::cout << "FILENAME++ 5|" << upld_file_name << "|" << std::endl;
 	file_name = path_to_upld + "/";
 	file_name += upld_file_name;
-	std::cout << "FILENAME++ 6|" << file_name << "|" << std::endl;
-	file.open(file_name);
-	for (size_t i = 0; i < upld_body.size(); i++)
-		file << upld_body[i];
-	file.close();
-	code = 201;
+	file.open(file_name, std::ios::binary);
+	if (!file.is_open())
+		code = 500;
+	else {
+		
+		for (size_t i = 0; i < upld_body.size(); i++)
+			file << upld_body[i];
+		file.close();
+		code = 201;
+	}
 	readErrorsfiles(errorsFiles[code]);
 }
 
@@ -512,6 +514,23 @@ void	Res::getPairs() {
 		start = end + 1;
 	}
 	type = "txt";
+}
+
+void	Res::Generatename() {
+
+	std::string	tt = getHEADERS().find("Content-Type")->second;
+	std::cout << "ZABI LA |" << tt << "|" << std::endl;
+	iter_map it = mimeTypes.begin();
+	for (; it != mimeTypes.end(); it++) {
+
+		if (it->second == tt){
+			
+			type = it->first;
+			break;
+		}
+	}
+	if (tt == "")
+		type = "txt";
 }
 
 void	Res::POST() {
@@ -570,7 +589,6 @@ void	Res::POST() {
 	}
 	else {
 
-		
 		beginInPOST();
 		struct stat st;
 		if (stat(path_to_upld.c_str(), &st) != 0)

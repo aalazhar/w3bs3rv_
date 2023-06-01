@@ -118,7 +118,6 @@ void    Res::setMIME() {
         this->mimeTypes.insert(std::make_pair( "jar", "application/java-archive"));
         this->mimeTypes.insert(std::make_pair( "jls", "image/jls"));
         this->mimeTypes.insert(std::make_pair( "jp2", "image/jp2"));
-        this->mimeTypes.insert(std::make_pair( "jpe", "image/jpeg"));
         this->mimeTypes.insert(std::make_pair( "jpeg", "image/jpeg"));
         this->mimeTypes.insert(std::make_pair( "jpf", "image/jpx"));
         this->mimeTypes.insert(std::make_pair( "jpg", "image/jpeg"));
@@ -346,6 +345,7 @@ void    Res::setMIME() {
         this->mimeTypes.insert(std::make_pair( "xslt", "application/xslt+xml"));
         this->mimeTypes.insert(std::make_pair( "xspf", "application/xspf+xml"));
         this->mimeTypes.insert(std::make_pair( "xvm", "application/xv+xml"));
+        this->mimeTypes.insert(std::make_pair( "c", "text/x-c"));
         this->mimeTypes.insert(std::make_pair( "xvml", "application/xv+xml"));
         this->mimeTypes.insert(std::make_pair( "yaml", "text/yaml"));
         this->mimeTypes.insert(std::make_pair( "yang", "application/yang"));
