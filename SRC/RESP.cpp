@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:16 by megrisse          #+#    #+#             */
-/*   Updated: 2023/05/31 23:32:14 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/06/01 14:59:18 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -408,6 +408,7 @@ void	Res::beginInPOST() {
 	std::string	body = getBody();
 	std::string filename = "";
 	size_t	pos1 = 0;
+	binary = false;
 	std::string	boundry = getBoundry();
 	body.erase(0, boundry.size() + 2);
 	std::string	boundry2 = boundry + "--";
@@ -415,7 +416,7 @@ void	Res::beginInPOST() {
 	if (pos1 != std::string::npos)
 		body.erase(pos1, boundry2.size());
 	else
-		std::cout << "Boundary Not Found !" << std::endl;
+		std::cout << "Boundary Not Found !" << std::endl, binary = true;
 	pos1 = 0;
 	pos1 = body.find("filename=", pos1);
 	if (pos1 != std::string::npos)
@@ -439,6 +440,8 @@ void	Res::beginInPOST() {
 		code = 400;
 	else
 		upld_body = body.substr(start, end - start + 1);
+	if (binary == true)
+		upld_body = getBody();
 	upld_file_name = filename;
 }
 
@@ -453,8 +456,13 @@ void	Res::CreateFile() {
 
 	std::ofstream file;
 	std::string	file_name;
+	if (upld_file_name == "")
+		upld_file_name = "upload." + type;
+	std::cout << type << std::endl;
+	std::cout << "FILENAME++ 5|" << upld_file_name << "|" << std::endl;
 	file_name = path_to_upld + "/";
 	file_name += upld_file_name;
+	std::cout << "FILENAME++ 6|" << file_name << "|" << std::endl;
 	file.open(file_name);
 	for (size_t i = 0; i < upld_body.size(); i++)
 		file << upld_body[i];
@@ -513,11 +521,11 @@ void	Res::POST() {
 	std::string	response = "";
 	std::string tt = getHEADERS().find("Content-Type")->second;
 	size_t pos = 0;
+	std::cout << "TYPE TYPE ++|" << tt << "|" << std::endl;
 	pos = tt.find_last_of('/', tt.length());
 	tt = tt.substr(pos + 1, tt.length() - pos);
 	getpathtoUp();
 	getifQuerry(getURL());
-
 	if (!checkCgipath(filePath) or type == "php" or type == "pl") {
 
 		CGI	cgi(filePath, getMETHOD(), type, "", getBody(), Querry, getBody().length());
@@ -562,12 +570,15 @@ void	Res::POST() {
 	}
 	else {
 
+		
 		beginInPOST();
 		struct stat st;
 		if (stat(path_to_upld.c_str(), &st) != 0)
 			mkdir(path_to_upld.c_str(), 0777);
+		type = tt;
 		CreateFile();
 	}
+	std::cout << "CONTENT ++ |" << upld_body << "|" << std::endl;
 	getHeadersRes();
 	mergeResponse();
 }
