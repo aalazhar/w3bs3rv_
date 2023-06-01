@@ -163,7 +163,7 @@ void parserObject::config_clean(struct config& conf){
 
 void parserObject::print_location_directs(std::vector<struct loca> vect){
     size_t i = 0;
-    
+
     while (i < vect.size()){
         std::cout << "-----******{{{{ LOCA }}}}******-----" << "\n";
         std::cout << "root : " << vect[i].root << "\n";

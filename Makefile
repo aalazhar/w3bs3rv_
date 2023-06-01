@@ -17,7 +17,7 @@ SRC =  webServer.cpp Server.cpp RequestClass.cpp parserObjectU.cpp CGI.cpp RESP.
 OBJS = $(addprefix $(OBJ_FILE),  $(SRC:%.cpp=%.o))
 
 all:	$(NAME)
-	@echo "Meking complete"
+	@echo "Making complete"
 
 $(NAME)	: $(FOBJ) $(OBJS) $(HEADERS)
 	$(CC) $(CPPFLAGS) $(OBJS) -o $@

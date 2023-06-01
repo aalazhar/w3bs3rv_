@@ -76,6 +76,7 @@ int hexToDec(const std::string& hexString) {
 }
 
 void Req::parseCHuncked(std::string &s){
+    std::cout << "CHUNCKED : " << s << std::endl;
     int size = Body.size();
     if (this->chunkSize == -1)
         return (void)(this->chunkSize = hexToDec(s), std::cout << "SIZE CHUNKED = " << this->chunkSize <<std::endl);

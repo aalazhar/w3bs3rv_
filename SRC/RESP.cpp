@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:16 by megrisse          #+#    #+#             */
-/*   Updated: 2023/06/01 16:48:46 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/06/01 20:04:27 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -314,7 +314,6 @@ void	Res::buildCGIResponse() {
 		for (size_t i = 0; i < response_body.length(); i++)
 			fileData.push_back(response_body[i]);
 		file_size = fileData.size();
-		// printvector(fileData, 555);
 		code = 200;
 	}
 	else {
@@ -464,7 +463,7 @@ void	Res::CreateFile() {
 	if (!file.is_open())
 		code = 500;
 	else {
-		
+
 		for (size_t i = 0; i < upld_body.size(); i++)
 			file << upld_body[i];
 		file.close();
@@ -519,7 +518,6 @@ void	Res::getPairs() {
 void	Res::Generatename() {
 
 	std::string	tt = getHEADERS().find("Content-Type")->second;
-	std::cout << "ZABI LA |" << tt << "|" << std::endl;
 	iter_map it = mimeTypes.begin();
 	for (; it != mimeTypes.end(); it++) {
 
@@ -533,6 +531,14 @@ void	Res::Generatename() {
 		type = "txt";
 }
 
+void	Res::Handl_encoded() {
+
+	getPairs();
+	CreatepairsFiles();
+	code = 201;
+	readErrorsfiles(errorsFiles[code]);
+}
+
 void	Res::POST() {
 
 	std::vector<std::string> cgiBuff;
@@ -540,7 +546,6 @@ void	Res::POST() {
 	std::string	response = "";
 	std::string tt = getHEADERS().find("Content-Type")->second;
 	size_t pos = 0;
-	std::cout << "TYPE TYPE ++|" << tt << "|" << std::endl;
 	pos = tt.find_last_of('/', tt.length());
 	tt = tt.substr(pos + 1, tt.length() - pos);
 	getpathtoUp();
@@ -573,18 +578,11 @@ void	Res::POST() {
 		file_size = fileData.size();
 		code = 200;
 	}
-	else if (tt == "x-www-form-urlencoded") {
+	else if (tt == "x-www-form-urlencoded")
+		Handl_encoded();
+	else if (getStep() == CHUNCKEDDONE && tt.find("boundary=") == std::string::npos) {
 
-		getPairs();
-		CreatepairsFiles();
-		code = 201;
-		readErrorsfiles(errorsFiles[code]);
-	}
-	else if (getStep() == CHUNCKEDDONE) {
-
-		std::cout << "CHUNKED YA ZAAABI path = " << path_to_upld << std::endl;
 		upld_body = getBody();
-		std::cout << "CHUNKED YA ZAAABI content = |" << upld_body << "|" << std::endl;
 		CreateFile();
 	}
 	else {
@@ -596,14 +594,11 @@ void	Res::POST() {
 		type = tt;
 		CreateFile();
 	}
-	std::cout << "CONTENT ++ |" << upld_body << "|" << std::endl;
 	getHeadersRes();
 	mergeResponse();
 }
 
 void	Res::DELETE() {
-
-	// filePath = getURL();
 	size_t start = getURL().find_first_of('/');
 	
 	filePath = getURL().substr(start + 1, getURL().size() - start);
