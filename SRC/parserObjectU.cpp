@@ -67,33 +67,29 @@ int parserObject::open_config_file(){
     tabTurn_zero(tab2, 8);
     if (!lin.is_open()){
         std::cout << "Can't open this file ! : "<< this->fileName << std::endl;
-        return (1);
         throw (std::invalid_argument("Can't open this file ! : " + this->fileName));
     }
     if (lin.peek() == EOF){
         std::cout << "This file is empty !!\n";
-        return (1);
         throw (std::invalid_argument("This file is empty !!"));
     }
     if (lexical_analyser()){
-        std::cout << "Syntax Error --- !" << std::endl;
-        return (1);
+        std::cout << "1Syntax Error --- !" << std::endl;
         throw (std::invalid_argument("Syntax Error --- !"));
     }
     while (getline(lin, line)){
         if (!strncmp(line.c_str(), "server", 6)){
-            tabTurn_zero(tab, 9);
+            tabTurn_zero(tab2, 8);
             while (getline(lin, line)){
 				j = 0;
 				while (line[j] == '\t')
 					j++;
 				line.erase(0, j);
-                split_lines(line, ' ', cf, tab);
-                tabTurn_zero(tab2, 8);
+                split_lines(line, ' ', cf, tab2);
+                tabTurn_zero(tab, 9);
                 if (!strncmp(line.c_str(), "location", 8)){
-					if (locat_split_lines(line, ' ', loca, tab2)){
+					if (locat_split_lines(line, ' ', loca, tab)){
                         std::cout << "Invalid Directive !\n";
-                        return (1);
                         throw (std::invalid_argument("Invalid Directive !"));
                     }
                     while (getline(lin, line)){
@@ -101,18 +97,16 @@ int parserObject::open_config_file(){
                         while (line[i] == '\t')
                             i++;
                         line.erase(0, i);
-						if (locat_split_lines(line, ' ', loca, tab2)){
+						if (locat_split_lines(line, ' ', loca, tab)){
                             std::cout << "Invalid Directive !\n";
-                            return (1);
                             throw (std::invalid_argument("Invalid Directive !"));
                         }
                         if (line[0] == '}' && i == 1){
-                            if (check_blocks_dirc(tab2)){
-                                std::cout << "Syntax Error !!!" << std::endl;
-                                return (1);
+                            if (check_blocks_dirc(tab)){
+                                std::cout << "2Syntax Error !!!" << std::endl;
                                 throw (std::invalid_argument("Syntax Error !!!"));
                             }
-                            setDefaultsLocaDirectives(&loca, tab2);
+                            setDefaultsLocaDirectives(&loca, tab);
 							cf.vect.push_back(loca);
 							clean_location_directs(loca);
                             break;
@@ -126,12 +120,11 @@ int parserObject::open_config_file(){
         }
         if (line.size() == 0)
             continue;
-        if (check_blocks_dirc2(tab)){
-            std::cout << "Syntax Error ---!!!" << std::endl;
-            return (1);
+        if (check_blocks_dirc2(tab2)){
+            std::cout << "33Syntax Error ---!!!" << std::endl;
             throw (std::invalid_argument("Syntax Error !!!"));
         }
-        setDefaultsDirectives(&cf, tab);
+        setDefaultsDirectives(&cf, tab2);
         this->server.push_back(cf);
         config_clean(cf);
     }
@@ -230,6 +223,7 @@ void parserObject::setDefaultsLocaDirectives(struct loca *loca, int *tab){
             	    loca->cgi.push_back("CGI Path");
             	    break;
             	case 8:
+                    loca->l_path = "root/";
             	    break;
 	
             	default:
@@ -292,7 +286,7 @@ int parserObject::check_blocks_dirc(int *tab){
     int i = 0;
     int flag = 0;
 
-    while (i < 8){
+    while (i < 9){
         if (tab[i] > 1)
             return(1);
         if (tab[i] == 1)
@@ -308,7 +302,7 @@ int parserObject::check_blocks_dirc2(int *tab){
     int i = 0;
     int flag = 0;
 
-    while (i < 9){
+    while (i < 8){
         if (tab[i] > 1)
             return(1);
         if (tab[i] == 1)
@@ -374,6 +368,8 @@ int parserObject::locat_split_lines(std::string line, char sep, struct loca& _lo
     else if (res == "location"){
         _location.l_path= &line[i + 1];
         _location.l_path.erase(_location.l_path.size() - 2, _location.l_path.size());
+        std::cout << "location path = " << _location.l_path<<"|" <<std::endl;
+        tab[8] += 1;
     }
     else if (res != "root" && res != "index" && res != "serever_name" && res != "autoindex" && res != "deny" && res != "redirect" && \
         res != "allowed_methods" && res != "cgiExt" && res != "cgiPath" && res != "}" && res.size() > 0)
