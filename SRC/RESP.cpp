@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:16 by megrisse          #+#    #+#             */
-/*   Updated: 2023/06/03 03:25:27 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/06/03 17:10:16 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,8 +149,21 @@ bool	Res::GetIfAutoIndex(std::string path) {
 	return false;
 }
 
+void	Res::IfMatch(std::string url) {
+
+	std::vector<loca>::iterator it = Conf.vect.begin();
+
+	for (; it != Conf.vect.end(); it++) {
+
+		size_t found = url.find(it->l_path);
+		if (found != std::string::npos)
+			root = it->l_path;
+	}
+}
+
 void	Res::getifQuerry(std::string &url) {
 
+	IfMatch(url);
 	if ((getURL() == "/" && !index.empty()))
 		filePath = index;
 	else if (CheckIfLoction(url))
@@ -167,6 +180,7 @@ void	Res::getifQuerry(std::string &url) {
 		Querry = url.substr(pos + 1, url.length());
 	pos = url.rfind(".");
 	type = url.substr(pos + 1, url.size() - pos);
+	std::cout << "QUERRY == " << Querry << "|" << std::endl;
 }
 
 int	checkpath(std::string &path) {

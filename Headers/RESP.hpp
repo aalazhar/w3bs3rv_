@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:46 by megrisse          #+#    #+#             */
-/*   Updated: 2023/06/03 00:25:06 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/06/03 17:06:46 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,5 @@ public :
 	void		Handl_encoded();
 	bool		CheckIfLoction(std::string);
 	bool		GetIfAutoIndex(std::string);
+	void		IfMatch(std::string);
 };
