@@ -21,9 +21,7 @@ void Req::append(const std::string &rq){
         
         else if (step == 2){
             s += "\n";
-            if (parseBody(s) == 3){
-                this->checkSendType();
-            }
+            parseBody(s);
         }else if (step == CHUNCKED){
             s += "\n";
             parseCHuncked(s);
@@ -54,11 +52,6 @@ void Req::addTovect(const char *s, size_t length){
 
 int Req::parseBody(std::string &s){
     this->Body.append(s);
-    // if (METHOD != "POST")
-    //     return  step = 3;
-    // if (HEADERS.find("Transfer-Encoding") != HEADERS.end() 
-    //     && HEADERS.find("Transfer-Encoding")->second == "chunked")
-    //         parseCHuncked(st, s);
     size_t BodySize = 0;
     if (HEADERS.find("Content-Length") != HEADERS.end())
         BodySize = (size_t)std::atoi(HEADERS["Content-Length"].c_str());
