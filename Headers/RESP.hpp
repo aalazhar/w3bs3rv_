@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:46 by megrisse          #+#    #+#             */
-/*   Updated: 2023/06/01 18:37:29 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/06/03 17:06:46 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ private :
     struct config                       Conf;
     bool								autoInx;
     bool								binary;
+	bool								isLoc;
     std::string							Querry;
 	std::string							path_to_upld;
 	std::string							upld_file_name;
@@ -87,4 +88,7 @@ public :
 	void		CreatepairsFiles();
 	void		Generatename();
 	void		Handl_encoded();
+	bool		CheckIfLoction(std::string);
+	bool		GetIfAutoIndex(std::string);
+	void		IfMatch(std::string);
 };

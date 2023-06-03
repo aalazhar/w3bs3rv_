@@ -28,7 +28,7 @@
                 
             print $var;
             $name = $_GET['fname'];
-            $age = $_GET[('age')];
+            $age = $_GET[('lname')];
             $image = '';
             $path = '';
             echo"<h1>Hello Mrs $name </h1>";
