@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:16 by megrisse          #+#    #+#             */
-/*   Updated: 2023/06/01 20:04:27 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/06/03 03:25:27 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,13 @@ void	Res::resetvalues() {
 	this->Resp.clear();
 	this->clearData();
 	file_size = 0;
+	code = 0;
 	this->type = "";
+	root = Conf.pRoot;
+	index = Conf.index;
+	autoInx = false;
+	// root = "";
+	// index = "";
 }
 
 Res::Res(struct config server, int serverfd, int clientfd) : Req(serverfd, clientfd, server){
@@ -91,8 +97,12 @@ void	Res::autoindex() {
     struct dirent* entry;
 
     // Open the directory
+
+	if (root[0] == '/')
+		root = "." + root;
 	std::string	html = "<!DOCTYPE html><html><head><title> autoindex </title></head><body>";
 	html += "<h1> autoindex of " + root + "</h1>";
+	std::cout << "ROOT == " << root << std::endl;
     directory = opendir(root.c_str());
     if (directory == NULL) {
         std::cerr << "Error opening directory." << std::endl;
@@ -114,17 +124,45 @@ void	Res::autoindex() {
     closedir(directory);
 }
 
+bool	Res::CheckIfLoction(std::string path) {
+
+	std::vector<loca>::iterator it = Conf.vect.begin();
+
+	for (; it != Conf.vect.end(); it++) {
+
+		if (it->l_path == path)
+			return std::cout << "DAZ MN HNAAAA +" << std::endl, root = path, this->index = it->index, true;
+	}
+	return false;
+}
+
+bool	Res::GetIfAutoIndex(std::string path) {
+
+	std::vector<loca>::iterator it = Conf.vect.begin();
+
+	for (; it != Conf.vect.end(); it++) {
+
+		std::cout << "HH = " << it->autoIndex << std::endl;
+		if (it->l_path == path and it->autoIndex == "on")
+			return std::cout << "DAZ MN HNAAAA +++ "<< std::endl, true;
+	}
+	return false;
+}
+
 void	Res::getifQuerry(std::string &url) {
 
-	size_t	pos = url.find("?");
-	std::cout << "auto index = " << Conf.autoIndex << std::endl;
-	if (getURL() == "/" && !index.empty())
+	if ((getURL() == "/" && !index.empty()))
+		filePath = index;
+	else if (CheckIfLoction(url))
 		filePath = index;
 	else if (index.empty() && Conf.autoIndex == "on")
 		autoInx = true;
 	else
 		filePath = getFilePath(url);
-	std::cout << "PATH = " << getURL() << std::endl;
+	if (index.empty() && GetIfAutoIndex(url))
+		autoInx = true;
+	std::cout << "PATH = " << filePath << std::endl;
+	size_t	pos = url.find("?");
 	if (pos != std::string::npos) 
 		Querry = url.substr(pos + 1, url.length());
 	pos = url.rfind(".");
@@ -228,6 +266,8 @@ void	Res::readContent() {
 
 	std::cout << "HA root " << Conf.pRoot << std::endl;
 	filePath = root + filePath;
+	if (filePath[0] != '.')
+		filePath = "." + filePath;
 	std::cout << "HA Lfile kml " << filePath << std::endl;
 	if (checkpath(filePath)) {
 
@@ -328,7 +368,7 @@ void	Res::buildCGIResponse() {
 void	Res::buildNormalResponse() {
 
 	getifQuerry(getURL());
-	std::cout << "auto = " << Conf.index << std::endl;
+	std::cout << "auto = " << index << std::endl;
 	readContent();
 	mergeResponse();
 }

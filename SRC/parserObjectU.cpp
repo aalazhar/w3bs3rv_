@@ -200,7 +200,7 @@ void parserObject::setDefaultsLocaDirectives(struct loca *loca, int *tab){
             	    loca->root = "Default/root/path";
             	    break;
             	case 1:
-            	    loca->index = "index.html";
+            	    // loca->index = "index.html";
             	    break;
             	case 2:
             	    loca->autoIndex = "off";

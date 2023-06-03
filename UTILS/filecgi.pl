@@ -5,11 +5,11 @@ use CGI;
 
 my ($form) = new CGI;
 
-sub trim {
-    my $str = shift;
-    $str =~ s/^\s+|\s+$//g;
-    return $str;
-}
+# sub trim {
+#     my $str = shift;
+#     $str =~ s/^\s+|\s+$//g;
+#     return $str;
+# }
 
 print $form->header;
 print $form->start_html(-title => 'Infos page');
