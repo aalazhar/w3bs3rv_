@@ -6,6 +6,7 @@ Req::Req(int serverfd, int clientfd, struct config &serverConf) : _Config(server
     this->ServerFd = serverfd;
     this->clientFd = clientfd;
     this->chunkSize = -1;
+    this->var = 0;
     this->updateTime();
 }
 
@@ -20,17 +21,16 @@ void Req::append(const std::string &rq){
             parseHeaders(s);
         
         else if (step == 2){
-            s += "\n";
+            if (!st.eof())
+                s += "\n";
             parseBody(s);
         }else if (step == CHUNCKED){
-            s += "\n";
+            if (!st.eof())
+                s += "\n";
             parseCHuncked(s);
         }
     }
     this->checkSendType();
-    std::cout << *this << std::endl;
-
-
 }
 
 time_t Req::getTime(){ return this->time; }
@@ -49,14 +49,33 @@ void Req::addTovect(const char *s, size_t length){
         body.push_back(s[i]);
 }
 
+void Req::creatfile(){
+    int fd = open("hello.txt", O_CREAT | O_RDWR );
+    if (fd < 0)
+        return (void)(std::cout << "FAILE TO OPEN THE FILE" << std::endl );
+    std::string::iterator it = this->Body.begin();
+    std::cout << "file size = " << Body.size() << std::endl;
+    long i = 0;
+    while (it != this->Body.end())
+    {
+        i++;
+        char c = *it;
+        write(fd, &c, 1);
+        it++;
+    }
+    std::cout << "xhal tktb flfille = "<< i << std::endl;
+}
 
 int Req::parseBody(std::string &s){
     this->Body.append(s);
+    if (this->METHOD != "POST")
+        return this->step = DONE;
     size_t BodySize = 0;
     if (HEADERS.find("Content-Length") != HEADERS.end())
         BodySize = (size_t)std::atoi(HEADERS["Content-Length"].c_str());
+    std::cout << "Content-Length  : " << BodySize << std::endl;
     if (Body.size() >= BodySize)
-        return step = DONE;
+        return std::cout << "Content-Length  : " << BodySize  << " && Body.size() : " << Body.size() <<  std::endl,creatfile(),step = DONE;
     return 0;
 }
 
@@ -69,17 +88,15 @@ int hexToDec(const std::string& hexString) {
 }
 
 void Req::parseCHuncked(std::string &s){
-    std::cout << "CHUNCKED : " << s << std::endl;
-    int size = Body.size();
-    if (this->chunkSize == -1)
-        return (void)(this->chunkSize = hexToDec(s), std::cout << "SIZE CHUNKED = " << this->chunkSize <<std::endl);
+    if (this->chunkSize == -1 and this->var == 0 and s != "\r\n")
+        return (void)(this->chunkSize = hexToDec(s), std::cout<<"s : |" << s  << "|   SIZE CHUNKED = " << this->chunkSize << "  SIZE BODY :" << Body.size() <<std::endl);
     if (this->chunkSize == 0)
-        return (void)(std::cout << "FINAL BODY\n************\n" << Body << "************" << std::endl,this->step = CHUNCKEDDONE);
-    for (int i = 0; i + size < chunkSize && i < static_cast<int>(s.size()); i++){
+        return (void)(creatfile(),this->step = CHUNCKEDDONE);
+    for (int i = 0; this->var < chunkSize && i < static_cast<int>(s.size()); i++, this->var++){
         this->Body.push_back(s[i]);
     }
-    if (static_cast<int>(Body.size()) >= chunkSize)
-        return (void)(this->chunkSize = -1);
+    if (this->var >= this->chunkSize)
+        return (void)(std::cout << "S = {l{" << s << "}l}" << std::endl,this->chunkSize = -1, this->var = 0);
 }
 
 Req &Req::operator=(const Req &other){
@@ -97,7 +114,7 @@ void Req::checkSendType(){
     size_t  pos = this->URL.rfind(".");
     std::string type = this->URL.substr(pos + 1, this->URL.size());
     size_t pos2 = type.find("?");
-    if ((getMETHOD() == "POST" && step == 2) || step == CHUNCKEDDONE )
+    if (this->step < DONE || step == CHUNCKEDDONE )
         return ;
     if (pos2 != std::string::npos)
         type.erase(pos2, type.size());
@@ -111,19 +128,24 @@ void Req::checkSendType(){
         return (void)(this->step = NORMFILE);
 }
 
+void Req::check(){
+    if (METHOD == "GET" or METHOD == "DELETE")
+        this->step = DONE;
+    else if (HEADERS.find("Content-Length") != HEADERS.end())
+        this->step = 2;
+    else if (HEADERS.find("Transfer-Encoding") != HEADERS.end() 
+        && HEADERS.find("Transfer-Encoding")->second == "chunked")
+        this->step = CHUNCKED;
+}
+
 int Req::parseHeaders(std::string&hd){
     std::string key;
     std::string value;
     std::string::iterator i = hd.begin();
     std::string::iterator j = hd.begin();
 
-    if (hd == "\r"){
-        if (HEADERS.find("Transfer-Encoding") != HEADERS.end() 
-        && HEADERS.find("Transfer-Encoding")->second == "chunked")
-            return this->step = CHUNCKED;
-        else
-            return this->step = 2;
-    }
+    if (hd == "\r")
+            return check(),this->step;
     while (i != hd.end() && *i != ':')
         i++;
 
@@ -222,8 +244,10 @@ void Req::clearData() {
     this->URL = "";
     this->HTTPV = "";
     this->Body = "";
+    this->body.clear();
     this->step = 0;
     this->chunkSize = -1;
+    this->var = 0;
 }
 
 std::ostream &operator<<(std::ostream &os, Req &request){
