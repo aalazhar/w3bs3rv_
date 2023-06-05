@@ -13,22 +13,6 @@
 #define TIMEOUT -2
 
 
-/*
-    ERROR STEPS in Req class:
-    3 : parse body done 100 complete 
-    2 : parse headers done
-    1 : parse methode and URL and HTTPV done
-    0 : void Request
-    -1 : invalide method
-    -2 : invalid URL
-    -3 : invalid HTTPV
-
-*/
-
-
-
-
-
 #define CRLF "\r\n"
 typedef std::map<std::string, std::string> _map;
 typedef std::map<std::string, std::string>::iterator iter_map;
@@ -45,7 +29,8 @@ class Req{
         int step;
         int ServerFd;
         int clientFd;
-        int chunkSize;
+        long chunkSize;
+        long var;
         struct config _Config;
 
 
@@ -55,6 +40,8 @@ class Req{
 
 
     public:
+        void creatfile();
+        void check();
         void clearData();
         Req(int, int, struct config &);
         void addTovect(std::string );
@@ -78,11 +65,11 @@ class Req{
         _map getHEADERS();
         void updateTime();
         time_t getTime();
-        void    printRe(){
-            iter_map iter = HEADERS.begin();
-            for (; iter != HEADERS.end(); iter++)
-                std::cout << iter->first << " : " << iter->second << std::endl;
-        }
+        // void    printRe(){
+        //     iter_map iter = HEADERS.begin();
+        //     for (; iter != HEADERS.end(); iter++)
+        //         std::cout << iter->first << " : " << iter->second << std::endl;
+        // }
         iter_map   reqBegin(){ return (HEADERS.begin());}
         iter_map   reqEnd(){ return (HEADERS.end()); }
 

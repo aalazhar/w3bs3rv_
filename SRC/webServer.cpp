@@ -6,7 +6,8 @@ webServ::webServ(const std::string &filename){
     try{
         ob->open_config_file();
 
-    }catch(...){
+    }catch(std::exception &ex){
+        std::cout << ex.what() << std::endl;
         exit(1);
     }
     this->Servers.clear();
