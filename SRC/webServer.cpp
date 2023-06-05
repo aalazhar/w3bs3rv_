@@ -14,7 +14,7 @@ webServ::webServ(const std::string &filename){
 }
 
 webServ::~webServ(){
-    delete this->ob;
+    // delete this->ob;
 }
 
 void webServ::ErrorHandler(const int test, const std::string msg){
@@ -190,6 +190,7 @@ int webServ::sendData(int kq,int fd){
     }
     std::cout << "server n = " << Servers[i].getSock() << "map size = " << this->Cmap.size() << std::endl;;
     Res &res = this->Cmap.find(fd)->second;
+    std::cout << "HNA HNA HNA" << std::endl;
     res.buildResponse();
     size_t length = res.getResp().size();
     if (send(fd, res.getResp().data(), length, 0) < 0)

@@ -11,7 +11,7 @@ int main(int ac, char **av){
         if (ac == 2)
             arg = av[1];
         else
-            arg = "UTILS/default.config";
+            arg = "Config/default.config";
         webServ webserver(arg);
         std::cout << "zzzzzzz\n";
         webserver.lunche();

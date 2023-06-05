@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:46 by megrisse          #+#    #+#             */
-/*   Updated: 2023/06/03 17:06:46 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/06/05 21:59:04 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,13 @@ private :
 	std::vector<char>					fileData;
 	std::vector<char>					Resp;
 	std::map<std::string, std::string>	pairs;
+	std::string							url_;
 
 public :
 	void 	setSizesend(size_t n) {Size_send = n;}
 	size_t	getSizeSend(){return Size_send;}
     Res(struct config, int, int);
+	~Res();
 	std::vector<char>	&getResp() {return Resp;}
 	std::vector<char>	makeResponse();
 	//Headers
@@ -90,5 +92,8 @@ public :
 	void		Handl_encoded();
 	bool		CheckIfLoction(std::string);
 	bool		GetIfAutoIndex(std::string);
-	void		IfMatch(std::string);
+	bool		IfMatch(std::string);
+	void		isloca();
+	void		POST_CGI();
+	void 		splitUrl(std::string);
 };

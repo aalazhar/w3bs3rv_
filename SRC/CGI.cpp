@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:56:14 by aalazhar          #+#    #+#             */
-/*   Updated: 2023/05/31 23:36:48 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/06/05 02:05:33 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ CGI::CGI(std::string fileName_, std::string method_, \
         std::string cntType_, std::string locaPath_, \
         std::string body_, std::string quiry_, int cntLenght_){
 		
-        this->fileName = "UTILS/" + fileName_;
+        this->fileName = fileName_;
         this->method = method_;
         this->cntType = cntType_;
         this->locaPath = locaPath_;
@@ -45,10 +45,9 @@ std::vector<std::string> CGI::executeCGI(){
 	std::vector<char> envp;
 	std::vector<std::string> buff;
 	const char *filePath;
-	std::cout << "here\n";
-	if (cntType == "php")
-		filePath = "../CGI-bin/php-cgi";
-	else if (cntType == "pl")
+	if (this->cntType == "php")
+		filePath = "/Users/megrisse/Desktop/lakher/CGI-bin/php-cgi";
+	else if (this->cntType == "pl")
 		filePath = "/usr/bin/perl";
 	char	*env[vec.size() + 1];
 	for (std::size_t i = 0 ; i < vec.size(); i++)
@@ -68,7 +67,6 @@ std::vector<std::string> CGI::executeCGI(){
 		
 		waitpid(pid, &status, 0);
 		close(fds[1]);
-		// char *buffer = new char[1024];
 		memset(buffer, 0, 1024);
 		int r = 0;
 		r = read(fds[0], buffer, 1024);
@@ -81,18 +79,13 @@ std::vector<std::string> CGI::executeCGI(){
 			buff.push_back(buffer);
 			memset(buffer, 0, 1024);
 		}
-		std::vector<std::string>::iterator it = buff.begin();
-		while (it != buff.end()){
-			std::cout << *it;
-			it++;
-		}
 		close(fds[0]);
-		// delete [] buffer;
 	}
 	return buff;
 }
 
 CGI::~CGI(){
 
-	vec.clear();
+	// if (!vec.empty())
+	// 	vec.clear();
 }

@@ -248,23 +248,18 @@ void parserObject::setDefaultsDirectives(struct config *cf, int *tab){
             switch (i)
             {
                 case 0 :
-                    cf->pRoot = "./www/frr/";
+                    cf->pRoot = "";
                     break;
                 case 1 :
-                    cf->lsten.push_back("0.0.0.0");
-                    cf->lsten.push_back("7007");
                     break;
                 case 2 :
-                    cf->index = "index.html";
+
                     break;
                 case 3 :
-                    cf->autoIndex = "off";
                     break;
                 case 4 :
-                    cf->uploads.push_back("Default/upl/path");
                     break;
                 case 5 :
-                    cf->err_p.push_back("Default/err_page/path");
                     break;
                 case 6 :
                     cf->a_meth.push_back("GET");
