@@ -6,7 +6,8 @@ webServ::webServ(const std::string &filename){
     try{
         ob->open_config_file();
 
-    }catch(...){
+    }catch(std::exception &ex){
+        std::cout << ex.what() << std::endl;
         exit(1);
     }
     this->Servers.clear();
@@ -102,6 +103,7 @@ void webServ::lunche(){
 
     for (;;){
 
+        std::cout << "helloooooo hjdgg" << std::endl;
 		n_event = kevent(kq, NULL, 0, events, MAXEVENT, &timeout);
         if (n_event == 0)
             this->Timeout(kq);
