@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:46 by megrisse          #+#    #+#             */
-/*   Updated: 2023/06/05 21:59:04 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/06/06 03:04:42 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,6 @@ public :
 	bool		IfMatch(std::string);
 	void		isloca();
 	void		POST_CGI();
+	bool		IfRoot(std::string);
 	void 		splitUrl(std::string);
 };

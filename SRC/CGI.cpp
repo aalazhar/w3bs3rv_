@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:56:14 by aalazhar          #+#    #+#             */
-/*   Updated: 2023/06/05 02:05:33 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/06/06 19:44:48 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,27 @@ CGI::CGI(std::string fileName_, std::string method_, \
         this->body = body_;
         this->quiry = quiry_;
         this->cntLenght = cntLenght_;
-
+		vec.clear();
 		std::string code("200");
-		vec.push_back("QUERY_STRING=" + this->quiry);
-		vec.push_back("REQUEST_METHOD="+ this->method);
-		vec.push_back("REDIRECT_STATUS=" + code);
-		vec.push_back("SCRIPT_FILENAME=" + fileName);
-		vec.push_back("CONTENT_TYPE=" + this->cntType);
-		vec.push_back("BODY=" + this->body);
+		vec.push_back(std::string("QUERY_STRING=" + this->quiry));
+		vec.push_back(std::string("REQUEST_METHOD="+ this->method));
+		vec.push_back(std::string("REDIRECT_STATUS=" + code));
+		vec.push_back(std::string("SCRIPT_FILENAME=" + fileName));
+		vec.push_back(std::string("CONTENT_TYPE=" + this->cntType));
+		std::cout << "FRRRRR Body = " << this->body << std::endl;
+		vec.push_back(std::string("BODY=" + this->body));
+}
+
+char** vectos(std::vector<std::string> &vec, char**env) {
+
+	size_t i = 0;
+	for (; i < vec.size(); i++)
+		env[i] = const_cast<char *>(vec[i].c_str());
+	env[vec.size()] = NULL;
+	return env;
 }
 
 std::vector<std::string> CGI::executeCGI(){
-
 
 	int fds[2];
 	int status;
@@ -47,45 +56,45 @@ std::vector<std::string> CGI::executeCGI(){
 	const char *filePath;
 	if (this->cntType == "php")
 		filePath = "/Users/megrisse/Desktop/lakher/CGI-bin/php-cgi";
-	else if (this->cntType == "pl")
+	else
 		filePath = "/usr/bin/perl";
-	char	*env[vec.size() + 1];
-	for (std::size_t i = 0 ; i < vec.size(); i++)
-		env[i] = const_cast<char *>(vec[i].c_str());
-	env[this->vec.size()] = NULL;
 	char *args[] = {(char *)filePath, (char *)this->fileName.c_str(), NULL};
 	pipe(fds);
 	pid_t pid = fork();
+	char	*env[vec.size() + 1];
 	if(pid == 0){
 
 		close(fds[0]);
 		dup2(fds[1], 1);
-		execve(filePath, args, env);
+		execve(filePath, args, vectos(vec, env));
 		exit(1);
 	}
 	else {
-		
 		waitpid(pid, &status, 0);
 		close(fds[1]);
-		memset(buffer, 0, 1024);
 		int r = 0;
 		r = read(fds[0], buffer, 1024);
-		buffer[r] = '\0';
+		buffer[r] = 0;
 		buff.push_back(buffer);
-		memset(buffer, 0, 1024);
 		while (r){
 			r = read(fds[0], buffer, 1024);
-			buffer[r] = '\0';
+			buffer[r] = 0;
 			buff.push_back(buffer);
-			memset(buffer, 0, 1024);
 		}
 		close(fds[0]);
 	}
 	return buff;
 }
 
-CGI::~CGI(){
 
+void CGI::printString(){
+	std::cout << vec[0] << std::endl;
+}
+
+CGI::~CGI(){
+	std::cout << "hello " << vec.size() << std::endl;
+	// for (size_t i = 0; i < vec.size(); i++)
+	// 	std::cout << "vec [" << i  << "] = |" << vec[i] << std::endl;
 	// if (!vec.empty())
 	// 	vec.clear();
 }

@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:54:32 by aalazhar          #+#    #+#             */
-/*   Updated: 2023/05/26 16:53:31 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/06/06 19:03:08 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ private:
     std::string body;
     std::string quiry;
     std::string cgiPath;
-    char buffer[1024];
+    char buffer[1025];
     // char    *str;
     // std::vector<std::string> buff;
     std::vector<std::string> vec;
@@ -42,6 +42,8 @@ public :
         std::string cntType_, std::string locaPath_, \
         std::string body_, std::string quiry_, int cntLenght_);
     std::vector<std::string> executeCGI();
+    void printString();
+    
     ~CGI();
 
 };

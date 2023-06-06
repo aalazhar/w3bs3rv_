@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:16 by megrisse          #+#    #+#             */
-/*   Updated: 2023/06/05 22:48:39 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/06/06 19:38:07 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,8 +164,9 @@ bool	Res::IfMatch(std::string url) {
 		std::string match = root + it->l_path;
 		std::cout << "url == " << url << " PATH = " << match << std::endl;
 		size_t found = url.find(it->l_path);
+		size_t froot = url.find(root);
 		// if (url == match)
-		if (found != std::string::npos)
+		if (found != std::string::npos && froot == std::string::npos)
 			return true;
 	}
 	return false;
@@ -190,6 +191,15 @@ void Res::splitUrl(std::string url) {
 }
 
 
+bool	Res::IfRoot(std::string url) {
+
+	size_t froot = url.find(root);
+
+	if (froot != std::string::npos)
+		return false;
+	return true;
+}
+
 void	Res::getifQuerry(std::string &url) {
 
 	splitUrl(url);
@@ -205,7 +215,7 @@ void	Res::getifQuerry(std::string &url) {
 		autoInx = true;
 	else if (IfMatch(filePath))
 		filePath = root + filePath;
-	else
+	else if (IfRoot(filePath))
 		filePath = root + filePath;
 	if (index.empty() && GetIfAutoIndex(url))
 		autoInx = true;
@@ -303,10 +313,16 @@ void	Res::getHeadersRes() {
 	else
 		headers = status_line + "Content-Type: " + getMimetype(type) + CRLF;
 	headers += "Content-length: " + sss.str() + CRLF;
-	headers += "Cache-Control: " + cache + CRLF;
+	if (response_header.find("Cache-Control:") == std::string::npos)
+		headers += "Cache-Control: " + cache + CRLF;
 	headers += "Date: " + Date + CRLF;
-	for (size_t i = 0; i < headers.size(); i++)
+	for (size_t i = 0; i < headers.size(); i++) {
+		
 		_headers.push_back(headers[i]);
+		std::cout << headers[i];
+	}
+	std::cout << std::endl;
+	
 }
 
 void	Res::readContent() {
@@ -377,15 +393,19 @@ void	Res::buildCGIResponse() {
 
 	t = filePath.substr(filePath.rfind(".") + 1 , filePath.size() - filePath.rfind("."));
 	type = t;
+	std::cout << "KKK = " << getMETHOD() << std::endl;
 	CGI	cgi(filePath, getMETHOD(), type, "", getBody(), Querry, getBody().length());
 	std::cout << "FILEE CGI " << filePath << std::endl;
 	std::cout << "TTTT = " << type << std::endl;
-	if (type == "php" or type == "py" or type == "pl") {
+	if (type == "php" or type == "pl") {
 
 		size_t	i = 0;
 		size_t	size = response.size() - 2;
-		
+
 		cgiBuff = cgi.executeCGI();
+		std::cout << "khrej mn build respmake = " << cgiBuff.size() << std:: endl;
+		for (size_t i = 0; i < cgiBuff.size(); i++)
+			std::cout << "KKKKKKKKK +- " << cgiBuff[i] << std::endl;
 		response = vectorToString(cgiBuff);
 		while (response.find("\r\n\r\n", i) != std::string::npos || response.find("\r\n\r\n", i) == i) {
 
@@ -407,20 +427,26 @@ void	Res::buildCGIResponse() {
 			fileData.push_back(response_body[i]);
 		file_size = fileData.size();
 		code = 200;
+		printvector(fileData, 555);
+		// cgiBuff.clear();
 	}
 	else {
 		
 		code = 404;
 		readErrorsfiles(errorsFiles[code]);
 	}
-	std::cout << "KKKKKKKKK +-" << std::endl;
+		std::cout << "khrej mn build respmake 1= " << cgiBuff.size() << std:: endl;
+		for (size_t i = 0; i < cgiBuff.size(); i++)
+			std::cout << "KKKKKKKKK +-1 " << cgiBuff[i] << std::endl;
 	getHeadersRes();
 	mergeResponse();
+	std::cout << "i'm out" << std::endl;
+	// cgi.printString();
+	// std::vector<std::string> 
 }
 
 void	Res::buildNormalResponse() {
 
-	// getifQuerry(getURL());
 	std::cout << "auto = " << index << std::endl;
 	readContent();
 	mergeResponse();
@@ -436,6 +462,7 @@ void	Res::buildErrorResponse() {
 	readErrorsfiles(errorsFiles[code]);
 	getHeadersRes();
 	mergeResponse();
+	
 }
 
 void	Res::mergeResponse() {
@@ -449,6 +476,7 @@ void	Res::mergeResponse() {
 			Resp.push_back(fileData[i - _headers.size()]);
 		} 
 	}
+	std::cout << "DKHAL L MERGE " << std::endl;
 }
 
 void	Res::GET() {
@@ -469,6 +497,7 @@ void	Res::GET() {
 			buildCGIResponse();
 			break ;
 	}
+	std::cout << "end GET" << std::endl;
 }
 
 std::string	Res::getBoundry() {
@@ -658,10 +687,6 @@ void	Res::POST() {
 	std::string url = getURL();
 	std::string body = getBody();
 	_map headers = getHEADERS();
-
-	std::cout << "---url = ";
-	std::cout << url << std::endl;
-	
 	std::vector<std::string> cgiBuff;
 	std::string	response_body = "";
 	std::string	response = "";
@@ -675,7 +700,11 @@ void	Res::POST() {
 	if (type == "php" or type == "pl") {
 
 		std::cout << "MAYMKENCH" << std::endl;
-		CGI	cgi(filePath, getMETHOD(), type, "", getBody(), Querry, getBody().length());
+		std::cout << "filePath = " << filePath << std::endl;
+		std::cout << "method = " << getMETHOD() << std::endl;
+		std::cout << "Body = " << getBody() << std::endl;
+		std::cout << "querry = " << Querry << std::endl;
+ 		CGI	cgi(filePath, getMETHOD(), type, "", getBody(), Querry, getBody().length());
 		size_t	i = 0;
 		size_t	size = response.size() - 2;
 		cgiBuff = cgi.executeCGI();
@@ -700,6 +729,7 @@ void	Res::POST() {
 			fileData.push_back(response_body[i]);
 		file_size = fileData.size();
 		code = 200;
+		printvector(fileData, 666);
 	}
 	else if (tt == "x-www-form-urlencoded")
 		Handl_encoded();

@@ -15,7 +15,7 @@ webServ::webServ(const std::string &filename){
 }
 
 webServ::~webServ(){
-    // delete this->ob;
+    delete this->ob;
 }
 
 void webServ::ErrorHandler(const int test, const std::string msg){

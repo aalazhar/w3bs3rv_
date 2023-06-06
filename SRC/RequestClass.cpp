@@ -75,7 +75,7 @@ int Req::parseBody(std::string &s){
         BodySize = (size_t)std::atoi(HEADERS["Content-Length"].c_str());
     std::cout << "Content-Length  : " << BodySize << std::endl;
     if (Body.size() >= BodySize)
-        return std::cout << "Content-Length  : " << BodySize  << " && Body.size() : " << Body.size() <<  std::endl,creatfile(),step = DONE;
+        return std::cout << "Content-Length  : " << BodySize  << " && Body.size() : " << Body.size() <<  std::endl,step = DONE;
     return 0;
 }
 
@@ -91,7 +91,7 @@ void Req::parseCHuncked(std::string &s){
     if (this->chunkSize == -1 and this->var == 0 and s != "\r\n")
         return (void)(this->chunkSize = hexToDec(s), std::cout<<"s : |" << s  << "|   SIZE CHUNKED = " << this->chunkSize << "  SIZE BODY :" << Body.size() <<std::endl);
     if (this->chunkSize == 0)
-        return (void)(creatfile(),this->step = CHUNCKEDDONE);
+        return (void)(this->step = CHUNCKEDDONE);
     for (int i = 0; this->var < chunkSize && i < static_cast<int>(s.size()); i++, this->var++){
         this->Body.push_back(s[i]);
     }

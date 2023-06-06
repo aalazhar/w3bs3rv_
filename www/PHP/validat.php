@@ -1,8 +1,11 @@
 <?php
     ob_start();
+
+    echo $_SERVER['BODY'];
     $email = "aalazhar@42.com";
     $pass = "123456";
-
+    if (!isset($_POST['login']))
+        echo "makaynch";
     if (isset($_POST['login']) && isset($_POST['email']) && isset($_POST['pass'])){
         $emailX = $_POST['email'];
         $passX = $_POST['pass'];
@@ -16,14 +19,15 @@
             header ("location: welcom.php");
         }
         else {
-            echo "Your email or pass is invalid. Click here <a href='login.php' >to try again.</a>";
+            echo "<p>Your email or pass is invalid. Click here <a href='login.php' >to try again.</a></p>";
 
         }
     }
     else{
-        header("location : login.php");
+        header("location: login.php");
     }
 ?>
+
 <style type="text/css">
     * {
         font-family: "Courier new";
