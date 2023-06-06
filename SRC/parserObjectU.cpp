@@ -65,21 +65,12 @@ int parserObject::open_config_file(){
     int tab[9];
     tabTurn_zero(tab, 9);
     tabTurn_zero(tab2, 8);
-    if (!lin.is_open()){
-        std::cout << "Can't open this file ! : "<< this->fileName << std::endl;
-        return (1);
+    if (!lin.is_open())
         throw (std::invalid_argument("Can't open this file ! : " + this->fileName));
-    }
-    if (lin.peek() == EOF){
-        std::cout << "This file is empty !!\n";
-        return (1);
+    if (lin.peek() == EOF)
         throw (std::invalid_argument("This file is empty !!"));
-    }
-    if (lexical_analyser()){
-        std::cout << "Syntax Error --- !" << std::endl;
-        return (1);
+    if (lexical_analyser())
         throw (std::invalid_argument("Syntax Error --- !"));
-    }
     while (getline(lin, line)){
         if (!strncmp(line.c_str(), "server", 6)){
             tabTurn_zero(tab, 9);
@@ -101,17 +92,11 @@ int parserObject::open_config_file(){
                         while (line[i] == '\t')
                             i++;
                         line.erase(0, i);
-						if (locat_split_lines(line, ' ', loca, tab2)){
-                            std::cout << "Invalid Directive !\n";
-                            return (1);
+						if (locat_split_lines(line, ' ', loca, tab2))
                             throw (std::invalid_argument("Invalid Directive !"));
-                        }
                         if (line[0] == '}' && i == 1){
-                            if (check_blocks_dirc(tab2)){
-                                std::cout << "Syntax Error !!!" << std::endl;
-                                return (1);
+                            if (check_blocks_dirc(tab2))
                                 throw (std::invalid_argument("Syntax Error !!!"));
-                            }
                             setDefaultsLocaDirectives(&loca, tab2);
 							cf.vect.push_back(loca);
 							clean_location_directs(loca);
