@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:16 by megrisse          #+#    #+#             */
-/*   Updated: 2023/06/07 03:18:28 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/06/07 04:48:09 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,12 @@ void	Res::resetvalues() {
 	this->Resp.clear();
 	this->clearData();
 	file_size = 0;
-	code = 0;
+	code = 200;
 	this->type = "";
 	root = Conf.pRoot;
 	index = Conf.index;
 	autoInx = false;
+	redirection_path = "";
 	// root = "";
 	// index = "";
 }
@@ -65,10 +66,11 @@ Res::Res(struct config server, int serverfd, int clientfd) : Req(serverfd, clien
     Conf = server;
 	setMIME();
     initErrorFiles();
-	code = 0;
+	code = 200;
 	root = Conf.pRoot;
 	index = Conf.index;
 	autoInx = false;
+	redirection_path = "";
 }
 
 std::string getFilePath(std::string url){
