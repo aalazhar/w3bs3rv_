@@ -31,6 +31,7 @@
 *.out
 *.app
 
+UPLOAD
 auto
 webServ
 .DS_Store

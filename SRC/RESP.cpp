@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:16 by megrisse          #+#    #+#             */
-/*   Updated: 2023/06/06 19:38:07 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/06/06 23:34:59 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,6 @@ bool	Res::IfMatch(std::string url) {
 		std::cout << "url == " << url << " PATH = " << match << std::endl;
 		size_t found = url.find(it->l_path);
 		size_t froot = url.find(root);
-		// if (url == match)
 		if (found != std::string::npos && froot == std::string::npos)
 			return true;
 	}
@@ -248,6 +247,7 @@ void	Res::initCodesMsgs() {
 	CodesMsgs[200] = "OK";
 	CodesMsgs[201] = "Created";
 	CodesMsgs[204] = "No Content";
+	CodesMsgs[302] = "Found";
 	CodesMsgs[400] = "Bad Request";
 	CodesMsgs[403] = "Forbidden";
 	CodesMsgs[404] = "Not Found";
@@ -426,7 +426,8 @@ void	Res::buildCGIResponse() {
 		for (size_t i = 0; i < response_body.length(); i++)
 			fileData.push_back(response_body[i]);
 		file_size = fileData.size();
-		code = 200;
+		if (code != 302)
+			code = 200;
 		printvector(fileData, 555);
 		// cgiBuff.clear();
 	}
@@ -588,13 +589,6 @@ void	Res::CreateFile() {
 	Generatename();
 	if (upld_file_name == "")
 		upld_file_name = "upload." + type;
-	// if (path_to_upld[path_to_upld.size() - 1] == '/')
-	// 	file_name = path_to_upld + upld_file_name;
-	// else {
-			
-		// file_name = path_to_upld + "/";
-		// file_name += upld_file_name;
-	// }
 	file_name = path_to_upld + upld_file_name;
 	std::cout << "FILLLEE == " << file_name << std::endl;
 	file.open(file_name, std::ios::binary);
@@ -714,8 +708,11 @@ void	Res::POST() {
 			std::string	resp = response.substr(i, response.find("\r\n", i) - i);
 			response_header += resp;
 			response_header += CRLF;
-			if (!resp.find("Status: "))
+			if (!resp.find("Status: ")) {
+
 				code = std::atoi(resp.substr(8, 3).c_str());
+				std::cout << "CODE +++ " << code << std::endl;
+			}
 			else if (!resp.find("Content-type: "))
 				this->type = resp.substr(14, resp.size());
 			i += resp.size() + 2;
@@ -728,13 +725,17 @@ void	Res::POST() {
 		for (size_t i = 0; i < response_body.length(); i++)
 			fileData.push_back(response_body[i]);
 		file_size = fileData.size();
-		code = 200;
+		if (code != 302)
+			code = 200;
 		printvector(fileData, 666);
 	}
 	else if (tt == "x-www-form-urlencoded")
 		Handl_encoded();
 	else if (getStep() == CHUNCKEDDONE && tt.find("boundary=") == std::string::npos) {
 
+		struct stat st;
+		if (stat(path_to_upld.c_str(), &st) != 0)
+			mkdir(path_to_upld.c_str(), 0777);
 		upld_body = getBody();
 		CreateFile();
 	}

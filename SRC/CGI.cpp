@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:56:14 by aalazhar          #+#    #+#             */
-/*   Updated: 2023/06/06 19:44:48 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/06/06 21:14:43 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ std::vector<std::string> CGI::executeCGI(){
 	std::vector<std::string> buff;
 	const char *filePath;
 	if (this->cntType == "php")
-		filePath = "/Users/megrisse/Desktop/lakher/CGI-bin/php-cgi";
+		filePath = "CGI-bin/php-cgi";
 	else
 		filePath = "/usr/bin/perl";
 	char *args[] = {(char *)filePath, (char *)this->fileName.c_str(), NULL};
