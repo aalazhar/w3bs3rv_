@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:46 by megrisse          #+#    #+#             */
-/*   Updated: 2023/06/06 03:04:42 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/06/07 03:00:11 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include "parserObjectU.hpp"
 #include "RequestClass.hpp"
 #include "CGI.hpp"
+
+#define REDIRECT 66
 
 class Res  : public Req{
 private :
@@ -29,6 +31,7 @@ private :
 	std::string							upld_file_name;
 	std::string							upld_body;
 	std::string							filePath;
+	std::string							redirection_path;
 	std::string							_Cgipath;
 	std::string							status_line;
 	std::map<int, std::string>			CodesMsgs;
@@ -97,4 +100,7 @@ public :
 	void		POST_CGI();
 	bool		IfRoot(std::string);
 	void 		splitUrl(std::string);
+	bool		IfRedirection(std::string);
+	void		BuildRedRes();
+	void		SplitRed();
 };

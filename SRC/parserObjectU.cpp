@@ -209,7 +209,7 @@ void parserObject::setDefaultsLocaDirectives(struct loca *loca, int *tab){
             	    loca->deny = "all";
             	    break;
             	case 4:
-            	    loca->redirect = "http//:DefaultUrl";
+            	    // loca->redirect = "http//:DefaultUrl";
             	    break;
             	case 5:
 					loca->a_meth.push_back("GET");
@@ -338,10 +338,11 @@ int parserObject::locat_split_lines(std::string line, char sep, struct loca& _lo
         _location.deny.erase(_location.deny.size() - 1, _location.deny.size());
         tab[3] += 1;
     }
-    else if (res == "redirect"){
+    else if (res == "return"){
         _location.redirect = &line[i + 1];
         _location.redirect.erase(_location.redirect.size() - 1, _location.redirect.size());
         tab[4] += 1;
+        std::cout << "REDIRECT == " << _location.redirect << std::endl;
     }
     else if (res == "allowed_methods"){
         _location.allowed_m = &line[i + 1];
@@ -369,6 +370,7 @@ int parserObject::locat_split_lines(std::string line, char sep, struct loca& _lo
     else if (res != "root" && res != "index" && res != "serever_name" && res != "autoindex" && res != "deny" && res != "redirect" && \
         res != "allowed_methods" && res != "cgiExt" && res != "cgiPath" && res != "}" && res.size() > 0)
         return (1);
+    std::cout << "REDIRECT 11 == " << _location.redirect << std::endl;
     return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:16 by megrisse          #+#    #+#             */
-/*   Updated: 2023/06/06 23:34:59 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/06/07 03:18:28 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,6 +199,19 @@ bool	Res::IfRoot(std::string url) {
 	return true;
 }
 
+void	Res::SplitRed() {
+
+	std::string path = redirection_path;
+	size_t pos = path.rfind(' ');
+
+	if (pos != std::string::npos) {
+
+		redirection_path = path.substr(pos + 1);
+		std::string code_ = path.erase(pos);
+		code = 302;
+	}
+}
+
 void	Res::getifQuerry(std::string &url) {
 
 	splitUrl(url);
@@ -208,6 +221,10 @@ void	Res::getifQuerry(std::string &url) {
 	std::cout << "filePath++ = " << filePath << std::endl;
 	if ((filePath.empty() && !index.empty()))
 		filePath = root + index;
+	else if (IfRedirection(filePath)) {
+		SplitRed();
+		return ;
+	}
 	else if (CheckIfLoction(filePath))
 		filePath = root + index;
 	else if (index.empty() && Conf.autoIndex == "on")
@@ -315,6 +332,8 @@ void	Res::getHeadersRes() {
 	headers += "Content-length: " + sss.str() + CRLF;
 	if (response_header.find("Cache-Control:") == std::string::npos)
 		headers += "Cache-Control: " + cache + CRLF;
+	if (!redirection_path.empty() && code == 302)
+		headers += "location: " + redirection_path + CRLF;
 	headers += "Date: " + Date + CRLF;
 	for (size_t i = 0; i < headers.size(); i++) {
 		
@@ -480,12 +499,40 @@ void	Res::mergeResponse() {
 	std::cout << "DKHAL L MERGE " << std::endl;
 }
 
+bool	Res::IfRedirection(std::string path) {
+
+	std::vector<loca>::iterator it = Conf.vect.begin();
+
+	if (path[0] == '/')
+		path.substr(1);
+	for (; it != Conf.vect.end(); it++) {
+
+		if (it->l_path == path && !it->redirect.empty()) {
+
+			root += it->l_path;
+			this->redirection_path = it->redirect;
+			std::cout << "L7WA HADA == |" << redirection_path << "|" << std::endl;
+			return true;
+		}
+	}
+	return false;
+}
+
+void	Res::BuildRedRes() {
+
+	std::cout << "DAZ MN RED RES" << std::endl;
+	getHeadersRes();
+	mergeResponse();
+}
+
 void	Res::GET() {
 
 	getifQuerry(getURL());
 	std::cout << "root = " << root << std::endl;
 	if (type == "php" or type == "pl")
 		setStep(CGII);
+	else if (!redirection_path.empty())
+		setStep(REDIRECT);
 	switch (getStep()) {
 
 		case NORMFILE :
@@ -496,6 +543,9 @@ void	Res::GET() {
 			break;
 		case CGII :
 			buildCGIResponse();
+			break ;
+		case REDIRECT :
+			BuildRedRes();
 			break ;
 	}
 	std::cout << "end GET" << std::endl;
