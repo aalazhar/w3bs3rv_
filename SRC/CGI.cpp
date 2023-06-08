@@ -12,9 +12,7 @@
 
 #include "../Headers/CGI.hpp"
 
-CGI::CGI(){
-	std::cout << "Default\n";
-}
+CGI::CGI(){ ; }
 
 CGI::CGI(std::string fileName_, std::string method_, \
         std::string cntType_, std::string locaPath_, \
@@ -67,7 +65,6 @@ std::vector<std::string> CGI::executeCGI(){
 	pid_t pid = fork();
 	char	*env[vec.size() + 1];
 	if(pid == 0){
-
 		close(fds[0]);
 		dup2(fds[1], 1);
 		execve(filePath, args, vectos(vec, env));
@@ -90,15 +87,4 @@ std::vector<std::string> CGI::executeCGI(){
 	return buff;
 }
 
-
-void CGI::printString(){
-	std::cout << vec[0] << std::endl;
-}
-
-CGI::~CGI(){
-	std::cout << "hello " << vec.size() << std::endl;
-	// for (size_t i = 0; i < vec.size(); i++)
-	// 	std::cout << "vec [" << i  << "] = |" << vec[i] << std::endl;
-	// if (!vec.empty())
-	// 	vec.clear();
-}
+CGI::~CGI(){ ; }

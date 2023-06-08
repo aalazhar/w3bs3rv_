@@ -54,7 +54,6 @@ void Req::creatfile(){
     if (fd < 0)
         return (void)(std::cout << "FAILE TO OPEN THE FILE" << std::endl );
     std::string::iterator it = this->Body.begin();
-    std::cout << "file size = " << Body.size() << std::endl;
     long i = 0;
     while (it != this->Body.end())
     {
@@ -63,7 +62,6 @@ void Req::creatfile(){
         write(fd, &c, 1);
         it++;
     }
-    std::cout << "xhal tktb flfille = "<< i << std::endl;
 }
 
 int Req::parseBody(std::string &s){
@@ -88,14 +86,14 @@ int hexToDec(const std::string& hexString) {
 
 void Req::parseCHuncked(std::string &s){
     if (this->chunkSize == -1 and this->var == 0 and s != "\r\n")
-        return (void)(this->chunkSize = hexToDec(s), std::cout<<"s : |" << s  << "|   SIZE CHUNKED = " << this->chunkSize << "  SIZE BODY :" << Body.size() <<std::endl);
+        return (void)(this->chunkSize = hexToDec(s));
     if (this->chunkSize == 0)
         return (void)(this->step = CHUNCKEDDONE);
     for (int i = 0; this->var < chunkSize && i < static_cast<int>(s.size()); i++, this->var++){
         this->Body.push_back(s[i]);
     }
     if (this->var >= this->chunkSize)
-        return (void)(std::cout << "S = {l{" << s << "}l}" << std::endl,this->chunkSize = -1, this->var = 0);
+        return (void)(this->chunkSize = -1, this->var = 0);
 }
 
 Req &Req::operator=(const Req &other){
@@ -113,14 +111,14 @@ void Req::checkSendType(){
     size_t  pos = this->URL.rfind(".");
     std::string type = this->URL.substr(pos + 1, this->URL.size());
     size_t pos2 = type.find("?");
-    if (this->step < DONE || step == CHUNCKEDDONE )
+    if (this->step >= 0 && (this->step < DONE || step == CHUNCKEDDONE ))
         return ;
     if (pos2 != std::string::npos)
         type.erase(pos2, type.size());
     if (type == "php" or type == "py" or type == "pl")
         return (void)(this->step = CGII);
     else if (type == "" or this->step < 0)
-        return (void)(this->step = ERROR);
+        return (void)(std::cout << "helllo" << std::endl,this->step = ERROR);
     else if (type == "png" or type == "jpeg" or type == "jpg")
         return (void)(this->step = BINARYFILE);
     else
@@ -173,7 +171,7 @@ int Req::checkMETHOD(const std::string &method){
 	    if (method == *it)
 		    return 0;
 	}
-    return this->step = -1;
+    return -1;
 }
 
 
@@ -203,7 +201,7 @@ int Req::getMETHOD(std::string &meth){
     }
     j = ++i;
     if (checkMETHOD(s) < 0)
-        return (this->step = -1);
+        return (this->step = BADREQ);
     METHOD = s;
     /*____-check-URL-______*/
     s.erase(s.begin(), s.end());
@@ -214,8 +212,6 @@ int Req::getMETHOD(std::string &meth){
         j++;
     }
     j = ++i;
-    // if (checkURL(s) < 0)
-    //     return -1;
     URL = s;
     /*____-check-HTTPV-_____*/
     s.erase(s.begin(), s.end());
@@ -249,12 +245,10 @@ void Req::clearData() {
     this->var = 0;
 }
 
-std::ostream &operator<<(std::ostream &os, Req &request){
+int Req::getStep(){return step;};
 
-	os  << request.getMETHOD()<< " " << request.getURL() << " " << request.getHTTPV()  << std::endl;
-	iter_map it = request.reqBegin();
-	for(; it != request.reqEnd(); it++)
-		os << it->first << ": " << it->second << std::endl;
-	os << request.getBody() << std::endl;
-	return os;
-}
+int Req::getServerFd(){return this->ServerFd;}
+
+int Req::getClientFd(){return this->clientFd;}
+
+void Req::setStep(int s){this->step = s;}

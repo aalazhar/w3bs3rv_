@@ -55,12 +55,11 @@ private :
 	std::string							url_;
 
 public :
-	void 	setSizesend(size_t n) {Size_send = n;}
-	size_t	getSizeSend(){return Size_send;}
     Res(struct config, int, int);
 	~Res();
-	std::vector<char>	&getResp() {return Resp;}
-	std::vector<char>	makeResponse();
+	size_t	getSizeSend();
+	void 	setSizesend(size_t n) ;
+	std::vector<char>	&getResp();
 	//Headers
 	void		setMIME();
 	void		getHeadersRes();

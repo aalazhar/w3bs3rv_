@@ -3,7 +3,7 @@
 #include "Headers.hpp"
 
 #include "parserObjectU.hpp"
-#include "RESP.hpp"
+#include "ResponseClass.hpp"
 
 // class Response;
 
@@ -21,8 +21,8 @@ class Server{
         void testConnection(const int&, const std::string&);
 
         struct config &getConfig();
-        int getport() {return this->port;}
+        sockaddr_in getAddr();
+        int getport() ;
         int getSock();
-        int getServerFd(int);
 
 };

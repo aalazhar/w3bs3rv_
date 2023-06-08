@@ -9,10 +9,10 @@ CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -g $(SANI)
 OBJ_FILE = OBJ/
 FOBJ = OBJ
 
-HEADERS = $(addprefix Headers/, Headers.hpp  webServer.hpp Server.hpp RequestClass.hpp parserObjectU.hpp CGI.hpp RESP.hpp)
+HEADERS = $(addprefix Headers/, Headers.hpp  webServer.hpp Server.hpp RequestClass.hpp parserObjectU.hpp CGI.hpp ResponseClass.hpp)
 
 SRC_FILE = SRC/
-SRC =  webServer.cpp Server.cpp RequestClass.cpp parserObjectU.cpp CGI.cpp RESP.cpp main.cpp mimeTypes.cpp
+SRC =  webServer.cpp Server.cpp RequestClass.cpp parserObjectU.cpp CGI.cpp ResponseClass.cpp main.cpp mimeTypes.cpp
 
 OBJS = $(addprefix $(OBJ_FILE),  $(SRC:%.cpp=%.o))
 

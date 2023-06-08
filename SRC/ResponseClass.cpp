@@ -10,20 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Headers/RESP.hpp"
-
-void	printvector(std::vector<char> vec, int key) {
-
-
-	std::vector<char>::iterator it = vec.begin();
-	std::cout << "---------------------------------------------------------\n";
-	std::cout << "VECTOR " << key << " :\n";
-	for (; it != vec.end(); it++) {
-
-		std::cout << *it;
-	}
-	std::cout << "---------------------------------------------------------\n";
-}
+#include "../Headers/ResponseClass.hpp"
 
 void	Res::initErrorFiles() {
 
@@ -120,7 +107,6 @@ void	Res::autoindex() {
 	html += "</body></html>";
 	for (size_t i = 0; i < html.length(); i++)
 		fileData.push_back(html[i]);
-	printvector(fileData, 1337);
 	code = 200;
 	type = "html";
 	file_size = html.length();
@@ -215,10 +201,10 @@ void	Res::SplitRed() {
 void	Res::getifQuerry(std::string url) {
 
 	splitUrl(url);
-	std::cout << "GET IF QUERRRYYY " << std::endl;
-	std::cout << "file PATH " << filePath << std::endl;
-	std::cout << "INDEX " << index << std::endl;
-	std::cout << "ROTTT == " << root << std::endl;
+	// std::cout << "GET IF QUERRRYYY " << std::endl;
+	// std::cout << "file PATH " << filePath << std::endl;
+	// std::cout << "INDEX " << index << std::endl;
+	// std::cout << "ROTTT == " << root << std::endl;
 	if ((filePath.empty() && !index.empty()))
 		filePath = root + index;
 	else if (IfRedirection(filePath)) {
@@ -343,7 +329,7 @@ void	Res::readContent() {
 
 	std::ifstream	file;
 
-	std::cout << "PATH ++ == " << filePath << std::endl;
+	// std::cout << "PATH ++ == " << filePath << std::endl;
 	if (checkpath(filePath)) {
 
 		file.open(filePath, std::ios::in);
@@ -430,9 +416,6 @@ void	Res::buildCGIResponse() {
 		for (size_t i = 0; i < response_body.length(); i++)
 			fileData.push_back(response_body[i]);
 		file_size = fileData.size();
-		if (code != 302)
-			code = 200;
-		printvector(fileData, 555);
 		// cgiBuff.clear();
 	}
 	else {
@@ -455,6 +438,8 @@ void	Res::buildErrorResponse() {
 
 	if (getStep() == TIMEOUT)
 		code = 408;
+	else if (getStep() == ERROR)
+		code = 405;
 	else
 		code = 400;
 	readErrorsfiles(errorsFiles[code]);
@@ -474,7 +459,6 @@ void	Res::mergeResponse() {
 			Resp.push_back(fileData[i - _headers.size()]);
 		} 
 	}
-	printvector(Resp, 666);
 }
 
 bool	Res::IfRedirection(std::string path) {
@@ -564,7 +548,7 @@ void	Res::beginInPOST() {
 	if (pos1 != std::string::npos)
 		body.erase(pos1, boundry2.size());
 	else
-		std::cout << "Boundary Not Found !" << std::endl, binary = true;
+		std::cerr << "Boundary Not Found !" << std::endl, binary = true;
 	pos1 = 0;
 	pos1 = body.find("filename=", pos1);
 	if (pos1 != std::string::npos)
@@ -726,7 +710,6 @@ void	Res::POST() {
 		cgiBuff = cgi.executeCGI();
 		response = vectorToString(cgiBuff);
 		while (response.find("\r\n\r\n", i) != std::string::npos || response.find("\r\n\r\n", i) == i) {
-
 			std::string	resp = response.substr(i, response.find("\r\n", i) - i);
 			response_header += resp;
 			response_header += CRLF;
@@ -744,9 +727,6 @@ void	Res::POST() {
 		for (size_t i = 0; i < response_body.length(); i++)
 			fileData.push_back(response_body[i]);
 		file_size = fileData.size();
-		if (code != 302)
-			code = 200;
-		printvector(fileData, 666);
 	}
 	else if (tt == "x-www-form-urlencoded")
 		Handl_encoded();
@@ -800,14 +780,11 @@ bool	Res::CheckMethodIfAllowed() {
 
 	for (; it != Conf.vect.end(); it++) {
 
-		std::cout << "LOCATION == " << it->l_path << " FilePath " << Path << std::endl;
 		if (Path == it->l_path) {
 			
-			std::cout << "ZABIIII" << std::endl;
 			std::vector<std::string>::iterator it1 = it->a_meth.begin();
 			for (; it1 != it->a_meth.end(); it1++) {
 
-				std::cout << "METHODS AA == " << *it1 << std::endl;
 				if (method == *it1) {
 					return true;
 				}
@@ -830,6 +807,13 @@ void	Res::buildResponse() {
 	else if (this->getMETHOD() == "DELETE")
 		DELETE();
 }
+
+
+size_t	Res::getSizeSend(){return Size_send;}
+
+void 	Res::setSizesend(size_t n) {Size_send = n;}
+
+std::vector<char>	&Res::getResp() {return Resp;}
 
 Res::~Res()  {
 	

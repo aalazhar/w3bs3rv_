@@ -4,7 +4,7 @@
     session_start();
     if ($_SERVER['REQUEST_METHOD'] == "GET"){
         echo "<h1 style='font-family: 'Courier new''>BAD REQUEST.</h1>"; 
-        http_response_code(400); exit;
+        http_response_code(405); exit;
     }
     else{
 

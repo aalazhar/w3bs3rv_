@@ -1,5 +1,5 @@
 #include "../Headers/Headers.hpp"
-#include "../Headers/RESP.hpp"
+#include "../Headers/ResponseClass.hpp"
 
 void    Res::setMIME() {
 

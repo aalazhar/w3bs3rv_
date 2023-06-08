@@ -9,20 +9,20 @@ void parserObject::print_directs_keys_val(std::vector<struct config> server){
     size_t i = 0;
     
     while (i < server.size()){
-        std::cout << "------ DRCT------" << std::endl;
-        std::cout << "root :" << server[i].pRoot << std::endl;
-        std::cout << "indx :" << server[i].index << std::endl;
-        std::cout << "lstn :" << server[i].listen << std::endl;
-        std::cout << "auto :" << server[i].autoIndex << std::endl;
-        std::cout << "allw :" << server[i].allowed_m << std::endl;
-        std::cout << "errp :" << server[i].error_page << std::endl;
-        std::cout << "uplo :" << server[i].upload << std::endl;
-        std::cout << "Vectors ----------------------------\n";
-        std::cout << "allw :" << server[i].a_meth[0] << std::endl;
-        std::cout << "errp :" << server[i].err_p[0] << std::endl;
-        std::cout << "uplo :" << server[i].uploads[0] << std::endl;
-        std::cout << "------ DRCT------" << std::endl;
-        print_location_directs(this->server[i].vect);
+        // std::cout << "------ DRCT------" << std::endl;
+        // std::cout << "root :" << server[i].pRoot << std::endl;
+        // std::cout << "indx :" << server[i].index << std::endl;
+        // std::cout << "lstn :" << server[i].listen << std::endl;
+        // std::cout << "auto :" << server[i].autoIndex << std::endl;
+        // std::cout << "allw :" << server[i].allowed_m << std::endl;
+        // std::cout << "errp :" << server[i].error_page << std::endl;
+        // std::cout << "uplo :" << server[i].upload << std::endl;
+        // std::cout << "Vectors ----------------------------\n";
+        // std::cout << "allw :" << server[i].a_meth[0] << std::endl;
+        // std::cout << "errp :" << server[i].err_p[0] << std::endl;
+        // std::cout << "uplo :" << server[i].uploads[0] << std::endl;
+        // std::cout << "------ DRCT------" << std::endl;
+        // print_location_directs(this->server[i].vect);
         i++;
     }
 
@@ -65,18 +65,12 @@ int parserObject::open_config_file(){
     int tab[9];
     tabTurn_zero(tab, 9);
     tabTurn_zero(tab2, 8);
-    if (!lin.is_open()){
-        std::cout << "Can't open this file ! : "<< this->fileName << std::endl;
+    if (!lin.is_open())
         throw (std::invalid_argument("Can't open this file ! : " + this->fileName));
-    }
-    if (lin.peek() == EOF){
-        std::cout << "This file is empty !!\n";
+    if (lin.peek() == EOF)
         throw (std::invalid_argument("This file is empty !!"));
-    }
-    if (lexical_analyser()){
-        std::cout << "1Syntax Error --- !" << std::endl;
+    if (lexical_analyser())
         throw (std::invalid_argument("Syntax Error --- !"));
-    }
     while (getline(lin, line)){
         if (!strncmp(line.c_str(), "server", 6)){
             tabTurn_zero(tab2, 8);
@@ -88,24 +82,18 @@ int parserObject::open_config_file(){
                 split_lines(line, ' ', cf, tab2);
                 tabTurn_zero(tab, 9);
                 if (!strncmp(line.c_str(), "location", 8)){
-					if (locat_split_lines(line, ' ', loca, tab)){
-                        std::cout << "Invalid Directive !\n";
+					if (locat_split_lines(line, ' ', loca, tab))
                         throw (std::invalid_argument("Invalid Directive !"));
-                    }
                     while (getline(lin, line)){
 						i = 0;
                         while (line[i] == '\t')
                             i++;
                         line.erase(0, i);
-						if (locat_split_lines(line, ' ', loca, tab)){
-                            std::cout << "Invalid Directive !\n";
-                            throw (std::invalid_argument("Invalid Directive !"));
-                        }
+						if (locat_split_lines(line, ' ', loca, tab))
+                            throw (std::invalid_argument("Invalid Directive !!"));
                         if (line[0] == '}' && i == 1){
-                            if (check_blocks_dirc(tab)){
-                                std::cout << "2Syntax Error !!!" << std::endl;
-                                throw (std::invalid_argument("Syntax Error !!!"));
-                            }
+                            if (check_blocks_dirc(tab))
+                                throw (std::invalid_argument("Syntax Error !!"));
                             setDefaultsLocaDirectives(&loca, tab);
 							cf.vect.push_back(loca);
 							clean_location_directs(loca);
@@ -121,19 +109,12 @@ int parserObject::open_config_file(){
         if (line.size() == 0)
             continue;
         if (check_blocks_dirc2(tab2)){
-            std::cout << "33Syntax Error ---!!!" << std::endl;
             throw (std::invalid_argument("Syntax Error !!!"));
         }
         setDefaultsDirectives(&cf, tab2);
         this->server.push_back(cf);
         config_clean(cf);
     }
-
-    // std::cout << server[2].lsten[0] << std::endl;
-    // std::cout << server[2].lsten[1] << std::endl;
-    // std::cout << server[1].err_p[0] << std::endl;
-    // std::cout << server[1].err_p[1] << std::endl;
-    // std::cout << server[2].vect[2].l_path << std::endl;
 
     return (0);
 }
@@ -158,17 +139,17 @@ void parserObject::print_location_directs(std::vector<struct loca> vect){
     size_t i = 0;
 
     while (i < vect.size()){
-        std::cout << "-----******{{{{ LOCA }}}}******-----" << "\n";
-        std::cout << "root : " << vect[i].root << "\n";
-        std::cout << "inde : " << vect[i].index << "\n";
-        std::cout << "auto : " << vect[i].autoIndex << "\n";
-        std::cout << "allo : " << vect[i].allowed_m << "\n";
-        std::cout << "deny : " << vect[i].deny << "\n";
-        std::cout << "redi : " << vect[i].redirect << "\n";
-        std::cout << "cext : " << vect[i].cgiExt << "\n";
-        std::cout << "cpat : " << vect[i].cgiPath << "\n";
-        std::cout << "locp : " << vect[i].l_path << "\n";
-        std::cout << "-----******{{{{ LOCA }}}}******-----" << "\n";
+        // std::cout << "-----******{{{{ LOCA }}}}******-----" << "\n";
+        // std::cout << "root : " << vect[i].root << "\n";
+        // std::cout << "inde : " << vect[i].index << "\n";
+        // std::cout << "auto : " << vect[i].autoIndex << "\n";
+        // std::cout << "allo : " << vect[i].allowed_m << "\n";
+        // std::cout << "deny : " << vect[i].deny << "\n";
+        // std::cout << "redi : " << vect[i].redirect << "\n";
+        // std::cout << "cext : " << vect[i].cgiExt << "\n";
+        // std::cout << "cpat : " << vect[i].cgiPath << "\n";
+        // std::cout << "locp : " << vect[i].l_path << "\n";
+        // std::cout << "-----******{{{{ LOCA }}}}******-----" << "\n";
         i++;
     }
     
@@ -242,7 +223,6 @@ void parserObject::setDefaultsDirectives(struct config *cf, int *tab){
     // int len = server.size();
     // while (y < len){
     i = 0;
-    std::cout << "Root indice = " << tab[0] << std::endl;
     while (i < 7){
         if (tab[i] == 0){
             switch (i)
@@ -253,7 +233,6 @@ void parserObject::setDefaultsDirectives(struct config *cf, int *tab){
                 case 1 :
                     break;
                 case 2 :
-
                     break;
                 case 3 :
                     break;
@@ -342,7 +321,6 @@ int parserObject::locat_split_lines(std::string line, char sep, struct loca& _lo
         _location.redirect = &line[i + 1];
         _location.redirect.erase(_location.redirect.size() - 1, _location.redirect.size());
         tab[4] += 1;
-        std::cout << "REDIRECT == " << _location.redirect << std::endl;
     }
     else if (res == "allowed_methods"){
         _location.allowed_m = &line[i + 1];
@@ -364,13 +342,11 @@ int parserObject::locat_split_lines(std::string line, char sep, struct loca& _lo
     else if (res == "location"){
         _location.l_path= &line[i + 1];
         _location.l_path.erase(_location.l_path.size() - 2, _location.l_path.size());
-        std::cout << "location path = " << _location.l_path<<"|" <<std::endl;
         tab[8] += 1;
     }
     else if (res != "root" && res != "index" && res != "serever_name" && res != "autoindex" && res != "deny" && res != "redirect" && \
         res != "allowed_methods" && res != "cgiExt" && res != "cgiPath" && res != "}" && res.size() > 0)
         return (1);
-    std::cout << "REDIRECT 11 == " << _location.redirect << std::endl;
     return (0);
 }
 
@@ -414,7 +390,7 @@ void parserObject::split_method_lines(std::string line, struct config& conf, int
         if (isupper(line[i]))
             i++;
         else{
-            std::cout << "Those values must be Uppercase !\n";
+            std::cerr << "Those values must be Uppercase !\n";
             exit (1);
         }
     }
@@ -444,7 +420,7 @@ void parserObject::split_listen_line(std::string line, struct config& conf){
     rm_blanks(line);
     while (line[i] != ':'){
         if(isspace(line[i])){
-            std::cout << "Invalid Syntax ADDRESS IP & PORT !\n";
+            std::cerr << "Invalid Syntax ADDRESS IP & PORT !\n";
             exit (1);
         }
         i++;
@@ -456,7 +432,7 @@ void parserObject::split_listen_line(std::string line, struct config& conf){
     i = 0;
     while (i < port.size()){
         if (std::isalpha(port[i]) || isspace(port[i])){
-            std::cout << "Invalid Port Number !\n";
+            std::cerr << "Invalid Port Number !\n";
             exit (1);
         }
         i++;
@@ -480,7 +456,6 @@ void parserObject::split_lines(std::string line, char sep, struct config& conf, 
     // }
     for (; line[i] != ' ' && line.size() > i && line[i] != '}'; i++);
     res = line.substr(0, i);
-    std::cout << "result line = " << res << std::endl;
     if (res == "listen"){
         conf.listen = &line[i + 1];
         split_listen_line(&line[i + 1], conf);
@@ -490,7 +465,6 @@ void parserObject::split_lines(std::string line, char sep, struct config& conf, 
         conf.pRoot = &line[i + 1];
         conf.pRoot.erase(conf.pRoot.size() - 1, conf.pRoot.size());
         tab[0] += 1;
-        std::cout << "tab daz mn hna" << tab[0] << std::endl;
     }
     else if (res == "index"){
         conf.index = &line[i + 1];
@@ -573,7 +547,7 @@ int parserObject::lexical_analyser(){
     
 
     if (!lin.is_open()){
-        std::cout << "Can't open this file !" << std::endl;
+        std::cerr << "Can't open this file !" << std::endl;
         return (1);
     }
     while (getline(lin, line)){
@@ -584,13 +558,13 @@ int parserObject::lexical_analyser(){
         if (line.size() == 0)
             continue;
         if (!strncmp(line.c_str(), "server", 6) && i != 0){
-            std::cout << "Syntax Error 1!" << std::endl;
+            std::cerr << "Syntax Error 1!" << std::endl;
             return (1);
         }
         pos = line.find("{", 0);
         if (strncmp(line.c_str(), "server", 6) != 0 || pos != 7 || \
             line.size() != 8 || line[6] != ' '){
-            std::cout << "Error 10\n";
+            std::cerr << "Error 10\n";
             return (1);
         }
         while (getline(lin, line)){
@@ -601,14 +575,14 @@ int parserObject::lexical_analyser(){
             if (line.size() > 0){
                 if (strncmp(line.c_str(), "location", 8) && (line[line.size() - 1] != ';' || check_dup_char(line, ';')) && \
                     line[0] != '}'){
-                    std::cout << "ERRRRRR \n";
+                    std::cerr << "ERRRRRR \n";
                     return (1);
                 }
             }
             if (line[0] == '}' && j == 0 && !line.size())
                 continue;
             if (j != 1 && line[0] != '}' && line.size() != 0){
-                std::cout << "Error Nw\n";
+                std::cerr << "Error Nw\n";
                 return (1);
             }
             flag = 0;
@@ -628,11 +602,11 @@ int parserObject::lexical_analyser(){
                             return (1);
                     }
                     if (y != 2 && line.size() != 0 && line[0] != '}'){
-                        std::cout << "Syntax Error !7" << std::endl;
+                        std::cerr << "Syntax Error !7" << std::endl;
                         return (1);
                     }
                     if (line[0] == '}' && y == 1 && line.size() != 1){
-                        std::cout << "Syntax Error 12\n";
+                        std::cerr << "Syntax Error 12\n";
                         return (1);
                     }
                     else if (line.find("{") != std::string::npos || \
@@ -646,12 +620,12 @@ int parserObject::lexical_analyser(){
                 }
             }
             else if (line[0] == '}' && y == 1 && line.size() != 1){
-                std::cout << "Syntax Error 16\n";
+                std::cerr << "Syntax Error 16\n";
                 return (1);
             }
             else if (line.find("{") != std::string::npos || \
                 (line.find("}") != std::string::npos && line.size() != 1)){
-                std::cout << "Syntax Error 15!\n";
+                std::cerr << "Syntax Error 15!\n";
                 return (1);
             }
             if (line[0] == '}' && j == 1 && !flag)
@@ -676,10 +650,11 @@ struct config parserObject::get_location_vect(){
     return (this->conf);
 }
 
-parserObject::~parserObject(){
-    std::cout << "destr\n";
-}
+parserObject::~parserObject(){ ; }
 
 std::vector<config> parserObject::getServerConfig(){
     return (this->server);
 }
+
+std::vector<config>::iterator parserObject::getItBegin(){return this->server.begin();}
+std::vector<config>::iterator parserObject::getItend(){return this->server.end();}

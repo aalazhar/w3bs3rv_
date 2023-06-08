@@ -49,30 +49,21 @@ private:
     struct config conf;
     std::vector<config> server;
 public:
-    std::vector<config>::iterator getItBegin(){return this->server.begin();}
-    std::vector<config>::iterator getItend(){return this->server.end();}
     parserObject(std::string f_name);
     std::string get_listen();
     std::string get_error();
     int check_blocks_dirc(int *tab);
     int check_blocks_dirc2(int *tab);
     struct config get_location_vect();
-    int check_loc_dirc(std::string line);
     int lexical_analyser();
     int check_dup_char(std::string line, char c);
-    std::string strtrim(std::string line, std::ifstream& lin);
-    std::string strtrim_loca(std::string line, std::ifstream& lin);
     void print_directs_keys_val(std::vector<struct config> server);
-    void collect_directs_keys_val(std::ifstream& lin, std::string& line);
     void clean_location_directs(struct loca& loca);
     void config_clean(struct config& conf);
     void print_location_directs(std::vector<struct loca> vect);
-    void collect_location_directs(std::ifstream& kin, std::string& line, struct loca& loca);
     int open_config_file();
-    int check_server_direct();
     void split_lines(std::string line, char sep, struct config& conf, int *tab);
     int locat_split_lines(std::string line, char sep, struct loca& loca, int *tab);
-    void split_lines(std::string line, char sep);
     int check_whiteSpace(char c);
     int check_check_check(std::string line);
     void split_lines(std::string line, struct config& conf);
@@ -84,7 +75,8 @@ public:
     void setDefaultsDirectives(struct config *cf, int *tab);
     void setDefaultsLocaDirectives(struct loca *loca, int *tab);
     std::vector<config> getServerConfig();
-    void print_text();
+    std::vector<config>::iterator getItBegin();
+    std::vector<config>::iterator getItend();
     ~parserObject();
 
 };
