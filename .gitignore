@@ -31,7 +31,6 @@
 *.out
 *.app
 
-UPLOAD
 UPLOADS
 auto
 webServ

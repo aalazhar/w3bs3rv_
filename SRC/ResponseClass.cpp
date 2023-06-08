@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RESP.cpp                                           :+:      :+:    :+:   */
+/*   ResponseClass.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:16 by megrisse          #+#    #+#             */
-/*   Updated: 2023/06/08 06:30:06 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/06/08 23:54:46 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ void	Res::resetvalues() {
 	cookie = "";
 	autoInx = false;
 	redirection_path = "";
-	// root = "";
-	// index = "";
 }
 
 Res::Res(struct config server, int serverfd, int clientfd) : Req(serverfd, clientfd, server) {
@@ -157,11 +155,6 @@ bool	Res::IfMatch(std::string url) {
 	return false;
 }
 
-// void	Res::isloca() {
-
-	
-// }
-
 void Res::splitUrl(std::string url) {
 	
 	size_t	pos = url.find("?");
@@ -201,10 +194,6 @@ void	Res::SplitRed() {
 void	Res::getifQuerry(std::string url) {
 
 	splitUrl(url);
-	// std::cout << "GET IF QUERRRYYY " << std::endl;
-	// std::cout << "file PATH " << filePath << std::endl;
-	// std::cout << "INDEX " << index << std::endl;
-	// std::cout << "ROTTT == " << root << std::endl;
 	if ((filePath.empty() && !index.empty()))
 		filePath = root + index;
 	else if (IfRedirection(filePath)) {
@@ -225,7 +214,7 @@ void	Res::getifQuerry(std::string url) {
 	type = filePath.substr(pos + 1, filePath.size() - pos);
 }
 
-int	checkpath(std::string &path) {
+int	checkpath(std::string path) {
 
 	struct stat file_st;
 
@@ -390,11 +379,10 @@ void	Res::buildCGIResponse() {
 	type = t;
 	GetCookie();
 	CGI	cgi(filePath, getMETHOD(), type, "", getBody(), Querry, getBody().length(), cookie);
-	if (type == "php" or type == "pl") {
+	if (checkpath(filePath) and (type == "php" or type == "pl")) {
 
 		size_t	i = 0;
 		size_t	size = response.size() - 2;
-
 		cgiBuff = cgi.executeCGI();
 		response = vectorToString(cgiBuff);
 		while (response.find("\r\n\r\n", i) != std::string::npos || response.find("\r\n\r\n", i) == i) {
@@ -416,7 +404,6 @@ void	Res::buildCGIResponse() {
 		for (size_t i = 0; i < response_body.length(); i++)
 			fileData.push_back(response_body[i]);
 		file_size = fileData.size();
-		// cgiBuff.clear();
 	}
 	else {
 		
@@ -702,7 +689,7 @@ void	Res::POST() {
 	getpathtoUp();
 	getifQuerry(getURL());
 	GetCookie();
-	if (type == "php" or type == "pl") {
+	if (checkpath(filePath) and (type == "php" or type == "pl")) {
 
  		CGI	cgi(filePath, getMETHOD(), type, "", getBody(), Querry, getBody().length(), cookie);
 		size_t	i = 0;
@@ -771,7 +758,6 @@ void	Res::DELETE() {
 
 bool	Res::CheckMethodIfAllowed() {
 
-	// getifQuerry(getURL());
 	std::string Path = getURL();
 	if (Path[0] == '/')
 		Path = Path.substr(1);
