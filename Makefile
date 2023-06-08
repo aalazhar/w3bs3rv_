@@ -4,7 +4,7 @@ CC = c++
 
 SANI = -fsanitize=address
 
-CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -g
+CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -g $(SANI)
 
 OBJ_FILE = OBJ/
 FOBJ = OBJ

@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:16 by megrisse          #+#    #+#             */
-/*   Updated: 2023/06/08 02:38:28 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/06/08 06:30:06 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ Res::Res(struct config server, int serverfd, int clientfd) : Req(serverfd, clien
 	autoInx = false;
 	redirection_path = "";
 	cookie = "";
+	filePath = "";
 }
 
 std::string getFilePath(std::string url){
@@ -211,9 +212,13 @@ void	Res::SplitRed() {
 	}
 }
 
-void	Res::getifQuerry(std::string &url) {
+void	Res::getifQuerry(std::string url) {
 
 	splitUrl(url);
+	std::cout << "GET IF QUERRRYYY " << std::endl;
+	std::cout << "file PATH " << filePath << std::endl;
+	std::cout << "INDEX " << index << std::endl;
+	std::cout << "ROTTT == " << root << std::endl;
 	if ((filePath.empty() && !index.empty()))
 		filePath = root + index;
 	else if (IfRedirection(filePath)) {
@@ -367,7 +372,7 @@ void	Res::readContent() {
 	getHeadersRes();
 }
 
-int	Res::checkCgipath(std::string &path) {
+int	Res::checkCgipath(std::string path) {
 
 	std::vector<loca>::iterator	it = Conf.vect.begin();
 	while (it != Conf.vect.end()) {
@@ -784,9 +789,39 @@ void	Res::DELETE() {
 	mergeResponse();
 }
 
+bool	Res::CheckMethodIfAllowed() {
+
+	// getifQuerry(getURL());
+	std::string Path = getURL();
+	if (Path[0] == '/')
+		Path = Path.substr(1);
+	std::vector<loca>::iterator it = Conf.vect.begin();
+	std::string method = getMETHOD();
+
+	for (; it != Conf.vect.end(); it++) {
+
+		std::cout << "LOCATION == " << it->l_path << " FilePath " << Path << std::endl;
+		if (Path == it->l_path) {
+			
+			std::cout << "ZABIIII" << std::endl;
+			std::vector<std::string>::iterator it1 = it->a_meth.begin();
+			for (; it1 != it->a_meth.end(); it1++) {
+
+				std::cout << "METHODS AA == " << *it1 << std::endl;
+				if (method == *it1) {
+					return true;
+				}
+			}
+			setStep(ERROR);
+			return false;
+		}
+	}
+	return true;
+}
+
 void	Res::buildResponse() {
 
-	if (this->getStep() == ERROR or  this->getStep() == TIMEOUT)
+	if (this->getStep() == ERROR or  this->getStep() == TIMEOUT or !CheckMethodIfAllowed())
 		buildErrorResponse();
 	else if (this->getMETHOD() == "POST")
 		POST();

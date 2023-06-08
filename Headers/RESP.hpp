@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:46 by megrisse          #+#    #+#             */
-/*   Updated: 2023/06/07 22:43:56 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/06/08 06:18:25 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ public :
 	void		buildErrorResponse();
 	void		buildNormalResponse();
 	void		buildCGIResponse();
-	void		getifQuerry(std::string &);
-	int			checkCgipath(std::string &path);
+	void		getifQuerry(std::string);
+	int			checkCgipath(std::string);
 	void		readErrorsfiles(std::string);
 	void		readContent();
     void    	resetvalues();
@@ -105,4 +105,5 @@ public :
 	void		BuildRedRes();
 	void		SplitRed();
 	void		GetCookie();
+	bool		CheckMethodIfAllowed();
 };
