@@ -13,7 +13,7 @@ sub trim {
 
 print $form->header;
 print $form->start_html(-title => 'Infos page');
-print $form->h1("(SALAM)");
+print $form->h1("Please enter your Full Name & Addresse");
 
 if ($form->param){
     my $fname = ($form->param('fullName'));

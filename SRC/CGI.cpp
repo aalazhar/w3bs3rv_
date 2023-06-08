@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:56:14 by aalazhar          #+#    #+#             */
-/*   Updated: 2023/06/06 21:14:43 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/06/08 02:23:18 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ CGI::CGI(){
 
 CGI::CGI(std::string fileName_, std::string method_, \
         std::string cntType_, std::string locaPath_, \
-        std::string body_, std::string quiry_, int cntLenght_){
+        std::string body_, std::string quiry_, int cntLenght_, std::string Cookie_){
 		
         this->fileName = fileName_;
         this->method = method_;
@@ -27,14 +27,18 @@ CGI::CGI(std::string fileName_, std::string method_, \
         this->body = body_;
         this->quiry = quiry_;
         this->cntLenght = cntLenght_;
+		this->cookie = Cookie_;
 		vec.clear();
 		std::string code("200");
+		if (this->method == "POST")
+			this->quiry = this->body;
 		vec.push_back(std::string("QUERY_STRING=" + this->quiry));
 		vec.push_back(std::string("REQUEST_METHOD="+ this->method));
 		vec.push_back(std::string("REDIRECT_STATUS=" + code));
 		vec.push_back(std::string("SCRIPT_FILENAME=" + fileName));
 		vec.push_back(std::string("CONTENT_TYPE=" + this->cntType));
-		std::cout << "FRRRRR Body = " << this->body << std::endl;
+		if (!cookie.empty())
+			vec.push_back(std::string("HTTP_COOKIE=" + this->cookie));
 		vec.push_back(std::string("BODY=" + this->body));
 }
 

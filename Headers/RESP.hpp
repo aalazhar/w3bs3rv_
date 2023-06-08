@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:46 by megrisse          #+#    #+#             */
-/*   Updated: 2023/06/07 03:00:11 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/06/07 22:43:56 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ private :
 	std::string							filePath;
 	std::string							redirection_path;
 	std::string							_Cgipath;
+	std::string							cookie;
 	std::string							status_line;
 	std::map<int, std::string>			CodesMsgs;
 	std::map<int, std::string>			errorsFiles;
@@ -103,4 +104,5 @@ public :
 	bool		IfRedirection(std::string);
 	void		BuildRedRes();
 	void		SplitRed();
+	void		GetCookie();
 };

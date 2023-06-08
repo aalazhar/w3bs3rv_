@@ -1,9 +1,14 @@
 <?php
+    session_name('XXX');
     session_start();
-    ob_start();
     if (isset($_SESSION['login'])){
-        header("location: welcom.php");
+        $login = $_SESSION['login'];
+        echo "<h1 style='font-family: 'Courier new''>Hello Mr $login.</h1>"; 
+        echo "<h2>You are loged in now succefully.</h2>";
+        echo "If you want to logout, <a href='logoutx.php'>click here.</a>";
+        exit;
     }
+
 ?>
 
 <style type=""text/css">

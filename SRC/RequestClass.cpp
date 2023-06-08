@@ -73,9 +73,8 @@ int Req::parseBody(std::string &s){
     size_t BodySize = 0;
     if (HEADERS.find("Content-Length") != HEADERS.end())
         BodySize = (size_t)std::atoi(HEADERS["Content-Length"].c_str());
-    std::cout << "Content-Length  : " << BodySize << std::endl;
     if (Body.size() >= BodySize)
-        return std::cout << "Content-Length  : " << BodySize  << " && Body.size() : " << Body.size() <<  std::endl,step = DONE;
+        return step = DONE;
     return 0;
 }
 

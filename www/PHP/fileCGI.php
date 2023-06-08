@@ -1,9 +1,14 @@
 <?php
     if ($_SERVER['REQUEST_METHOD'] === 'GET'){
         $name = $_GET['fname'];
-        $age = $_GET['lname'];
+        $last = $_GET['lname'];
+        echo "<hr>";
         echo "<h1>Hello Mrs $name</h1>";
-        echo "<h1>But this age: $age is too young to watch French films!</h1>";
+        echo "<hr>";
+        echo "<hr>";
+        echo "<hr>";
+        echo "<h1> You Are Welcome $last </h1>";
+        echo "<hr>";
     }
     else if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $name = $_POST['fname'];

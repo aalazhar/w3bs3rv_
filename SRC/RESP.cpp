@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:16 by megrisse          #+#    #+#             */
-/*   Updated: 2023/06/07 04:48:09 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/06/08 02:38:28 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	Res::resetvalues() {
 	this->type = "";
 	root = Conf.pRoot;
 	index = Conf.index;
+	cookie = "";
 	autoInx = false;
 	redirection_path = "";
 	// root = "";
@@ -71,6 +72,7 @@ Res::Res(struct config server, int serverfd, int clientfd) : Req(serverfd, clien
 	index = Conf.index;
 	autoInx = false;
 	redirection_path = "";
+	cookie = "";
 }
 
 std::string getFilePath(std::string url){
@@ -104,7 +106,6 @@ void	Res::autoindex() {
 		root = "." + root;
 	std::string	html = "<!DOCTYPE html><html><head><title> autoindex </title></head><body>";
 	html += "<h1> autoindex of " + root + "</h1>";
-	std::cout << "ROOT == " << root << std::endl;
     directory = opendir(root.c_str());
     if (directory == NULL) {
         std::cerr << "Error opening directory." << std::endl;
@@ -133,13 +134,10 @@ bool	Res::CheckIfLoction(std::string path) {
 	if (path[0] == '/')
 		path = path.substr(1);
 	for (; it != Conf.vect.end(); it++) {
-		std::cout << "L_PATH == " << it->l_path << " PATH = " << path << std::endl;
 		if (it->l_path == path) {
 			
 			root += it->l_path;
 			this->index = it->index;
-			std::cout << "DAZ MN HNAAAA + = " << index << std::endl;
-			std::cout << "DAZ MN HNAAAA + = " << root << std::endl;
 			return true;
 		}
 	}
@@ -153,7 +151,7 @@ bool	Res::GetIfAutoIndex(std::string path) {
 	for (; it != Conf.vect.end(); it++) {
 
 		if (it->l_path == path and it->autoIndex == "on")
-			return std::cout << "DAZ MN HNAAAA +++ "<< std::endl, true;
+			return true;
 	}
 	return false;
 }
@@ -164,7 +162,6 @@ bool	Res::IfMatch(std::string url) {
 	for (; it != Conf.vect.end(); it++) {
 
 		std::string match = root + it->l_path;
-		std::cout << "url == " << url << " PATH = " << match << std::endl;
 		size_t found = url.find(it->l_path);
 		size_t froot = url.find(root);
 		if (found != std::string::npos && froot == std::string::npos)
@@ -217,10 +214,6 @@ void	Res::SplitRed() {
 void	Res::getifQuerry(std::string &url) {
 
 	splitUrl(url);
-	std::cout << "url++ = " << url << std::endl;
-	std::cout << "ROOt++ = " << root << std::endl;
-	std::cout << "INDEX++ = " << index << std::endl;
-	std::cout << "filePath++ = " << filePath << std::endl;
 	if ((filePath.empty() && !index.empty()))
 		filePath = root + index;
 	else if (IfRedirection(filePath)) {
@@ -237,17 +230,14 @@ void	Res::getifQuerry(std::string &url) {
 		filePath = root + filePath;
 	if (index.empty() && GetIfAutoIndex(url))
 		autoInx = true;
-	std::cout << "FILEPATH   ++- = " << filePath << std::endl;
 	size_t pos = filePath.rfind(".");
 	type = filePath.substr(pos + 1, filePath.size() - pos);
-	std::cout << "QUERRY == " << Querry << "|" << std::endl;
 }
 
 int	checkpath(std::string &path) {
 
 	struct stat file_st;
 
-	std::cout << "CHECK = " << path << std::endl;
 	if (!stat(path.c_str(), &file_st)) {
 
 		if (S_ISREG(file_st.st_mode))
@@ -340,9 +330,7 @@ void	Res::getHeadersRes() {
 	for (size_t i = 0; i < headers.size(); i++) {
 		
 		_headers.push_back(headers[i]);
-		std::cout << headers[i];
 	}
-	std::cout << std::endl;
 	
 }
 
@@ -350,12 +338,7 @@ void	Res::readContent() {
 
 	std::ifstream	file;
 
-	std::cout << "FIle = " << filePath << std::endl;  
-	std::cout << "HA root " << root << std::endl;
-	// filePath = root + filePath;
-	// if (filePath[0] != '.')
-	// 	filePath = "." + filePath;
-	std::cout << "HA Lfile kml " << filePath << std::endl;
+	std::cout << "PATH ++ == " << filePath << std::endl;
 	if (checkpath(filePath)) {
 
 		file.open(filePath, std::ios::in);
@@ -414,19 +397,14 @@ void	Res::buildCGIResponse() {
 
 	t = filePath.substr(filePath.rfind(".") + 1 , filePath.size() - filePath.rfind("."));
 	type = t;
-	std::cout << "KKK = " << getMETHOD() << std::endl;
-	CGI	cgi(filePath, getMETHOD(), type, "", getBody(), Querry, getBody().length());
-	std::cout << "FILEE CGI " << filePath << std::endl;
-	std::cout << "TTTT = " << type << std::endl;
+	GetCookie();
+	CGI	cgi(filePath, getMETHOD(), type, "", getBody(), Querry, getBody().length(), cookie);
 	if (type == "php" or type == "pl") {
 
 		size_t	i = 0;
 		size_t	size = response.size() - 2;
 
 		cgiBuff = cgi.executeCGI();
-		std::cout << "khrej mn build respmake = " << cgiBuff.size() << std:: endl;
-		for (size_t i = 0; i < cgiBuff.size(); i++)
-			std::cout << "KKKKKKKKK +- " << cgiBuff[i] << std::endl;
 		response = vectorToString(cgiBuff);
 		while (response.find("\r\n\r\n", i) != std::string::npos || response.find("\r\n\r\n", i) == i) {
 
@@ -457,19 +435,12 @@ void	Res::buildCGIResponse() {
 		code = 404;
 		readErrorsfiles(errorsFiles[code]);
 	}
-		std::cout << "khrej mn build respmake 1= " << cgiBuff.size() << std:: endl;
-		for (size_t i = 0; i < cgiBuff.size(); i++)
-			std::cout << "KKKKKKKKK +-1 " << cgiBuff[i] << std::endl;
 	getHeadersRes();
 	mergeResponse();
-	std::cout << "i'm out" << std::endl;
-	// cgi.printString();
-	// std::vector<std::string> 
 }
 
 void	Res::buildNormalResponse() {
 
-	std::cout << "auto = " << index << std::endl;
 	readContent();
 	mergeResponse();
 }
@@ -498,7 +469,7 @@ void	Res::mergeResponse() {
 			Resp.push_back(fileData[i - _headers.size()]);
 		} 
 	}
-	std::cout << "DKHAL L MERGE " << std::endl;
+	printvector(Resp, 666);
 }
 
 bool	Res::IfRedirection(std::string path) {
@@ -513,7 +484,6 @@ bool	Res::IfRedirection(std::string path) {
 
 			root += it->l_path;
 			this->redirection_path = it->redirect;
-			std::cout << "L7WA HADA == |" << redirection_path << "|" << std::endl;
 			return true;
 		}
 	}
@@ -522,7 +492,6 @@ bool	Res::IfRedirection(std::string path) {
 
 void	Res::BuildRedRes() {
 
-	std::cout << "DAZ MN RED RES" << std::endl;
 	getHeadersRes();
 	mergeResponse();
 }
@@ -530,7 +499,6 @@ void	Res::BuildRedRes() {
 void	Res::GET() {
 
 	getifQuerry(getURL());
-	std::cout << "root = " << root << std::endl;
 	if (type == "php" or type == "pl")
 		setStep(CGII);
 	else if (!redirection_path.empty())
@@ -550,7 +518,6 @@ void	Res::GET() {
 			BuildRedRes();
 			break ;
 	}
-	std::cout << "end GET" << std::endl;
 }
 
 std::string	Res::getBoundry() {
@@ -575,7 +542,6 @@ void	Res::getUpFname(std::string body) {
 		sh = body.substr(pos + from.size(), pos1);
 		pos = sh.find("\"");
 		upld_file_name = sh.substr(0, pos);
-		std::cout << "file = " << upld_file_name << "|" << std::endl;
 	}
 }
 
@@ -620,18 +586,15 @@ void	Res::beginInPOST() {
 	if (binary == true)
 		upld_body = getBody();
 	upld_file_name = filename;
-	std::cout << "file li ghadi n uploadi = " << upld_file_name << std::endl;
 }
 
 void	Res::getpathtoUp() {
 
 	path_to_upld = getURL();
-	std::cout << "----------" << path_to_upld << std::endl;
 	if (path_to_upld[0] == '/')
 		path_to_upld = path_to_upld.substr(1);
 	if (path_to_upld[path_to_upld.size() - 1] != '/')
 		path_to_upld += "/";
-	std::cout << "+++++++++++" << path_to_upld << std::endl;
 }
 
 void	Res::CreateFile() {
@@ -641,8 +604,13 @@ void	Res::CreateFile() {
 	Generatename();
 	if (upld_file_name == "")
 		upld_file_name = "upload." + type;
+	if (upld_body.empty()) {
+
+		code = 400;
+		readErrorsfiles(errorsFiles[code]);
+		return ;
+	}
 	file_name = path_to_upld + upld_file_name;
-	std::cout << "FILLLEE == " << file_name << std::endl;
 	file.open(file_name, std::ios::binary);
 	if (!file.is_open())
 		code = 500;
@@ -723,9 +691,11 @@ void	Res::Handl_encoded() {
 	readErrorsfiles(errorsFiles[code]);
 }
 
-void Res::POST_CGI(){
-	
-	
+void	Res::GetCookie() {
+
+	_map headers_ = getHEADERS();
+	if (headers_.find("Cookie") != headers_.end())
+		cookie = headers_.find("Cookie")->second;
 }
 
 void	Res::POST() {
@@ -742,15 +712,10 @@ void	Res::POST() {
 	tt = tt.substr(pos + 1, tt.length() - pos);
 	getpathtoUp();
 	getifQuerry(getURL());
-	std::cout << "filePath == |" << path_to_upld << std::endl;
+	GetCookie();
 	if (type == "php" or type == "pl") {
 
-		std::cout << "MAYMKENCH" << std::endl;
-		std::cout << "filePath = " << filePath << std::endl;
-		std::cout << "method = " << getMETHOD() << std::endl;
-		std::cout << "Body = " << getBody() << std::endl;
-		std::cout << "querry = " << Querry << std::endl;
- 		CGI	cgi(filePath, getMETHOD(), type, "", getBody(), Querry, getBody().length());
+ 		CGI	cgi(filePath, getMETHOD(), type, "", getBody(), Querry, getBody().length(), cookie);
 		size_t	i = 0;
 		size_t	size = response.size() - 2;
 		cgiBuff = cgi.executeCGI();
@@ -760,11 +725,8 @@ void	Res::POST() {
 			std::string	resp = response.substr(i, response.find("\r\n", i) - i);
 			response_header += resp;
 			response_header += CRLF;
-			if (!resp.find("Status: ")) {
-
+			if (!resp.find("Status: "))
 				code = std::atoi(resp.substr(8, 3).c_str());
-				std::cout << "CODE +++ " << code << std::endl;
-			}
 			else if (!resp.find("Content-type: "))
 				this->type = resp.substr(14, resp.size());
 			i += resp.size() + 2;
