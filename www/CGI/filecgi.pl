@@ -14,7 +14,6 @@ sub trim {
 print $form->header;
 print $form->start_html(-title => 'Infos page');
 print $form->h1("Please enter your Full Name & Addresse");
-while (1);
 if ($form->param){
     my $fname = ($form->param('fullName'));
     my $addre = ($form->param('address'));

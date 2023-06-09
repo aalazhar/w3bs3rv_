@@ -364,7 +364,6 @@ int parserObject::locat_split_lines(std::string line, char sep, struct loca& _lo
         _location.l_path.erase(_location.l_path.size() - 2, _location.l_path.size());
         if (_location.l_path[0] == ' ')
             return(1);
-        std::cout << "hereee-- " << _location.l_path << std::endl;
         tab[8] += 1;
     }
     else if (res != "root" && res != "index" && res != "serever_name" && res != "autoindex" && res != "deny" && res != "redirect" && \

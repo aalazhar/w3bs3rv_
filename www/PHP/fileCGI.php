@@ -1,7 +1,6 @@
 <?php
 ob_start();
 set_time_limit(3);
-while (1);
 echo $_SERVER['REQUEST_METHOD'];
 if ($_SERVER['REQUEST_METHOD'] !== 'GET'){
     echo ":ERRO";

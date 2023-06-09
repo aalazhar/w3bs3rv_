@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ResponseClass.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalazhar <aalazhar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:16 by megrisse          #+#    #+#             */
-/*   Updated: 2023/06/09 01:48:44 by aalazhar         ###   ########.fr       */
+/*   Updated: 2023/06/09 03:50:34 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -391,7 +391,6 @@ void	Res::buildCGIResponse() {
 		}
 		else {
 			response = vectorToString(cgiBuff);
-			std::cout << "VEC ||| " << response << std::endl;
 			while (response.find("\r\n\r\n", i) != std::string::npos || response.find("\r\n\r\n", i) == i) {
 
 				std::string	resp = response.substr(i, response.find("\r\n", i) - i);
@@ -709,7 +708,6 @@ void	Res::POST() {
 		}
 		else {
 			response = vectorToString(cgiBuff);
-			std::cout << "VEC1 ||| " << response << std::endl;
 			while (response.find("\r\n\r\n", i) != std::string::npos || response.find("\r\n\r\n", i) == i) {
 				std::string	resp = response.substr(i, response.find("\r\n", i) - i);
 				response_header += resp;

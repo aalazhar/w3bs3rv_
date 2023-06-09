@@ -98,7 +98,7 @@ void webServ::lunche(){
     for (ServerVec::iterator it = this->Servers.begin(); it != this->Servers.end(); it++){
         keventUP(kq, it->getSock(), EVFILT_READ, EV_ADD);
     }
-    std::cout << "\033[32;3m RINNING SERVER DONE \033[0m" << std::endl;
+    std::cout << "\033[32;3m RUNNING SERVER DONE \033[0m" << std::endl;
     for (;;){
 
 		n_event = kevent(kq, NULL, 0, events, MAXEVENT, &timeout);

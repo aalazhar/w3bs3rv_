@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   CGI.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalazhar <aalazhar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:56:14 by aalazhar          #+#    #+#             */
-/*   Updated: 2023/06/09 01:39:14 by aalazhar         ###   ########.fr       */
+/*   Updated: 2023/06/09 03:52:15 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ std::string	getdir(std::string path) {
 	std::string dir = "";
 	if (pos != std::string::npos)
 		dir = path.erase(pos, path.size());
-	std::cout << "DIR ++++ " << dir << std::endl;
 	return "../" + dir;
 }
 
