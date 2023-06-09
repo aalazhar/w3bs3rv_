@@ -1,12 +1,16 @@
 <?php
 // set the expiration date to one hour ago
-setcookie("hammza", "ghayerha", time() - 50000000);
+setcookie("hello", "motherfucker", time() - (86400 * 30));
 ?>
 <html>
 <body>
 
 <?php
-    echo "Cookie 'user' is deleted.";
+    echo "<hr>";
+    echo "<hr>";
+    echo "<h1>Cookie is deleted<h1>";
+    echo "<hr>";
+    echo "<hr>";
 ?>
 </body>
 </html>

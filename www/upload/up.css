@@ -2,6 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
+    background-color: #969696;
 }
 
 form {
@@ -9,16 +10,17 @@ form {
     display: inline-block;
     margin: 10px;
     padding: 12px 24px;
-    background-color: #2d8903;
+    border-color: #000000;
+    background-color: #DEB887;
     color: #ffffff;
     font-size: 16px;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 15px;
     transition: background-color 0.3s ease;
 }
 
 .bottom {
-    background-color: #169265;
+  background-color: rgba(128, 128, 128, 0.5);
   border: none;
   color: white;
   padding: 16px 32px;
@@ -37,10 +39,11 @@ input[type="file"] {
 
 input[type="submit"] {
     padding: 10px 20px;
-    background-color: #4CAF50;
-    color: #fff;
+    background-color: #8FBC8F;
+    color: #000000;
     border: none;
-    border-radius: 5px;
+    border-radius: 15px;
+    border-color: #000000;
     cursor: pointer;
     font-size: 14px;
 }
