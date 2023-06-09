@@ -77,6 +77,7 @@ public:
     std::vector<config> getServerConfig();
     std::vector<config>::iterator getItBegin();
     std::vector<config>::iterator getItend();
+    int test_only_nl(std::string name);
     ~parserObject();
 
 };

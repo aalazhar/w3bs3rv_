@@ -51,6 +51,24 @@ void parserObject::tabTurn_zero(int *tab, int size){
         tab[x] = 0;
 }
 
+int parserObject::test_only_nl(std::string name){
+    std::ifstream rin(name);
+    std::string line = "";
+    int flag = 0;
+
+    while (getline(rin, line)){
+        if (line.empty())
+            continue;
+        else{
+            flag = 1;
+            break;
+        }
+    }
+    if (flag)
+        return (1);
+    return (0);
+}
+
 int parserObject::open_config_file(){
     std::ifstream lin(this->fileName);
     std::string line;
@@ -67,6 +85,8 @@ int parserObject::open_config_file(){
     tabTurn_zero(tab2, 8);
     if (!lin.is_open())
         throw (std::invalid_argument("Can't open this file ! : " + this->fileName));
+    if (!test_only_nl(this->fileName))
+        throw (std::invalid_argument("This file is empty !!"));
     if (lin.peek() == EOF)
         throw (std::invalid_argument("This file is empty !!"));
     if (lexical_analyser())
@@ -342,6 +362,9 @@ int parserObject::locat_split_lines(std::string line, char sep, struct loca& _lo
     else if (res == "location"){
         _location.l_path= &line[i + 1];
         _location.l_path.erase(_location.l_path.size() - 2, _location.l_path.size());
+        if (_location.l_path[0] == ' ')
+            return(1);
+        std::cout << "hereee-- " << _location.l_path << std::endl;
         tab[8] += 1;
     }
     else if (res != "root" && res != "index" && res != "serever_name" && res != "autoindex" && res != "deny" && res != "redirect" && \
