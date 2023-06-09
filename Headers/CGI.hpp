@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   CGI.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aalazhar <aalazhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:54:32 by aalazhar          #+#    #+#             */
-/*   Updated: 2023/06/07 22:42:05 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/06/09 01:16:00 by aalazhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ private:
     std::string quiry;
     std::string cgiPath;
     std::string cookie;
+    bool        cgiErr;
     char buffer[1025];
     // char    *str;
     // std::vector<std::string> buff;
@@ -44,6 +45,7 @@ public :
         std::string body_, std::string quiry_, int cntLenght_, std::string Cookie);
     std::vector<std::string> executeCGI();
     void printString();
+    bool   getcgierr() {return cgiErr;};
     
     ~CGI();
 

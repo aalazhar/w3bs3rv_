@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   CGI.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aalazhar <aalazhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:56:14 by aalazhar          #+#    #+#             */
-/*   Updated: 2023/06/08 02:23:18 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/06/09 01:39:14 by aalazhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ CGI::CGI(std::string fileName_, std::string method_, \
         this->quiry = quiry_;
         this->cntLenght = cntLenght_;
 		this->cookie = Cookie_;
+		this->cgiErr = false;
 		vec.clear();
 		std::string code("200");
 		if (this->method == "POST")
@@ -49,6 +50,17 @@ char** vectos(std::vector<std::string> &vec, char**env) {
 	return env;
 }
 
+std::string	getdir(std::string path) {
+
+	size_t pos = path.rfind('/');
+
+	std::string dir = "";
+	if (pos != std::string::npos)
+		dir = path.erase(pos, path.size());
+	std::cout << "DIR ++++ " << dir << std::endl;
+	return "../" + dir;
+}
+
 std::vector<std::string> CGI::executeCGI(){
 
 	int fds[2];
@@ -65,6 +77,7 @@ std::vector<std::string> CGI::executeCGI(){
 	pid_t pid = fork();
 	char	*env[vec.size() + 1];
 	if(pid == 0){
+		chdir(getdir(fileName).c_str());
 		close(fds[0]);
 		dup2(fds[1], 1);
 		execve(filePath, args, vectos(vec, env));
@@ -72,6 +85,12 @@ std::vector<std::string> CGI::executeCGI(){
 	}
 	else {
 		waitpid(pid, &status, 0);
+		if (WIFEXITED(status)){
+			if (WEXITSTATUS(status) != 0){
+				this->cgiErr = true;
+				return buff;
+			}
+		}
 		close(fds[1]);
 		int r = 0;
 		r = read(fds[0], buffer, 1024);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RESP.cpp                                           :+:      :+:    :+:   */
+/*   ResponseClass.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aalazhar <aalazhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:16 by megrisse          #+#    #+#             */
-/*   Updated: 2023/06/08 06:30:06 by megrisse         ###   ########.fr       */
+/*   Updated: 2023/06/09 01:34:31 by aalazhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -390,33 +390,40 @@ void	Res::buildCGIResponse() {
 	type = t;
 	GetCookie();
 	CGI	cgi(filePath, getMETHOD(), type, "", getBody(), Querry, getBody().length(), cookie);
-	if (type == "php" or type == "pl") {
+	if (checkpath(filePath) and (type == "php" or type == "pl")) {
 
 		size_t	i = 0;
 		size_t	size = response.size() - 2;
 
 		cgiBuff = cgi.executeCGI();
-		response = vectorToString(cgiBuff);
-		while (response.find("\r\n\r\n", i) != std::string::npos || response.find("\r\n\r\n", i) == i) {
+		if (cgi.getcgierr() == true) {
 
-			std::string	resp = response.substr(i, response.find("\r\n", i) - i);
-			response_header += resp;
-			response_header += CRLF;
-			if (!resp.find("Status: "))
-				code = std::atoi(resp.substr(8, 3).c_str());
-			else if (!resp.find("Content-type: "))
-				this->type = resp.substr(14, resp.size());
-			i += resp.size() + 2;
+			code = 500;
+			readErrorsfiles(errorsFiles[code]);
 		}
-		while (response.find("\r\n", size) == size)
-			size -= 2;
-		response_body = response.substr(i, size - i);
-		if (fileData.size() > 0)
-			fileData.clear();
-		for (size_t i = 0; i < response_body.length(); i++)
-			fileData.push_back(response_body[i]);
-		file_size = fileData.size();
-		// cgiBuff.clear();
+		else {
+			response = vectorToString(cgiBuff);
+			std::cout << "VEC ||| " << response << std::endl;
+			while (response.find("\r\n\r\n", i) != std::string::npos || response.find("\r\n\r\n", i) == i) {
+
+				std::string	resp = response.substr(i, response.find("\r\n", i) - i);
+				response_header += resp;
+				response_header += CRLF;
+				if (!resp.find("Status: "))
+					code = std::atoi(resp.substr(8, 3).c_str());
+				else if (!resp.find("Content-type: "))
+					this->type = resp.substr(14, resp.size());
+				i += resp.size() + 2;
+			}
+			while (response.find("\r\n", size) == size)
+				size -= 2;
+			response_body = response.substr(i, size - i);
+			if (fileData.size() > 0)
+				fileData.clear();
+			for (size_t i = 0; i < response_body.length(); i++)
+				fileData.push_back(response_body[i]);
+			file_size = fileData.size();
+			}
 	}
 	else {
 		
@@ -702,31 +709,38 @@ void	Res::POST() {
 	getpathtoUp();
 	getifQuerry(getURL());
 	GetCookie();
-	if (type == "php" or type == "pl") {
+	if (checkpath(filePath) and (type == "php" or type == "pl")) {
 
  		CGI	cgi(filePath, getMETHOD(), type, "", getBody(), Querry, getBody().length(), cookie);
 		size_t	i = 0;
 		size_t	size = response.size() - 2;
 		cgiBuff = cgi.executeCGI();
-		response = vectorToString(cgiBuff);
-		while (response.find("\r\n\r\n", i) != std::string::npos || response.find("\r\n\r\n", i) == i) {
-			std::string	resp = response.substr(i, response.find("\r\n", i) - i);
-			response_header += resp;
-			response_header += CRLF;
-			if (!resp.find("Status: "))
-				code = std::atoi(resp.substr(8, 3).c_str());
-			else if (!resp.find("Content-type: "))
-				this->type = resp.substr(14, resp.size());
-			i += resp.size() + 2;
+		if (cgi.getcgierr() == true) {
+				code = 500;
+				readErrorsfiles(errorsFiles[code]);
 		}
-		while (response.find("\r\n", size) == size)
-			size -= 2;
-		response_body = response.substr(i, size - i);
-		if (fileData.size() > 0)
-			fileData.clear();
-		for (size_t i = 0; i < response_body.length(); i++)
-			fileData.push_back(response_body[i]);
-		file_size = fileData.size();
+		else {
+			response = vectorToString(cgiBuff);
+			std::cout << "VEC1 ||| " << response << std::endl;
+			while (response.find("\r\n\r\n", i) != std::string::npos || response.find("\r\n\r\n", i) == i) {
+				std::string	resp = response.substr(i, response.find("\r\n", i) - i);
+				response_header += resp;
+				response_header += CRLF;
+				if (!resp.find("Status: "))
+					code = std::atoi(resp.substr(8, 3).c_str());
+				else if (!resp.find("Content-type: "))
+					this->type = resp.substr(14, resp.size());
+				i += resp.size() + 2;
+			}
+			while (response.find("\r\n", size) == size)
+				size -= 2;
+			response_body = response.substr(i, size - i);
+			if (fileData.size() > 0)
+				fileData.clear();
+			for (size_t i = 0; i < response_body.length(); i++)
+				fileData.push_back(response_body[i]);
+			file_size = fileData.size();
+		}
 	}
 	else if (tt == "x-www-form-urlencoded")
 		Handl_encoded();
