@@ -6,7 +6,7 @@
 /*   By: aalazhar <aalazhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:12:16 by megrisse          #+#    #+#             */
-/*   Updated: 2023/06/09 01:34:31 by aalazhar         ###   ########.fr       */
+/*   Updated: 2023/06/09 01:48:44 by aalazhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ void	Res::resetvalues() {
 	cookie = "";
 	autoInx = false;
 	redirection_path = "";
-	// root = "";
-	// index = "";
 }
 
 Res::Res(struct config server, int serverfd, int clientfd) : Req(serverfd, clientfd, server) {
@@ -157,11 +155,6 @@ bool	Res::IfMatch(std::string url) {
 	return false;
 }
 
-// void	Res::isloca() {
-
-	
-// }
-
 void Res::splitUrl(std::string url) {
 	
 	size_t	pos = url.find("?");
@@ -201,10 +194,6 @@ void	Res::SplitRed() {
 void	Res::getifQuerry(std::string url) {
 
 	splitUrl(url);
-	// std::cout << "GET IF QUERRRYYY " << std::endl;
-	// std::cout << "file PATH " << filePath << std::endl;
-	// std::cout << "INDEX " << index << std::endl;
-	// std::cout << "ROTTT == " << root << std::endl;
 	if ((filePath.empty() && !index.empty()))
 		filePath = root + index;
 	else if (IfRedirection(filePath)) {
@@ -225,7 +214,7 @@ void	Res::getifQuerry(std::string url) {
 	type = filePath.substr(pos + 1, filePath.size() - pos);
 }
 
-int	checkpath(std::string &path) {
+int	checkpath(std::string path) {
 
 	struct stat file_st;
 
@@ -394,7 +383,6 @@ void	Res::buildCGIResponse() {
 
 		size_t	i = 0;
 		size_t	size = response.size() - 2;
-
 		cgiBuff = cgi.executeCGI();
 		if (cgi.getcgierr() == true) {
 
@@ -785,7 +773,6 @@ void	Res::DELETE() {
 
 bool	Res::CheckMethodIfAllowed() {
 
-	// getifQuerry(getURL());
 	std::string Path = getURL();
 	if (Path[0] == '/')
 		Path = Path.substr(1);
