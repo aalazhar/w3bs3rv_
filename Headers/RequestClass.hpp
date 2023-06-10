@@ -32,6 +32,8 @@ class Req{
         int clientFd;
         long chunkSize;
         long var;
+        std::string ClientIp;
+        long port; 
         struct config _Config;
 
     public:
@@ -49,7 +51,11 @@ class Req{
         void parseCHuncked(std::string&);
         int checkMETHOD(const std::string&);
 
+        void setClientIp(std::string);
+        void setPORT(long);
         int getStep();
+        std::string getClientIp();
+        long getPORT();
         int getServerFd();
         int getClientFd();
         int getMETHOD(std::string&);

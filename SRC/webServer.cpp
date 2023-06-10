@@ -135,6 +135,8 @@ int webServ::acceptNewCl(int kq, int ServerSock){
     std::cout << "New connection from: \033[31;3m" << storeClientIP(clientSock) << "\033[0m on port: \033[32;3m" <<\
 		ntohs(client_addr.sin_port) << "\033[0m !" << std::endl;
     Res rs(Servers[i].getConfig(), ServerSock, clientSock);
+    rs.setClientIp(storeClientIP(clientSock));
+    rs.setPORT(ntohs(client_addr.sin_port));
     this->Cmap.insert(std::make_pair(clientSock, rs));
     keventUP(kq, clientSock, EVFILT_READ, EV_ADD);
     return 0;
@@ -216,7 +218,8 @@ void webServ::eraseClient(int kq,int fd){
 
     keventUP(kq, fd, EVFILT_WRITE, EV_CLEAR | EV_DELETE);
     keventUP(kq, fd, EVFILT_READ, EV_CLEAR | EV_DELETE);
-    std::cout << "Client: \033[31;3m" << storeClientIP(fd) << "\033[0m Is Deconected" << std::endl;
+    std::cout << "Client: \033[31;3m" << Cmap.find(fd)->second.getClientIp() << "\033[0m on port: \033[32;3m" <<\
+		Cmap.find(fd)->second.getPORT() << "\033[0m !"  << "\033[0m Is Deconected" << std::endl;
     Cmap.erase(fd);
     close(fd);
 }

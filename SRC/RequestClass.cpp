@@ -245,7 +245,15 @@ void Req::clearData() {
     this->var = 0;
 }
 
+
+
+void Req::setClientIp(std::string ip){ this->ClientIp = ip;}
+
+void Req::setPORT(long port) {this->port = port;}
+
 int Req::getStep(){return step;};
+std::string Req::getClientIp(){return this->ClientIp;};
+long Req::getPORT(){return this->port;};
 
 int Req::getServerFd(){return this->ServerFd;}
 
