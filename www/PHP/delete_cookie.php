@@ -1,5 +1,4 @@
 <?php
-// set the expiration date to one hour ago
 setcookie("samaykum", "alaykumsamay", time() - (86400 * 30), "/");
 ?>
 <html>

@@ -6,13 +6,13 @@
 /*   By: aalazhar <aalazhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:54:32 by aalazhar          #+#    #+#             */
-/*   Updated: 2023/06/09 01:16:00 by aalazhar         ###   ########.fr       */
+/*   Updated: 2023/06/10 00:29:37 by aalazhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CGI_HPP
 #define CGI_HPP
-
+ 
 #include <string>
 #include <unistd.h>
 #include <vector>

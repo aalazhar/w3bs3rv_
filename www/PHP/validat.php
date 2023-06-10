@@ -16,19 +16,11 @@
         $login = $_GET['login'];
         $email = $_GET['email'];
         $pass = $_GET['pass'];
-        // echo $_SESSION['new'];
-        echo $pass;
-        echo $email;
         
         if ($email === $emailX && $pass === $passX){
-            echo $email;
             $_SESSION['session'] = $_COOKIE['XXX'];
             $_SESSION['login'] = $login;
             if (isset($_SESSION['login'])){
-                // $login = $_SESSION['login'];
-                // echo "<h1>Hello Mr $login.</h1>"; 
-                // echo "<h2>You are loged in now succefully.</h2>";
-                // echo "If you want to logout, <a href='logoutx.php'>click here.</a>";
                 header("location: loginx.php");   
             }
         }

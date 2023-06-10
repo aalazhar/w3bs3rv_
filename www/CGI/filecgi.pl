@@ -23,31 +23,6 @@ if ($form->param){
         print $form->h3("Hello Mr $fname,");
         print $form->h3("Your new Adress in this form now is : $addre");
     }
-    else {
-        print $form->start_form(
-            -method => 'Post',
-            -action => '',
-        );
-        print 'FULL NAME : ';
-        print $form->textfield(
-            -type => 'text',
-            -label => 'Full name :',
-            -name => 'fullName',
-            -size => '30',
-        );
-        print 'ADDRESS : ';
-        print $form->textfield(
-            -type => 'text',
-            -label => 'Address :',
-            -name => 'address',
-            -size => '32',
-        );
-        print $form->submit(
-            -name=> 'submit',
-            -value=> 'send',
-        );
-        print $form->end_form;
-    }
 }
 else {
     print $form->start_form(

@@ -28,14 +28,6 @@
         transform: translate(-50%, -50%);
         padding: 10px;
     }
-    /* button {
-
-        position: absolute;
-        top: 30%;
-        left: 50%;
-
-    } */
-
     .button{
         position: absolute;
         top: 30%;

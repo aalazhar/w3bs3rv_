@@ -1,8 +1,6 @@
 #include "../Headers/Headers.hpp"
 #include "../Headers/webServer.hpp"
 
-
-
 int main(int ac, char **av){
     if (ac != 2 and ac != 1)
         return std::cerr << "ERROR PARAM\n", 1;
